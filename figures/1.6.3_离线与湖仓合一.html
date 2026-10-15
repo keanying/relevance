@@ -1,0 +1,27 @@
+<div class="pf">
+  <div class="pf-row">
+    <div class="pf-card dash top" style="flex:1;gap:14px">
+      <div class="ttl">现状：两条链路</div>
+      <div class="pf-row" style="align-items:center"><b style="width:40px">离线</b><span class="pf-pill" style="flex:1;border-color:transparent">源数据</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">离线模型</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">指标 A</span></div>
+      <div class="pf-row" style="align-items:center"><b style="width:40px">湖仓</b><span class="pf-pill" style="flex:1;border-color:transparent">源数据</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">湖仓模型</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">指标 A′</span></div>
+      <div class="pf-note org">同一逻辑写两遍 · 结果对不上 · 改口径要改多处</div>
+    </div>
+    <div class="pf-arrow big">➜</div>
+    <div class="pf-card panel top" style="flex:1;gap:8px">
+      <div class="ttl">目标：一个底座</div>
+      <div class="pf-bar grad">公共层 DWD · DIM · DWS（只建一次）</div>
+      <div class="pf-row"><div class="pf-bar line" style="flex:1">离线计算</div><div class="pf-bar line" style="flex:1">实时计算</div></div>
+      <div class="pf-arrow down">▼</div>
+      <div class="pf-bar dark">统一指标 → BI · API · AI</div>
+    </div>
+  </div>
+  <div class="pf-label" style="width:auto">合并步骤</div>
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1">盘点重叠模型</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">确定保留版本</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">下游改为引用</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">双跑对比</div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1;font-weight:700">下线重复模型</div>
+  </div>
+  <div class="pf-note">存量不动、增量按新规范，双跑通过后逐域切换，保留回滚</div>
+</div>
