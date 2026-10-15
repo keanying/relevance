@@ -263,6 +263,20 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .pf-banner.warm b {{ color: #B5541B; }}
 .pf-note {{ color: var(--mut); font-size: 13.5px; }}
 .pf-note.org {{ color: #B5541B; font-weight: 700; }}
+.pf-grid {{ display: grid; gap: 12px; }}
+.pf-val {{ background: #F4F3FF; border: 1.5px solid #DCD8FB; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 6px; }}
+.pf-val.hl {{ background: linear-gradient(160deg, var(--b), var(--p)); border-color: transparent; color: #fff; }}
+.pf-val h4 {{ margin: 0; font-size: 20px; font-weight: 800; color: var(--p); }}
+.pf-val.hl h4 {{ color: #fff; }}
+.pf-val .chg {{ font-size: 14px; line-height: 1.55; flex: 1; }}
+.pf-val .msr {{ border-top: 1px dashed #CFCAFB; padding-top: 6px; font-size: 12.5px; color: #B5541B; font-weight: 700; }}
+.pf-val.hl .msr {{ color: #FFE2C8; border-top-color: rgba(255,255,255,.4); }}
+.pf-role {{ background: #F4F3FF; border: 1.5px solid #DCD8FB; border-radius: 10px; padding: 14px; display: flex; gap: 14px; align-items: center; }}
+.pf-ico {{ flex: none; width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--b), var(--p)); color: #fff; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }}
+.pf-ico.org {{ background: var(--org); }}
+.pf-role h4 {{ margin: 0 0 3px; font-size: 16px; font-weight: 700; }}
+.pf-role .sub {{ font-size: 13px; color: var(--mut); line-height: 1.55; }}
+.pf-hero {{ border-radius: 10px; padding: 14px 18px; text-align: center; font-weight: 800; font-size: 18px; letter-spacing: 1px; color: #fff; background: linear-gradient(110deg, var(--p), var(--b)); }}
 .pf-name {{ display: flex; justify-content: center; align-items: flex-start; gap: 10px; }}
 .pf-tok {{ display: flex; flex-direction: column; align-items: center; gap: 6px; }}
 .pf-tok b {{ font-family: Consolas, Menlo, monospace; font-size: 26px; padding: 8px 18px; border-radius: 8px; }}
@@ -280,7 +294,7 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .cmp.up {{ background: var(--t2); color: var(--dp); font-weight: 600; }}
 .cmp.new {{ background: #fff; color: var(--ink); border: 1.5px dashed var(--org); }}
 @media (max-width: 900px) {{ .cmp-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }} }}
-@media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-items {{ flex-wrap: wrap; }} .chip {{ flex: 1 1 70px; }} .kpi {{ grid-template-columns: 1fr; }} .kpi-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }} .pf-row {{ flex-wrap: wrap; }} .pf-arrow {{ display: none; }} .pf-row > * {{ flex: 1 1 100% !important; }} .pf-name {{ flex-wrap: wrap; }} }}
+@media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-items {{ flex-wrap: wrap; }} .chip {{ flex: 1 1 70px; }} .kpi {{ grid-template-columns: 1fr; }} .kpi-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }} .pf-row {{ flex-wrap: wrap; }} .pf-arrow {{ display: none; }} .pf-row > * {{ flex: 1 1 100% !important; }} .pf-name {{ flex-wrap: wrap; }} .pf-grid {{ grid-template-columns: 1fr !important; }} }}
 hr {{ border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }}
 @media (max-width: 900px) {{
   .layout {{ grid-template-columns: 1fr; }}
