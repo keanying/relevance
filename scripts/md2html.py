@@ -8,7 +8,11 @@
     python scripts/md2html.py -i AI＋数据平台建设汇报_正文.md -o 输出.html --chapter 1
     python scripts/md2html.py --chapter all                     # 全部章节
 
-说明：Mermaid 图通过 CDN 加载（cdn.jsdelivr.net），打开 HTML 时需要联网。
+图表输出方式：
+    默认（静态）：生成时把 Mermaid 图预先渲染成 SVG 写进 HTML，打开时无需联网、无需脚本。
+        需要：pip install playwright && playwright install chromium
+              npm install mermaid@10.9.1   （在仓库根目录执行，生成 node_modules/mermaid）
+    --cdn：不预渲染，打开 HTML 时从 cdn.jsdelivr.net 加载 Mermaid（需联网）。
 """
 import argparse
 import html
@@ -35,8 +39,42 @@ def split_chapter(md, chapter):
     return head + '\n' + m.group(0)
 
 
+def render_layers(src):
+    """```layers 块：每行“层名 | 组件1, 组件2*”，* 表示已有；以 @ 开头的行作为右侧贯穿栏。"""
+    rows, side = [], None
+    for line in src.strip().splitlines():
+        if '|' not in line:
+            continue
+        name, items = [x.strip() for x in line.split('|', 1)]
+        items = [x.strip() for x in items.split(',') if x.strip()]
+        if name.startswith('@'):
+            side = (name[1:], items)
+        else:
+            rows.append((name, items))
+    h = ['<div class="arch">', '<div class="arch-main">']
+    for k, (name, items) in enumerate(rows):
+        chips = ''.join(
+            f'<span class="chip{" have" if it.endswith("*") else ""}">{html.escape(it.rstrip("*"))}</span>' for it in items)
+        h.append(f'<div class="arch-row"><div class="arch-name">{html.escape(name)}</div><div class="arch-items">{chips}</div></div>')
+        if k < len(rows) - 1:
+            h.append('<div class="arch-arrow">▲</div>')
+    h.append('</div>')
+    if side:
+        h.append('<div class="arch-side"><div class="arch-side-title">' + html.escape(side[0]) + '</div>'
+                 + ''.join(f'<div class="arch-side-item">{html.escape(x)}</div>' for x in side[1]) + '</div>')
+    h.append('</div>')
+    return ''.join(h)
+
+
 def convert(md):
     blocks = []
+    layer_blocks = []
+
+    def keep_layers(m):
+        layer_blocks.append(render_layers(m.group(1)))
+        return f'\n\nLAYERBLOCK{len(layer_blocks) - 1}\n\n'
+
+    md = re.sub(r'```layers\s*\n(.*?)```', keep_layers, md, flags=re.S)
 
     def keep(m):
         blocks.append(m.group(1).strip())
@@ -47,6 +85,8 @@ def convert(md):
     md = re.sub(r'(?m)^((?![ \t]*(?:[-*+] |\d+\. |\|)).+)\n(?=[ \t]*(?:[-*+] |\d+\. ))', r'\1\n\n', md)
     body = markdown.markdown(md, extensions=['tables', 'fenced_code', 'sane_lists', 'toc'],
                              extension_configs={'toc': {'permalink': False}})
+    for i, frag in enumerate(layer_blocks):
+        body = body.replace(f'<p>LAYERBLOCK{i}</p>', f'<figure class="diagram">{frag}</figure>')
     for i, code in enumerate(blocks):
         fig = f'<figure class="diagram"><pre class="mermaid">{html.escape(code)}</pre></figure>'
         body = body.replace(f'<p>MERMAIDBLOCK{i}</p>', fig)
@@ -105,6 +145,18 @@ tr:nth-child(even) td {{ background: var(--t1); }}
 td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .diagram {{ margin: 16px 0 22px; padding: 18px; background: #FBFBFF; border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; text-align: center; }}
 .diagram pre.mermaid {{ margin: 0; background: none; font-size: 14px; }}
+.mermaid-svg svg {{ max-width: 100%; height: auto; }}
+.arch {{ display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 12px; text-align: left; }}
+.arch-row {{ display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 10px; align-items: stretch; }}
+.arch-name {{ background: var(--dp); color: #fff; font-weight: 600; font-size: 13.5px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px; }}
+.arch-items {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--t1); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }}
+.chip {{ flex: 1 1 80px; text-align: center; font-size: 13px; padding: 7px 8px; border-radius: 6px; background: #fff; border: 1px solid #C9C4FB; color: var(--ink); }}
+.chip.have {{ background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; border-color: transparent; font-weight: 600; }}
+.arch-arrow {{ text-align: center; color: #B6B0F7; font-size: 11px; line-height: 14px; margin: 2px 0 2px 140px; }}
+.arch-side {{ background: linear-gradient(180deg, var(--p), var(--dp)); border-radius: 10px; padding: 12px 10px; color: #fff; display: flex; flex-direction: column; gap: 8px; }}
+.arch-side-title {{ font-weight: 700; font-size: 14px; text-align: center; margin-bottom: 4px; }}
+.arch-side-item {{ background: rgba(255,255,255,.16); border-radius: 6px; padding: 7px 6px; font-size: 13px; text-align: center; }}
+@media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-arrow {{ margin-left: 0; }} }}
 hr {{ border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }}
 @media (max-width: 900px) {{
   .layout {{ grid-template-columns: 1fr; }}
@@ -150,7 +202,10 @@ def main():
     ap.add_argument('-i', '--input', default='AI＋数据平台建设汇报_正文.md')
     ap.add_argument('-o', '--output', default=None)
     ap.add_argument('--chapter', default='1', help='1 / 2 / 3 / all')
-    ap.add_argument('--mermaid-src', default=MERMAID_CDN, help='Mermaid 脚本地址（可改为本地文件）')
+    ap.add_argument('--mermaid-src', default=MERMAID_CDN, help='Mermaid 脚本地址（--cdn 模式使用）')
+    ap.add_argument('--cdn', action='store_true', help='不预渲染，打开时从 CDN 加载图表')
+    ap.add_argument('--mermaid-js', default='node_modules/mermaid/dist/mermaid.min.js', help='本地 mermaid.min.js（静态模式）')
+    ap.add_argument('--browser', default=None, help='Chromium 可执行文件路径（可选）')
     a = ap.parse_args()
 
     md = Path(a.input).read_text(encoding='utf-8')
@@ -164,9 +219,45 @@ def main():
     chap_title = re.search(r'<h1 id="[^"]*">(.*?)</h1>', body)
     subtitle = re.sub('<[^>]+>', '', chap_title.group(1)) if chap_title and a.chapter != 'all' else '建设汇报'
     out = Path(a.output or ('数据平台.html' if a.chapter == '1' else f'{title}.html'))
-    out.write_text(TEMPLATE.format(title=html.escape(title), subtitle=html.escape(subtitle), toc=build_toc(body),
-                                   body=body, mermaid_src=a.mermaid_src), encoding='utf-8')
-    print('已生成', out)
+    page = TEMPLATE.format(title=html.escape(title), subtitle=html.escape(subtitle), toc=build_toc(body),
+                           body=body, mermaid_src=a.mermaid_src)
+    if not a.cdn:
+        page = prerender(page, Path(a.mermaid_js), a.browser)
+    out.write_text(page, encoding='utf-8')
+    print('已生成', out, '（图表已预渲染为 SVG）' if not a.cdn else '（图表通过 CDN 加载）')
+
+
+def prerender(page, mermaid_js, browser=None):
+    """用无头浏览器把 Mermaid 渲染成 SVG，写回 HTML，并去掉脚本。"""
+    if not mermaid_js.exists():
+        raise SystemExit(f'未找到 {mermaid_js}，请先 npm install mermaid@10.9.1，或加 --cdn')
+    from playwright.sync_api import sync_playwright
+    js = mermaid_js.read_text(encoding='utf-8')
+    page = re.sub(r'<script src="[^"]*"></script>', lambda _: '<script>' + js + '</script>', page, count=1)
+    import tempfile
+    with tempfile.NamedTemporaryFile('w', suffix='.html', delete=False, encoding='utf-8') as f:
+        f.write(page)
+        tmp = f.name
+    with sync_playwright() as p:
+        b = p.chromium.launch(executable_path=browser) if browser else p.chromium.launch()
+        pg = b.new_page(viewport={'width': 1400, 'height': 900})
+        pg.goto('file://' + tmp)
+        pg.wait_for_function("document.querySelectorAll('pre.mermaid').length === "
+                             "document.querySelectorAll('pre.mermaid svg').length", timeout=60000)
+        bad = pg.locator('text=Syntax error').count()
+        if bad:
+            print(f'警告：{bad} 张图有语法错误')
+        html_out = pg.evaluate("""() => {
+            document.querySelectorAll('pre.mermaid').forEach(pre => {
+                const d = document.createElement('div'); d.className = 'mermaid-svg'; d.innerHTML = pre.innerHTML;
+                pre.replaceWith(d);
+            });
+            document.querySelectorAll('script').forEach(s => s.remove());
+            return '<!doctype html>\\n' + document.documentElement.outerHTML;
+        }""")
+        b.close()
+    Path(tmp).unlink(missing_ok=True)
+    return html_out
 
 
 if __name__ == '__main__':
