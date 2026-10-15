@@ -66,9 +66,36 @@ def render_layers(src):
     return ''.join(h)
 
 
+def render_components(src):
+    """```components 块：每行“能力组 | 组件*, 组件+, 组件”；* 已有，+ 升级，无标记为新建。"""
+    cols = []
+    for line in src.strip().splitlines():
+        if '|' not in line:
+            continue
+        name, items = [x.strip() for x in line.split('|', 1)]
+        cols.append((name, [x.strip() for x in items.split(',') if x.strip()]))
+    legend = ('<div class="cmp-legend"><span class="cmp have">已有</span><span class="cmp up">升级</span>'
+              '<span class="cmp new">新建</span></div>')
+    h = [legend, f'<div class="cmp-grid" style="grid-template-columns: repeat({len(cols)}, minmax(0, 1fr));">']
+    for name, items in cols:
+        cells = []
+        for it in items:
+            cls = 'have' if it.endswith('*') else 'up' if it.endswith('+') else 'new'
+            cells.append(f'<div class="cmp {cls}">{html.escape(it.rstrip("*+"))}</div>')
+        h.append(f'<div class="cmp-col"><div class="cmp-head">{html.escape(name)}</div>{"".join(cells)}</div>')
+    h.append('</div>')
+    return ''.join(h)
+
+
 def convert(md):
     blocks = []
     layer_blocks = []
+
+    def keep_comp(m):
+        layer_blocks.append(render_components(m.group(1)))
+        return f'\n\nLAYERBLOCK{len(layer_blocks) - 1}\n\n'
+
+    md = re.sub(r'```components\s*\n(.*?)```', keep_comp, md, flags=re.S)
 
     def keep_layers(m):
         layer_blocks.append(render_layers(m.group(1)))
@@ -156,6 +183,16 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .arch-side {{ background: linear-gradient(180deg, var(--p), var(--dp)); border-radius: 10px; padding: 12px 10px; color: #fff; display: flex; flex-direction: column; gap: 8px; }}
 .arch-side-title {{ font-weight: 700; font-size: 14px; text-align: center; margin-bottom: 4px; }}
 .arch-side-item {{ background: rgba(255,255,255,.16); border-radius: 6px; padding: 7px 6px; font-size: 13px; text-align: center; }}
+.cmp-legend {{ display: flex; gap: 10px; justify-content: flex-start; margin-bottom: 12px; }}
+.cmp-legend .cmp {{ padding: 3px 14px; }}
+.cmp-grid {{ display: grid; gap: 8px; text-align: left; }}
+.cmp-col {{ display: flex; flex-direction: column; gap: 6px; }}
+.cmp-head {{ background: var(--dp); color: #fff; font-weight: 600; font-size: 13.5px; text-align: center; padding: 8px 4px; border-radius: 8px; }}
+.cmp {{ font-size: 12.5px; text-align: center; padding: 7px 4px; border-radius: 6px; line-height: 1.4; }}
+.cmp.have {{ background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; font-weight: 600; }}
+.cmp.up {{ background: var(--t2); color: var(--dp); font-weight: 600; }}
+.cmp.new {{ background: #fff; color: var(--ink); border: 1.5px dashed var(--org); }}
+@media (max-width: 900px) {{ .cmp-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }} }}
 @media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-arrow {{ margin-left: 0; }} }}
 hr {{ border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }}
 @media (max-width: 900px) {{
