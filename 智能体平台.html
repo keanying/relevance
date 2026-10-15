@@ -267,148 +267,84 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </table>
 <p><strong>我们的优势</strong>：智能体要“能办事”，靠的是业务系统和数据。票付通的票务、业态、终端系统在景区现场，交易数据、业务接口和景区服务经验是通用 AI 厂商没有的。</p>
 <h2 id="23">2.3 平台建设</h2>
-<p><strong>思路</strong>：依托 Coze、火山方舟、Quick BI 和合作企业的现成能力，在这些平台上建好基础能力，先快速落地验证；其余能力按验证结果逐步迭代。</p>
+<p><strong>思路</strong>：底层依托 Coze、火山方舟、Quick BI 和合作企业的成熟能力，不自研模型和编排引擎；在其之上建我们自己的智能体平台，知识、工具、数据、模板和运营都沉淀在自己手里，上层场景可以充分发挥。</p>
 <figure class="diagram"><div class="pf">
-  <div class="pf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
-    <div class="pf-card panel top" style="gap:8px">
-      <div class="ttl">扣子 Coze</div>
-      <div class="sub" style="color:var(--mut)">用：工作流编排、知识库、插件、多渠道发布</div>
-      <div class="pf-bar grad" style="font-weight:600;font-size:13px">建：场景工作流 · 景区知识库 · 业务插件</div>
-    </div>
-    <div class="pf-card panel top" style="gap:8px">
-      <div class="ttl">火山方舟</div>
-      <div class="sub" style="color:var(--mut)">用：豆包等大模型、图像与语音等多模态能力</div>
-      <div class="pf-bar grad" style="font-weight:600;font-size:13px">建：模型选型与调用 · 提示词与人设 · 旅拍图像</div>
-    </div>
-    <div class="pf-card panel top" style="gap:8px">
-      <div class="ttl">Quick BI</div>
-      <div class="sub" style="color:var(--mut)">用：智能问数、智能数据解读</div>
-      <div class="pf-bar grad" style="font-weight:600;font-size:13px">建：问数数据集 · 指标口径（第一章）</div>
-    </div>
-    <div class="pf-card dash top" style="gap:8px">
-      <div class="ttl">合作企业</div>
-      <div class="sub" style="color:var(--mut)">用：手语等专项能力</div>
-      <div class="pf-bar grad" style="font-weight:600;font-size:13px">建：接入方式 · 体验标准</div>
+  <div class="pf-card panel" style="gap:10px">
+    <div class="ttl">智能体平台 · 上层自建，充分发挥</div>
+    <div class="pf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
+      <div class="pf-val hl"><h4 style="font-size:17px">智能体应用</h4><div class="chg">游客服务、景区管理、票务财务、安全调度、精准营销</div></div>
+      <div class="pf-val"><h4 style="font-size:17px">智能体工厂</h4><div class="chg">场景模板、配置化生成、多智能体协同、版本发布</div></div>
+      <div class="pf-val"><h4 style="font-size:17px">能力中心</h4><div class="chg">景区知识、业务工具、数据服务、多模态与数字人、游客画像</div></div>
+      <div class="pf-val"><h4 style="font-size:17px">运营管理</h4><div class="chg">统一注册、权限与租户、调用计量、效果评测、反馈回流</div></div>
     </div>
   </div>
-  <div class="pf-hero">底层不自研，基础能力建在平台上；其余按验证结果逐步迭代</div>
+  <div class="pf-arrow down" style="font-size:22px;color:var(--p)">▲</div>
+  <div class="pf-row">
+    <div class="pf-label">依托能力</div>
+    <div class="pf-pills even"><span class="pf-pill fill">扣子 Coze · 智能体编排</span><span class="pf-pill fill">火山方舟 · 大模型与多模态</span><span class="pf-pill fill">Quick BI · 智能问数</span><span class="pf-pill fill">合作企业 · 专项能力</span></div>
+  </div>
+  <div class="pf-hero">底层用成熟能力，上层建自己的平台：知识、工具、数据、模板、运营沉淀在自己手里</div>
 </div>
 </figure>
 <h3 id="231">2.3.1 总体架构</h3>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通</span><span class="chip">景区公众号 / 小程序</span></div></div><div class="arch-row"><div class="arch-name">游客端智能体</div><div class="arch-items"><span class="chip have">智能助手</span><span class="chip have">智能客服</span><span class="chip have">智能导览</span><span class="chip have">AI 伴游</span><span class="chip have">AI 旅拍</span><span class="chip have">手语</span><span class="chip">AI 旅游规划</span><span class="chip">AI 智能购票</span></div></div><div class="arch-row"><div class="arch-name">管理端智能体</div><div class="arch-items"><span class="chip have">智能问数</span><span class="chip have">智能洞察</span><span class="chip">消息预警</span><span class="chip">工单处置</span><span class="chip">票务 AI 运营助手</span><span class="chip">AI 对账助手</span><span class="chip">调度中枢 8 个智能体</span></div></div><div class="arch-row"><div class="arch-name">基础能力</div><div class="arch-items"><span class="chip">场景工作流</span><span class="chip">景区知识库</span><span class="chip">业务插件</span><span class="chip">提示词与人设</span><span class="chip">问数数据集</span></div></div><div class="arch-row"><div class="arch-name">依托平台</div><div class="arch-items"><span class="chip have">扣子 Coze</span><span class="chip have">火山方舟</span><span class="chip have">Quick BI</span><span class="chip have">合作企业</span></div></div><div class="arch-row"><div class="arch-name">数据与业务</div><div class="arch-items"><span class="chip have">动态数据开放 API</span><span class="chip have">售票 / 订单 / 核销</span><span class="chip have">会员 / 年卡</span><span class="chip src">认证指标</span></div></div></div><div class="arch-side"><div class="arch-side-title">逐步迭代<br>按验证结果再做</div><div class="arch-side-item">统一入口</div><div class="arch-side-item">评测与计量</div><div class="arch-side-item">私有化 / 自建能力</div></div></div></figure>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通</span><span class="chip">景区公众号 / 小程序</span><span class="chip have">智慧终端</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务</span><span class="chip">景区管理</span><span class="chip">票务财务</span><span class="chip">安全调度</span><span class="chip">精准营销</span></div></div><div class="arch-row"><div class="arch-name">智能体工厂</div><div class="arch-items"><span class="chip">场景模板</span><span class="chip">配置化生成</span><span class="chip">多智能体协同</span><span class="chip">版本与发布</span></div></div><div class="arch-row"><div class="arch-name">能力中心</div><div class="arch-items"><span class="chip">景区知识中心</span><span class="chip">业务工具中心</span><span class="chip">数据服务</span><span class="chip">多模态与数字人</span><span class="chip">游客画像与记忆</span></div></div><div class="arch-row"><div class="arch-name">依托能力</div><div class="arch-items"><span class="chip have">扣子 Coze</span><span class="chip have">火山方舟</span><span class="chip have">Quick BI</span><span class="chip have">合作企业</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营管理<br>贯穿各层</div><div class="arch-side-item">统一注册</div><div class="arch-side-item">权限与租户</div><div class="arch-side-item">调用计量</div><div class="arch-side-item">效果评测</div><div class="arch-side-item">反馈回流</div></div></div></figure>
 <blockquote>
-<p>渐变色块为已有，白色块为要在平台上建的智能体和基础能力；右侧为验证有效后再逐步迭代的部分。</p>
+<p>渐变色块为已有，白色块为要建的平台能力；最底层为依托的成熟能力。</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th>基础能力</th>
-<th>建在哪</th>
-<th>说明</th>
+<th>平台层</th>
+<th>建什么</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>场景工作流</td>
-<td>Coze</td>
-<td>助手、客服、导览、旅拍、伴游的工作流，景区差异做成配置</td>
+<td>能力中心</td>
+<td>景区知识中心：统一结构的景区知识，所有智能体共用；业务工具中心：售票、订单、核销、会员、工单、财务接口封装成工具；数据服务：认证指标和标签（见第一章）；多模态与数字人：语音、图像、数字人、手语；游客画像与记忆：跨智能体记住游客偏好</td>
 </tr>
 <tr>
-<td>景区知识库</td>
-<td>Coze</td>
-<td>统一结构：景区介绍、票种价格、开放时间、交通、路线、常见问题</td>
+<td>智能体工厂</td>
+<td>场景模板，景区差异做成配置；多智能体协同，如“预警 → 调度 → 工单”串联；版本与发布</td>
 </tr>
 <tr>
-<td>业务插件</td>
-<td>Coze</td>
-<td>售票、订单、核销、会员年卡、动态数据开放 API 封装为插件，各智能体共用</td>
+<td>智能体应用</td>
+<td>产品全景中的各类智能体（见 2.3.2）</td>
 </tr>
 <tr>
-<td>提示词与人设</td>
-<td>Coze + 火山方舟</td>
-<td>按场景统一话术和人设；按效果和成本选模型</td>
-</tr>
-<tr>
-<td>问数数据集</td>
-<td>Quick BI</td>
-<td>基于第一章的认证指标建数据集，问数口径与看板一致</td>
+<td>运营管理</td>
+<td>所有智能体统一注册、按景区和租户隔离权限、统计调用与成本、评测效果、收集反馈</td>
 </tr>
 </tbody>
 </table>
 <h3 id="232">2.3.2 全景智能体</h3>
-<p>产品全景中的智能体，已有 8 个，还有 14 个待建。待建的同样依托平台搭建，不另起炉灶：</p>
+<p>产品全景中的智能体，已有 8 个，还有 14 个待建，都在平台上用模板和共用能力搭建：</p>
 <figure class="diagram"><div class="pf">
-  <div class="pf-legend"><span class="pf-ag have"><span>已有</span></span><span class="pf-ag todo"><span>全景中待建</span></span><span class="pf-note">小字为依托的平台</span></div>
+  <div class="pf-legend"><span class="pf-ag have"><span>已有</span></span><span class="pf-ag todo"><span>全景中待建</span></span></div>
   <div class="pf-grid" style="grid-template-columns: 1fr 1fr 1fr;">
-    <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">畅游 AI · 游客</div><div class="pf-ag have"><span>智能助手</span><em>Coze</em></div><div class="pf-ag have"><span>智能客服</span><em>Coze</em></div><div class="pf-ag have"><span>智能导览</span><em>Coze</em></div><div class="pf-ag have"><span>AI 伴游</span><em>Coze</em></div><div class="pf-ag have"><span>AI 旅拍</span><em>Coze + 方舟</em></div><div class="pf-ag have"><span>手语</span><em>合作企业</em></div><div class="pf-ag todo"><span>AI 旅游规划</span><em>Coze + 方舟</em></div><div class="pf-ag todo"><span>AI 智能购票</span><em>Coze + 售票插件</em></div></div>
-    <div class="pf-col" style="justify-content:flex-start"><div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">AI 数字大脑 · 景数通 / APP</div><div class="pf-ag have"><span>AI 智能问数</span><em>Quick BI</em></div><div class="pf-ag have"><span>AI 智能洞察（数据解读）</span><em>Quick BI</em></div><div class="pf-ag todo"><span>消息通知预警</span><em>Quick BI + Coze</em></div><div class="pf-ag todo"><span>工单调度处置</span><em>Coze 工作流</em></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">智慧票务</div><div class="pf-ag todo"><span>票务 AI 运营助手</span><em>Coze + 数据 API</em></div><div class="pf-ag todo"><span>AI 对账助手</span><em>Coze + 财务接口</em></div></div></div>
-    <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">景区 AI 调度中枢</div><div class="pf-ag todo"><span>旅游安全</span><em></em></div><div class="pf-ag todo"><span>秩序治理</span><em></em></div><div class="pf-ag todo"><span>车辆调度</span><em></em></div><div class="pf-ag todo"><span>游船调度</span><em></em></div><div class="pf-ag todo"><span>森林防火</span><em></em></div><div class="pf-ag todo"><span>生态监测</span><em></em></div><div class="pf-ag todo"><span>气象服务</span><em></em></div><div class="pf-ag todo"><span>设施监测</span><em></em></div><div class="pf-note" style="margin-top:4px">依托：Coze 编排 + 方舟视觉 + 合作企业（物联、气象）；需接入闸机、边云网关等现场实时数据</div></div>
+    <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">畅游 AI · 游客</div><div class="pf-ag have"><span>智能助手</span></div><div class="pf-ag have"><span>智能客服</span></div><div class="pf-ag have"><span>智能导览</span></div><div class="pf-ag have"><span>AI 伴游</span></div><div class="pf-ag have"><span>AI 旅拍</span></div><div class="pf-ag have"><span>手语</span></div><div class="pf-ag todo"><span>AI 旅游规划</span></div><div class="pf-ag todo"><span>AI 智能购票</span></div></div>
+    <div class="pf-col" style="justify-content:flex-start"><div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">AI 数字大脑 · 景数通 / APP</div><div class="pf-ag have"><span>AI 智能问数</span></div><div class="pf-ag have"><span>AI 智能洞察（数据解读）</span></div><div class="pf-ag todo"><span>消息通知预警</span></div><div class="pf-ag todo"><span>工单调度处置</span></div></div>
+<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">智慧票务</div><div class="pf-ag todo"><span>票务 AI 运营助手</span></div><div class="pf-ag todo"><span>AI 对账助手</span></div></div></div>
+    <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">景区 AI 调度中枢</div><div class="pf-ag todo"><span>旅游安全</span></div><div class="pf-ag todo"><span>秩序治理</span></div><div class="pf-ag todo"><span>车辆调度</span></div><div class="pf-ag todo"><span>游船调度</span></div><div class="pf-ag todo"><span>森林防火</span></div><div class="pf-ag todo"><span>生态监测</span></div><div class="pf-ag todo"><span>气象服务</span></div><div class="pf-ag todo"><span>设施监测</span></div></div>
   </div>
-  <div class="pf-banner"><b>已有 8 个 · 待建 14 个</b><span>待建的同样在 Coze / 方舟 / Quick BI / 合作企业上搭，按“平台上搭 → 标杆验证 → 复制交付”逐个落地</span></div>
+  <div class="pf-banner"><b>已有 8 个 · 待建 14 个</b><span>待建的智能体都在平台上用模板和共用能力搭建，按“搭建 → 标杆验证 → 复制交付”逐个落地</span></div>
 </div>
 </figure>
-<table>
-<thead>
-<tr>
-<th>待建智能体</th>
-<th>依托平台</th>
-<th>需要的数据 / 接口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AI 旅游规划</td>
-<td>Coze + 火山方舟</td>
-<td>景区知识库、路线、票种</td>
-</tr>
-<tr>
-<td>AI 智能购票</td>
-<td>Coze</td>
-<td>售票、订单插件</td>
-</tr>
-<tr>
-<td>消息通知预警</td>
-<td>Quick BI + Coze</td>
-<td>认证指标、预警规则、APP 消息</td>
-</tr>
-<tr>
-<td>工单调度处置</td>
-<td>Coze 工作流</td>
-<td>工单接口、APP 推送</td>
-</tr>
-<tr>
-<td>票务 AI 运营助手</td>
-<td>Coze</td>
-<td>动态数据开放 API、销售与核销数据</td>
-</tr>
-<tr>
-<td>AI 对账助手</td>
-<td>Coze</td>
-<td>订单、结算、财务报表接口</td>
-</tr>
-<tr>
-<td>调度中枢 8 个智能体</td>
-<td>Coze + 火山方舟（视觉）+ 合作企业</td>
-<td>闸机与边云网关客流、物联设备、气象、视频</td>
-</tr>
-</tbody>
-</table>
 <h2 id="24">2.4 平台运营</h2>
 <h3 id="241">2.4.1 快速验证</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">选场景</h4><div class="sub">需求明确、客户愿意用</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">平台上搭</h4><div class="sub">Coze + 方舟 + 现有插件</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">标杆试点</h4><div class="sub">1–2 家景区先用</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">看效果</h4><div class="sub">用的人多不多、答得好不好</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">复制交付</h4><div class="sub">效果好就推开</div></div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">选场景</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">平台搭建</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">标杆试点</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">看效果</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">复制交付</h4></div>
   </div>
   <div class="pf-row">
-    <div class="pf-label">看效果</div>
+    <div class="pf-label">效果指标</div>
     <div class="pf-pills even"><span class="pf-pill">调用量</span><span class="pf-pill">问题解决率</span><span class="pf-pill">转人工率</span><span class="pf-pill">游客满意度</span><span class="pf-pill">带来的购票转化</span></div>
   </div>
-  <div class="pf-banner"><b>迭代</b><span>效果不好的回到“平台上搭”调工作流和知识；没人用的场景及时停，不追加投入</span></div>
+  <div class="pf-banner"><b>迭代</b><span>效果不好的回到平台调整；没人用的场景及时停，不追加投入</span></div>
 </div>
 </figure>
 <h3 id="242">2.4.2 复制交付</h3>
@@ -459,7 +395,7 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tr>
 <tr>
 <td>调用成本</td>
-<td>按月看 Coze、火山方舟的账单，按景区分摊</td>
+<td>按景区、按智能体统计调用量和成本</td>
 </tr>
 <tr>
 <td>工作流升级</td>
@@ -493,13 +429,13 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <h2 id="25">2.5 建设路径</h2>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card soft" style="flex:1"><h4>① 基础能力上平台</h4><div class="sub">工作流、景区知识库、业务插件、问数数据集在 Coze / 方舟 / Quick BI 上建好</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>① 平台打底</h4><div class="sub">接入底座能力，建景区知识中心、业务工具中心和首批场景模板</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>② 标杆验证</h4><div class="sub">现有智能体在标杆景区跑通，看效果、调工作流</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>② 标杆验证</h4><div class="sub">现有智能体迁到平台上，在标杆景区跑通、看效果</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>③ 复制交付</h4><div class="sub">验证有效的，按同一套工作流和知识结构推给更多景区</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>③ 复制交付</h4><div class="sub">验证有效的，按同一套模板和知识结构推给更多景区</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card grad" style="flex:1"><h4>④ 迭代扩展</h4><div class="sub">按客户反馈逐个补全景中待建的智能体；规模起来后再看评测、计量、自建</div></div>
+    <div class="pf-card grad" style="flex:1"><h4>④ 迭代扩展</h4><div class="sub">逐个补全景中的智能体，平台能力随之丰富</div></div>
   </div>
   <div class="pf-row">
     <div class="pf-label">看什么</div>
