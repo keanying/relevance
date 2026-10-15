@@ -277,6 +277,12 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .pf-role h4 {{ margin: 0 0 3px; font-size: 16px; font-weight: 700; }}
 .pf-role .sub {{ font-size: 13px; color: var(--mut); line-height: 1.55; }}
 .pf-hero {{ border-radius: 10px; padding: 14px 18px; text-align: center; font-weight: 800; font-size: 18px; letter-spacing: 1px; color: #fff; background: linear-gradient(110deg, var(--p), var(--b)); }}
+.pf-legend {{ display: flex; gap: 10px; align-items: center; }}
+.pf-ag {{ display: flex; justify-content: space-between; align-items: center; gap: 6px; border-radius: 8px; padding: 6px 10px; font-size: 13.5px; }}
+.pf-ag em {{ font-style: normal; font-size: 11.5px; opacity: .85; white-space: nowrap; }}
+.pf-ag.have {{ background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }}
+.pf-ag.todo {{ background: #fff; border: 1.5px dashed #B9B2FA; color: var(--ink); }}
+.pf-ag.todo em {{ color: var(--p); }}
 .pf-name {{ display: flex; justify-content: center; align-items: flex-start; gap: 10px; }}
 .pf-tok {{ display: flex; flex-direction: column; align-items: center; gap: 6px; }}
 .pf-tok b {{ font-family: Consolas, Menlo, monospace; font-size: 26px; padding: 8px 18px; border-radius: 8px; }}
