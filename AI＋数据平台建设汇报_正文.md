@@ -18,11 +18,16 @@
 **已建成**：离线主流程已贯通。
 
 ```mermaid
-flowchart LR
-  A[供应商 / 游客 / 会员] --> B[订单] --> C[维度]
-  subgraph 分层
+flowchart TB
+  subgraph 业务主线
+    direction LR
+    A[供应商 / 游客 / 会员] --> B[订单] --> C[维度]
+  end
+  subgraph 数据分层
+    direction LR
     O[ODS] --> D[DWD] --> M[DIM] --> S[DWS] --> X[ADS]
   end
+  业务主线 --> 数据分层
 ```
 
 **未建设**：实时链路、数据质量、统一标签、指标口径管理、数据标准落地。
@@ -214,7 +219,7 @@ flowchart LR
 **指标怎么定义**：每个指标按“原子指标 + 修饰词 + 时间周期 + 统计粒度”拆开定义。
 
 ```mermaid
-flowchart LR
+flowchart TB
   A[原子指标<br/>支付金额] --> F[派生指标<br/>近 7 天线上渠道成人票支付金额 · 按景区]
   B[修饰词<br/>线上渠道 · 成人票] --> F
   C[时间周期<br/>近 7 天] --> F

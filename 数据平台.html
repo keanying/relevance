@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI＋数据平台</title>
+<style>
+:root {
+  --p: #776CFD; --b: #5D95F1; --dp: #655BE6; --org: #F08A3C;
+  --ink: #2B2F42; --mut: #5E6478; --line: #E3E1F7; --t1: #F6F5FF; --t2: #ECEAFF; --bg: #FFFFFF;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.75 -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); max-width: 1320px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 32px 18px 32px 24px; border-right: 1px solid var(--line); }
+nav .brand { font-weight: 700; color: var(--dp); margin-bottom: 14px; font-size: 15px; }
+nav a { display: block; color: var(--mut); text-decoration: none; padding: 4px 8px; border-radius: 6px; font-size: 13.5px; }
+nav a.l2 { color: var(--ink); font-weight: 600; margin-top: 8px; }
+nav a.l3 { padding-left: 20px; }
+nav a:hover { background: var(--t2); color: var(--dp); }
+main { padding: 40px 56px 96px; min-width: 0; }
+.cover { background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; border-radius: 16px; padding: 36px 40px; margin-bottom: 36px; }
+.cover h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: 1px; }
+.cover .sub { opacity: .9; font-size: 15px; }
+.cover h1 { color: #fff; border: 0; padding: 0; }
+h1 { font-size: 26px; color: var(--dp); margin: 28px 0 12px; padding-bottom: 10px; border-bottom: 2px solid var(--t2); }
+h2 { font-size: 21px; margin: 40px 0 12px; padding-left: 12px; border-left: 4px solid var(--p); }
+h3 { font-size: 17px; margin: 30px 0 10px; color: var(--dp); }
+p, li { color: var(--ink); }
+strong { color: var(--dp); }
+blockquote { margin: 16px 0; padding: 10px 16px; background: var(--t1); border-left: 4px solid var(--b); border-radius: 0 8px 8px 0; color: var(--mut); }
+blockquote p { margin: 4px 0; color: var(--mut); }
+code { background: var(--t2); color: var(--dp); padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 14px 0 20px; font-size: 14px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+th { background: var(--dp); color: #fff; text-align: left; font-weight: 600; padding: 9px 12px; }
+td { padding: 9px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+tr:nth-child(even) td { background: var(--t1); }
+td:first-child { font-weight: 600; white-space: nowrap; }
+.diagram { margin: 16px 0 22px; padding: 18px; background: #FBFBFF; border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; text-align: center; }
+.diagram pre.mermaid { margin: 0; background: none; font-size: 14px; }
+hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  nav { display: none; }
+  main { padding: 24px 16px 64px; }
+}
+@media print {
+  nav { display: none; } .layout { grid-template-columns: 1fr; } main { padding: 0; }
+  h2, h3 { break-after: avoid; } .diagram, table { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav><div class="brand">AI＋数据平台</div>
+<a class="l2" href="#11">1.1 现状</a>
+<a class="l2" href="#12">1.2 问题</a>
+<a class="l2" href="#13">1.3 沉淀</a>
+<a class="l2" href="#14">1.4 数据平台建设</a>
+<a class="l3" href="#141">1.4.1 总体架构：六层分层建设，治理贯穿始终</a>
+<a class="l3" href="#142">1.4.2 平台组件</a>
+<a class="l3" href="#143">1.4.3 治理体系</a>
+<a class="l3" href="#144">1.4.4 治理嵌入研发：事前、事中、事后</a>
+<a class="l3" href="#145">1.4.5 治理样板：核销逐层核对</a>
+<a class="l3" href="#146">1.4.6 指标与标签体系</a>
+<a class="l3" href="#147">1.4.7 数据分发</a>
+<a class="l3" href="#148">1.4.8 数据安全与权限</a>
+<a class="l3" href="#149">1.4.9 建设路径</a>
+<a class="l3" href="#1410">1.4.10 组织保障</a>
+<a class="l2" href="#15">1.5 落地效果</a>
+</nav>
+<main>
+<div class="cover"><h1>AI＋数据平台</h1><div class="sub">一、数据平台</div></div>
+<h1 id="_1">一、数据平台</h1>
+<h2 id="11">1.1 现状</h2>
+<p><strong>已有</strong></p>
+<ul>
+<li>DataWorks：已购 DataStudio、运维中心、数据地图、数据资产治理、数据服务。</li>
+<li>动态数据开放 API：对内对外提供指标。</li>
+<li>Quick BI：报表展示。</li>
+<li>湖仓：部分模型。</li>
+</ul>
+<p><strong>已建成</strong>：离线主流程已贯通。</p>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  subgraph 业务主线
+    direction LR
+    A[供应商 / 游客 / 会员] --&gt; B[订单] --&gt; C[维度]
+  end
+  subgraph 数据分层
+    direction LR
+    O[ODS] --&gt; D[DWD] --&gt; M[DIM] --&gt; S[DWS] --&gt; X[ADS]
+  end
+  业务主线 --&gt; 数据分层</pre></figure>
+<p><strong>未建设</strong>：实时链路、数据质量、统一标签、指标口径管理、数据标准落地。</p>
+<h2 id="12">1.2 问题</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>例子</th>
+<th>根因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据孤岛</td>
+<td>做一份“售票 + 二消 + 结算”综合分析，要从 3 个以上系统导数手工拼表</td>
+<td>没有统一接入，景区、商品、渠道编码不一致</td>
+</tr>
+<tr>
+<td>口径不一</td>
+<td>同一天同一景区，看板、对账、API 三处“核销量”不同</td>
+<td>没有企业级指标定义</td>
+</tr>
+<tr>
+<td>规范缺失</td>
+<td>表名随意、字段无注释、DDL 无负责人</td>
+<td>规范只在文档里，上线无卡点</td>
+</tr>
+<tr>
+<td>模型重复</td>
+<td>订单宽表离线、湖仓各一份，结果不同</td>
+<td>没有统一公共层</td>
+</tr>
+<tr>
+<td>数字不准</td>
+<td>入园、核销与源端对不上，节假日尤甚</td>
+<td>补传、重复上报、撤销冲正、时间口径混用，缺逐层核对</td>
+</tr>
+<tr>
+<td>缺少实时</td>
+<td>高峰期订单、核销次日才能看到，预警靠人工</td>
+<td>只有离线 T+1 链路</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：前五类根因相同，都是缺少统一的标准、模型、口径和校验，必须体系化治理；实时是能力缺口，要在统一公共模型上补。</p>
+<h2 id="13">1.3 沉淀</h2>
+<p>湖仓按<strong>主题域</strong>划分，主题域再归并为<strong>数据域</strong>。数据域用于数据地图、标签平台的目录展示和分级查看。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  R((湖仓数据资产))
+  R --&gt; D1[交易域]
+  R --&gt; D2[商品与资源域]
+  R --&gt; D3[用户域]
+  R --&gt; D4[合作方域]
+  R --&gt; D5[流量营销域]
+  R --&gt; D6[运营域]
+  R --&gt; D7[财务域]
+  R --&gt; D8[内部管理域]
+  D1 --&gt; T1[order 订单 · ord_]
+  D1 --&gt; T2[ticketing 票务 · tick_]
+  D2 --&gt; T3[product 产品 · prd_]
+  D2 --&gt; T4[inventory 库存 · inv_]
+  D3 --&gt; T5[customer 用户 · cus_]
+  D4 --&gt; T6[supplier 供应商 · sup_]
+  D5 --&gt; T7[traffic 流量渠道 · trf_]
+  D5 --&gt; T8[marketing 营销 · mkt_]
+  D6 --&gt; T9[operation 运营 · opr_]
+  D7 --&gt; T10[finance 财务 · fin_]
+  D8 --&gt; T11[internal_system 内部系统 · ints_]</pre></figure>
+<table>
+<thead>
+<tr>
+<th>数据域</th>
+<th>主题域（前缀）</th>
+<th>说明</th>
+<th>指标 / 标签示例</th>
+<th>默认等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交易域</td>
+<td>order <code>ord_</code>、ticketing <code>tick_</code></td>
+<td>订单、预订；票务</td>
+<td>订单数、销售额、核销次数；近 30 天购票次数</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>商品与资源域</td>
+<td>product <code>prd_</code>、inventory <code>inv_</code></td>
+<td>产品（机票、酒店、度假）；库存（房量、机位）</td>
+<td>售罄率、库存余量；热销产品</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>用户域</td>
+<td>customer <code>cus_</code></td>
+<td>用户、旅客</td>
+<td>会员等级、复购倾向、出游偏好</td>
+<td>L4（明细）/ L3（标签）</td>
+</tr>
+<tr>
+<td>合作方域</td>
+<td>supplier <code>sup_</code></td>
+<td>供应商（酒店、航司、地接）</td>
+<td>履约率、结算周期；供应商等级</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>流量营销域</td>
+<td>traffic <code>trf_</code>、marketing <code>mkt_</code></td>
+<td>流量、渠道；营销、活动</td>
+<td>渠道转化率、活动 ROI；渠道偏好</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>运营域</td>
+<td>operation <code>opr_</code></td>
+<td>运营（航班、酒店房态）</td>
+<td>房态占用率、准点率</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>财务域</td>
+<td>finance <code>fin_</code></td>
+<td>财务、结算</td>
+<td>应结 / 已结金额、对账差异</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>内部管理域</td>
+<td>internal_system <code>ints_</code></td>
+<td>内部系统</td>
+<td>任务运行、存储计算成本</td>
+<td>L2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>表命名：<code>层级_主题域前缀_业务过程_粒度_更新方式</code>，如 <code>dwd_ord_order_item_di</code>。</li>
+<li>等级 L1–L4 定义见 1.4.8。</li>
+<li>入仓情况：订单、用户、供应商已入仓（主流程），其余主题域部分入仓。</li>
+<li>待扩展：现场设备、外部数据、知识与 AI 数据暂无主题域，建议后续新增。</li>
+<li>难点不在数据量，在于节假日高峰、订单状态多次变更、设备离线补传和多租户隔离。</li>
+</ul>
+<h2 id="14">1.4 数据平台建设</h2>
+<p><strong>思路</strong>：统一标准、治理嵌入研发、先试点后推广（试点链路：订单 → 核销 → 结算）。</p>
+<h3 id="141">1.4.1 总体架构：六层分层建设，治理贯穿始终</h3>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  subgraph L6[应用与服务]
+    a1[内部经营分析] --- a2[景区运营] --- a3[伙伴接入] --- a4[数据产品]
+  end
+  subgraph L5[AI 能力]
+    b1[模型服务] --- b2[知识服务] --- b3[工具服务] --- b4[评测运营]
+  end
+  subgraph L4[数据服务]
+    c1[动态数据开放 API] --- c2[DataWorks 数据服务] --- c3[指标服务] --- c4[标签服务]
+  end
+  subgraph L3[指标与分析]
+    d1[企业标准指标] --- d2[景区自定义指标] --- d3[统一标签] --- d4[Quick BI]
+  end
+  subgraph L2[统一数据底座 · 湖仓一体]
+    e1[离线计算] --- e2[实时计算] --- e3[公共模型 ODS→ADS] --- e4[分析查询]
+  end
+  subgraph L1[数据来源]
+    f1[交易] --- f2[预约核销] --- f3[渠道] --- f4[财务] --- f5[设备] --- f6[会员营销] --- f7[外部数据]
+  end
+  G[[治理贯穿各层：数据标准 · 元数据与血缘 · 主数据 · 数据质量 · 数据安全 · 资产运营]]
+  L1 --&gt; L2 --&gt; L3 --&gt; L4 --&gt; L5 --&gt; L6
+  G -.- L2
+  G -.- L3
+  G -.- L4</pre></figure>
+<h3 id="142">1.4.2 平台组件</h3>
+<table>
+<thead>
+<tr>
+<th>能力组</th>
+<th>已有</th>
+<th>升级</th>
+<th>新建</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据集成</td>
+<td>批量同步</td>
+<td>埋点采集、边云回传</td>
+<td>实时采集、标准连接器</td>
+</tr>
+<tr>
+<td>存储计算</td>
+<td>离线计算</td>
+<td>—</td>
+<td>实时计算、湖仓统一存储</td>
+</tr>
+<tr>
+<td>开发运维</td>
+<td>DataStudio、运维中心</td>
+<td>数据建模</td>
+<td>发布卡点、成本治理</td>
+</tr>
+<tr>
+<td>数据治理</td>
+<td>数据地图、数据资产治理</td>
+<td>血缘、健康分</td>
+<td>数据质量、数据标准、分级脱敏</td>
+</tr>
+<tr>
+<td>指标标签</td>
+<td>—</td>
+<td>—</td>
+<td>指标中心、标签系统（集团标准 + 景区 / 供应商自定义空间）</td>
+</tr>
+<tr>
+<td>服务分析</td>
+<td>动态数据开放 API、DataWorks 数据服务、Quick BI</td>
+<td>统一出口，联合 ADS 指标与标签</td>
+<td>嵌入式分析</td>
+</tr>
+<tr>
+<td>AI 能力</td>
+<td>—</td>
+<td>AI 问数</td>
+<td>模型网关、知识检索、评测</td>
+</tr>
+</tbody>
+</table>
+<p>未购模块的处理：</p>
+<ul>
+<li>数据质量：建议增购；或用 DataStudio 校验任务加运维中心告警替代。</li>
+<li>数据标准：先用规范文档加发布前检查脚本。</li>
+<li>安全中心：先用计算引擎权限加脱敏视图。</li>
+<li>实时计算：新增，先做 POC。</li>
+</ul>
+<h3 id="143">1.4.3 治理体系</h3>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据标准</td>
+<td>统一字段、码值、命名规范</td>
+</tr>
+<tr>
+<td>元数据与血缘</td>
+<td>补齐业务含义和负责人；源表 → 模型 → 指标 → 报表的血缘</td>
+</tr>
+<tr>
+<td>主数据</td>
+<td>景区、商品、渠道、供应商、游客统一编码，源头“先查再建”</td>
+</tr>
+<tr>
+<td>数据质量</td>
+<td>完整、准确、一致、及时四类规则；关键规则失败时阻断下游</td>
+</tr>
+<tr>
+<td>数据安全</td>
+<td>分级管控、权属边界、行列权限、申请到回收闭环、访问审计（详见 1.4.8）</td>
+</tr>
+<tr>
+<td>资产运营</td>
+<td>资产目录、健康分、无用资产下线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="144">1.4.4 治理嵌入研发：事前、事中、事后</h3>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[事前 · 定规范&lt;br/&gt;命名规范 · 指标定义 · 模型评审] --&gt; B[事中 · 设卡点&lt;br/&gt;上线自动检查 · 质量规则绑定任务 · 失败阻断下游]
+  B --&gt; C[事后 · 做治理&lt;br/&gt;健康分公示 · 存量整改 · 问题复盘]
+  C -.持续优化.-&gt; A</pre></figure>
+<p>质量问题处理流程：</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  Q1[发现问题] --&gt; Q2[定义规则] --&gt; Q3[质量控制&lt;br/&gt;告警 / 阻断] --&gt; Q4[质量评估] --&gt; Q5[持续优化]</pre></figure>
+<h3 id="145">1.4.5 治理样板：核销逐层核对</h3>
+<p>先把四个容易混用的指标分开：核销次数、有效核销票数、入园人次、去重游客数。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  S[源端记录&lt;br/&gt;闸机 · 手持 · 边云网关] --&gt; B[业务库] --&gt; D[DWD 明细] --&gt; W[DWS 汇总] --&gt; A[ADS / API / Quick BI]
+  S -. 按景区 + 日期逐层核对 .- A
+  A --&gt; R[差异告警 → 定位原因 → 修复 → 重算]</pre></figure>
+<h3 id="146">1.4.6 指标与标签体系</h3>
+<p><strong>两级体系</strong>：集团统一输出标准指标和标准标签，经过分类分级后下发给景区和供应商；标准不够用时，各景区、供应商在自己的空间里自定义。</p>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  G[集团标准库&lt;br/&gt;标准指标 · 标准标签&lt;br/&gt;统一口径 · 分类分级 · 版本管理]
+  G --&gt;|按分级授权下发| S1[景区 A]
+  G --&gt;|按分级授权下发| S2[景区 B]
+  G --&gt;|按分级授权下发| V1[供应商]
+  S1 --&gt; C1[景区自定义空间&lt;br/&gt;基于标准派生 · 仅本景区可见]
+  V1 --&gt; C2[供应商自定义空间&lt;br/&gt;基于标准派生 · 仅本供应商可见]
+  C1 -.好用的评审后沉淀为标准.-&gt; G
+  C2 -.好用的评审后沉淀为标准.-&gt; G</pre></figure>
+<p><strong>分类分级</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>指标</th>
+<th>标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分类</td>
+<td>交易、核销入园、渠道、结算、会员、业态</td>
+<td>对象：游客 / 会员、景区、商品、渠道、供应商；类型：基础属性、统计、规则、预测</td>
+</tr>
+<tr>
+<td>分级</td>
+<td>按开放范围分：集团内部 / 景区可用 / 供应商可用 / 可对外</td>
+<td>按 L1–L4 安全等级（见 1.4.8）；L4 标签不下发、不对外</td>
+</tr>
+</tbody>
+</table>
+<p><strong>标签平台怎么展示和查看</strong>：按“数据域 → 主题域 → 指标 / 标签”三级目录展示，按查看者的角色、租户和安全等级过滤可见内容。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[数据域&lt;br/&gt;如 用户域] --&gt; B[主题域&lt;br/&gt;如 customer · cus_] --&gt; C[指标 / 标签&lt;br/&gt;如 会员等级 · L3]
+  U[查看者&lt;br/&gt;集团 · 景区 · 供应商] --&gt;|按角色 · 租户 · 等级过滤| C</pre></figure>
+<p><strong>自定义规则</strong></p>
+<ul>
+<li>只能基于集团标准和本主体已授权的数据派生。</li>
+<li>不能与集团标准同名，不覆盖、不影响其他景区或供应商。</li>
+<li>只服务本景区或本供应商。</li>
+<li>使用效果好的自定义指标、标签，评审后升级为集团标准。</li>
+</ul>
+<p><strong>指标怎么定义</strong>：每个指标按“原子指标 + 修饰词 + 时间周期 + 统计粒度”拆开定义。</p>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  A[原子指标&lt;br/&gt;支付金额] --&gt; F[派生指标&lt;br/&gt;近 7 天线上渠道成人票支付金额 · 按景区]
+  B[修饰词&lt;br/&gt;线上渠道 · 成人票] --&gt; F
+  C[时间周期&lt;br/&gt;近 7 天] --&gt; F
+  D[统计粒度&lt;br/&gt;景区] --&gt; F</pre></figure>
+<p><strong>认证流程</strong>：数据团队起草 → 业务负责人确认 → 治理小组裁定 → 发布并版本化。只有认证过的指标和标签能进入管理层看板、API 和 AI。</p>
+<h3 id="147">1.4.7 数据分发</h3>
+<p>动态数据开放 API 作为统一出口，同时提供 ADS 指标和标签服务，两者可以联合使用。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  ADS[ADS 指标&lt;br/&gt;认证指标] --&gt; API
+  TAG[标签服务&lt;br/&gt;标准标签 + 自定义标签] --&gt; API
+  API[动态数据开放 API&lt;br/&gt;统一鉴权 · 租户隔离 · 调用计量 · 监控]
+  API --&gt; U1[景区 SaaS / 经营看板]
+  API --&gt; U2[营销：人群圈选 · 精准触达]
+  API --&gt; U3[供应商 / 合作伙伴]
+  API --&gt; U4[AI 智能体]</pre></figure>
+<table>
+<thead>
+<tr>
+<th>用法</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只查指标</td>
+<td>景区经营看板：销售额、核销量、入园人次</td>
+</tr>
+<tr>
+<td>指标 + 标签联合</td>
+<td>按会员等级看复购率；按游客偏好看各票种销量</td>
+</tr>
+<tr>
+<td>标签圈人 + 指标评估</td>
+<td>圈选“近 90 天未复购的年卡用户”推送活动，活动后用指标看转化</td>
+</tr>
+<tr>
+<td>只查标签</td>
+<td>智能体按游客标签做个性化推荐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="148">1.4.8 数据安全与权限</h3>
+<p><strong>数据分级</strong></p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>范围</th>
+<th>管控</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L4 高敏</td>
+<td>个人信息（手机号、证件号）、人脸、政务核验结果</td>
+<td>加密存储、脱敏展示、最小授权、全程审计；明文不进入大模型</td>
+</tr>
+<tr>
+<td>L3 敏感</td>
+<td>单景区经营数据、价格、结算、供应商合作数据</td>
+<td>按景区 / 供应商隔离；跨主体只看汇总</td>
+</tr>
+<tr>
+<td>L2 内部</td>
+<td>日志、设备状态、运营数据、匿名聚合</td>
+<td>内部按角色授权</td>
+</tr>
+<tr>
+<td>L1 公开</td>
+<td>已发布的报告、规范</td>
+<td>可公开</td>
+</tr>
+</tbody>
+</table>
+<p><strong>权属边界</strong></p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>景区数据</td>
+<td>只服务该景区本身</td>
+</tr>
+<tr>
+<td>供应商数据</td>
+<td>只服务该供应商</td>
+</tr>
+<tr>
+<td>渠道数据</td>
+<td>不向其他渠道披露</td>
+</tr>
+<tr>
+<td>游客信息</td>
+<td>在用户授权范围内使用</td>
+</tr>
+<tr>
+<td>政务数据</td>
+<td>只用核验结果，不留原始数据</td>
+</tr>
+<tr>
+<td>外部采购数据</td>
+<td>按合同约定范围使用</td>
+</tr>
+<tr>
+<td>对外输出</td>
+<td>仅限匿名聚合结果</td>
+</tr>
+</tbody>
+</table>
+<p><strong>权限模型：角色 × 数据范围 × 字段等级</strong></p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  U[用户] --&gt; R[角色&lt;br/&gt;集团管理 · 数据开发 · 业务分析&lt;br/&gt;景区 · 供应商 · 外部伙伴 · AI 智能体]
+  R --&gt; P1[功能权限&lt;br/&gt;能用哪些模块]
+  R --&gt; P2[行级 · 数据范围&lt;br/&gt;按租户 / 景区 / 供应商隔离]
+  R --&gt; P3[列级 · 字段等级&lt;br/&gt;按 L1–L4 控制可见与脱敏]
+  P1 --&gt; A[实际可访问的数据]
+  P2 --&gt; A
+  P3 --&gt; A</pre></figure>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>L1</th>
+<th>L2</th>
+<th>L3</th>
+<th>L4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>集团管理层</td>
+<td>可看</td>
+<td>可看</td>
+<td>可看汇总</td>
+<td>不可看明细</td>
+</tr>
+<tr>
+<td>数据团队</td>
+<td>可看</td>
+<td>可看</td>
+<td>按项目授权</td>
+<td>审批后脱敏使用</td>
+</tr>
+<tr>
+<td>业务线</td>
+<td>可看</td>
+<td>可看</td>
+<td>本业务线</td>
+<td>不可看</td>
+</tr>
+<tr>
+<td>景区</td>
+<td>可看</td>
+<td>本景区</td>
+<td>本景区</td>
+<td>本景区游客，授权后脱敏</td>
+</tr>
+<tr>
+<td>供应商</td>
+<td>可看</td>
+<td>本供应商</td>
+<td>本供应商</td>
+<td>不可看</td>
+</tr>
+<tr>
+<td>外部伙伴</td>
+<td>可看</td>
+<td>不可看</td>
+<td>仅匿名聚合</td>
+<td>不可看</td>
+</tr>
+<tr>
+<td>AI 智能体</td>
+<td>继承提问人的权限</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>权限流程：申请—审批—授权—使用—回收</strong></p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[申请&lt;br/&gt;说明用途与期限] --&gt; B[审批&lt;br/&gt;数据负责人&lt;br/&gt;L4 加安全负责人]
+  B --&gt; C[授权&lt;br/&gt;按最小范围 · 设到期时间]
+  C --&gt; D[使用&lt;br/&gt;访问全程留痕]
+  D --&gt; E[回收&lt;br/&gt;到期自动回收&lt;br/&gt;离岗 / 项目结束回收]
+  E -.每季度权限复核.-&gt; A</pre></figure>
+<p><strong>各出口统一管控</strong></p>
+<table>
+<thead>
+<tr>
+<th>出口</th>
+<th>管控方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>湖仓 / DataStudio</td>
+<td>项目、表、字段级授权；开发环境使用脱敏数据</td>
+</tr>
+<tr>
+<td>数据地图</td>
+<td>可搜索资产目录，按权限申请使用</td>
+</tr>
+<tr>
+<td>动态数据开放 API / 数据服务</td>
+<td>应用鉴权、租户隔离、字段按等级脱敏、调用审计</td>
+</tr>
+<tr>
+<td>Quick BI</td>
+<td>行级权限（按景区 / 供应商）、列级权限</td>
+</tr>
+<tr>
+<td>标签平台</td>
+<td>按数据域分级查看；L4 标签不下发</td>
+</tr>
+<tr>
+<td>AI 智能体</td>
+<td>继承提问人权限；只调用认证指标和授权数据；L4 明文不进入模型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>技术手段</strong></p>
+<ul>
+<li>敏感字段自动识别与打标：用 AI 加规则识别证件号、手机号、人脸等字段，由安全负责人复核。</li>
+<li>脱敏、行列权限、租户隔离、访问留痕。</li>
+<li>安全中心模块未购：先用计算引擎权限加脱敏视图实现；合规要求提高时评估增购。</li>
+</ul>
+<h3 id="149">1.4.9 建设路径</h3>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[统接入&lt;br/&gt;统一接入规范 · 主数据编码&lt;br/&gt;补齐数据源 · 订单核销实时链路] --&gt; B[统建模&lt;br/&gt;数据域划分 · 首批指标与标签认证&lt;br/&gt;重复模型合并]
+  B --&gt; C[统开发&lt;br/&gt;发布卡点 · 质量规则绑定&lt;br/&gt;核销逐层核对]
+  C --&gt; D[统服务&lt;br/&gt;API 联合指标与标签 · BI 数据集统一&lt;br/&gt;自助分析]</pre></figure>
+<ul>
+<li>先在“订单 → 核销 → 结算”试点，做通后推广到其他数据域。</li>
+<li>存量模型先双跑对比再切换，保留回滚。</li>
+</ul>
+<h3 id="1410">1.4.10 组织保障</h3>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  A[决策层 · 数据治理小组&lt;br/&gt;裁定口径 · 审批规范] --&gt; B[管理层 · 数据负责人&lt;br/&gt;制定方案 · 跨部门协调]
+  B --&gt; C1[业务数据专员&lt;br/&gt;定规则 · 确认口径 · 验收]
+  B --&gt; C2[数据治理专员&lt;br/&gt;标准 · 指标 · 质量 · 资产]
+  B --&gt; C3[数据架构师 / 开发&lt;br/&gt;模型落地 · 问题修复]</pre></figure>
+<p>机制：两周一次口径评审，每月公示健康分，每季度复盘。</p>
+<h2 id="15">1.5 落地效果</h2>
+<p><strong>对企业</strong></p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>变化</th>
+<th>衡量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可信</td>
+<td>一个指标一个口径，数字可追溯</td>
+<td>认证指标覆盖率、对账差异率</td>
+</tr>
+<tr>
+<td>时效</td>
+<td>订单、核销从 T+1 到分钟级</td>
+<td>端到端延迟</td>
+</tr>
+<tr>
+<td>效率</td>
+<td>优先复用公共模型，改动影响可预判</td>
+<td>模型复用率、需求交付周期</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>重复模型、无用报表和任务下线</td>
+<td>存储计算成本</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>敏感数据分级、脱敏、可审计</td>
+<td>敏感字段识别覆盖率</td>
+</tr>
+</tbody>
+</table>
+<p><strong>对业务线</strong></p>
+<table>
+<thead>
+<tr>
+<th>业务线</th>
+<th>治理后的变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>票务</td>
+<td>核销口径统一，差异自动定位；节假日实时看数</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>业务与财务逐层对账，差异自动列出原因</td>
+</tr>
+<tr>
+<td>渠道</td>
+<td>渠道销量、佣金、返利口径统一</td>
+</tr>
+<tr>
+<td>运营 / 客户成功</td>
+<td>景区经营报告自动生成</td>
+</tr>
+<tr>
+<td>景区 / 供应商</td>
+<td>直接用集团标准指标和标签；不够用时在自己的空间里自定义</td>
+</tr>
+<tr>
+<td>营销</td>
+<td>用标签圈人、用指标看效果，活动复盘自动完成</td>
+</tr>
+<tr>
+<td>产品研发</td>
+<td>上线前定好埋点和口径，上线即有数据</td>
+</tr>
+<tr>
+<td>管理层</td>
+<td>驾驶舱全部用认证指标，不再先对数</td>
+</tr>
+<tr>
+<td>数据团队</td>
+<td>从临时取数、对数转向建模型、做分析</td>
+</tr>
+</tbody>
+</table>
+<p><strong>为第二章打基础</strong>：治理后的指标、标签、知识可信、有口径、有权限，AI 接上它们才能答得准。</p>
+<hr />
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true, securityLevel: 'loose', theme: 'base',
+  flowchart: { htmlLabels: true, curve: 'basis', padding: 12 },
+  themeVariables: {
+    fontFamily: '"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif', fontSize: '14px',
+    primaryColor: '#ECEAFF', primaryBorderColor: '#776CFD', primaryTextColor: '#2B2F42',
+    lineColor: '#8C84F0', secondaryColor: '#E6EEFD', tertiaryColor: '#F6F5FF',
+    clusterBkg: '#F6F5FF', clusterBorder: '#C9C4FB', edgeLabelBackground: '#FFFFFF'
+  }
+});
+</script>
+</body>
+</html>
