@@ -155,7 +155,8 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <a class="l2" href="#22">2.2 场景沉淀</a>
 <a class="l2" href="#23">2.3 平台建设</a>
 <a class="l3" href="#231">2.3.1 总体架构</a>
-<a class="l3" href="#232">2.3.2 全景智能体</a>
+<a class="l3" href="#232">2.3.2 全流程管理</a>
+<a class="l3" href="#233">2.3.3 全景智能体</a>
 <a class="l2" href="#24">2.4 平台运营</a>
 <a class="l3" href="#241">2.4.1 快速验证</a>
 <a class="l3" href="#242">2.4.2 复制交付</a>
@@ -267,58 +268,108 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </table>
 <p><strong>我们的优势</strong>：智能体要“能办事”，靠的是业务系统和数据。票付通的票务、业态、终端系统在景区现场，交易数据、业务接口和景区服务经验是通用 AI 厂商没有的。</p>
 <h2 id="23">2.3 平台建设</h2>
-<p><strong>思路</strong>：底层依托 Coze、火山方舟、Quick BI 和合作企业的成熟能力，不自研模型和编排引擎；在其之上建我们自己的智能体平台，知识、工具、数据、模板和运营都沉淀在自己手里，上层场景可以充分发挥。</p>
+<p><strong>思路</strong>：数字大脑本身就是智能体管理台。底层依托 Coze、火山方舟、Quick BI 和合作企业的成熟能力，上层以数字大脑统一管理所有智能体，覆盖能力定义、调试、发布、运行、管控、审计的全流程。</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-card panel" style="gap:10px">
-    <div class="ttl">智能体平台 · 上层自建，充分发挥</div>
-    <div class="pf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
-      <div class="pf-val hl"><h4 style="font-size:17px">智能体应用</h4><div class="chg">游客服务、景区管理、票务财务、安全调度、精准营销</div></div>
-      <div class="pf-val"><h4 style="font-size:17px">智能体工厂</h4><div class="chg">场景模板、配置化生成、多智能体协同、版本发布</div></div>
-      <div class="pf-val"><h4 style="font-size:17px">能力中心</h4><div class="chg">景区知识、业务工具、数据服务、多模态与数字人、游客画像</div></div>
-      <div class="pf-val"><h4 style="font-size:17px">运营管理</h4><div class="chg">统一注册、权限与租户、调用计量、效果评测、反馈回流</div></div>
+    <div class="ttl">数字大脑 · 智能体管理台</div>
+    <div class="pf-grid" style="grid-template-columns: repeat(6, minmax(0, 1fr));">
+      <div class="pf-val"><h4 style="font-size:16px">工作台</h4><div class="chg">任务、成功率、成本、待审批一屏看</div></div>
+      <div class="pf-val"><h4 style="font-size:16px">对话</h4><div class="chg">选 Agent / Skill / Tool 执行，看过程与消耗</div></div>
+      <div class="pf-val hl"><h4 style="font-size:16px">工具中心</h4><div class="chg">Tool、Skill、MCP、Agent 的定义、版本与共享</div></div>
+      <div class="pf-val hl"><h4 style="font-size:16px">知识中心</h4><div class="chg">数据库知识、网络知识、向量知识</div></div>
+      <div class="pf-val"><h4 style="font-size:16px">审计中心</h4><div class="chg">任务追踪、审批、评测回归</div></div>
+      <div class="pf-val"><h4 style="font-size:16px">系统中心</h4><div class="chg">成员角色、模型与预算、全链路日志</div></div>
     </div>
   </div>
   <div class="pf-arrow down" style="font-size:22px;color:var(--p)">▲</div>
   <div class="pf-row">
     <div class="pf-label">依托能力</div>
-    <div class="pf-pills even"><span class="pf-pill fill">扣子 Coze · 智能体编排</span><span class="pf-pill fill">火山方舟 · 大模型与多模态</span><span class="pf-pill fill">Quick BI · 智能问数</span><span class="pf-pill fill">合作企业 · 专项能力</span></div>
+    <div class="pf-pills even"><span class="pf-pill fill">扣子 Coze</span><span class="pf-pill fill">火山方舟</span><span class="pf-pill fill">Quick BI</span><span class="pf-pill fill">合作企业</span></div>
   </div>
-  <div class="pf-hero">底层用成熟能力，上层建自己的平台：知识、工具、数据、模板、运营沉淀在自己手里</div>
+  <div class="pf-hero">以数字大脑为管理台，覆盖智能体从能力定义到审计运维的全流程</div>
 </div>
 </figure>
 <h3 id="231">2.3.1 总体架构</h3>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通</span><span class="chip">景区公众号 / 小程序</span><span class="chip have">智慧终端</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务</span><span class="chip">景区管理</span><span class="chip">票务财务</span><span class="chip">安全调度</span><span class="chip">精准营销</span></div></div><div class="arch-row"><div class="arch-name">智能体工厂</div><div class="arch-items"><span class="chip">场景模板</span><span class="chip">配置化生成</span><span class="chip">多智能体协同</span><span class="chip">版本与发布</span></div></div><div class="arch-row"><div class="arch-name">能力中心</div><div class="arch-items"><span class="chip">景区知识中心</span><span class="chip">业务工具中心</span><span class="chip">数据服务</span><span class="chip">多模态与数字人</span><span class="chip">游客画像与记忆</span></div></div><div class="arch-row"><div class="arch-name">依托能力</div><div class="arch-items"><span class="chip have">扣子 Coze</span><span class="chip have">火山方舟</span><span class="chip have">Quick BI</span><span class="chip have">合作企业</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营管理<br>贯穿各层</div><div class="arch-side-item">统一注册</div><div class="arch-side-item">权限与租户</div><div class="arch-side-item">调用计量</div><div class="arch-side-item">效果评测</div><div class="arch-side-item">反馈回流</div></div></div></figure>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通</span><span class="chip">景区公众号 / 小程序</span><span class="chip have">智慧终端</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务</span><span class="chip">景区管理</span><span class="chip">票务财务</span><span class="chip">安全调度</span><span class="chip">精准营销</span></div></div><div class="arch-row"><div class="arch-name">工具中心</div><div class="arch-items"><span class="chip">Agent · 人格 + 多 Skill</span><span class="chip">Skill · 提示词 + 工具 + 编排</span><span class="chip">Tool · HTTP / 数据库 / Python</span><span class="chip">MCP · 外部工具接入</span></div></div><div class="arch-row"><div class="arch-name">知识中心</div><div class="arch-items"><span class="chip">数据库知识</span><span class="chip">网络知识</span><span class="chip">向量知识</span></div></div><div class="arch-row"><div class="arch-name">运营与审计</div><div class="arch-items"><span class="chip">工作台</span><span class="chip">对话调试</span><span class="chip">任务中心</span><span class="chip">审批中心</span><span class="chip">评测中心</span></div></div><div class="arch-row"><div class="arch-name">依托能力</div><div class="arch-items"><span class="chip have">扣子 Coze</span><span class="chip have">火山方舟</span><span class="chip have">Quick BI</span><span class="chip have">合作企业</span></div></div></div><div class="arch-side"><div class="arch-side-title">系统中心<br>贯穿各层</div><div class="arch-side-item">集团 / 景区两级</div><div class="arch-side-item">角色权限</div><div class="arch-side-item">可见范围四级</div><div class="arch-side-item">模型与预算</div><div class="arch-side-item">全链路日志</div></div></div></figure>
 <blockquote>
-<p>渐变色块为已有，白色块为要建的平台能力；最底层为依托的成熟能力。</p>
+<p>中间三层均为数字大脑的模块；最底层为依托的成熟能力。</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th>平台层</th>
-<th>建什么</th>
+<th>模块</th>
+<th>管什么</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>能力中心</td>
-<td>景区知识中心：统一结构的景区知识，所有智能体共用；业务工具中心：售票、订单、核销、会员、工单、财务接口封装成工具；数据服务：认证指标和标签（见第一章）；多模态与数字人：语音、图像、数字人、手语；游客画像与记忆：跨智能体记住游客偏好</td>
+<td>工具中心</td>
+<td>所有能力统一定义：Tool（接业务接口、查数据、跑脚本）、Skill（提示词 + 工具 + 编排）、MCP（接外部工具）、Agent（人格 + 多个 Skill）；统一版本、共享、锁定</td>
 </tr>
 <tr>
-<td>智能体工厂</td>
-<td>场景模板，景区差异做成配置；多智能体协同，如“预警 → 调度 → 工单”串联；版本与发布</td>
+<td>知识中心</td>
+<td>数据库知识（登记数据源和表，第一章的数仓直接可用）、网络知识（联网检索、白名单站点）、向量知识（景区文档、图文）</td>
 </tr>
 <tr>
-<td>智能体应用</td>
-<td>产品全景中的各类智能体（见 2.3.2）</td>
+<td>运营与审计</td>
+<td>工作台看任务、成功率、成本；对话里调试执行过程；高风险动作人工审批；发布前跑评测回归</td>
 </tr>
 <tr>
-<td>运营管理</td>
-<td>所有智能体统一注册、按景区和租户隔离权限、统计调用与成本、评测效果、收集反馈</td>
+<td>系统中心</td>
+<td>集团 / 景区两级组织、角色权限、可见范围；模型接入与预算护栏；按调用链追踪日志</td>
 </tr>
 </tbody>
 </table>
-<h3 id="232">2.3.2 全景智能体</h3>
-<p>产品全景中的智能体，已有 8 个，还有 14 个待建，都在平台上用模板和共用能力搭建：</p>
+<h3 id="232">2.3.2 全流程管理</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">定义能力</h4><div class="sub">工具中心 · 知识中心</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">调试</h4><div class="sub">对话</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">发布</h4><div class="sub">版本 · 评测门禁</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">运行</h4><div class="sub">各入口调用</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">管控</h4><div class="sub">审批 · 限流 · 预算</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">审计</h4><div class="sub">任务 · 评测 · 日志</div></div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">集团 / 景区</div>
+    <div class="pf-pills even"><span class="pf-pill">集团建一次</span><span class="pf-pill">发布为公开</span><span class="pf-pill">景区开通即用</span><span class="pf-pill">景区可私有定制</span><span class="pf-pill">数据按景区隔离</span></div>
+  </div>
+  <div class="pf-banner"><b>闭环</b><span>审计和评测发现的问题回到工具中心、知识中心修正，发新版本前跑回归</span></div>
+</div>
+</figure>
+<p>现有能力的纳入方式：</p>
+<table>
+<thead>
+<tr>
+<th>现有能力</th>
+<th>纳入数字大脑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扣子上的 5 个智能体</td>
+<td>通过接口注册为 Tool，再组装成 Agent，统一入口、计量和审计</td>
+</tr>
+<tr>
+<td>智能问数、智能数据解读</td>
+<td>注册为 Tool，由 Agent 调用</td>
+</tr>
+<tr>
+<td>合作企业的手语能力</td>
+<td>以 MCP 或 HTTP Tool 接入</td>
+</tr>
+<tr>
+<td>售票、订单、核销等业务接口</td>
+<td>注册为 HTTP Tool，所有 Agent 共用</td>
+</tr>
+<tr>
+<td>第一章的数仓与认证指标</td>
+<td>登记为数据库知识，供数据库查询类 Tool 使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="233">2.3.3 全景智能体</h3>
+<p>产品全景中的智能体，已有 8 个，还有 14 个待建，都在数字大脑上用共用的工具和知识搭建：</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-legend"><span class="pf-ag have"><span>已有</span></span><span class="pf-ag todo"><span>全景中待建</span></span></div>
   <div class="pf-grid" style="grid-template-columns: 1fr 1fr 1fr;">
@@ -335,7 +386,7 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
     <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">选场景</h4></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">平台搭建</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">数字大脑上搭建</h4></div><div class="pf-arrow">➜</div>
     <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">标杆试点</h4></div><div class="pf-arrow">➜</div>
     <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">看效果</h4></div><div class="pf-arrow">➜</div>
     <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">复制交付</h4></div>
@@ -353,27 +404,27 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
     <div class="pf-card dash top" style="flex:1;gap:12px">
       <div class="ttl">现在：每开一个景区重做一遍</div>
       <div class="pf-row" style="align-items:center"><span class="pf-pill" style="flex:1;border-color:transparent">复制工作流</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">整理知识</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">接口调试</span></div>
-      <div class="pf-note org">依赖懂扣子的人 · 每家景区都要折腾一遍</div>
+      <div class="pf-note org">依赖懂工作流的人 · 每家景区都要折腾一遍</div>
     </div>
     <div class="pf-arrow big">➜</div>
     <div class="pf-card panel top" style="flex:1;gap:8px">
-      <div class="ttl">以后：按同一套工作流开通</div>
-      <div class="pf-bar grad">选已验证的工作流</div>
-      <div class="pf-row"><div class="pf-bar line" style="flex:1">填景区知识</div><div class="pf-bar line" style="flex:1">绑定插件和入口</div></div>
+      <div class="ttl">以后：集团建一次，景区开通即用</div>
+      <div class="pf-bar grad">集团在数字大脑建好 Agent，发布为公开</div>
+      <div class="pf-row"><div class="pf-bar line" style="flex:1">配本景区知识</div><div class="pf-bar line" style="flex:1">绑定入口</div></div>
       <div class="pf-arrow down">▼</div>
-      <div class="pf-bar dark">跑常见问题清单 → 上线</div>
+      <div class="pf-bar dark">评测回归通过 → 上线</div>
     </div>
   </div>
   <div class="pf-label" style="width:auto">开通流程</div>
   <div class="pf-row">
     <div class="pf-card soft c" style="flex:1">签约</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">选工作流</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">填景区知识</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">绑插件和入口</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">开通景区</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">配本景区知识</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">绑定入口</div><div class="pf-arrow">➜</div>
     <div class="pf-card soft c" style="flex:1">验收</div><div class="pf-arrow">➜</div>
     <div class="pf-card grad c" style="flex:1;font-weight:700">上线运营</div>
   </div>
-  <div class="pf-note">实施人员不改工作流，只填知识、做配置</div>
+  <div class="pf-note">实施人员不改 Agent，只配知识和入口；Agent 升级一次，所有景区同步受益</div>
 </div>
 </figure>
 <h3 id="243">2.4.3 质量与成本</h3>
@@ -387,19 +438,19 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <tbody>
 <tr>
 <td>上线质量</td>
-<td>每个场景配一份常见问题清单，新景区上线前跑一遍</td>
+<td>评测中心为每个 Agent 维护回归用例，发布新版本前必须跑通</td>
 </tr>
 <tr>
 <td>线上效果</td>
-<td>答错、差评的问题补进知识库；同类问题多次出现就改工作流</td>
+<td>工作台看任务成功率；答错的问题补进知识中心和回归用例</td>
 </tr>
 <tr>
 <td>调用成本</td>
-<td>按景区、按智能体统计调用量和成本</td>
+<td>工作台按景区、按 Agent 看 Token 成本；系统中心设预算上限和告警</td>
 </tr>
 <tr>
-<td>工作流升级</td>
-<td>改一次，所有景区同步更新</td>
+<td>版本升级</td>
+<td>版本可对比、可回滚；升级一次，所有景区同步受益</td>
 </tr>
 </tbody>
 </table>
@@ -414,34 +465,42 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <tbody>
 <tr>
 <td>只用授权数据</td>
-<td>插件按景区隔离，只返回本景区数据</td>
+<td>任务、日志、成本按景区强隔离；景区只能看到本景区数据和公开能力</td>
+</tr>
+<tr>
+<td>高风险动作要审批</td>
+<td>高安全等级的工具调用强制人工审批，Skill 层不能绕过</td>
+</tr>
+<tr>
+<td>查数只读</td>
+<td>数据库查询类 Tool 只允许 SELECT</td>
 </tr>
 <tr>
 <td>不碰敏感信息</td>
-<td>手机号、证件号不进入对话和知识库</td>
+<td>手机号、证件号不进入对话和知识库，展示时脱敏</td>
 </tr>
 <tr>
-<td>不乱承诺</td>
-<td>价格、退改规则以系统返回为准，答不了就转人工</td>
+<td>可追溯</td>
+<td>每次调用按调用链留痕，出错步骤可定位</td>
 </tr>
 </tbody>
 </table>
 <h2 id="25">2.5 建设路径</h2>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card soft" style="flex:1"><h4>① 平台打底</h4><div class="sub">接入底座能力，建景区知识中心、业务工具中心和首批场景模板</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>① 管理台打底</h4><div class="sub">数字大脑上线工具中心、知识中心、审计中心等核心模块，接入底座能力</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>② 标杆验证</h4><div class="sub">现有智能体迁到平台上，在标杆景区跑通、看效果</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>② 收口现有</h4><div class="sub">现有 8 个智能体纳入数字大脑统一管理</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>③ 复制交付</h4><div class="sub">验证有效的，按同一套模板和知识结构推给更多景区</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>③ 验证复制</h4><div class="sub">标杆景区跑通后，集团发布、景区开通，批量推开</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card grad" style="flex:1"><h4>④ 迭代扩展</h4><div class="sub">逐个补全景中的智能体，平台能力随之丰富</div></div>
+    <div class="pf-card grad" style="flex:1"><h4>④ 迭代扩展</h4><div class="sub">逐个补全景中的智能体，工具和知识越积越多</div></div>
   </div>
   <div class="pf-row">
     <div class="pf-label">看什么</div>
-    <div class="pf-pills even"><span class="pf-pill">开通景区数</span><span class="pf-pill">上线速度</span><span class="pf-pill">使用量</span><span class="pf-pill">客户续用</span><span class="pf-pill">调用成本</span></div>
+    <div class="pf-pills even"><span class="pf-pill">开通景区数</span><span class="pf-pill">上线速度</span><span class="pf-pill">任务成功率</span><span class="pf-pill">客户续用</span><span class="pf-pill">调用成本</span></div>
   </div>
-  <div class="pf-banner"><b>原则</b><span>先用平台能力快速验证，验证有效再复制；投入跟着效果走，不提前建大平台</span></div>
+  <div class="pf-banner"><b>原则</b><span>先用成熟能力快速验证，验证有效再复制；数字大脑先上核心模块，其余功能按需迭代</span></div>
 </div>
 </figure>
 <p><strong>怎么快速占市场</strong></p>
