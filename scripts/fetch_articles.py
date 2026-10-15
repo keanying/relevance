@@ -13,6 +13,10 @@
     python scripts/fetch_articles.py URL1 URL2               # 直接传链接
     python scripts/fetch_articles.py --browser               # 全部用浏览器抓取
     python scripts/fetch_articles.py --cookie "z_c0=..."     # 知乎等需要登录的页面，传入浏览器里复制的 Cookie
+    python scripts/fetch_articles.py --headed                # 打开有头浏览器；遇到登录/验证码时手动处理后回车继续
+    python scripts/fetch_articles.py --headed --manual       # 每篇都停下来，确认页面加载完整后再抓取
+
+有头模式使用持久化浏览器目录（默认 .browser_profile），登录一次后下次无需重复登录。
 
 输出：每篇文章一个 md 文件，另生成 _index.md 汇总抓取结果。
 """
@@ -69,26 +73,53 @@ def fetch_requests(url, cookie=None, timeout=20):
     return r.text
 
 
-def fetch_browser(url, cookie=None, timeout=30):
-    from playwright.sync_api import sync_playwright
-    with sync_playwright() as p:
-        b = p.chromium.launch(headless=True)
-        ctx = b.new_context(user_agent=UA, locale='zh-CN')
-        if cookie:
-            host = urlparse(url).hostname
-            domain = '.' + '.'.join(host.split('.')[-2:])
-            ctx.add_cookies([{'name': k.strip(), 'value': v.strip(), 'domain': domain, 'path': '/'}
-                             for k, v in (c.split('=', 1) for c in cookie.split(';') if '=' in c)])
-        page = ctx.new_page()
-        page.goto(url, timeout=timeout * 1000, wait_until='domcontentloaded')
-        page.wait_for_timeout(2500)
+class BrowserSession:
+    """复用同一个浏览器窗口抓取多篇文章；有头模式下可人工登录、过验证码。"""
+
+    def __init__(self, headed=False, profile='.browser_profile', cookie=None, channel=None, executable=None):
+        from playwright.sync_api import sync_playwright
+        self._pw = sync_playwright().start()
+        opts = dict(headless=not headed, user_agent=UA, locale='zh-CN', viewport={'width': 1366, 'height': 900})
+        if channel:
+            opts['channel'] = channel  # 如 'chrome'，使用本机已安装的 Chrome
+        if executable:
+            opts['executable_path'] = executable  # 指定浏览器可执行文件路径
+        self.ctx = self._pw.chromium.launch_persistent_context(profile, **opts)
+        self.page = self.ctx.pages[0] if self.ctx.pages else self.ctx.new_page()
+        self.cookie = cookie
+        self.headed = headed
+
+    def _add_cookie(self, url):
+        if not self.cookie:
+            return
+        host = urlparse(url).hostname
+        domain = '.' + '.'.join(host.split('.')[-2:])
+        self.ctx.add_cookies([{'name': k.strip(), 'value': v.strip(), 'domain': domain, 'path': '/'}
+                              for k, v in (c.split('=', 1) for c in self.cookie.split(';') if '=' in c)])
+
+    def load(self, url, timeout=45):
+        self._add_cookie(url)
+        self.page.goto(url, timeout=timeout * 1000, wait_until='domcontentloaded')
+        self.page.wait_for_timeout(2500)
+        return self.html()
+
+    def html(self):
         # 滚动以触发懒加载
-        for _ in range(6):
-            page.mouse.wheel(0, 3000)
-            page.wait_for_timeout(400)
-        html = page.content()
-        b.close()
-        return html
+        for _ in range(8):
+            self.page.mouse.wheel(0, 3000)
+            self.page.wait_for_timeout(350)
+        self.page.mouse.wheel(0, -100000)
+        return self.page.content()
+
+    def close(self):
+        try:
+            self.ctx.close()
+        finally:
+            self._pw.stop()
+
+
+class SkipArticle(Exception):
+    pass
 
 
 def pick(soup, selectors):
@@ -168,6 +199,11 @@ def main():
     ap.add_argument('-f', '--file', default=str(Path(__file__).with_name('urls_数据治理.txt')))
     ap.add_argument('-o', '--out', default='参考资料/数据治理')
     ap.add_argument('--browser', action='store_true', help='全部使用浏览器（Playwright）抓取')
+    ap.add_argument('--headed', action='store_true', help='打开有头浏览器，可手动登录或过验证码')
+    ap.add_argument('--manual', action='store_true', help='有头模式下每篇都暂停，回车后再抓取')
+    ap.add_argument('--profile', default='.browser_profile', help='浏览器用户目录，保存登录状态')
+    ap.add_argument('--channel', default=None, help="使用本机浏览器，如 chrome 或 msedge")
+    ap.add_argument('--executable', default=None, help='浏览器可执行文件路径（可选）')
     ap.add_argument('--cookie', default=None, help='请求 Cookie，用于需要登录的页面')
     ap.add_argument('--sleep', type=float, default=1.5, help='每篇之间的间隔秒数')
     a = ap.parse_args()
@@ -177,30 +213,77 @@ def main():
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     rows = []
-    for i, url in enumerate(urls, 1):
-        print(f'[{i}/{len(urls)}] {url}')
-        title, md, err = None, None, None
-        modes = ['browser'] if a.browser else ['requests', 'browser']
-        for mode in modes:
-            try:
-                html = fetch_browser(url, a.cookie) if mode == 'browser' else fetch_requests(url, a.cookie)
-                title, md = extract(html, url)
-                err = None
-                break
-            except ImportError:
-                err = '需要浏览器模式但未安装 playwright（pip install playwright && playwright install chromium）'
-            except Exception as e:  # noqa: BLE001
-                err = f'{mode}: {e}'
-        if md:
-            fname = f'{i:02d}_{safe_name(title)}.md'
-            meta = f'> 来源：{unquote(url)}\n> 抓取时间：{dt.datetime.now():%Y-%m-%d %H:%M}\n'
-            (out / fname).write_text(f'# {title}\n\n{meta}\n---\n\n{md}\n', encoding='utf-8')
-            print(f'    ✓ {fname}（{len(md)} 字）')
-            rows.append(f'| {i} | [{title}]({fname}) | {unquote(url)} | 成功 |')
-        else:
-            print(f'    ✗ {err}')
-            rows.append(f'| {i} | — | {unquote(url)} | 失败：{err} |')
-        time.sleep(a.sleep)
+    use_browser = a.browser or a.headed
+    session = None
+
+    def get_session():
+        nonlocal session
+        if session is None:
+            session = BrowserSession(headed=a.headed, profile=a.profile, cookie=a.cookie, channel=a.channel, executable=a.executable)
+        return session
+
+    def wait_user(msg):
+        try:
+            ans = input(f'    → {msg}，完成后按回车继续（输入 s 跳过本篇）：')
+        except EOFError:
+            return
+        if ans.strip().lower() == 's':
+            raise SkipArticle()
+
+    try:
+        for i, url in enumerate(urls, 1):
+            print(f'[{i}/{len(urls)}] {url}')
+            title, md, err = None, None, None
+            modes = ['browser'] if use_browser else ['requests', 'browser']
+            for mode in modes:
+                try:
+                    if mode == 'requests':
+                        title, md = extract(fetch_requests(url, a.cookie), url)
+                    else:
+                        s_ = get_session()
+                        html = s_.load(url)
+                        if a.headed and a.manual:
+                            wait_user('请确认页面已完整加载（如需登录请先登录）')
+                            html = s_.html()
+                        try:
+                            title, md = extract(html, url)
+                        except ValueError as e:
+                            if not a.headed:
+                                raise
+                            # 有头模式：给用户机会登录 / 过验证码，然后重读当前页面
+                            for attempt in range(2):
+                                wait_user(f'未取到正文（{e}）。请在浏览器中登录或完成验证')
+                                if s_.page.url.rstrip('/') != url.rstrip('/'):
+                                    s_.load(url)
+                                try:
+                                    title, md = extract(s_.html(), url)
+                                    break
+                                except ValueError as e2:
+                                    e = e2
+                            else:
+                                raise e
+                    err = None
+                    break
+                except SkipArticle:
+                    err = '已手动跳过'
+                    break
+                except ImportError:
+                    err = '需要浏览器模式但未安装 playwright（pip install playwright && playwright install chromium）'
+                except Exception as e:  # noqa: BLE001
+                    err = f'{mode}: {e}'
+            if md:
+                fname = f'{i:02d}_{safe_name(title)}.md'
+                meta = f'> 来源：{unquote(url)}\n> 抓取时间：{dt.datetime.now():%Y-%m-%d %H:%M}\n'
+                (out / fname).write_text(f'# {title}\n\n{meta}\n---\n\n{md}\n', encoding='utf-8')
+                print(f'    ✓ {fname}（{len(md)} 字）')
+                rows.append(f'| {i} | [{title}]({fname}) | {unquote(url)} | 成功 |')
+            else:
+                print(f'    ✗ {err}')
+                rows.append(f'| {i} | — | {unquote(url)} | 失败：{err} |')
+            time.sleep(a.sleep)
+    finally:
+        if session:
+            session.close()
     idx = ['# 抓取结果', '', '| # | 标题 | 来源 | 状态 |', '|---|---|---|---|'] + rows
     (out / '_index.md').write_text('\n'.join(idx) + '\n', encoding='utf-8')
     print(f'\n完成：{sum("成功" in r for r in rows)}/{len(rows)}，输出目录：{out.resolve()}')
