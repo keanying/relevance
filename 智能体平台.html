@@ -145,14 +145,14 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <body>
 <div class="layout">
 <nav><div class="brand">AI＋数据平台</div>
-<a class="l2" href="#21-ai">2.1 AI 现状</a>
-<a class="l2" href="#22-ai">2.2 AI 沉淀</a>
+<a class="l2" href="#21">2.1 现状</a>
+<a class="l2" href="#22">2.2 场景沉淀</a>
 <a class="l2" href="#23">2.3 平台建设</a>
 <a class="l3" href="#231">2.3.1 总体架构</a>
 <a class="l3" href="#232">2.3.2 平台组件</a>
 <a class="l2" href="#24">2.4 平台运营</a>
 <a class="l3" href="#241">2.4.1 标准智能体目录</a>
-<a class="l3" href="#242">2.4.2 交付模式</a>
+<a class="l3" href="#242">2.4.2 上新方式</a>
 <a class="l3" href="#243">2.4.3 统一收口</a>
 <a class="l3" href="#244">2.4.4 评测与质量</a>
 <a class="l3" href="#245">2.4.5 安全与权限</a>
@@ -161,251 +161,309 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <a class="l3" href="#251">2.5.1 落地效果</a>
 </nav>
 <main>
-<div class="cover"><h1>AI＋数据平台</h1><div class="sub">二、AI 智能体平台</div></div>
-<h1 id="ai">二、AI 智能体平台</h1>
-<h2 id="21-ai">2.1 AI 现状</h2>
-<p><strong>已有</strong>：给合作景区做的智能助手、智能导览、手语服务，以及 AI 数字大脑中的智能体（问数、洞察、调度类等）。</p>
-<p><strong>交付方式</strong>：基本按项目定制开发，每个项目各自一套。</p>
+<div class="cover"><h1>AI＋数据平台</h1><div class="sub">二、智能体平台</div></div>
+<h1 id="_1">二、智能体平台</h1>
+<h2 id="21">2.1 现状</h2>
+<p>目前有 8 个智能体，按来源分三类：</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card dash top" style="flex:1;gap:8px"><div class="ttl" style="font-size:15px;text-align:center">景区 A · 智能助手</div><span class="pf-pill" style="border-color:#F6C9A6">模型接入</span><span class="pf-pill" style="border-color:#F6C9A6">知识库</span><span class="pf-pill" style="border-color:#F6C9A6">提示词</span><span class="pf-pill" style="border-color:#F6C9A6">业务接口</span><span class="pf-pill" style="border-color:#F6C9A6">各自取数</span></div>
-    <div class="pf-card dash top" style="flex:1;gap:8px"><div class="ttl" style="font-size:15px;text-align:center">景区 B · 智能导览</div><span class="pf-pill" style="border-color:#F6C9A6">模型接入</span><span class="pf-pill" style="border-color:#F6C9A6">知识库</span><span class="pf-pill" style="border-color:#F6C9A6">提示词</span><span class="pf-pill" style="border-color:#F6C9A6">业务接口</span><span class="pf-pill" style="border-color:#F6C9A6">各自取数</span></div>
-    <div class="pf-card dash top" style="flex:1;gap:8px"><div class="ttl" style="font-size:15px;text-align:center">项目 C · 手语服务</div><span class="pf-pill" style="border-color:#F6C9A6">模型接入</span><span class="pf-pill" style="border-color:#F6C9A6">知识库</span><span class="pf-pill" style="border-color:#F6C9A6">提示词</span><span class="pf-pill" style="border-color:#F6C9A6">业务接口</span><span class="pf-pill" style="border-color:#F6C9A6">各自取数</span></div>
-    <div class="pf-card dash top" style="flex:1;gap:8px"><div class="ttl" style="font-size:15px;text-align:center">数字大脑 · 智能体</div><span class="pf-pill" style="border-color:#F6C9A6">模型接入</span><span class="pf-pill" style="border-color:#F6C9A6">知识库</span><span class="pf-pill" style="border-color:#F6C9A6">提示词</span><span class="pf-pill" style="border-color:#F6C9A6">业务接口</span><span class="pf-pill" style="border-color:#F6C9A6">各自取数</span></div>
+    <div class="pf-card panel top" style="flex:2.2;gap:10px">
+      <div class="ttl">自研标准化产品 · 配置化输出</div>
+      <div class="pf-pills even"><span class="pf-pill sq">智能助手</span><span class="pf-pill sq">智能客服</span><span class="pf-pill sq">智能导览</span><span class="pf-pill sq">AI 旅拍</span><span class="pf-pill sq">AI 伴游</span></div>
+      <div class="pf-note">面向游客 · 畅游 AI</div>
+    </div>
+    <div class="pf-card dash top" style="flex:0.8;gap:10px">
+      <div class="ttl">企业合作</div>
+      <div class="pf-pills even"><span class="pf-pill" style="border-color:#F6C9A6">手语</span></div>
+      <div class="pf-note">面向听障游客 · 外部能力接入</div>
+    </div>
+    <div class="pf-card line top" style="flex:1.3;gap:10px">
+      <div class="ttl">Quick BI 能力</div>
+      <div class="pf-pills even"><span class="pf-pill sq">智能问数</span><span class="pf-pill sq">智能数据解读</span></div>
+      <div class="pf-note">面向景区与内部管理者</div>
+    </div>
   </div>
-  <div class="pf-banner warm"><b>现状</b><span>一个项目一套：模型、知识、提示词、接口、取数各做一遍，彼此不复用</span></div>
+  <div class="pf-banner warm"><b>现状</b><span>三类来源各自接入、各自入口；产品全景中景区管理、安全调度、营销类场景还没有形成标准智能体</span></div>
 </div>
 </figure>
+<table>
+<thead>
+<tr>
+<th>智能体</th>
+<th>面向</th>
+<th>来源</th>
+<th>交付方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能助手、智能客服、智能导览、AI 旅拍、AI 伴游</td>
+<td>游客</td>
+<td>自研</td>
+<td>标准化产品，配置化输出</td>
+</tr>
+<tr>
+<td>手语</td>
+<td>听障游客</td>
+<td>企业合作</td>
+<td>接入合作方能力</td>
+</tr>
+<tr>
+<td>智能问数、智能数据解读</td>
+<td>景区、内部管理者</td>
+<td>Quick BI</td>
+<td>使用 Quick BI 的 AI 能力</td>
+</tr>
+</tbody>
+</table>
 <p><strong>存在的问题</strong></p>
 <table>
 <thead>
 <tr>
 <th>问题</th>
-<th>例子</th>
+<th>表现</th>
 <th>根因</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>交付慢</td>
-<td>每个景区的助手都要重新开发、联调、上线</td>
-<td>没有模板，只能从头做</td>
+<td>来源分散</td>
+<td>自研、合作、Quick BI 三类各自接入，各有入口</td>
+<td>没有统一的注册和收口</td>
 </tr>
 <tr>
-<td>重复建设</td>
-<td>模型接入、知识库、提示词、业务接口，每个项目各做一套</td>
-<td>没有共用能力层</td>
+<td>能力不共用</td>
+<td>新做一个智能体，模型、知识、业务接口要再接一遍</td>
+<td>没有共用的能力中心</td>
 </tr>
 <tr>
-<td>质量不可控</td>
-<td>同类问题在不同项目回答不一样，上线前没有统一测试</td>
-<td>没有统一评测和上线门槛</td>
+<td>口径待统一</td>
+<td>问数走 Quick BI 数据集，其他智能体取数各走各的</td>
+<td>没有统一走指标与标签服务（见第一章）</td>
 </tr>
 <tr>
-<td>数据口径不一</td>
-<td>智能体各自取数，回答的数字和看板对不上</td>
-<td>没有走统一的指标服务</td>
+<td>外部能力不可控</td>
+<td>手语的接入方式、体验标准、调用计量在合作方</td>
+<td>缺少合作能力的接入规范</td>
 </tr>
 <tr>
-<td>运维难</td>
-<td>版本分散，模型升级要逐个项目改</td>
-<td>没有统一注册、监控、计量</td>
+<td>运营看不清</td>
+<td>各智能体调用量、成本、效果没有统一统计</td>
+<td>没有统一计量和评测</td>
 </tr>
 <tr>
-<td>沉淀不下来</td>
-<td>项目结束后，知识和经验留在项目里</td>
-<td>没有资产库</td>
+<td>场景覆盖不全</td>
+<td>产品全景中的景区管理、安全调度、营销类场景，还没有对应的标准智能体</td>
+<td>新场景缺少快速生产的方式</td>
 </tr>
 </tbody>
 </table>
-<p><strong>结论</strong>：问题不在单个智能体做得好不好，而在“一个项目一套”的做法。要把共性能力收到平台上，智能体从平台上配置产出。</p>
-<h2 id="22-ai">2.2 AI 沉淀</h2>
-<p><strong>存量智能体</strong>（清单待补全）</p>
+<p><strong>结论</strong>：游客端已有标准产品，下一步是把三类来源收口到一个平台，抽出共用能力，再用平台补齐全景中的场景。</p>
+<h2 id="22">2.2 场景沉淀</h2>
+<p>票付通的产品覆盖票务、业态、运营、财务、终端，并已发布覆盖游客服务、景区管理、精准营销、安全运营的 AI 产品矩阵。按这四类场景，结合产品全景，可做智能体和 AI 服务的场景分层如下：</p>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">游客服务</div><div class="arch-items"><span class="chip">AI 旅游规划</span><span class="chip have">智能客服</span><span class="chip have">智能助手</span><span class="chip">AI 智能购票</span><span class="chip have">智能导览</span><span class="chip have">AI 伴游</span><span class="chip have">手语</span><span class="chip have">AI 旅拍</span></div></div><div class="arch-row"><div class="arch-name">精准营销</div><div class="arch-items"><span class="chip">会员画像</span><span class="chip">人群圈选</span><span class="chip">年卡续费提醒</span><span class="chip">全民营销推荐</span><span class="chip">活动效果复盘</span></div></div><div class="arch-row"><div class="arch-name">景区管理</div><div class="arch-items"><span class="chip have">智能问数</span><span class="chip have">智能数据解读</span><span class="chip">移动驾驶舱</span><span class="chip">票务 AI 运营助手</span><span class="chip">AI 对账助手</span><span class="chip">消息预警</span><span class="chip">工单处置</span></div></div><div class="arch-row"><div class="arch-name">安全运营</div><div class="arch-items"><span class="chip">旅游安全</span><span class="chip">秩序治理</span><span class="chip">车辆调度</span><span class="chip">游船调度</span><span class="chip">森林防火</span><span class="chip">生态监测</span><span class="chip">气象服务</span><span class="chip">设施监测</span></div></div><div class="arch-row"><div class="arch-name">业务与数据</div><div class="arch-items"><span class="chip src">售检票与分销</span><span class="chip src">景区业态 9 类</span><span class="chip src">年卡 · 分时预约 · 人脸</span><span class="chip src">财务与电子发票</span><span class="chip src">智慧终端 · 边云网关</span></div></div></div><div class="arch-side"><div class="arch-side-title">票付通沉淀<br>行业积累</div><div class="arch-side-item">景区交易数据</div><div class="arch-side-item">票务与业态知识</div><div class="arch-side-item">业务系统接口</div><div class="arch-side-item">闸机与物联设备</div><div class="arch-side-item">景区服务经验</div></div></div></figure>
+<blockquote>
+<p>渐变色块为已有智能体，白色块为全景中可做的场景。四层分别对应畅游 AI、会员营销、AI 数字大脑（景数通 / 票付通 APP）、景区 AI 调度中枢，底层为智慧票务系统。</p>
+</blockquote>
 <table>
 <thead>
 <tr>
-<th>智能体</th>
-<th>服务对象</th>
-<th>现在的交付方式</th>
-<th>可沉淀为</th>
+<th>场景层</th>
+<th>服务谁</th>
+<th>解决什么</th>
+<th>依托的产品与数据</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>景区智能助手 / 客服</td>
+<td>游客服务</td>
 <td>游客</td>
-<td>按景区定制知识库、话术和对接</td>
-<td>助手模板 + 景区知识包</td>
+<td>游前规划咨询购票，游中导览伴游，游后旅拍分享</td>
+<td>畅游小程序、售票系统、景区知识</td>
 </tr>
 <tr>
-<td>智能导览</td>
-<td>游客</td>
-<td>按景区定制讲解内容和路线</td>
-<td>导览模板 + 景点知识与路线配置</td>
+<td>精准营销</td>
+<td>景区营销人员</td>
+<td>找对人、推对产品、看清效果</td>
+<td>会员积分、年卡、全民营销、统一标签</td>
 </tr>
 <tr>
-<td>手语服务</td>
-<td>听障游客</td>
-<td>项目制交付</td>
-<td>手语能力组件，可被其他智能体调用</td>
+<td>景区管理</td>
+<td>景区管理者、我方运营</td>
+<td>看数、找问题、对账、运营提效</td>
+<td>景数通、票付通 APP、财务报表、认证指标</td>
 </tr>
 <tr>
-<td>数字大脑智能体</td>
-<td>景区管理方、内部</td>
-<td>按项目开发问数、洞察、调度</td>
-<td>问数模板、调度类模板、工具集</td>
+<td>安全运营</td>
+<td>景区安全与调度人员</td>
+<td>客流、车船、安防、生态的预警与处置</td>
+<td>调度中枢、闸机与边云网关、物联与气象数据、工单</td>
+</tr>
+<tr>
+<td>业务系统与数据</td>
+<td>——</td>
+<td>所有智能体的数据和动作来源</td>
+<td>智慧票务全系列、第一章的数据平台</td>
 </tr>
 </tbody>
 </table>
-<p><strong>可复用资产</strong></p>
-<table>
-<thead>
-<tr>
-<th>资产</th>
-<th>现在</th>
-<th>平台化后</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>模型接入</td>
-<td>各项目各接一次</td>
-<td>模型网关统一接入、路由、计量</td>
-</tr>
-<tr>
-<td>行业知识</td>
-<td>散在各项目知识库</td>
-<td>统一知识库，按景区隔离</td>
-</tr>
-<tr>
-<td>提示词与流程</td>
-<td>写在项目代码里</td>
-<td>模板库，版本化管理</td>
-</tr>
-<tr>
-<td>业务接口</td>
-<td>购票、订单、核销接口各对接一遍</td>
-<td>工具 / 插件中心，一次封装多处调用</td>
-</tr>
-<tr>
-<td>数据</td>
-<td>各自取数</td>
-<td>统一走数据平台的指标、标签服务（见第一章）</td>
-</tr>
-<tr>
-<td>项目经验</td>
-<td>在人脑里</td>
-<td>场景库、评测集</td>
-</tr>
-</tbody>
-</table>
+<p><strong>我们的优势</strong>：智能体要“能办事”，靠的是业务系统和数据。票付通的票务、业态、终端系统在景区现场，交易数据、业务接口和景区服务经验是通用 AI 厂商没有的。</p>
 <h2 id="23">2.3 平台建设</h2>
 <p><strong>定位</strong>：标准产品、聚合台、统一产出地、统一收口地。</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
-    <div class="pf-val hl"><h4>标准产品</h4><div class="chg">做可复用的智能体模板，不再做一次性项目</div><div class="msr">按模板报价、交付、升级</div></div>
+    <div class="pf-val hl"><h4>标准产品</h4><div class="chg">每类场景一个标准智能体，配置化输出</div><div class="msr">按场景报价、交付、升级</div></div>
     <div class="pf-val"><h4>聚合台</h4><div class="chg">模型、知识、工具、数据、渠道聚在一处，所有智能体共用</div><div class="msr">能力只建一次</div></div>
     <div class="pf-val"><h4>统一产出地</h4><div class="chg">新智能体都在平台上选模板、做配置生成</div><div class="msr">新项目只走平台</div></div>
     <div class="pf-val"><h4>统一收口地</h4><div class="chg">所有智能体统一注册、入口、权限、计量和监控</div><div class="msr">一个后台管全部</div></div>
   </div>
-  <div class="pf-hero">从“每个项目做一个智能体”，到“在平台上配置出智能体”</div>
+  <div class="pf-hero">自研、合作、Quick BI 能力全部收口；新场景只在平台上生产</div>
+</div>
+</figure>
+<p><strong>怎么收口</strong>：三类来源加新场景，全部进同一个平台，再分发到产品全景中的各个入口。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-col" style="flex:1.2">
+      <div class="pf-card panel"><h4 style="font-size:15px">自研标准产品</h4><div class="sub">助手 · 客服 · 导览 · 旅拍 · 伴游</div></div>
+      <div class="pf-card dash"><h4 style="font-size:15px">合作能力</h4><div class="sub">手语，及后续外部能力</div></div>
+      <div class="pf-card line"><h4 style="font-size:15px">Quick BI 能力</h4><div class="sub">智能问数 · 智能数据解读</div></div>
+      <div class="pf-card soft"><h4 style="font-size:15px">新场景</h4><div class="sub">管理 · 调度 · 营销类智能体</div></div>
+    </div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card panel" style="flex:2;gap:8px">
+      <div class="ttl">智能体平台 · 聚合台</div>
+      <div class="pf-bar dark">运营收口：统一注册 · 权限 · 计量 · 评测 · 反馈</div>
+      <div class="pf-bar grad">智能体工厂：模板 · 配置生成 · 版本发布</div>
+      <div class="pf-bar line">能力中心：知识 · 工具 · 编排 · 数字人 / 语音 / 手语</div>
+      <div class="pf-bar line">模型网关：大模型 · 多模态 · 路由计量 · 内容安全</div>
+      <div class="pf-bar dash">数据底座：认证指标 · 统一标签 · 数据服务 · 实时事件</div>
+    </div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-col" style="flex:1">
+      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">畅游小程序</h4></div>
+      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">票付通 APP</h4></div>
+      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">景数通 · 大屏</h4></div>
+      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">景区 SaaS · 终端</h4></div>
+      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">开放 API</h4></div>
+    </div>
+  </div>
+  <div class="pf-banner"><b>收口原则</b><span>不管来源是自研、合作还是 Quick BI，都在平台注册、走同一套权限、计量和评测；新场景只在平台上生产</span></div>
 </div>
 </figure>
 <h3 id="231">2.3.1 总体架构</h3>
 <p><strong>六层建设，运营收口贯穿始终</strong></p>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">统一发布</div><div class="arch-items"><span class="chip">小程序</span><span class="chip">APP</span><span class="chip">H5</span><span class="chip">大屏</span><span class="chip">数字人终端</span><span class="chip">API</span></div></div><div class="arch-row"><div class="arch-name">标准智能体</div><div class="arch-items"><span class="chip">助手 / 客服</span><span class="chip">智能导览</span><span class="chip">手语服务</span><span class="chip">智能购票</span><span class="chip">AI 问数</span><span class="chip">调度类</span></div></div><div class="arch-row"><div class="arch-name">智能体工厂</div><div class="arch-items"><span class="chip">模板库</span><span class="chip">配置化生成</span><span class="chip">版本管理</span><span class="chip">评测</span><span class="chip">发布审核</span></div></div><div class="arch-row"><div class="arch-name">能力层</div><div class="arch-items"><span class="chip">知识库</span><span class="chip">工具 / 插件</span><span class="chip">工作流编排</span><span class="chip">记忆</span><span class="chip">数字人 / 语音</span></div></div><div class="arch-row"><div class="arch-name">模型网关</div><div class="arch-items"><span class="chip">多模型接入</span><span class="chip">路由与降级</span><span class="chip">限流计量</span><span class="chip">内容安全</span></div></div><div class="arch-row"><div class="arch-name">数据底座</div><div class="arch-items"><span class="chip src">认证指标</span><span class="chip src">统一标签</span><span class="chip have">动态数据开放 API</span><span class="chip src">知识数据</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营与收口<br>贯穿各层</div><div class="arch-side-item">统一注册</div><div class="arch-side-item">统一入口</div><div class="arch-side-item">统一权限</div><div class="arch-side-item">调用计量</div><div class="arch-side-item">监控日志</div><div class="arch-side-item">反馈回流</div></div></div></figure>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">渠道入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通 · 大屏</span><span class="chip">景区 SaaS 嵌入</span><span class="chip">智慧终端</span><span class="chip">开放 API</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务类</span><span class="chip">精准营销类</span><span class="chip">景区管理类</span><span class="chip">安全运营类</span></div></div><div class="arch-row"><div class="arch-name">智能体工厂</div><div class="arch-items"><span class="chip">模板库</span><span class="chip">配置化生成</span><span class="chip">版本与发布</span><span class="chip">评测</span></div></div><div class="arch-row"><div class="arch-name">能力中心</div><div class="arch-items"><span class="chip">知识库</span><span class="chip">业务工具</span><span class="chip">工作流编排</span><span class="chip">记忆</span><span class="chip">数字人 / 语音</span><span class="chip">手语（合作）</span></div></div><div class="arch-row"><div class="arch-name">模型网关</div><div class="arch-items"><span class="chip">大模型接入</span><span class="chip">视觉 / 语音</span><span class="chip">路由与计量</span><span class="chip">内容安全</span></div></div><div class="arch-row"><div class="arch-name">数据底座</div><div class="arch-items"><span class="chip src">认证指标</span><span class="chip src">统一标签</span><span class="chip have">动态数据开放 API</span><span class="chip have">Quick BI</span><span class="chip src">实时事件</span><span class="chip src">物联与气象</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营收口<br>贯穿各层</div><div class="arch-side-item">统一注册</div><div class="arch-side-item">统一入口</div><div class="arch-side-item">统一权限</div><div class="arch-side-item">调用计量</div><div class="arch-side-item">监控与评测</div><div class="arch-side-item">反馈回流</div></div></div></figure>
 <blockquote>
-<p>渐变色块为已有能力，白色块为新建或从存量项目抽取；数据底座由第一章的数据平台提供。</p>
+<p>渐变色块为已有能力，白色块为新建或升级；数据底座由第一章的数据平台提供。</p>
 </blockquote>
 <h3 id="232">2.3.2 平台组件</h3>
-<figure class="diagram"><div class="cmp-legend"><span class="cmp have">已有</span><span class="cmp up">升级</span><span class="cmp new">新建</span></div><div class="cmp-grid" style="grid-template-columns: repeat(7, minmax(0, 1fr));"><div class="cmp-col"><div class="cmp-head">模型网关</div><div class="cmp up">模型接入</div><div class="cmp new">路由与降级</div><div class="cmp new">限流计量</div><div class="cmp new">内容安全</div></div><div class="cmp-col"><div class="cmp-head">知识库</div><div class="cmp up">景区知识</div><div class="cmp new">文档解析</div><div class="cmp new">检索召回</div><div class="cmp new">按景区隔离</div></div><div class="cmp-col"><div class="cmp-head">工具 / 插件</div><div class="cmp up">票务接口</div><div class="cmp up">订单 / 核销接口</div><div class="cmp new">数据服务调用</div><div class="cmp new">工单与通知</div></div><div class="cmp-col"><div class="cmp-head">编排与记忆</div><div class="cmp new">工作流编排</div><div class="cmp new">多轮记忆</div><div class="cmp new">转人工</div></div><div class="cmp-col"><div class="cmp-head">数字人 / 语音</div><div class="cmp up">数字人</div><div class="cmp up">语音识别 / 合成</div><div class="cmp up">手语</div></div><div class="cmp-col"><div class="cmp-head">智能体工厂</div><div class="cmp new">模板库</div><div class="cmp new">配置化生成</div><div class="cmp new">版本管理</div><div class="cmp new">评测集</div></div><div class="cmp-col"><div class="cmp-head">运营收口</div><div class="cmp new">注册中心</div><div class="cmp new">统一入口</div><div class="cmp new">计量与账单</div><div class="cmp new">监控与日志</div><div class="cmp new">反馈回流</div></div></div></figure>
+<figure class="diagram"><div class="cmp-legend"><span class="cmp have">已有</span><span class="cmp up">升级</span><span class="cmp new">新建</span></div><div class="cmp-grid" style="grid-template-columns: repeat(7, minmax(0, 1fr));"><div class="cmp-col"><div class="cmp-head">模型网关</div><div class="cmp up">大模型接入</div><div class="cmp up">视觉 / 语音模型</div><div class="cmp new">路由与降级</div><div class="cmp new">计量与限流</div><div class="cmp new">内容安全</div></div><div class="cmp-col"><div class="cmp-head">能力中心</div><div class="cmp up">景区知识库</div><div class="cmp up">票务与订单工具</div><div class="cmp new">年卡 / 会员工具</div><div class="cmp new">工单与通知</div><div class="cmp new">工作流编排</div></div><div class="cmp-col"><div class="cmp-head">多模态</div><div class="cmp up">数字人</div><div class="cmp up">语音识别 / 合成</div><div class="cmp have">手语（合作）</div><div class="cmp up">旅拍图像</div></div><div class="cmp-col"><div class="cmp-head">智能体工厂</div><div class="cmp new">模板库</div><div class="cmp new">配置化生成</div><div class="cmp new">版本与发布</div><div class="cmp new">评测集</div></div><div class="cmp-col"><div class="cmp-head">数据接入</div><div class="cmp have">Quick BI</div><div class="cmp have">动态数据开放 API</div><div class="cmp new">指标服务</div><div class="cmp new">标签服务</div><div class="cmp new">实时事件</div></div><div class="cmp-col"><div class="cmp-head">渠道发布</div><div class="cmp have">畅游小程序</div><div class="cmp have">票付通 APP</div><div class="cmp have">景数通</div><div class="cmp new">景区 SaaS 嵌入</div><div class="cmp new">开放 API</div></div><div class="cmp-col"><div class="cmp-head">运营收口</div><div class="cmp new">注册中心</div><div class="cmp new">统一权限</div><div class="cmp new">调用计量</div><div class="cmp new">监控与日志</div><div class="cmp new">反馈回流</div></div></div></figure>
 <blockquote>
-<p>写法：<code>*</code> 已有，<code>+</code> 从存量项目抽取升级，不加标记为新建。</p>
+<p>写法：<code>*</code> 已有，<code>+</code> 从现有产品中抽出升级为共用能力，不加标记为新建。</p>
 </blockquote>
-<h2 id="24">2.4 平台运营</h2>
-<p><strong>思路</strong>：平台建好只是开始，要靠模板、交付规范、收口规则和评测把“标准产品”守住。</p>
-<h3 id="241">2.4.1 标准智能体目录</h3>
+<p><strong>全景产品需要平台提供什么</strong></p>
 <table>
 <thead>
 <tr>
-<th>模板</th>
-<th>场景</th>
-<th>可配置项</th>
-<th>复用来源</th>
+<th>全景产品</th>
+<th>智能体</th>
+<th>平台提供</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>智能助手 / 客服</td>
-<td>景区咨询、购票问答、售后</td>
-<td>景区知识包、话术、转人工规则</td>
-<td>景区智能助手</td>
+<td>畅游 AI</td>
+<td>规划、客服、购票、导览、伴游、手语、旅拍</td>
+<td>景区知识库、售票与订单工具、数字人与语音、手语接入</td>
 </tr>
 <tr>
-<td>智能导览</td>
-<td>景点讲解、路线推荐</td>
-<td>景点知识、路线、语言、音色</td>
-<td>智能导览</td>
+<td>景数通 / 票付通 APP</td>
+<td>问数、数据解读、驾驶舱、预警</td>
+<td>认证指标与统一语义、预警规则、消息与工单</td>
 </tr>
 <tr>
-<td>手语服务</td>
-<td>听障游客服务</td>
-<td>终端、场景词库</td>
-<td>手语项目</td>
+<td>景区 AI 调度中枢</td>
+<td>安全、秩序、车船调度、防火、生态、气象、设施</td>
+<td>实时事件、闸机与物联数据、气象数据、处置规则、工单</td>
 </tr>
 <tr>
-<td>智能购票</td>
-<td>对话购票、改签退票</td>
-<td>商品、价格、库存接口</td>
-<td>票务系统接口</td>
+<td>智慧票务</td>
+<td>票务 AI 运营助手、AI 对账助手</td>
+<td>订单、核销、结算与财务接口</td>
 </tr>
 <tr>
-<td>AI 问数</td>
-<td>经营问答、异常洞察</td>
-<td>指标范围、租户权限</td>
-<td>数字大脑问数</td>
-</tr>
-<tr>
-<td>调度类</td>
-<td>客流、车辆、安全的预警与处置</td>
-<td>规则、阈值、工单流程</td>
-<td>数字大脑调度智能体</td>
+<td>会员营销</td>
+<td>画像、圈人、推荐、复盘</td>
+<td>统一标签、会员与年卡工具、营销效果指标</td>
 </tr>
 </tbody>
 </table>
-<p>首批选 3–5 个最常交付的做成模板，其余按需求排期。</p>
-<h3 id="242">2.4.2 交付模式</h3>
+<h2 id="24">2.4 平台运营</h2>
+<p><strong>思路</strong>：平台建好只是开始，要靠目录、上新规范、收口规则和评测，把“标准产品”守住。</p>
+<h3 id="241">2.4.1 标准智能体目录</h3>
+<table>
+<thead>
+<tr>
+<th>场景层</th>
+<th>已有</th>
+<th>下一步做成标准智能体</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>游客服务</td>
+<td>智能助手、智能客服、智能导览、AI 旅拍、AI 伴游、手语</td>
+<td>AI 旅游规划、AI 智能购票</td>
+</tr>
+<tr>
+<td>景区管理</td>
+<td>智能问数、智能数据解读</td>
+<td>票务 AI 运营助手、AI 对账助手、预警与工单</td>
+</tr>
+<tr>
+<td>安全运营</td>
+<td>——</td>
+<td>秩序治理、车辆 / 游船调度，再扩展到防火、生态、气象、设施</td>
+</tr>
+<tr>
+<td>精准营销</td>
+<td>——</td>
+<td>人群圈选、年卡续费提醒、活动复盘</td>
+</tr>
+</tbody>
+</table>
+<p>每个标准智能体都有：模板、可配置项清单、评测集、负责人。</p>
+<h3 id="242">2.4.2 上新方式</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card dash top" style="flex:1;gap:14px">
-      <div class="ttl">现在：按项目定制开发</div>
-      <div class="pf-row" style="align-items:center"><b style="width:52px">景区 A</b><span class="pf-pill" style="flex:1;border-color:transparent">需求</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">开发</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">联调</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">上线</span></div>
-      <div class="pf-row" style="align-items:center"><b style="width:52px">景区 B</b><span class="pf-pill" style="flex:1;border-color:transparent">需求</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">开发</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">联调</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">上线</span></div>
-      <div class="pf-note org">每个项目从零开始 · 周期长 · 维护多套代码</div>
+    <div class="pf-card dash top" style="flex:1;gap:12px">
+      <div class="ttl">现在：新场景单独建设</div>
+      <div class="pf-row" style="align-items:center"><span class="pf-pill" style="flex:1;border-color:transparent">接模型</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">建知识</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">对接口</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">做入口</span></div>
+      <div class="pf-note org">每个新智能体把底层再做一遍 · 能力不共用 · 运维分散</div>
     </div>
     <div class="pf-arrow big">➜</div>
     <div class="pf-card panel top" style="flex:1;gap:8px">
-      <div class="ttl">以后：标品 + 配置 + 少量扩展</div>
-      <div class="pf-bar grad">选标准模板</div>
+      <div class="ttl">以后：在平台上组装</div>
+      <div class="pf-bar grad">选模板 / 复用能力中心</div>
       <div class="pf-row"><div class="pf-bar line" style="flex:1">配置知识 · 工具 · 渠道</div><div class="pf-bar line" style="flex:1">少量扩展 · 个性需求</div></div>
       <div class="pf-arrow down">▼</div>
-      <div class="pf-bar dark">评测通过 → 发布上线</div>
+      <div class="pf-bar dark">评测通过 → 注册发布</div>
     </div>
   </div>
-  <div class="pf-label" style="width:auto">交付流程</div>
+  <div class="pf-label" style="width:auto">上新流程</div>
   <div class="pf-row">
-    <div class="pf-card soft c" style="flex:1">需求确认</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">场景确认</div><div class="pf-arrow">➜</div>
     <div class="pf-card soft c" style="flex:1">选模板</div><div class="pf-arrow">➜</div>
     <div class="pf-card soft c" style="flex:1">配置</div><div class="pf-arrow">➜</div>
     <div class="pf-card soft c" style="flex:1">评测</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">发布</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">注册发布</div><div class="pf-arrow">➜</div>
     <div class="pf-card grad c" style="flex:1;font-weight:700">运营回流</div>
   </div>
   <div class="pf-note">模板覆盖不了的需求，先评估能否沉淀为通用能力；确属个性化的，作为扩展插件开发，不改模板本身</div>
 </div>
 </figure>
 <h3 id="243">2.4.3 统一收口</h3>
-<figure class="diagram"><div class="mermaid-svg"><svg id="mermaid-1792063006353" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 1080px;" viewBox="-8 -8 1080 312" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaid-1792063006353{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;fill:#2B2F42;}#mermaid-1792063006353 .error-icon{fill:#F6F5FF;}#mermaid-1792063006353 .error-text{fill:#090a00;stroke:#090a00;}#mermaid-1792063006353 .edge-thickness-normal{stroke-width:2px;}#mermaid-1792063006353 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1792063006353 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1792063006353 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1792063006353 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1792063006353 .marker{fill:#8C84F0;stroke:#8C84F0;}#mermaid-1792063006353 .marker.cross{stroke:#8C84F0;}#mermaid-1792063006353 svg{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;}#mermaid-1792063006353 .label{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2B2F42;}#mermaid-1792063006353 .cluster-label text{fill:#090a00;}#mermaid-1792063006353 .cluster-label span,#mermaid-1792063006353 p{color:#090a00;}#mermaid-1792063006353 .label text,#mermaid-1792063006353 span,#mermaid-1792063006353 p{fill:#2B2F42;color:#2B2F42;}#mermaid-1792063006353 .node rect,#mermaid-1792063006353 .node circle,#mermaid-1792063006353 .node ellipse,#mermaid-1792063006353 .node polygon,#mermaid-1792063006353 .node path{fill:#ECEAFF;stroke:#776CFD;stroke-width:1px;}#mermaid-1792063006353 .flowchart-label text{text-anchor:middle;}#mermaid-1792063006353 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1792063006353 .node .label{text-align:center;}#mermaid-1792063006353 .node.clickable{cursor:pointer;}#mermaid-1792063006353 .arrowheadPath{fill:#0b0b0b;}#mermaid-1792063006353 .edgePath .path{stroke:#8C84F0;stroke-width:2.0px;}#mermaid-1792063006353 .flowchart-link{stroke:#8C84F0;fill:none;}#mermaid-1792063006353 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mermaid-1792063006353 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mermaid-1792063006353 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-1792063006353 .cluster rect{fill:#F6F5FF;stroke:#C9C4FB;stroke-width:1px;}#mermaid-1792063006353 .cluster text{fill:#090a00;}#mermaid-1792063006353 .cluster span,#mermaid-1792063006353 p{color:#090a00;}#mermaid-1792063006353 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:12px;background:#F6F5FF;border:1px solid hsl(246, 60%, 88.0392156863%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1792063006353 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2B2F42;}#mermaid-1792063006353 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mermaid-1792063006353_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792063006353_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792063006353_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792063006353_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792063006353_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792063006353_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M47,18.25L52.333,18.25C57.667,18.25,68.333,18.25,87.451,34.125C106.569,49.999,134.137,81.749,147.921,97.623L161.706,113.498" id="L-A1-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A1 LE-R" style="fill:none;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path><path d="M47,104.75L52.333,104.75C57.667,104.75,68.333,104.75,78.378,106.558C88.422,108.367,97.843,111.984,102.554,113.792L107.265,115.601" id="L-A2-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A2 LE-R" style="fill:none;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path><path d="M47,191.25L52.333,191.25C57.667,191.25,68.333,191.25,78.378,189.442C88.422,187.633,97.843,184.016,102.554,182.208L107.265,180.399" id="L-A3-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A3 LE-R" style="fill:none;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path><path d="M54,277.75L58.167,277.75C62.333,277.75,70.667,277.75,88.618,261.875C106.569,246.001,134.137,214.251,147.921,198.377L161.706,182.502" id="L-A4-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A4 LE-R" style="fill:none;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path><path d="M279.328,122.517L283.495,121.306C287.661,120.095,295.995,117.672,303.445,116.461C310.895,115.25,317.461,115.25,320.745,115.25L324.028,115.25" id="L-R-G-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-R LE-G" style="fill:none;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path><path d="M529.328,115.25L542.699,115.25C556.07,115.25,582.813,115.25,608.671,115.25C634.53,115.25,659.506,115.25,671.993,115.25L684.481,115.25" id="L-G-M-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-M" style="fill:none;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path><path d="M865.109,115.25L869.276,115.25C873.443,115.25,881.776,115.25,889.27,116.346C896.765,117.442,903.42,119.634,906.748,120.729L910.075,121.825" id="L-M-F-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-M LE-F" style="fill:none;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path><path d="M915.109,172.517L910.943,173.889C906.776,175.261,898.443,178.006,875.499,179.378C852.555,180.75,815,180.75,768.241,180.75C721.482,180.75,665.518,180.75,607.499,180.75C549.479,180.75,489.404,180.75,438.533,180.75C387.661,180.75,345.995,180.75,321.843,179.785C297.691,178.821,291.054,176.891,287.736,175.927L284.417,174.962" id="L-F-R-0" class=" edge-thickness-normal edge-pattern-dotted flowchart-link LS-F LE-R" style="fill:none;stroke-width:2px;stroke-dasharray:3;" marker-end="url(#mermaid-1792063006353_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(609.5546875, 180.75)"><g class="label" transform="translate(-55.2265625, -12.25)"><foreignObject width="110.453125" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">补知识 · 补评测集</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-A1-0" data-node="true" data-id="A1" transform="translate(27, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-20" y="-18.25" width="40" height="36.5"></rect><g class="label" style="" transform="translate(-14, -12.25)"><rect></rect><foreignObject width="28" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">助手</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-R-1" data-node="true" data-id="R" transform="translate(191.6640625, 148)"><rect class="basic label-container" style="" rx="0" ry="0" x="-87.6640625" y="-30.5" width="175.328125" height="61"></rect><g class="label" style="" transform="translate(-81.6640625, -24.5)"><rect></rect><foreignObject width="163.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">注册中心<br>编号 · 负责人 · 版本 · 权限</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A2-2" data-node="true" data-id="A2" transform="translate(27, 104.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-20" y="-18.25" width="40" height="36.5"></rect><g class="label" style="" transform="translate(-14, -12.25)"><rect></rect><foreignObject width="28" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">导览</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A3-4" data-node="true" data-id="A3" transform="translate(27, 191.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-20" y="-18.25" width="40" height="36.5"></rect><g class="label" style="" transform="translate(-14, -12.25)"><rect></rect><foreignObject width="28" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">问数</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A4-6" data-node="true" data-id="A4" transform="translate(27, 277.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-27" y="-18.25" width="54" height="36.5"></rect><g class="label" style="" transform="translate(-21, -12.25)"><rect></rect><foreignObject width="42" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">调度类</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-G-9" data-node="true" data-id="G" transform="translate(429.328125, 115.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-100" y="-30.5" width="200" height="61"></rect><g class="label" style="" transform="translate(-94, -24.5)"><rect></rect><foreignObject width="188" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">统一入口<br>小程序 · APP · H5 · 大屏 · API</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-M-11" data-node="true" data-id="M" transform="translate(777.4453125, 115.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-87.6640625" y="-30.5" width="175.328125" height="61"></rect><g class="label" style="" transform="translate(-81.6640625, -24.5)"><rect></rect><foreignObject width="163.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">计量与监控<br>调用量 · 成本 · 时延 · 错误</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-F-13" data-node="true" data-id="F" transform="translate(989.5546875, 148)"><rect class="basic label-container" style="" rx="0" ry="0" x="-74.4453125" y="-30.5" width="148.890625" height="61"></rect><g class="label" style="" transform="translate(-68.4453125, -24.5)"><rect></rect><foreignObject width="136.890625" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">反馈回流<br>纠错 · 评价 · 工单结果</span></div></foreignObject></g></g></g></g></g></svg></div></figure>
+<figure class="diagram"><div class="mermaid-svg"><svg id="mermaid-1792072534020" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 1146.890625px;" viewBox="-8 -8 1146.890625 312" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaid-1792072534020{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;fill:#2B2F42;}#mermaid-1792072534020 .error-icon{fill:#F6F5FF;}#mermaid-1792072534020 .error-text{fill:#090a00;stroke:#090a00;}#mermaid-1792072534020 .edge-thickness-normal{stroke-width:2px;}#mermaid-1792072534020 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1792072534020 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1792072534020 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1792072534020 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1792072534020 .marker{fill:#8C84F0;stroke:#8C84F0;}#mermaid-1792072534020 .marker.cross{stroke:#8C84F0;}#mermaid-1792072534020 svg{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;}#mermaid-1792072534020 .label{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2B2F42;}#mermaid-1792072534020 .cluster-label text{fill:#090a00;}#mermaid-1792072534020 .cluster-label span,#mermaid-1792072534020 p{color:#090a00;}#mermaid-1792072534020 .label text,#mermaid-1792072534020 span,#mermaid-1792072534020 p{fill:#2B2F42;color:#2B2F42;}#mermaid-1792072534020 .node rect,#mermaid-1792072534020 .node circle,#mermaid-1792072534020 .node ellipse,#mermaid-1792072534020 .node polygon,#mermaid-1792072534020 .node path{fill:#ECEAFF;stroke:#776CFD;stroke-width:1px;}#mermaid-1792072534020 .flowchart-label text{text-anchor:middle;}#mermaid-1792072534020 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1792072534020 .node .label{text-align:center;}#mermaid-1792072534020 .node.clickable{cursor:pointer;}#mermaid-1792072534020 .arrowheadPath{fill:#0b0b0b;}#mermaid-1792072534020 .edgePath .path{stroke:#8C84F0;stroke-width:2.0px;}#mermaid-1792072534020 .flowchart-link{stroke:#8C84F0;fill:none;}#mermaid-1792072534020 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mermaid-1792072534020 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mermaid-1792072534020 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-1792072534020 .cluster rect{fill:#F6F5FF;stroke:#C9C4FB;stroke-width:1px;}#mermaid-1792072534020 .cluster text{fill:#090a00;}#mermaid-1792072534020 .cluster span,#mermaid-1792072534020 p{color:#090a00;}#mermaid-1792072534020 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:12px;background:#F6F5FF;border:1px solid hsl(246, 60%, 88.0392156863%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1792072534020 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2B2F42;}#mermaid-1792072534020 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mermaid-1792072534020_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792072534020_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792072534020_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792072534020_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792072534020_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792072534020_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M82.398,18.25L88.965,18.25C95.531,18.25,108.664,18.25,129.015,34.125C149.365,49.999,176.934,81.749,190.718,97.623L204.502,113.498" id="L-A1-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A1 LE-R" style="fill:none;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path><path d="M82.398,104.75L88.965,104.75C95.531,104.75,108.664,104.75,119.941,106.558C131.219,108.367,140.64,111.984,145.351,113.792L150.062,115.601" id="L-A2-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A2 LE-R" style="fill:none;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path><path d="M96.797,191.25L100.964,191.25C105.13,191.25,113.464,191.25,122.341,189.442C131.219,187.633,140.64,184.016,145.351,182.208L150.062,180.399" id="L-A3-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A3 LE-R" style="fill:none;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path><path d="M75.398,277.75L83.132,277.75C90.865,277.75,106.331,277.75,127.848,261.875C149.365,246.001,176.934,214.251,190.718,198.377L204.502,182.502" id="L-A4-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A4 LE-R" style="fill:none;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path><path d="M322.125,122.517L326.292,121.306C330.458,120.095,338.792,117.672,346.242,116.461C353.692,115.25,360.258,115.25,363.542,115.25L366.825,115.25" id="L-R-G-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-R LE-G" style="fill:none;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path><path d="M596.219,115.25L609.59,115.25C622.961,115.25,649.703,115.25,675.562,115.25C701.421,115.25,726.396,115.25,738.884,115.25L751.372,115.25" id="L-G-M-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-M" style="fill:none;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path><path d="M932,115.25L936.167,115.25C940.333,115.25,948.667,115.25,956.161,116.346C963.655,117.442,970.311,119.634,973.638,120.729L976.966,121.825" id="L-M-F-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-M LE-F" style="fill:none;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path><path d="M982,172.517L977.833,173.889C973.667,175.261,965.333,178.006,942.389,179.378C919.445,180.75,881.891,180.75,835.132,180.75C788.372,180.75,732.409,180.75,672.382,180.75C612.354,180.75,548.263,180.75,493.376,180.75C438.49,180.75,392.807,180.75,366.648,179.785C340.488,178.821,333.851,176.891,330.533,175.927L327.214,174.962" id="L-F-R-0" class=" edge-thickness-normal edge-pattern-dotted flowchart-link LS-F LE-R" style="fill:none;stroke-width:2px;stroke-dasharray:3;" marker-end="url(#mermaid-1792072534020_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(676.4453125, 180.75)"><g class="label" transform="translate(-55.2265625, -12.25)"><foreignObject width="110.453125" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">补知识 · 补评测集</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-A1-0" data-node="true" data-id="A1" transform="translate(48.3984375, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">自研标品</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-R-1" data-node="true" data-id="R" transform="translate(234.4609375, 148)"><rect class="basic label-container" style="" rx="0" ry="0" x="-87.6640625" y="-30.5" width="175.328125" height="61"></rect><g class="label" style="" transform="translate(-81.6640625, -24.5)"><rect></rect><foreignObject width="163.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">注册中心<br>编号 · 负责人 · 版本 · 权限</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A2-2" data-node="true" data-id="A2" transform="translate(48.3984375, 104.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">合作能力</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A3-4" data-node="true" data-id="A3" transform="translate(48.3984375, 191.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-48.3984375" y="-18.25" width="96.796875" height="36.5"></rect><g class="label" style="" transform="translate(-42.3984375, -12.25)"><rect></rect><foreignObject width="84.796875" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Quick BI 能力</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A4-6" data-node="true" data-id="A4" transform="translate(48.3984375, 277.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-27" y="-18.25" width="54" height="36.5"></rect><g class="label" style="" transform="translate(-21, -12.25)"><rect></rect><foreignObject width="42" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">新场景</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-G-9" data-node="true" data-id="G" transform="translate(484.171875, 115.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-112.046875" y="-30.5" width="224.09375" height="61"></rect><g class="label" style="" transform="translate(-106.046875, -24.5)"><rect></rect><foreignObject width="212.09375" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">统一入口<br>小程序 · APP · 景数通 · 终端 · API</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-M-11" data-node="true" data-id="M" transform="translate(844.3359375, 115.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-87.6640625" y="-30.5" width="175.328125" height="61"></rect><g class="label" style="" transform="translate(-81.6640625, -24.5)"><rect></rect><foreignObject width="163.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">计量与监控<br>调用量 · 成本 · 时延 · 错误</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-F-13" data-node="true" data-id="F" transform="translate(1056.4453125, 148)"><rect class="basic label-container" style="" rx="0" ry="0" x="-74.4453125" y="-30.5" width="148.890625" height="61"></rect><g class="label" style="" transform="translate(-68.4453125, -24.5)"><rect></rect><foreignObject width="136.890625" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">反馈回流<br>纠错 · 评价 · 工单结果</span></div></foreignObject></g></g></g></g></g></svg></div></figure>
 <table>
 <thead>
 <tr>
@@ -416,11 +474,11 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <tbody>
 <tr>
 <td>先注册再上线</td>
-<td>智能体必须在平台注册，登记负责人、版本、使用的数据和权限</td>
+<td>所有智能体（含合作和 Quick BI 能力）在平台注册，登记负责人、版本、使用的数据和权限</td>
 </tr>
 <tr>
 <td>统一入口</td>
-<td>对外渠道统一接入，不再每个项目单独开口子</td>
+<td>按渠道统一接入，不再每个智能体单独开口子</td>
 </tr>
 <tr>
 <td>统一权限</td>
@@ -428,19 +486,19 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tr>
 <tr>
 <td>统一计量</td>
-<td>按景区、项目、模板统计调用量和成本，可出账单</td>
+<td>按景区、智能体统计调用量和成本，可出账单</td>
 </tr>
 <tr>
-<td>统一下线</td>
-<td>长期无调用或无人维护的智能体，通知负责人后下线</td>
+<td>合作能力</td>
+<td>合作方能力按平台规范接入，约定体验标准、可用性和计量方式</td>
 </tr>
 </tbody>
 </table>
 <h3 id="244">2.4.4 评测与质量</h3>
-<figure class="diagram"><div class="mermaid-svg"><svg id="mermaid-1792063006426" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 993.109375px;" viewBox="-8 -8 993.109375 180.125" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaid-1792063006426{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;fill:#2B2F42;}#mermaid-1792063006426 .error-icon{fill:#F6F5FF;}#mermaid-1792063006426 .error-text{fill:#090a00;stroke:#090a00;}#mermaid-1792063006426 .edge-thickness-normal{stroke-width:2px;}#mermaid-1792063006426 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1792063006426 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1792063006426 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1792063006426 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1792063006426 .marker{fill:#8C84F0;stroke:#8C84F0;}#mermaid-1792063006426 .marker.cross{stroke:#8C84F0;}#mermaid-1792063006426 svg{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;}#mermaid-1792063006426 .label{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2B2F42;}#mermaid-1792063006426 .cluster-label text{fill:#090a00;}#mermaid-1792063006426 .cluster-label span,#mermaid-1792063006426 p{color:#090a00;}#mermaid-1792063006426 .label text,#mermaid-1792063006426 span,#mermaid-1792063006426 p{fill:#2B2F42;color:#2B2F42;}#mermaid-1792063006426 .node rect,#mermaid-1792063006426 .node circle,#mermaid-1792063006426 .node ellipse,#mermaid-1792063006426 .node polygon,#mermaid-1792063006426 .node path{fill:#ECEAFF;stroke:#776CFD;stroke-width:1px;}#mermaid-1792063006426 .flowchart-label text{text-anchor:middle;}#mermaid-1792063006426 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1792063006426 .node .label{text-align:center;}#mermaid-1792063006426 .node.clickable{cursor:pointer;}#mermaid-1792063006426 .arrowheadPath{fill:#0b0b0b;}#mermaid-1792063006426 .edgePath .path{stroke:#8C84F0;stroke-width:2.0px;}#mermaid-1792063006426 .flowchart-link{stroke:#8C84F0;fill:none;}#mermaid-1792063006426 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mermaid-1792063006426 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mermaid-1792063006426 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-1792063006426 .cluster rect{fill:#F6F5FF;stroke:#C9C4FB;stroke-width:1px;}#mermaid-1792063006426 .cluster text{fill:#090a00;}#mermaid-1792063006426 .cluster span,#mermaid-1792063006426 p{color:#090a00;}#mermaid-1792063006426 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:12px;background:#F6F5FF;border:1px solid hsl(246, 60%, 88.0392156863%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1792063006426 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2B2F42;}#mermaid-1792063006426 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mermaid-1792063006426_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792063006426_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792063006426_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792063006426_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792063006426_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792063006426_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M259.328,66.794L263.495,65.911C267.661,65.029,275.995,63.265,283.445,62.382C290.895,61.5,297.461,61.5,300.745,61.5L304.028,61.5" id="L-E-T-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-T" style="fill:none;" marker-end="url(#mermaid-1792063006426_flowchart-pointEnd)"></path><path d="M500.219,32.316L507.885,29.971C515.552,27.627,530.885,22.939,545.335,20.594C559.785,18.25,573.352,18.25,580.135,18.25L586.919,18.25" id="L-T-G-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-G" style="fill:none;" marker-end="url(#mermaid-1792063006426_flowchart-pointEnd)"></path><path d="M660.219,18.25L664.385,18.25C668.552,18.25,676.885,18.25,684.335,18.25C691.785,18.25,698.352,18.25,701.635,18.25L704.919,18.25" id="L-G-O-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-O" style="fill:none;" marker-end="url(#mermaid-1792063006426_flowchart-pointEnd)"></path><path d="M500.219,90.684L507.885,93.029C515.552,95.373,530.885,100.061,545.335,102.406C559.785,104.75,573.352,104.75,580.135,104.75L586.919,104.75" id="L-T-X-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-X" style="fill:none;" marker-end="url(#mermaid-1792063006426_flowchart-pointEnd)"></path><path d="M778.219,18.25L782.385,18.25C786.552,18.25,794.885,18.25,810.944,27.339C827.004,36.427,850.788,54.605,862.681,63.693L874.573,72.782" id="L-O-L-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-O LE-L" style="fill:none;" marker-end="url(#mermaid-1792063006426_flowchart-pointEnd)"></path><path d="M876.691,112.5L864.446,121.104C852.2,129.708,827.709,146.917,805.631,155.521C783.552,164.125,763.885,164.125,744.219,164.125C724.552,164.125,704.885,164.125,685.219,164.125C665.552,164.125,645.885,164.125,622.719,164.125C599.552,164.125,572.885,164.125,535.978,164.125C499.07,164.125,451.922,164.125,408.273,164.125C364.625,164.125,324.477,164.125,290.682,157.926C256.887,151.727,229.445,139.33,215.725,133.131L202.004,126.932" id="L-L-E-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-L LE-E" style="fill:none;" marker-end="url(#mermaid-1792063006426_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(546.21875, 18.25)"><g class="label" transform="translate(-14, -12.25)"><foreignObject width="28" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">通过</span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(546.21875, 104.75)"><g class="label" transform="translate(-21, -12.25)"><foreignObject width="42" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">不通过</span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-E-16" data-node="true" data-id="E" transform="translate(129.6640625, 94.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-129.6640625" y="-30.5" width="259.328125" height="61"></rect><g class="label" style="" transform="translate(-123.6640625, -24.5)"><rect></rect><foreignObject width="247.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">评测集<br>常见问题 · 越权提问 · 无数据 · 模糊问题</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-T-17" data-node="true" data-id="T" transform="translate(404.7734375, 61.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-95.4453125" y="-30.5" width="190.890625" height="61"></rect><g class="label" style="" transform="translate(-89.4453125, -24.5)"><rect></rect><foreignObject width="178.890625" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">上线门槛<br>正确率 · 越权阻断 · 响应时间</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-G-19" data-node="true" data-id="G" transform="translate(626.21875, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">灰度上线</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-O-20" data-node="true" data-id="O" transform="translate(744.21875, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">线上监控</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-X-22" data-node="true" data-id="X" transform="translate(626.21875, 104.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">打回修改</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-L-24" data-node="true" data-id="L" transform="translate(902.6640625, 94.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-74.4453125" y="-18.25" width="148.890625" height="36.5"></rect><g class="label" style="" transform="translate(-68.4453125, -12.25)"><rect></rect><foreignObject width="136.890625" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">问答日志 · 纠错 · 评价</span></div></foreignObject></g></g></g></g></g></svg></div></figure>
+<figure class="diagram"><div class="mermaid-svg"><svg id="mermaid-1792072534125" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 993.109375px;" viewBox="-8 -8 993.109375 180.125" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaid-1792072534125{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;fill:#2B2F42;}#mermaid-1792072534125 .error-icon{fill:#F6F5FF;}#mermaid-1792072534125 .error-text{fill:#090a00;stroke:#090a00;}#mermaid-1792072534125 .edge-thickness-normal{stroke-width:2px;}#mermaid-1792072534125 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1792072534125 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1792072534125 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1792072534125 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1792072534125 .marker{fill:#8C84F0;stroke:#8C84F0;}#mermaid-1792072534125 .marker.cross{stroke:#8C84F0;}#mermaid-1792072534125 svg{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;}#mermaid-1792072534125 .label{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2B2F42;}#mermaid-1792072534125 .cluster-label text{fill:#090a00;}#mermaid-1792072534125 .cluster-label span,#mermaid-1792072534125 p{color:#090a00;}#mermaid-1792072534125 .label text,#mermaid-1792072534125 span,#mermaid-1792072534125 p{fill:#2B2F42;color:#2B2F42;}#mermaid-1792072534125 .node rect,#mermaid-1792072534125 .node circle,#mermaid-1792072534125 .node ellipse,#mermaid-1792072534125 .node polygon,#mermaid-1792072534125 .node path{fill:#ECEAFF;stroke:#776CFD;stroke-width:1px;}#mermaid-1792072534125 .flowchart-label text{text-anchor:middle;}#mermaid-1792072534125 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1792072534125 .node .label{text-align:center;}#mermaid-1792072534125 .node.clickable{cursor:pointer;}#mermaid-1792072534125 .arrowheadPath{fill:#0b0b0b;}#mermaid-1792072534125 .edgePath .path{stroke:#8C84F0;stroke-width:2.0px;}#mermaid-1792072534125 .flowchart-link{stroke:#8C84F0;fill:none;}#mermaid-1792072534125 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mermaid-1792072534125 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mermaid-1792072534125 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-1792072534125 .cluster rect{fill:#F6F5FF;stroke:#C9C4FB;stroke-width:1px;}#mermaid-1792072534125 .cluster text{fill:#090a00;}#mermaid-1792072534125 .cluster span,#mermaid-1792072534125 p{color:#090a00;}#mermaid-1792072534125 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:12px;background:#F6F5FF;border:1px solid hsl(246, 60%, 88.0392156863%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1792072534125 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2B2F42;}#mermaid-1792072534125 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mermaid-1792072534125_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792072534125_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792072534125_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792072534125_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792072534125_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792072534125_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M259.328,66.794L263.495,65.911C267.661,65.029,275.995,63.265,283.445,62.382C290.895,61.5,297.461,61.5,300.745,61.5L304.028,61.5" id="L-E-T-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-T" style="fill:none;" marker-end="url(#mermaid-1792072534125_flowchart-pointEnd)"></path><path d="M500.219,32.316L507.885,29.971C515.552,27.627,530.885,22.939,545.335,20.594C559.785,18.25,573.352,18.25,580.135,18.25L586.919,18.25" id="L-T-G-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-G" style="fill:none;" marker-end="url(#mermaid-1792072534125_flowchart-pointEnd)"></path><path d="M660.219,18.25L664.385,18.25C668.552,18.25,676.885,18.25,684.335,18.25C691.785,18.25,698.352,18.25,701.635,18.25L704.919,18.25" id="L-G-O-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-O" style="fill:none;" marker-end="url(#mermaid-1792072534125_flowchart-pointEnd)"></path><path d="M500.219,90.684L507.885,93.029C515.552,95.373,530.885,100.061,545.335,102.406C559.785,104.75,573.352,104.75,580.135,104.75L586.919,104.75" id="L-T-X-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-X" style="fill:none;" marker-end="url(#mermaid-1792072534125_flowchart-pointEnd)"></path><path d="M778.219,18.25L782.385,18.25C786.552,18.25,794.885,18.25,810.944,27.339C827.004,36.427,850.788,54.605,862.681,63.693L874.573,72.782" id="L-O-L-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-O LE-L" style="fill:none;" marker-end="url(#mermaid-1792072534125_flowchart-pointEnd)"></path><path d="M876.691,112.5L864.446,121.104C852.2,129.708,827.709,146.917,805.631,155.521C783.552,164.125,763.885,164.125,744.219,164.125C724.552,164.125,704.885,164.125,685.219,164.125C665.552,164.125,645.885,164.125,622.719,164.125C599.552,164.125,572.885,164.125,535.978,164.125C499.07,164.125,451.922,164.125,408.273,164.125C364.625,164.125,324.477,164.125,290.682,157.926C256.887,151.727,229.445,139.33,215.725,133.131L202.004,126.932" id="L-L-E-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-L LE-E" style="fill:none;" marker-end="url(#mermaid-1792072534125_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(546.21875, 18.25)"><g class="label" transform="translate(-14, -12.25)"><foreignObject width="28" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">通过</span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(546.21875, 104.75)"><g class="label" transform="translate(-21, -12.25)"><foreignObject width="42" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">不通过</span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-E-16" data-node="true" data-id="E" transform="translate(129.6640625, 94.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-129.6640625" y="-30.5" width="259.328125" height="61"></rect><g class="label" style="" transform="translate(-123.6640625, -24.5)"><rect></rect><foreignObject width="247.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">评测集<br>常见问题 · 越权提问 · 无数据 · 模糊问题</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-T-17" data-node="true" data-id="T" transform="translate(404.7734375, 61.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-95.4453125" y="-30.5" width="190.890625" height="61"></rect><g class="label" style="" transform="translate(-89.4453125, -24.5)"><rect></rect><foreignObject width="178.890625" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">上线门槛<br>正确率 · 越权阻断 · 响应时间</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-G-19" data-node="true" data-id="G" transform="translate(626.21875, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">灰度上线</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-O-20" data-node="true" data-id="O" transform="translate(744.21875, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">线上监控</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-X-22" data-node="true" data-id="X" transform="translate(626.21875, 104.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">打回修改</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-L-24" data-node="true" data-id="L" transform="translate(902.6640625, 94.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-74.4453125" y="-18.25" width="148.890625" height="36.5"></rect><g class="label" style="" transform="translate(-68.4453125, -12.25)"><rect></rect><foreignObject width="136.890625" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">问答日志 · 纠错 · 评价</span></div></foreignObject></g></g></g></g></g></svg></div></figure>
 <ul>
-<li>每个模板配一套评测集，模板、知识或模型变更后都要回归。</li>
-<li>线上答错、被纠错的问题补进评测集，越用越准。</li>
+<li>每个标准智能体配一套评测集，模板、知识或模型变更后都要回归。</li>
+<li>问数类智能体和 Quick BI、景数通共用认证指标，同一个问题只有一个答案。</li>
 </ul>
 <h3 id="245">2.4.5 安全与权限</h3>
 <table>
@@ -484,11 +542,11 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <tbody>
 <tr>
 <td>平台团队</td>
-<td>建设模型网关、能力层、智能体工厂；维护模板和评测集</td>
+<td>建设模型网关、能力中心、智能体工厂；维护模板和评测集</td>
 </tr>
 <tr>
 <td>产品</td>
-<td>定义标准智能体目录和模板功能</td>
+<td>按场景层定义标准智能体和场景包</td>
 </tr>
 <tr>
 <td>实施交付</td>
@@ -499,41 +557,41 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <td>提供指标、标签、知识数据；接收回流数据</td>
 </tr>
 <tr>
-<td>项目负责人</td>
-<td>对所负责智能体的效果和运维负责</td>
+<td>合作管理</td>
+<td>管理合作能力的接入、标准和结算</td>
 </tr>
 </tbody>
 </table>
 <h2 id="25">2.5 建设路径</h2>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card soft" style="flex:1"><h4>① 盘点存量</h4><div class="sub">列清现有智能体、所用模型、知识库、接口、负责人</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>① 统一收口</h4><div class="sub">现有 8 个智能体注册上平台，统一入口、权限、计量</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>② 抽取共性</h4><div class="sub">模型网关、知识库、工具、数字人 / 语音做成共用组件</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>② 共用能力</h4><div class="sub">模型网关、知识库、业务工具、数字人 / 语音抽成共用组件</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>③ 首批模板</h4><div class="sub">选 3–5 个最常交付的场景做成标准模板</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>③ 补全景场景</h4><div class="sub">先景区管理，再安全调度，再精准营销</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>④ 迁移存量</h4><div class="sub">存量项目随续约、升级逐个迁到平台</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>④ 统一运营</h4><div class="sub">评测集、调用计量、效果反馈覆盖全部智能体</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card grad" style="flex:1"><h4>⑤ 只走平台</h4><div class="sub">新项目必须在平台上配置交付</div></div>
+    <div class="pf-card grad" style="flex:1"><h4>⑤ 场景包输出</h4><div class="sub">按景区类型打包标准智能体，对外售卖</div></div>
   </div>
   <div class="pf-row">
     <div class="pf-label">交付物</div>
-    <div class="pf-pills even"><span class="pf-pill">存量清单</span><span class="pf-pill">共用组件</span><span class="pf-pill">模板 + 评测集</span><span class="pf-pill">迁移计划</span><span class="pf-pill">平台交付规范</span></div>
+    <div class="pf-pills even"><span class="pf-pill">注册中心</span><span class="pf-pill">共用组件</span><span class="pf-pill">新场景模板</span><span class="pf-pill">评测与计量</span><span class="pf-pill">场景包目录</span></div>
   </div>
-  <div class="pf-banner"><b>原则</b><span>先选一个模板端到端跑通（如景区智能助手），做通后再复制；存量不推倒重来，跟着续约和升级迁移</span></div>
+  <div class="pf-banner"><b>原则</b><span>已有的标品不推倒重来，先收口再抽能力；新场景每次只做一个，跑通再复制</span></div>
 </div>
 </figure>
 <h3 id="251">2.5.1 落地效果</h3>
-<p>建成后，智能体从“项目”变成“产品”：交付快、成本低、质量稳、能沉淀、可售卖。</p>
+<p>建成后，智能体从“各自建设”变成“平台生产”：上新快、成本低、质量稳、能沉淀、可售卖。</p>
 <p><strong>对公司：五个方面都有可衡量的变化</strong></p>
 <figure class="diagram"><div class="pf">
   <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
-    <div class="pf-val hl"><h4>交付快</h4><div class="chg">从定制开发<br>变为模板配置上线</div><div class="msr">新智能体上线周期</div></div>
-    <div class="pf-val"><h4>成本低</h4><div class="chg">一套能力<br>多个项目复用</div><div class="msr">单项目交付人天 · 调用成本</div></div>
+    <div class="pf-val hl"><h4>上新快</h4><div class="chg">新场景在平台上<br>组装、配置上线</div><div class="msr">新智能体上线周期</div></div>
+    <div class="pf-val"><h4>成本低</h4><div class="chg">模型、知识、工具<br>一套共用</div><div class="msr">单项目交付人天 · 调用成本</div></div>
     <div class="pf-val"><h4>质量稳</h4><div class="chg">统一评测<br>统一上线门槛</div><div class="msr">评测正确率 · 客诉数</div></div>
     <div class="pf-val"><h4>有沉淀</h4><div class="chg">知识、模板、工具<br>留在平台上</div><div class="msr">模板复用次数</div></div>
-    <div class="pf-val"><h4>可售卖</h4><div class="chg">标准产品<br>可报价、可续费</div><div class="msr">签约景区数 · 续约率</div></div>
+    <div class="pf-val"><h4>可售卖</h4><div class="chg">场景包标准化<br>可报价、可续费</div><div class="msr">签约景区数 · 续约率</div></div>
   </div>
   <div class="pf-banner"><b>原则</b><span>先建立基线再定目标；以实际交付和使用结果衡量，不以智能体数量衡量</span></div>
 </div>
@@ -543,13 +601,13 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
     <div class="pf-role"><div class="pf-ico">管</div><div><h4>管理层</h4><div class="sub">智能体业务看得清：数量、调用、<br>成本、收入一个后台统计</div></div></div>
     <div class="pf-role"><div class="pf-ico">产</div><div><h4>产品</h4><div class="sub">按场景定义模板<br>一次迭代，所有景区受益</div></div></div>
-    <div class="pf-role"><div class="pf-ico">研</div><div><h4>研发</h4><div class="sub">不再每个项目从零写<br>集中做平台能力和模板</div></div></div>
+    <div class="pf-role"><div class="pf-ico">研</div><div><h4>研发</h4><div class="sub">新场景不再从底层做起<br>集中做平台能力和模板</div></div></div>
     <div class="pf-role"><div class="pf-ico">实</div><div><h4>实施交付</h4><div class="sub">配置交付，按模板上线<br>不依赖研发排期</div></div></div>
     <div class="pf-role"><div class="pf-ico">售</div><div><h4>售前 / 销售</h4><div class="sub">有标准产品目录<br>可演示、可报价</div></div></div>
     <div class="pf-role"><div class="pf-ico">运</div><div><h4>客户成功 / 运营</h4><div class="sub">统一看各景区智能体<br>运行情况和用户反馈</div></div></div>
     <div class="pf-role"><div class="pf-ico">数</div><div><h4>数据团队</h4><div class="sub">智能体统一走指标、标签服务<br>交互数据回流数据平台</div></div></div>
-    <div class="pf-role"><div class="pf-ico org">景</div><div><h4>景区客户</h4><div class="sub">上线更快、效果一致<br>平台升级后自动受益</div></div></div>
-    <div class="pf-role"><div class="pf-ico org">游</div><div><h4>游客</h4><div class="sub">咨询、导览、购票<br>体验一致、回答更准</div></div></div>
+    <div class="pf-role"><div class="pf-ico org">景</div><div><h4>景区客户</h4><div class="sub">按场景包开通智能体<br>平台升级后自动受益</div></div></div>
+    <div class="pf-role"><div class="pf-ico org">游</div><div><h4>游客</h4><div class="sub">游前、游中、游后<br>一个入口、回答更准</div></div></div>
   </div>
   <div class="pf-hero">标准产品 · 聚合台 · 统一产出 · 统一收口</div>
 </div>
