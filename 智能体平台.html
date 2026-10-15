@@ -149,22 +149,19 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <a class="l2" href="#22">2.2 场景沉淀</a>
 <a class="l2" href="#23">2.3 平台建设</a>
 <a class="l3" href="#231">2.3.1 总体架构</a>
-<a class="l3" href="#232">2.3.2 平台组件</a>
+<a class="l3" href="#232">2.3.2 三件套</a>
 <a class="l2" href="#24">2.4 平台运营</a>
-<a class="l3" href="#241">2.4.1 标准智能体目录</a>
-<a class="l3" href="#242">2.4.2 上新方式</a>
-<a class="l3" href="#243">2.4.3 统一收口</a>
-<a class="l3" href="#244">2.4.4 评测与质量</a>
-<a class="l3" href="#245">2.4.5 安全与权限</a>
-<a class="l3" href="#246">2.4.6 组织分工</a>
+<a class="l3" href="#241">2.4.1 场景包目录</a>
+<a class="l3" href="#242">2.4.2 复制交付</a>
+<a class="l3" href="#243">2.4.3 质量与成本</a>
+<a class="l3" href="#244">2.4.4 安全底线</a>
+<a class="l3" href="#245">2.4.5 分工</a>
 <a class="l2" href="#25">2.5 建设路径</a>
-<a class="l3" href="#251">2.5.1 落地效果</a>
 </nav>
 <main>
 <div class="cover"><h1>AI＋数据平台</h1><div class="sub">二、智能体平台</div></div>
 <h1 id="_1">二、智能体平台</h1>
 <h2 id="21">2.1 现状</h2>
-<p>目前有 8 个智能体，按来源分三类：</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
     <div class="pf-card panel top" style="flex:2.2;gap:10px">
@@ -183,7 +180,6 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
       <div class="pf-note">面向景区与内部管理者</div>
     </div>
   </div>
-  <div class="pf-banner warm"><b>现状</b><span>扣子、合作方、Quick BI 三个平台各自接入、各自计费；产品全景中景区管理、安全运营、营销类场景还没有形成标准智能体</span></div>
 </div>
 </figure>
 <table>
@@ -199,7 +195,7 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <tr>
 <td>智能助手、智能客服、智能导览、AI 旅拍、AI 伴游</td>
 <td>游客</td>
-<td>字节扣子（Coze）</td>
+<td>Coze</td>
 <td>在扣子上配置工作流形成智能体，标准化、配置化输出</td>
 </tr>
 <tr>
@@ -216,57 +212,9 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tr>
 </tbody>
 </table>
-<p><strong>存在的问题</strong></p>
-<table>
-<thead>
-<tr>
-<th>问题</th>
-<th>表现</th>
-<th>根因</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>来源分散</td>
-<td>扣子、合作方、Quick BI 三个平台各自接入，各有入口</td>
-<td>没有统一的注册和收口</td>
-</tr>
-<tr>
-<td>资产在外部</td>
-<td>工作流、提示词、知识库、调用日志都在扣子云上，难沉淀、难迁移</td>
-<td>编排和资产都依赖外部平台</td>
-</tr>
-<tr>
-<td>业务对接重复</td>
-<td>售票、订单、会员等接口按智能体逐个做成扣子插件</td>
-<td>没有共用的业务工具中心</td>
-</tr>
-<tr>
-<td>口径与权限割裂</td>
-<td>问数走 Quick BI 数据集，扣子智能体另行取数；景区、租户权限各管各的</td>
-<td>没有统一走指标与标签服务和权限体系（见第一章）</td>
-</tr>
-<tr>
-<td>成本看不清</td>
-<td>模型调用在扣子和合作方计费，按景区、按智能体的成本和效果算不清</td>
-<td>没有统一计量和评测</td>
-</tr>
-<tr>
-<td>外部能力不可控</td>
-<td>手语的接入方式、体验标准、可用性在合作方</td>
-<td>缺少合作能力的接入规范</td>
-</tr>
-<tr>
-<td>场景覆盖不全</td>
-<td>产品全景中的景区管理、安全运营、营销类场景，还没有对应的标准智能体</td>
-<td>新场景缺少快速生产的方式</td>
-</tr>
-</tbody>
-</table>
-<p><strong>结论</strong>：扣子的工作流编排好用，游客端已经跑出标准产品，不推倒重来。缺的是我们自己的收口层和能力中心：把三类来源收口到一个平台，业务工具、知识、数据统一供给，再用平台补齐全景中的场景。</p>
 <h2 id="22">2.2 场景沉淀</h2>
 <p>票付通的产品覆盖票务、业态、运营、财务、终端，并已发布覆盖游客服务、景区管理、精准营销、安全运营的 AI 产品矩阵。按这四类场景，结合产品全景，可做智能体和 AI 服务的场景分层如下：</p>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">游客服务</div><div class="arch-items"><span class="chip">AI 旅游规划</span><span class="chip have">智能客服</span><span class="chip have">智能助手</span><span class="chip">AI 智能购票</span><span class="chip have">智能导览</span><span class="chip have">AI 伴游</span><span class="chip have">手语</span><span class="chip have">AI 旅拍</span></div></div><div class="arch-row"><div class="arch-name">精准营销</div><div class="arch-items"><span class="chip">会员画像</span><span class="chip">人群圈选</span><span class="chip">年卡续费提醒</span><span class="chip">全民营销推荐</span><span class="chip">活动效果复盘</span></div></div><div class="arch-row"><div class="arch-name">景区管理</div><div class="arch-items"><span class="chip have">智能问数</span><span class="chip have">智能数据解读</span><span class="chip">移动驾驶舱</span><span class="chip">票务 AI 运营助手</span><span class="chip">AI 对账助手</span><span class="chip">消息预警</span><span class="chip">工单处置</span></div></div><div class="arch-row"><div class="arch-name">安全运营</div><div class="arch-items"><span class="chip">旅游安全</span><span class="chip">秩序治理</span><span class="chip">车辆调度</span><span class="chip">游船调度</span><span class="chip">森林防火</span><span class="chip">生态监测</span><span class="chip">气象服务</span><span class="chip">设施监测</span></div></div><div class="arch-row"><div class="arch-name">业务与数据</div><div class="arch-items"><span class="chip src">售检票与分销</span><span class="chip src">景区业态 9 类</span><span class="chip src">年卡 · 分时预约 · 人脸</span><span class="chip src">财务与电子发票</span><span class="chip src">智慧终端 · 边云网关</span></div></div></div><div class="arch-side"><div class="arch-side-title">票付通沉淀<br>行业积累</div><div class="arch-side-item">景区交易数据</div><div class="arch-side-item">票务与业态知识</div><div class="arch-side-item">业务系统接口</div><div class="arch-side-item">闸机与物联设备</div><div class="arch-side-item">景区服务经验</div></div></div></figure>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">游客服务</div><div class="arch-items"><span class="chip">AI 旅游规划</span><span class="chip have">智能客服</span><span class="chip have">智能助手</span><span class="chip">AI 智能购票</span><span class="chip have">智能导览</span><span class="chip have">AI 伴游</span><span class="chip have">手语</span><span class="chip have">AI 旅拍</span></div></div><div class="arch-row"><div class="arch-name">精准营销</div><div class="arch-items"><span class="chip">会员画像</span><span class="chip">人群圈选</span><span class="chip">年卡续费提醒</span><span class="chip">全民营销推荐</span><span class="chip">活动效果复盘</span></div></div><div class="arch-row"><div class="arch-name">景区管理</div><div class="arch-items"><span class="chip have">智能问数</span><span class="chip have">智能数据解读</span><span class="chip">移动驾驶舱</span><span class="chip">票务 AI 运营助手</span><span class="chip">AI 对账助手</span><span class="chip">消息预警</span><span class="chip">工单处置</span></div></div><div class="arch-row"><div class="arch-name">安全运营</div><div class="arch-items"><span class="chip">旅游安全</span><span class="chip">秩序治理</span><span class="chip">车辆调度</span><span class="chip">游船调度</span><span class="chip">森林防火</span><span class="chip">生态监测</span><span class="chip">气象服务</span><span class="chip">设施监测</span></div></div><div class="arch-row"><div class="arch-name">业务与数据</div><div class="arch-items"><span class="chip src">售检票与分销</span><span class="chip src">景区业态 9 类</span><span class="chip src">年卡 · 分时预约 · 人脸</span><span class="chip src">财务与电子发票</span><span class="chip src">智慧终端 · 边云网关</span></div></div></div><div class="arch-side"><div class="arch-side-title">场景沉淀</div><div class="arch-side-item">景区交易数据</div><div class="arch-side-item">票务与业态知识</div><div class="arch-side-item">业务系统接口</div><div class="arch-side-item">闸机与物联设备</div><div class="arch-side-item">景区服务经验</div></div></div></figure>
 <blockquote>
 <p>渐变色块为已有智能体，白色块为全景中可做的场景。四层分别对应畅游 AI、会员营销、AI 数字大脑（景数通 / 票付通 APP）、景区 AI 调度中枢，底层为智慧票务系统。</p>
 </blockquote>
@@ -314,255 +262,193 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </table>
 <p><strong>我们的优势</strong>：智能体要“能办事”，靠的是业务系统和数据。票付通的票务、业态、终端系统在景区现场，交易数据、业务接口和景区服务经验是通用 AI 厂商没有的。</p>
 <h2 id="23">2.3 平台建设</h2>
-<p><strong>定位</strong>：标准产品、聚合台、统一产出地、统一收口地。</p>
-<figure class="diagram"><div class="pf">
-  <div class="pf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
-    <div class="pf-val hl"><h4>标准产品</h4><div class="chg">每类场景一个标准智能体，配置化输出</div><div class="msr">按场景报价、交付、升级</div></div>
-    <div class="pf-val"><h4>聚合台</h4><div class="chg">模型、知识、工具、数据、渠道聚在一处，所有智能体共用</div><div class="msr">能力只建一次</div></div>
-    <div class="pf-val"><h4>统一产出地</h4><div class="chg">新智能体都在平台上选模板、做配置生成</div><div class="msr">新项目只走平台</div></div>
-    <div class="pf-val"><h4>统一收口地</h4><div class="chg">所有智能体统一注册、入口、权限、计量和监控</div><div class="msr">一个后台管全部</div></div>
-  </div>
-  <div class="pf-hero">编排用扣子，收口和能力自己建；扣子、合作、Quick BI 全部收口</div>
-</div>
-</figure>
-<p><strong>怎么收口</strong>：三类来源加新场景，全部进同一个平台，再分发到产品全景中的各个入口。</p>
+<p><strong>思路</strong>：不建大平台。扣子就是编排平台，问数用 Quick BI，手语用合作方，都直接用；我们只补三件能复制的东西，入口复用现有产品。</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-col" style="flex:1.2">
-      <div class="pf-card panel"><h4 style="font-size:15px">扣子工作流智能体</h4><div class="sub">助手 · 客服 · 导览 · 旅拍 · 伴游</div></div>
-      <div class="pf-card dash"><h4 style="font-size:15px">合作能力</h4><div class="sub">手语，及后续外部能力</div></div>
-      <div class="pf-card line"><h4 style="font-size:15px">Quick BI 能力</h4><div class="sub">智能问数 · 智能数据解读</div></div>
-      <div class="pf-card soft"><h4 style="font-size:15px">新场景</h4><div class="sub">管理 · 调度 · 营销类智能体</div></div>
+    <div class="pf-col" style="flex:1">
+      <div class="pf-card soft c"><h4 style="font-size:15px">扣子 · 工作流编排</h4><div class="sub">现成，直接用</div></div>
+      <div class="pf-card soft c"><h4 style="font-size:15px">Quick BI · 问数解读</h4><div class="sub">现成，直接用</div></div>
+      <div class="pf-card soft c"><h4 style="font-size:15px">合作方 · 手语</h4><div class="sub">现成，直接用</div></div>
     </div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card panel" style="flex:2;gap:8px">
-      <div class="ttl">智能体平台 · 聚合台</div>
-      <div class="pf-bar dark">运营收口：统一注册 · 权限 · 计量 · 评测 · 反馈</div>
-      <div class="pf-bar grad">智能体工厂：扣子编排（云上 / 私有化）· 模板 · 版本发布</div>
-      <div class="pf-bar line">能力中心：知识 · 工具 · 编排 · 数字人 / 语音 / 手语</div>
-      <div class="pf-bar line">模型网关：大模型 · 多模态 · 路由计量 · 内容安全</div>
-      <div class="pf-bar dash">数据底座：认证指标 · 统一标签 · 数据服务 · 实时事件</div>
+    <div class="pf-card panel" style="flex:2.1;gap:8px">
+      <div class="ttl">我们只补三件能复制的东西</div>
+      <div class="pf-bar grad">场景模板：现有智能体整理成可复制的工作流模板</div>
+      <div class="pf-bar grad">景区知识包：统一结构，实施按表填内容</div>
+      <div class="pf-bar grad">共用插件：售票、订单、核销、会员、数据接口一次封装</div>
+      <div class="pf-bar line">外加一张智能体台账：开通景区 · 版本 · 负责人 · 用量费用</div>
     </div>
     <div class="pf-arrow">➜</div>
     <div class="pf-col" style="flex:1">
       <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">畅游小程序</h4></div>
       <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">票付通 APP</h4></div>
-      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">景数通 · 大屏</h4></div>
-      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">景区 SaaS · 终端</h4></div>
-      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">开放 API</h4></div>
+      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">景区公众号 / 小程序</h4></div>
+      <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:14.5px">售票终端</h4></div>
     </div>
   </div>
-  <div class="pf-banner"><b>收口原则</b><span>不管来源是扣子、合作还是 Quick BI，都在平台注册、走同一套权限、计量和评测；新场景只在平台上生产</span></div>
+  <div class="pf-banner warm"><b>暂不做</b><span>自建模型网关、智能体工厂、私有化部署；开通量和调用量上来后再评估</span></div>
 </div>
 </figure>
-<p><strong>编排怎么选</strong>：编排继续用扣子，收口层和能力中心自己建。</p>
-<table>
-<thead>
-<tr>
-<th>方案</th>
-<th>做法</th>
-<th>好处</th>
-<th>风险</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A. 继续用扣子云</td>
-<td>编排在扣子云上；自建收口层、能力中心，扣子工作流通过插件调用</td>
-<td>现有智能体不动，上手快</td>
-<td>工作流和知识库在外部；计费、定制受平台限制</td>
-</tr>
-<tr>
-<td>B. 私有化部署扣子开源版</td>
-<td>部署 Coze Studio（开发平台）和 Coze Loop（评测运维），Apache 2.0 开源，可商用</td>
-<td>资产自主、数据不出域、可对接内部权限</td>
-<td>需要运维投入；开源版与云上版功能有差异，工作流迁移要逐个验证</td>
-</tr>
-</tbody>
-</table>
-<p><strong>建议</strong>：先 A 后 B。现有 5 个扣子智能体先不动，先建收口层和能力中心；同时拿 1 个智能体做私有化 POC，验证迁移成本和效果后再决定是否整体迁移。不管 A 还是 B，收口层、能力中心、数据底座都是自己的，编排平台可替换。</p>
 <h3 id="231">2.3.1 总体架构</h3>
-<p><strong>六层建设，运营收口贯穿始终</strong></p>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">渠道入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通 · 大屏</span><span class="chip">景区 SaaS 嵌入</span><span class="chip">智慧终端</span><span class="chip">开放 API</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务类</span><span class="chip">精准营销类</span><span class="chip">景区管理类</span><span class="chip">安全运营类</span></div></div><div class="arch-row"><div class="arch-name">智能体工厂</div><div class="arch-items"><span class="chip have">扣子工作流编排</span><span class="chip">模板库</span><span class="chip">版本与发布</span><span class="chip">评测（Coze Loop）</span></div></div><div class="arch-row"><div class="arch-name">能力中心</div><div class="arch-items"><span class="chip">知识库</span><span class="chip">业务工具</span><span class="chip">工作流编排</span><span class="chip">记忆</span><span class="chip">数字人 / 语音</span><span class="chip">手语（合作）</span></div></div><div class="arch-row"><div class="arch-name">模型网关</div><div class="arch-items"><span class="chip">大模型接入</span><span class="chip">视觉 / 语音</span><span class="chip">路由与计量</span><span class="chip">内容安全</span></div></div><div class="arch-row"><div class="arch-name">数据底座</div><div class="arch-items"><span class="chip src">认证指标</span><span class="chip src">统一标签</span><span class="chip have">动态数据开放 API</span><span class="chip have">Quick BI</span><span class="chip src">实时事件</span><span class="chip src">物联与气象</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营收口<br>贯穿各层</div><div class="arch-side-item">统一注册</div><div class="arch-side-item">统一入口</div><div class="arch-side-item">统一权限</div><div class="arch-side-item">调用计量</div><div class="arch-side-item">监控与评测</div><div class="arch-side-item">反馈回流</div></div></div></figure>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip">景区公众号 / 小程序</span><span class="chip have">售票终端</span></div></div><div class="arch-row"><div class="arch-name">场景包</div><div class="arch-items"><span class="chip">游客服务包</span><span class="chip">景区管理包</span><span class="chip">票务提效包</span><span class="chip">按需定制</span></div></div><div class="arch-row"><div class="arch-name">场景模板</div><div class="arch-items"><span class="chip have">助手 / 客服</span><span class="chip have">导览</span><span class="chip have">旅拍</span><span class="chip have">伴游</span><span class="chip">智能购票</span><span class="chip">票务运营助手</span></div></div><div class="arch-row"><div class="arch-name">扣子平台</div><div class="arch-items"><span class="chip have">工作流编排</span><span class="chip have">知识库</span><span class="chip have">插件</span><span class="chip have">发布渠道</span></div></div><div class="arch-row"><div class="arch-name">我们补的</div><div class="arch-items"><span class="chip">共用插件</span><span class="chip">景区知识包</span><span class="chip">智能体台账</span></div></div><div class="arch-row"><div class="arch-name">数据与业务</div><div class="arch-items"><span class="chip have">动态数据开放 API</span><span class="chip have">Quick BI</span><span class="chip have">售票 / 订单 / 核销接口</span><span class="chip have">会员 / 年卡接口</span></div></div></div><div class="arch-side"><div class="arch-side-title">直接用<br>不自建</div><div class="arch-side-item">扣子编排</div><div class="arch-side-item">Quick BI 问数</div><div class="arch-side-item">合作手语</div><div class="arch-side-item">现有产品入口</div></div></div></figure>
 <blockquote>
-<p>渐变色块为已有能力，白色块为新建或升级；数据底座由第一章的数据平台提供。</p>
+<p>渐变色块为已有，白色块为要补的；整套只新增三件东西，其余都是现成的。</p>
 </blockquote>
-<h3 id="232">2.3.2 平台组件</h3>
-<figure class="diagram"><div class="cmp-legend"><span class="cmp have">已有</span><span class="cmp up">升级</span><span class="cmp new">新建</span></div><div class="cmp-grid" style="grid-template-columns: repeat(7, minmax(0, 1fr));"><div class="cmp-col"><div class="cmp-head">模型网关</div><div class="cmp up">大模型接入</div><div class="cmp up">视觉 / 语音模型</div><div class="cmp new">路由与降级</div><div class="cmp new">计量与限流</div><div class="cmp new">内容安全</div></div><div class="cmp-col"><div class="cmp-head">能力中心</div><div class="cmp up">景区知识库</div><div class="cmp up">票务与订单插件</div><div class="cmp new">年卡 / 会员工具</div><div class="cmp new">工单与通知</div><div class="cmp new">工作流编排</div></div><div class="cmp-col"><div class="cmp-head">多模态</div><div class="cmp up">数字人</div><div class="cmp up">语音识别 / 合成</div><div class="cmp have">手语（合作）</div><div class="cmp up">旅拍图像</div></div><div class="cmp-col"><div class="cmp-head">智能体工厂</div><div class="cmp have">扣子工作流编排</div><div class="cmp new">模板库</div><div class="cmp new">版本与发布</div><div class="cmp new">评测集</div><div class="cmp new">私有化部署</div></div><div class="cmp-col"><div class="cmp-head">数据接入</div><div class="cmp have">Quick BI</div><div class="cmp have">动态数据开放 API</div><div class="cmp new">指标服务</div><div class="cmp new">标签服务</div><div class="cmp new">实时事件</div></div><div class="cmp-col"><div class="cmp-head">渠道发布</div><div class="cmp have">畅游小程序</div><div class="cmp have">票付通 APP</div><div class="cmp have">景数通</div><div class="cmp new">景区 SaaS 嵌入</div><div class="cmp new">开放 API</div></div><div class="cmp-col"><div class="cmp-head">运营收口</div><div class="cmp new">注册中心</div><div class="cmp new">统一权限</div><div class="cmp new">调用计量</div><div class="cmp new">监控与日志</div><div class="cmp new">反馈回流</div></div></div></figure>
-<blockquote>
-<p>写法：<code>*</code> 已有，<code>+</code> 从现有扣子智能体中抽出升级为共用能力（如扣子上的知识库、插件），不加标记为新建。</p>
-</blockquote>
-<p><strong>全景产品需要平台提供什么</strong></p>
+<h3 id="232">2.3.2 三件套</h3>
 <table>
 <thead>
 <tr>
-<th>全景产品</th>
-<th>智能体</th>
-<th>平台提供</th>
+<th>要补的</th>
+<th>做什么</th>
+<th>谁做</th>
+<th>投入</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>畅游 AI</td>
-<td>规划、客服、购票、导览、伴游、手语、旅拍</td>
-<td>景区知识库、售票与订单工具、数字人与语音、手语接入</td>
+<td>场景模板</td>
+<td>把现有 5 个扣子智能体整理成可复制的工作流模板，景区差异全部做成配置项</td>
+<td>产品 + 工作流配置</td>
+<td>小</td>
 </tr>
 <tr>
-<td>景数通 / 票付通 APP</td>
-<td>问数、数据解读、驾驶舱、预警</td>
-<td>认证指标与统一语义、预警规则、消息与工单</td>
+<td>景区知识包</td>
+<td>统一知识结构：景区介绍、票种价格、开放时间、交通、游玩路线、常见问题，实施按表填</td>
+<td>实施 / 客户成功</td>
+<td>小</td>
 </tr>
 <tr>
-<td>景区 AI 调度中枢</td>
-<td>安全、秩序、车船调度、防火、生态、气象、设施</td>
-<td>实时事件、闸机与物联数据、气象数据、处置规则、工单</td>
+<td>共用插件</td>
+<td>售票、订单查询、核销、会员年卡、动态数据开放 API 封装成扣子插件，所有智能体共用</td>
+<td>研发（少量）</td>
+<td>中</td>
 </tr>
 <tr>
-<td>智慧票务</td>
-<td>票务 AI 运营助手、AI 对账助手</td>
-<td>订单、核销、结算与财务接口</td>
-</tr>
-<tr>
-<td>会员营销</td>
-<td>画像、圈人、推荐、复盘</td>
-<td>统一标签、会员与年卡工具、营销效果指标</td>
+<td>智能体台账</td>
+<td>一张表记录开通景区、模板版本、负责人、用量和费用（扣子账单导出）</td>
+<td>运营</td>
+<td>小</td>
 </tr>
 </tbody>
 </table>
 <h2 id="24">2.4 平台运营</h2>
-<p><strong>思路</strong>：平台建好只是开始，要靠目录、上新规范、收口规则和评测，把“标准产品”守住。</p>
-<h3 id="241">2.4.1 标准智能体目录</h3>
+<h3 id="241">2.4.1 场景包目录</h3>
 <table>
 <thead>
 <tr>
-<th>场景层</th>
-<th>已有</th>
-<th>下一步做成标准智能体</th>
+<th>场景包</th>
+<th>包含</th>
+<th>卖给谁</th>
+<th>状态</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>游客服务</td>
-<td>智能助手、智能客服、智能导览、AI 旅拍、AI 伴游、手语</td>
-<td>AI 旅游规划、AI 智能购票</td>
+<td>游客服务包</td>
+<td>智能助手 / 客服、智能导览、AI 旅拍、AI 伴游，可选手语</td>
+<td>景区</td>
+<td>可售</td>
 </tr>
 <tr>
-<td>景区管理</td>
+<td>景区管理包</td>
 <td>智能问数、智能数据解读</td>
-<td>票务 AI 运营助手、AI 对账助手、预警与工单</td>
+<td>景区管理者</td>
+<td>可售</td>
 </tr>
 <tr>
-<td>安全运营</td>
-<td>——</td>
-<td>秩序治理、车辆 / 游船调度，再扩展到防火、生态、气象、设施</td>
+<td>票务提效包</td>
+<td>AI 智能购票、票务 AI 运营助手、AI 对账助手</td>
+<td>景区票务、财务</td>
+<td>第二批，有客户再做</td>
 </tr>
 <tr>
-<td>精准营销</td>
-<td>——</td>
-<td>人群圈选、年卡续费提醒、活动复盘</td>
+<td>安全调度</td>
+<td>客流、车船、安防类智能体</td>
+<td>景区安全部门</td>
+<td>按项目定制，不先做通用</td>
 </tr>
 </tbody>
 </table>
-<p>每个标准智能体都有：模板、可配置项清单、评测集、负责人。</p>
-<h3 id="242">2.4.2 上新方式</h3>
+<h3 id="242">2.4.2 复制交付</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
     <div class="pf-card dash top" style="flex:1;gap:12px">
-      <div class="ttl">现在：在扣子上逐个搭</div>
-      <div class="pf-row" style="align-items:center"><span class="pf-pill" style="flex:1;border-color:transparent">搭工作流</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">配知识库</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">接插件</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">发布</span></div>
-      <div class="pf-note org">知识、插件各配各的 · 与内部权限、计量、评测不打通</div>
+      <div class="ttl">现在：每开一个景区重做一遍</div>
+      <div class="pf-row" style="align-items:center"><span class="pf-pill" style="flex:1;border-color:transparent">复制工作流</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">整理知识</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">接口调试</span></div>
+      <div class="pf-note org">依赖懂扣子的人 · 每家景区都要折腾一遍</div>
     </div>
     <div class="pf-arrow big">➜</div>
     <div class="pf-card panel top" style="flex:1;gap:8px">
-      <div class="ttl">以后：在平台上组装</div>
-      <div class="pf-bar grad">扣子编排 + 共用能力中心</div>
-      <div class="pf-row"><div class="pf-bar line" style="flex:1">配置知识 · 工具 · 渠道</div><div class="pf-bar line" style="flex:1">少量扩展 · 个性需求</div></div>
+      <div class="ttl">以后：按场景包开通</div>
+      <div class="pf-bar grad">选场景包（模板已就绪）</div>
+      <div class="pf-row"><div class="pf-bar line" style="flex:1">填景区知识包</div><div class="pf-bar line" style="flex:1">绑定插件和入口</div></div>
       <div class="pf-arrow down">▼</div>
-      <div class="pf-bar dark">评测通过 → 注册发布</div>
+      <div class="pf-bar dark">跑常见问题清单 → 上线</div>
     </div>
   </div>
-  <div class="pf-label" style="width:auto">上新流程</div>
+  <div class="pf-label" style="width:auto">开通流程</div>
   <div class="pf-row">
-    <div class="pf-card soft c" style="flex:1">场景确认</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">选模板</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">配置</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">评测</div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1">注册发布</div><div class="pf-arrow">➜</div>
-    <div class="pf-card grad c" style="flex:1;font-weight:700">运营回流</div>
+    <div class="pf-card soft c" style="flex:1">签约</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">选场景包</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">填知识包</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">绑插件和入口</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">验收</div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1;font-weight:700">上线运营</div>
   </div>
-  <div class="pf-note">模板覆盖不了的需求，先评估能否沉淀为通用能力；确属个性化的，作为扩展插件开发，不改模板本身</div>
+  <div class="pf-note">目标：实施人员不改工作流，只填表、做配置；单个景区按天上线</div>
 </div>
 </figure>
-<h3 id="243">2.4.3 统一收口</h3>
-<figure class="diagram"><div class="mermaid-svg"><svg id="mermaid-1792073129532" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 1174.09375px;" viewBox="-8 -8 1174.09375 312" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaid-1792073129532{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;fill:#2B2F42;}#mermaid-1792073129532 .error-icon{fill:#F6F5FF;}#mermaid-1792073129532 .error-text{fill:#090a00;stroke:#090a00;}#mermaid-1792073129532 .edge-thickness-normal{stroke-width:2px;}#mermaid-1792073129532 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1792073129532 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1792073129532 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1792073129532 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1792073129532 .marker{fill:#8C84F0;stroke:#8C84F0;}#mermaid-1792073129532 .marker.cross{stroke:#8C84F0;}#mermaid-1792073129532 svg{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;}#mermaid-1792073129532 .label{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2B2F42;}#mermaid-1792073129532 .cluster-label text{fill:#090a00;}#mermaid-1792073129532 .cluster-label span,#mermaid-1792073129532 p{color:#090a00;}#mermaid-1792073129532 .label text,#mermaid-1792073129532 span,#mermaid-1792073129532 p{fill:#2B2F42;color:#2B2F42;}#mermaid-1792073129532 .node rect,#mermaid-1792073129532 .node circle,#mermaid-1792073129532 .node ellipse,#mermaid-1792073129532 .node polygon,#mermaid-1792073129532 .node path{fill:#ECEAFF;stroke:#776CFD;stroke-width:1px;}#mermaid-1792073129532 .flowchart-label text{text-anchor:middle;}#mermaid-1792073129532 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1792073129532 .node .label{text-align:center;}#mermaid-1792073129532 .node.clickable{cursor:pointer;}#mermaid-1792073129532 .arrowheadPath{fill:#0b0b0b;}#mermaid-1792073129532 .edgePath .path{stroke:#8C84F0;stroke-width:2.0px;}#mermaid-1792073129532 .flowchart-link{stroke:#8C84F0;fill:none;}#mermaid-1792073129532 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mermaid-1792073129532 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mermaid-1792073129532 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-1792073129532 .cluster rect{fill:#F6F5FF;stroke:#C9C4FB;stroke-width:1px;}#mermaid-1792073129532 .cluster text{fill:#090a00;}#mermaid-1792073129532 .cluster span,#mermaid-1792073129532 p{color:#090a00;}#mermaid-1792073129532 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:12px;background:#F6F5FF;border:1px solid hsl(246, 60%, 88.0392156863%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1792073129532 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2B2F42;}#mermaid-1792073129532 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mermaid-1792073129532_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792073129532_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792073129532_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792073129532_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792073129532_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792073129532_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M124,18.25L128.167,18.25C132.333,18.25,140.667,18.25,158.618,34.125C176.569,49.999,204.137,81.749,217.921,97.623L231.706,113.498" id="L-A1-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A1 LE-R" style="fill:none;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path><path d="M96,104.75L104.833,104.75C113.667,104.75,131.333,104.75,144.878,106.558C158.422,108.367,167.843,111.984,172.554,113.792L177.265,115.601" id="L-A2-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A2 LE-R" style="fill:none;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path><path d="M110.398,191.25L116.832,191.25C123.266,191.25,136.133,191.25,147.277,189.442C158.422,187.633,167.843,184.016,172.554,182.208L177.265,180.399" id="L-A3-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A3 LE-R" style="fill:none;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path><path d="M89,277.75L99,277.75C109,277.75,129,277.75,152.784,261.875C176.569,246.001,204.137,214.251,217.921,198.377L231.706,182.502" id="L-A4-R-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A4 LE-R" style="fill:none;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path><path d="M349.328,122.517L353.495,121.306C357.661,120.095,365.995,117.672,373.445,116.461C380.895,115.25,387.461,115.25,390.745,115.25L394.028,115.25" id="L-R-G-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-R LE-G" style="fill:none;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path><path d="M623.422,115.25L636.793,115.25C650.164,115.25,676.906,115.25,702.765,115.25C728.624,115.25,753.599,115.25,766.087,115.25L778.575,115.25" id="L-G-M-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-M" style="fill:none;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path><path d="M959.203,115.25L963.37,115.25C967.536,115.25,975.87,115.25,983.364,116.346C990.858,117.442,997.514,119.634,1000.841,120.729L1004.169,121.825" id="L-M-F-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-M LE-F" style="fill:none;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path><path d="M1009.203,172.517L1005.036,173.889C1000.87,175.261,992.536,178.006,969.592,179.378C946.648,180.75,909.094,180.75,862.335,180.75C815.576,180.75,759.612,180.75,699.585,180.75C639.557,180.75,575.466,180.75,520.579,180.75C465.693,180.75,420.01,180.75,393.851,179.785C367.691,178.821,361.054,176.891,357.736,175.927L354.417,174.962" id="L-F-R-0" class=" edge-thickness-normal edge-pattern-dotted flowchart-link LS-F LE-R" style="fill:none;stroke-width:2px;stroke-dasharray:3;" marker-end="url(#mermaid-1792073129532_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(703.6484375, 180.75)"><g class="label" transform="translate(-55.2265625, -12.25)"><foreignObject width="110.453125" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">补知识 · 补评测集</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-A1-0" data-node="true" data-id="A1" transform="translate(62, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-62" y="-18.25" width="124" height="36.5"></rect><g class="label" style="" transform="translate(-56, -12.25)"><rect></rect><foreignObject width="112" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">扣子工作流智能体</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-R-1" data-node="true" data-id="R" transform="translate(261.6640625, 148)"><rect class="basic label-container" style="" rx="0" ry="0" x="-87.6640625" y="-30.5" width="175.328125" height="61"></rect><g class="label" style="" transform="translate(-81.6640625, -24.5)"><rect></rect><foreignObject width="163.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">注册中心<br>编号 · 负责人 · 版本 · 权限</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A2-2" data-node="true" data-id="A2" transform="translate(62, 104.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">合作能力</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A3-4" data-node="true" data-id="A3" transform="translate(62, 191.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-48.3984375" y="-18.25" width="96.796875" height="36.5"></rect><g class="label" style="" transform="translate(-42.3984375, -12.25)"><rect></rect><foreignObject width="84.796875" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Quick BI 能力</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-A4-6" data-node="true" data-id="A4" transform="translate(62, 277.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-27" y="-18.25" width="54" height="36.5"></rect><g class="label" style="" transform="translate(-21, -12.25)"><rect></rect><foreignObject width="42" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">新场景</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-G-9" data-node="true" data-id="G" transform="translate(511.375, 115.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-112.046875" y="-30.5" width="224.09375" height="61"></rect><g class="label" style="" transform="translate(-106.046875, -24.5)"><rect></rect><foreignObject width="212.09375" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">统一入口<br>小程序 · APP · 景数通 · 终端 · API</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-M-11" data-node="true" data-id="M" transform="translate(871.5390625, 115.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-87.6640625" y="-30.5" width="175.328125" height="61"></rect><g class="label" style="" transform="translate(-81.6640625, -24.5)"><rect></rect><foreignObject width="163.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">计量与监控<br>调用量 · 成本 · 时延 · 错误</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-F-13" data-node="true" data-id="F" transform="translate(1083.6484375, 148)"><rect class="basic label-container" style="" rx="0" ry="0" x="-74.4453125" y="-30.5" width="148.890625" height="61"></rect><g class="label" style="" transform="translate(-68.4453125, -24.5)"><rect></rect><foreignObject width="136.890625" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">反馈回流<br>纠错 · 评价 · 工单结果</span></div></foreignObject></g></g></g></g></g></svg></div></figure>
+<h3 id="243">2.4.3 质量与成本</h3>
 <table>
 <thead>
 <tr>
-<th>规则</th>
-<th>说明</th>
+<th>管什么</th>
+<th>怎么管</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>先注册再上线</td>
-<td>所有智能体（含扣子、合作和 Quick BI 能力）在平台注册，登记负责人、版本、使用的数据和权限</td>
+<td>上线质量</td>
+<td>每个模板配一份常见问题清单（如 30 条），新景区上线前跑一遍</td>
 </tr>
 <tr>
-<td>统一入口</td>
-<td>按渠道统一接入，不再每个智能体单独开口子</td>
+<td>线上效果</td>
+<td>答错、差评的问题补进知识包；同类问题多次出现就改模板</td>
 </tr>
 <tr>
-<td>统一权限</td>
-<td>继承数据平台的权限，按景区、租户隔离</td>
+<td>调用成本</td>
+<td>每月导出扣子账单，按景区分摊，进智能体台账</td>
 </tr>
 <tr>
-<td>统一计量</td>
-<td>按景区、智能体统计调用量和成本，可出账单</td>
-</tr>
-<tr>
-<td>合作能力</td>
-<td>合作方能力按平台规范接入，约定体验标准、可用性和计量方式</td>
+<td>模板升级</td>
+<td>模板改一次，所有景区同步更新</td>
 </tr>
 </tbody>
 </table>
-<h3 id="244">2.4.4 评测与质量</h3>
-<figure class="diagram"><div class="mermaid-svg"><svg id="mermaid-1792073129616" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 993.109375px;" viewBox="-8 -8 993.109375 180.125" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaid-1792073129616{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;fill:#2B2F42;}#mermaid-1792073129616 .error-icon{fill:#F6F5FF;}#mermaid-1792073129616 .error-text{fill:#090a00;stroke:#090a00;}#mermaid-1792073129616 .edge-thickness-normal{stroke-width:2px;}#mermaid-1792073129616 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1792073129616 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1792073129616 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1792073129616 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1792073129616 .marker{fill:#8C84F0;stroke:#8C84F0;}#mermaid-1792073129616 .marker.cross{stroke:#8C84F0;}#mermaid-1792073129616 svg{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:14px;}#mermaid-1792073129616 .label{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:#2B2F42;}#mermaid-1792073129616 .cluster-label text{fill:#090a00;}#mermaid-1792073129616 .cluster-label span,#mermaid-1792073129616 p{color:#090a00;}#mermaid-1792073129616 .label text,#mermaid-1792073129616 span,#mermaid-1792073129616 p{fill:#2B2F42;color:#2B2F42;}#mermaid-1792073129616 .node rect,#mermaid-1792073129616 .node circle,#mermaid-1792073129616 .node ellipse,#mermaid-1792073129616 .node polygon,#mermaid-1792073129616 .node path{fill:#ECEAFF;stroke:#776CFD;stroke-width:1px;}#mermaid-1792073129616 .flowchart-label text{text-anchor:middle;}#mermaid-1792073129616 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-1792073129616 .node .label{text-align:center;}#mermaid-1792073129616 .node.clickable{cursor:pointer;}#mermaid-1792073129616 .arrowheadPath{fill:#0b0b0b;}#mermaid-1792073129616 .edgePath .path{stroke:#8C84F0;stroke-width:2.0px;}#mermaid-1792073129616 .flowchart-link{stroke:#8C84F0;fill:none;}#mermaid-1792073129616 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mermaid-1792073129616 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mermaid-1792073129616 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-1792073129616 .cluster rect{fill:#F6F5FF;stroke:#C9C4FB;stroke-width:1px;}#mermaid-1792073129616 .cluster text{fill:#090a00;}#mermaid-1792073129616 .cluster span,#mermaid-1792073129616 p{color:#090a00;}#mermaid-1792073129616 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;font-size:12px;background:#F6F5FF;border:1px solid hsl(246, 60%, 88.0392156863%);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1792073129616 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#2B2F42;}#mermaid-1792073129616 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mermaid-1792073129616_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792073129616_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792073129616_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792073129616_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-1792073129616_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-1792073129616_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M259.328,66.794L263.495,65.911C267.661,65.029,275.995,63.265,283.445,62.382C290.895,61.5,297.461,61.5,300.745,61.5L304.028,61.5" id="L-E-T-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-T" style="fill:none;" marker-end="url(#mermaid-1792073129616_flowchart-pointEnd)"></path><path d="M500.219,32.316L507.885,29.971C515.552,27.627,530.885,22.939,545.335,20.594C559.785,18.25,573.352,18.25,580.135,18.25L586.919,18.25" id="L-T-G-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-G" style="fill:none;" marker-end="url(#mermaid-1792073129616_flowchart-pointEnd)"></path><path d="M660.219,18.25L664.385,18.25C668.552,18.25,676.885,18.25,684.335,18.25C691.785,18.25,698.352,18.25,701.635,18.25L704.919,18.25" id="L-G-O-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-O" style="fill:none;" marker-end="url(#mermaid-1792073129616_flowchart-pointEnd)"></path><path d="M500.219,90.684L507.885,93.029C515.552,95.373,530.885,100.061,545.335,102.406C559.785,104.75,573.352,104.75,580.135,104.75L586.919,104.75" id="L-T-X-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-X" style="fill:none;" marker-end="url(#mermaid-1792073129616_flowchart-pointEnd)"></path><path d="M778.219,18.25L782.385,18.25C786.552,18.25,794.885,18.25,810.944,27.339C827.004,36.427,850.788,54.605,862.681,63.693L874.573,72.782" id="L-O-L-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-O LE-L" style="fill:none;" marker-end="url(#mermaid-1792073129616_flowchart-pointEnd)"></path><path d="M876.691,112.5L864.446,121.104C852.2,129.708,827.709,146.917,805.631,155.521C783.552,164.125,763.885,164.125,744.219,164.125C724.552,164.125,704.885,164.125,685.219,164.125C665.552,164.125,645.885,164.125,622.719,164.125C599.552,164.125,572.885,164.125,535.978,164.125C499.07,164.125,451.922,164.125,408.273,164.125C364.625,164.125,324.477,164.125,290.682,157.926C256.887,151.727,229.445,139.33,215.725,133.131L202.004,126.932" id="L-L-E-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-L LE-E" style="fill:none;" marker-end="url(#mermaid-1792073129616_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(546.21875, 18.25)"><g class="label" transform="translate(-14, -12.25)"><foreignObject width="28" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">通过</span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(546.21875, 104.75)"><g class="label" transform="translate(-21, -12.25)"><foreignObject width="42" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">不通过</span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-E-16" data-node="true" data-id="E" transform="translate(129.6640625, 94.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-129.6640625" y="-30.5" width="259.328125" height="61"></rect><g class="label" style="" transform="translate(-123.6640625, -24.5)"><rect></rect><foreignObject width="247.328125" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">评测集<br>常见问题 · 越权提问 · 无数据 · 模糊问题</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-T-17" data-node="true" data-id="T" transform="translate(404.7734375, 61.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-95.4453125" y="-30.5" width="190.890625" height="61"></rect><g class="label" style="" transform="translate(-89.4453125, -24.5)"><rect></rect><foreignObject width="178.890625" height="49"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">上线门槛<br>正确率 · 越权阻断 · 响应时间</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-G-19" data-node="true" data-id="G" transform="translate(626.21875, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">灰度上线</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-O-20" data-node="true" data-id="O" transform="translate(744.21875, 18.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">线上监控</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-X-22" data-node="true" data-id="X" transform="translate(626.21875, 104.75)"><rect class="basic label-container" style="" rx="0" ry="0" x="-34" y="-18.25" width="68" height="36.5"></rect><g class="label" style="" transform="translate(-28, -12.25)"><rect></rect><foreignObject width="56" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">打回修改</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-L-24" data-node="true" data-id="L" transform="translate(902.6640625, 94.25)"><rect class="basic label-container" style="" rx="0" ry="0" x="-74.4453125" y="-18.25" width="148.890625" height="36.5"></rect><g class="label" style="" transform="translate(-68.4453125, -12.25)"><rect></rect><foreignObject width="136.890625" height="24.5"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">问答日志 · 纠错 · 评价</span></div></foreignObject></g></g></g></g></g></svg></div></figure>
-<ul>
-<li>每个标准智能体配一套评测集，工作流、知识或模型变更后都要回归；评测工具可用扣子罗盘（Coze Loop）。</li>
-<li>问数类智能体和 Quick BI、景数通共用认证指标，同一个问题只有一个答案。</li>
-</ul>
-<h3 id="245">2.4.5 安全与权限</h3>
+<h3 id="244">2.4.4 安全底线</h3>
 <table>
 <thead>
 <tr>
-<th>要求</th>
+<th>底线</th>
 <th>做法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>数据权限</td>
-<td>智能体继承提问人的权限；只调用认证指标和授权数据（见 1.4.7）</td>
+<td>只用授权数据</td>
+<td>插件按景区隔离，只返回本景区数据</td>
 </tr>
 <tr>
-<td>敏感信息</td>
-<td>L4 明文不进入大模型；对外不提供个体信息</td>
+<td>不碰敏感信息</td>
+<td>手机号、证件号不进入对话和知识库</td>
 </tr>
 <tr>
-<td>内容安全</td>
-<td>输入输出过内容审核；不回答超出范围的问题</td>
-</tr>
-<tr>
-<td>人机协同</td>
-<td>调度、退款等处置动作需人工确认</td>
-</tr>
-<tr>
-<td>可追溯</td>
-<td>问答、调用、处置全程留痕，可审计</td>
+<td>不乱承诺</td>
+<td>价格、退改规则以系统返回为准，答不了就转人工</td>
 </tr>
 </tbody>
 </table>
-<h3 id="246">2.4.6 组织分工</h3>
+<h3 id="245">2.4.5 分工</h3>
 <table>
 <thead>
 <tr>
@@ -572,78 +458,72 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </thead>
 <tbody>
 <tr>
-<td>平台团队</td>
-<td>建设模型网关、能力中心、智能体工厂；维护模板和评测集</td>
-</tr>
-<tr>
 <td>产品</td>
-<td>按场景层定义标准智能体和场景包</td>
+<td>定场景包和模板，决定先做什么</td>
 </tr>
 <tr>
-<td>实施交付</td>
-<td>按模板配置交付，收集现场需求</td>
+<td>工作流配置</td>
+<td>维护扣子模板</td>
 </tr>
 <tr>
-<td>数据团队</td>
-<td>提供指标、标签、知识数据；接收回流数据</td>
+<td>研发</td>
+<td>开发和维护共用插件</td>
 </tr>
 <tr>
-<td>合作管理</td>
-<td>管理合作能力的接入、标准和结算</td>
+<td>实施 / 客户成功</td>
+<td>填知识包、开通、验收、收集反馈</td>
+</tr>
+<tr>
+<td>运营</td>
+<td>维护台账，看用量和成本</td>
 </tr>
 </tbody>
 </table>
 <h2 id="25">2.5 建设路径</h2>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card soft" style="flex:1"><h4>① 统一收口</h4><div class="sub">8 个智能体（扣子 5、合作 1、Quick BI 2）注册上平台</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>① 打样</h4><div class="sub" style="color:var(--p);font-weight:700">第 1 个月</div><div class="sub">5 个扣子智能体整理成模板 + 知识包 + 首批插件；2–3 家标杆景区上线</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>② 共用能力</h4><div class="sub">业务插件、知识库、数据服务统一封装，供扣子工作流调用</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>② 复制</h4><div class="sub" style="color:var(--p);font-weight:700">第 2–3 个月</div><div class="sub">游客服务包、景区管理包上架，先推给已用票付通票务的景区，批量开通</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>③ 补全景场景</h4><div class="sub">先景区管理，再安全调度，再精准营销</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>③ 扩场景</h4><div class="sub" style="color:var(--p);font-weight:700">第 4–6 个月</div><div class="sub">有客户买单再做第二批：智能购票、票务运营助手、对账助手</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>④ 统一运营</h4><div class="sub">评测、计量、反馈覆盖全部；完成扣子私有化评估</div></div>
-    <div class="pf-arrow">➜</div>
-    <div class="pf-card grad" style="flex:1"><h4>⑤ 场景包输出</h4><div class="sub">按景区类型打包标准智能体，对外售卖</div></div>
+    <div class="pf-card grad" style="flex:1"><h4>④ 再评估</h4><div class="sub" style="font-weight:700">半年后</div><div class="sub">看开通量、调用量和成本，再决定要不要私有化、要不要自建能力</div></div>
   </div>
   <div class="pf-row">
-    <div class="pf-label">交付物</div>
-    <div class="pf-pills even"><span class="pf-pill">注册中心</span><span class="pf-pill">共用组件</span><span class="pf-pill">新场景模板</span><span class="pf-pill">评测与计量</span><span class="pf-pill">场景包目录</span></div>
+    <div class="pf-label">看什么</div>
+    <div class="pf-pills even"><span class="pf-pill">开通景区数</span><span class="pf-pill">单景区上线天数</span><span class="pf-pill">付费转化率</span><span class="pf-pill">续费率</span><span class="pf-pill">单景区调用成本</span></div>
   </div>
-  <div class="pf-banner"><b>原则</b><span>扣子上的标品不推倒重来，先收口再抽能力；并行做扣子私有化 POC；新场景每次只做一个，跑通再复制</span></div>
+  <div class="pf-banner"><b>原则</b><span>先卖已有的，再做新的；有客户买单的场景才做；不建大平台，投入跟着收入走</span></div>
 </div>
 </figure>
-<h3 id="251">2.5.1 落地效果</h3>
-<p>建成后，智能体从“各自建设”变成“平台生产”：上新快、成本低、质量稳、能沉淀、可售卖。</p>
-<p><strong>对公司：五个方面都有可衡量的变化</strong></p>
-<figure class="diagram"><div class="pf">
-  <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
-    <div class="pf-val hl"><h4>上新快</h4><div class="chg">新场景在平台上<br>组装、配置上线</div><div class="msr">新智能体上线周期</div></div>
-    <div class="pf-val"><h4>成本低</h4><div class="chg">模型、知识、工具<br>一套共用</div><div class="msr">单项目交付人天 · 调用成本</div></div>
-    <div class="pf-val"><h4>质量稳</h4><div class="chg">统一评测<br>统一上线门槛</div><div class="msr">评测正确率 · 客诉数</div></div>
-    <div class="pf-val"><h4>有沉淀</h4><div class="chg">知识、模板、工具<br>留在平台上</div><div class="msr">模板复用次数</div></div>
-    <div class="pf-val"><h4>可售卖</h4><div class="chg">场景包标准化<br>可报价、可续费</div><div class="msr">签约景区数 · 续约率</div></div>
-  </div>
-  <div class="pf-banner"><b>原则</b><span>先建立基线再定目标；以实际交付和使用结果衡量，不以智能体数量衡量</span></div>
-</div>
-</figure>
-<p><strong>对岗位和客户：每类角色的变化</strong></p>
-<figure class="diagram"><div class="pf">
-  <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
-    <div class="pf-role"><div class="pf-ico">管</div><div><h4>管理层</h4><div class="sub">智能体业务看得清：数量、调用、<br>成本、收入一个后台统计</div></div></div>
-    <div class="pf-role"><div class="pf-ico">产</div><div><h4>产品</h4><div class="sub">按场景定义模板<br>一次迭代，所有景区受益</div></div></div>
-    <div class="pf-role"><div class="pf-ico">研</div><div><h4>研发</h4><div class="sub">新场景不再从底层做起<br>集中做平台能力和模板</div></div></div>
-    <div class="pf-role"><div class="pf-ico">实</div><div><h4>实施交付</h4><div class="sub">配置交付，按模板上线<br>不依赖研发排期</div></div></div>
-    <div class="pf-role"><div class="pf-ico">售</div><div><h4>售前 / 销售</h4><div class="sub">有标准产品目录<br>可演示、可报价</div></div></div>
-    <div class="pf-role"><div class="pf-ico">运</div><div><h4>客户成功 / 运营</h4><div class="sub">统一看各景区智能体<br>运行情况和用户反馈</div></div></div>
-    <div class="pf-role"><div class="pf-ico">数</div><div><h4>数据团队</h4><div class="sub">智能体统一走指标、标签服务<br>交互数据回流数据平台</div></div></div>
-    <div class="pf-role"><div class="pf-ico org">景</div><div><h4>景区客户</h4><div class="sub">按场景包开通智能体<br>平台升级后自动受益</div></div></div>
-    <div class="pf-role"><div class="pf-ico org">游</div><div><h4>游客</h4><div class="sub">游前、游中、游后<br>一个入口、回答更准</div></div></div>
-  </div>
-  <div class="pf-hero">标准产品 · 聚合台 · 统一产出 · 统一收口</div>
-</div>
-</figure>
-<p><strong>为第三章打基础</strong>：智能体平台负责交付和交互，数据平台负责可信数据；两者衔接后，交互数据回流，形成闭环。</p>
+<p><strong>怎么快速占市场</strong></p>
+<table>
+<thead>
+<tr>
+<th>打法</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存量先行</td>
+<td>先推给已用票付通票务系统的景区，接口现成、关系现成，开通最快</td>
+</tr>
+<tr>
+<td>标杆引路</td>
+<td>每类景区（山岳、乐园、古镇、博物馆等）先做 1 家标杆，再复制同类</td>
+</tr>
+<tr>
+<td>随票务打包</td>
+<td>智能体作为票务系统的增值模块一起报价，降低单独采购门槛</td>
+</tr>
+<tr>
+<td>先用后付</td>
+<td>基础功能可先试用，用出效果再转付费（定价待定）</td>
+</tr>
+</tbody>
+</table>
 <hr>
 </main>
 </div>
@@ -651,4 +531,4 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 
 
 
-<div class="mermaidTooltip" style="opacity: 0;"></div></body></html>
+</body></html>
