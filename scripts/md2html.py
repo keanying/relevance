@@ -40,7 +40,8 @@ def split_chapter(md, chapter):
 
 
 def render_layers(src):
-    """```layers 块：每行“层名 | 组件1, 组件2*”，* 表示已有；以 @ 开头的行作为右侧贯穿栏。"""
+    """```layers 块：每行“层名 | 组件1, 组件2*”，* 表示已有；以 @ 开头的行作为右侧贯穿栏，
+    以 ~ 开头的行（如数据来源）用浅色块。"""
     rows, side = [], None
     for line in src.strip().splitlines():
         if '|' not in line:
@@ -52,15 +53,17 @@ def render_layers(src):
         else:
             rows.append((name, items))
     h = ['<div class="arch">', '<div class="arch-main">']
-    for k, (name, items) in enumerate(rows):
+    for name, items in rows:
+        src_row = name.startswith('~')
+        name = name.lstrip('~')
         chips = ''.join(
-            f'<span class="chip{" have" if it.endswith("*") else ""}">{html.escape(it.rstrip("*"))}</span>' for it in items)
+            f'<span class="chip{" have" if it.endswith("*") else " src" if src_row else ""}">{html.escape(it.rstrip("*"))}</span>'
+            for it in items)
         h.append(f'<div class="arch-row"><div class="arch-name">{html.escape(name)}</div><div class="arch-items">{chips}</div></div>')
-        if k < len(rows) - 1:
-            h.append('<div class="arch-arrow">▲</div>')
     h.append('</div>')
     if side:
-        h.append('<div class="arch-side"><div class="arch-side-title">' + html.escape(side[0]) + '</div>'
+        title = '<br/>'.join(html.escape(t) for t in side[0].split('/'))
+        h.append('<div class="arch-side"><div class="arch-side-title">' + title + '</div>'
                  + ''.join(f'<div class="arch-side-item">{html.escape(x)}</div>' for x in side[1]) + '</div>')
     h.append('</div>')
     return ''.join(h)
@@ -173,16 +176,16 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .diagram {{ margin: 16px 0 22px; padding: 18px; background: #FBFBFF; border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; text-align: center; }}
 .diagram pre.mermaid {{ margin: 0; background: none; font-size: 14px; }}
 .mermaid-svg svg {{ max-width: 100%; height: auto; }}
-.arch {{ display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 12px; text-align: left; }}
-.arch-row {{ display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 10px; align-items: stretch; }}
-.arch-name {{ background: var(--dp); color: #fff; font-weight: 600; font-size: 13.5px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px; }}
-.arch-items {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--t1); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }}
-.chip {{ flex: 1 1 80px; text-align: center; font-size: 13px; padding: 7px 8px; border-radius: 6px; background: #fff; border: 1px solid #C9C4FB; color: var(--ink); }}
-.chip.have {{ background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; border-color: transparent; font-weight: 600; }}
-.arch-arrow {{ text-align: center; color: #B6B0F7; font-size: 11px; line-height: 14px; margin: 2px 0 2px 140px; }}
-.arch-side {{ background: linear-gradient(180deg, var(--p), var(--dp)); border-radius: 10px; padding: 12px 10px; color: #fff; display: flex; flex-direction: column; gap: 8px; }}
-.arch-side-title {{ font-weight: 700; font-size: 14px; text-align: center; margin-bottom: 4px; }}
-.arch-side-item {{ background: rgba(255,255,255,.16); border-radius: 6px; padding: 7px 6px; font-size: 13px; text-align: center; }}
+.arch {{ display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 12px; text-align: left; }}
+.arch-row {{ display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 10px; align-items: stretch; margin-bottom: 10px; }}
+.arch-name {{ background: var(--dp); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px 8px; }}
+.arch-items {{ display: flex; flex-wrap: nowrap; gap: 10px; align-items: stretch; }}
+.chip {{ flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13.5px; padding: 12px 4px; border-radius: 8px; background: #fff; border: 1.5px solid #C9C4FB; color: var(--ink); }}
+.chip.have {{ background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; border-color: transparent; font-weight: 700; }}
+.chip.src {{ background: #E6E2FD; border-color: transparent; }}
+.arch-side {{ background: linear-gradient(180deg, var(--dp), var(--p)); border-radius: 10px; padding: 18px 16px; color: #fff; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }}
+.arch-side-title {{ font-weight: 700; font-size: 16px; line-height: 1.35; margin-bottom: 14px; }}
+.arch-side-item {{ font-size: 14px; opacity: .92; }}
 .cmp-legend {{ display: flex; gap: 10px; justify-content: flex-start; margin-bottom: 12px; }}
 .cmp-legend .cmp {{ padding: 3px 14px; }}
 .cmp-grid {{ display: grid; gap: 8px; text-align: left; }}
@@ -193,7 +196,7 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .cmp.up {{ background: var(--t2); color: var(--dp); font-weight: 600; }}
 .cmp.new {{ background: #fff; color: var(--ink); border: 1.5px dashed var(--org); }}
 @media (max-width: 900px) {{ .cmp-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }} }}
-@media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-arrow {{ margin-left: 0; }} }}
+@media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-items {{ flex-wrap: wrap; }} .chip {{ flex: 1 1 70px; }} }}
 hr {{ border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }}
 @media (max-width: 900px) {{
   .layout {{ grid-template-columns: 1fr; }}
