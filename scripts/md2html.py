@@ -90,9 +90,30 @@ def render_components(src):
     return ''.join(h)
 
 
+def render_kpi(src):
+    """```kpi 块：每行“指标名 | 目标值”，渲染为 PPT 底部的“关键指标”条。"""
+    tiles = []
+    for line in src.strip().splitlines():
+        if '|' not in line:
+            continue
+        name, val = [x.strip() for x in line.split('|', 1)]
+        tiles.append(f'<div class="kpi-tile"><div class="kpi-val">{html.escape(val)}</div>'
+                     f'<div class="kpi-name">{html.escape(name)}</div></div>')
+    return ('<div class="kpi"><div class="kpi-head">关键指标</div>'
+            f'<div class="kpi-grid" style="grid-template-columns: repeat({len(tiles)}, minmax(0, 1fr));">'
+            + ''.join(tiles) + '</div></div>')
+
+
 def convert(md):
     blocks = []
     layer_blocks = []
+    kpi_blocks = []
+
+    def keep_kpi(m):
+        kpi_blocks.append(render_kpi(m.group(1)))
+        return f'\n\nKPIBLOCK{len(kpi_blocks) - 1}\n\n'
+
+    md = re.sub(r'```kpi\s*\n(.*?)```', keep_kpi, md, flags=re.S)
 
     def keep_comp(m):
         layer_blocks.append(render_components(m.group(1)))
@@ -115,6 +136,8 @@ def convert(md):
     md = re.sub(r'(?m)^((?![ \t]*(?:[-*+] |\d+\. |\|)).+)\n(?=[ \t]*(?:[-*+] |\d+\. ))', r'\1\n\n', md)
     body = markdown.markdown(md, extensions=['tables', 'fenced_code', 'sane_lists', 'toc'],
                              extension_configs={'toc': {'permalink': False}})
+    for i, frag in enumerate(kpi_blocks):
+        body = body.replace(f'<p>KPIBLOCK{i}</p>', frag)
     for i, frag in enumerate(layer_blocks):
         body = body.replace(f'<p>LAYERBLOCK{i}</p>', f'<figure class="diagram">{frag}</figure>')
     for i, code in enumerate(blocks):
@@ -186,6 +209,13 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .arch-side {{ background: linear-gradient(180deg, var(--dp), var(--p)); border-radius: 10px; padding: 18px 16px; color: #fff; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }}
 .arch-side-title {{ font-weight: 700; font-size: 16px; line-height: 1.35; margin-bottom: 14px; }}
 .arch-side-item {{ font-size: 14px; opacity: .92; }}
+.kpi {{ display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 0; margin: 14px 0 28px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }}
+.kpi-head {{ background: var(--dp); color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; }}
+.kpi-grid {{ display: grid; background: var(--t1); }}
+.kpi-tile {{ padding: 12px 10px; text-align: center; border-left: 1px solid var(--line); }}
+.kpi-tile:first-child {{ border-left: 0; }}
+.kpi-val {{ font-size: 18px; font-weight: 800; color: var(--dp); line-height: 1.3; }}
+.kpi-name {{ font-size: 12.5px; color: var(--mut); margin-top: 4px; }}
 .cmp-legend {{ display: flex; gap: 10px; justify-content: flex-start; margin-bottom: 12px; }}
 .cmp-legend .cmp {{ padding: 3px 14px; }}
 .cmp-grid {{ display: grid; gap: 8px; text-align: left; }}
@@ -196,7 +226,7 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .cmp.up {{ background: var(--t2); color: var(--dp); font-weight: 600; }}
 .cmp.new {{ background: #fff; color: var(--ink); border: 1.5px dashed var(--org); }}
 @media (max-width: 900px) {{ .cmp-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }} }}
-@media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-items {{ flex-wrap: wrap; }} .chip {{ flex: 1 1 70px; }} }}
+@media (max-width: 700px) {{ .arch {{ grid-template-columns: 1fr; }} .arch-row {{ grid-template-columns: 1fr; }} .arch-items {{ flex-wrap: wrap; }} .chip {{ flex: 1 1 70px; }} .kpi {{ grid-template-columns: 1fr; }} .kpi-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }} }}
 hr {{ border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }}
 @media (max-width: 900px) {{
   .layout {{ grid-template-columns: 1fr; }}
