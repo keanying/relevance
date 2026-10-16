@@ -153,15 +153,24 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <nav><div class="brand">AI＋数据平台</div>
 <a class="l2" href="#21">2.1 现状</a>
 <a class="l2" href="#22">2.2 场景沉淀</a>
-<a class="l2" href="#23">2.3 建设思路：三阶段</a>
-<a class="l2" href="#24">2.4 阶段一：快速验证</a>
-<a class="l2" href="#25">2.5 阶段二：市场占有</a>
-<a class="l2" href="#26">2.6 阶段三：能力自给</a>
-<a class="l3" href="#261">2.6.1 总体架构</a>
-<a class="l3" href="#262">2.6.2 全流程管理</a>
-<a class="l3" href="#263">2.6.3 全景智能体</a>
-<a class="l3" href="#264">2.6.4 自建能省什么</a>
-<a class="l3" href="#265">2.6.5 怎么切过去</a>
+<a class="l2" href="#23">2.3 总体策略：先借力，再复制，后自建</a>
+<a class="l2" href="#24">2.4 验证商业模式</a>
+<a class="l3" href="#241">2.4.1 要验证什么</a>
+<a class="l3" href="#242">2.4.2 怎么验证</a>
+<a class="l3" href="#243">2.4.3 关卡一：商业模式跑通的标准</a>
+<a class="l2" href="#25">2.5 快速占有市场</a>
+<a class="l3" href="#251">2.5.1 先打哪些客户</a>
+<a class="l3" href="#252">2.5.2 怎么复制得快</a>
+<a class="l3" href="#253">2.5.3 销售与续费</a>
+<a class="l3" href="#254">2.5.4 边做边为自建做准备</a>
+<a class="l3" href="#255">2.5.5 规模越大，借力的弊端越明显</a>
+<a class="l2" href="#26">2.6 自建智能体平台</a>
+<a class="l3" href="#261">2.6.1 关卡二：什么时候自建</a>
+<a class="l3" href="#262">2.6.2 建什么，不建什么</a>
+<a class="l3" href="#263">2.6.3 平台架构</a>
+<a class="l3" href="#264">2.6.4 全景智能体</a>
+<a class="l3" href="#265">2.6.5 自建能省什么</a>
+<a class="l3" href="#266">2.6.6 怎么切过去</a>
 </nav>
 <main>
 <div class="cover"><h1>AI＋数据平台</h1><div class="sub">二、智能体平台</div></div>
@@ -212,8 +221,8 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <tr>
 <td>智能问数、智能数据解读</td>
 <td>景区、内部管理者</td>
-<td>Quick BI</td>
-<td>使用 Quick BI 的 AI 能力</td>
+<td>小Q</td>
+<td>使用 小Q 的 AI 能力</td>
 </tr>
 </tbody>
 </table>
@@ -266,53 +275,107 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tbody>
 </table>
 <p><strong>我们的优势</strong>：智能体要“能办事”，靠的是业务系统和数据。票付通的票务、业态、终端系统在景区现场，交易数据、业务接口和景区服务经验是通用 AI 厂商没有的。</p>
-<h2 id="23">2.3 建设思路：三阶段</h2>
-<p>先借成熟平台快速验证、快速占市场，再用沉淀下来的能力、经验和市场建自己的平台。</p>
+<h2 id="23">2.3 总体策略：先借力，再复制，后自建</h2>
+<p>智能体这件事要回答三个问题：商业模式能不能跑通，市场能不能快速占住，平台要不要、什么时候自己建。对应三步走，每两步之间设一道关卡，过关才进下一步。</p>
 <figure class="diagram"><div class="pf">
-  <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
-    <div class="pf-val"><h4>阶段一 · 快速验证</h4><div class="chg">依托成熟平台快速做出智能体，在标杆景区验证效果，跑通商业模式</div><div class="msr">产出：可卖的产品 · 可行的定价 · 可复制的交付方式</div></div>
-    <div class="pf-val"><h4>阶段二 · 市场占有</h4><div class="chg">依托成熟平台，把验证过的智能体快速复制到各大业态景区，最快扩大市场占有率</div><div class="msr">产出：景区规模 · 能力、经验、市场需求的沉淀</div></div>
-    <div class="pf-val hl"><h4>阶段三 · 能力自给</h4><div class="chg">基于前两阶段沉淀的能力、经验和市场，建设自己的智能体平台</div><div class="msr">产出：自有平台 · 成本可控 · 交付更快 · 竞争壁垒</div></div>
+  <div class="pf-row" style="align-items:stretch">
+    <div class="pf-val" style="flex:1"><h4>① 验证商业模式</h4><div class="chg">借成熟平台，用最小投入回答：卖给谁、卖什么、怎么收钱、能不能赚钱</div><div class="msr">依托 Coze · 火山方舟 · 羚羊小Q</div></div>
+    <div class="pf-col" style="flex:none;width:96px;align-items:center"><div class="pf-card warm c" style="padding:8px 6px"><b style="font-size:13px">关卡一</b><div class="sub" style="font-size:12px">商业模式跑通？</div></div></div>
+    <div class="pf-val" style="flex:1"><h4>② 快速占有市场</h4><div class="chg">仍借成熟平台，把跑通的产品按业态快速复制，抢景区覆盖</div><div class="msr">依托 Coze · 火山方舟 · 羚羊小Q</div></div>
+    <div class="pf-col" style="flex:none;width:96px;align-items:center"><div class="pf-card warm c" style="padding:8px 6px"><b style="font-size:13px">关卡二</b><div class="sub" style="font-size:12px">自建更划算？</div></div></div>
+    <div class="pf-val hl" style="flex:1"><h4>③ 自建智能体平台</h4><div class="chg">用沉淀的模板、知识、接口、数据和需求，建自己的平台，成本和交付自己掌握</div><div class="msr">数字大脑作为智能体管理台</div></div>
   </div>
-  <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
-    <div class="pf-bar line" style="grid-column: span 2">依托成熟平台 / 框架：Coze · 火山方舟 · 羚羊小Q</div>
-    <div class="pf-bar grad">自建智能体平台</div>
-  </div>
-  <div class="pf-banner"><b>沉淀贯穿</b><span>每个阶段都在积累：场景能力、交付经验、景区需求、交互数据，阶段三直接用上</span></div>
+  <div class="pf-hero">贯穿始终：借平台，不交资产 —— 知识、接口、数据、模板从第一天起沉淀在自己手里</div>
 </div>
 </figure>
+<p><strong>为什么先借力</strong>：智能体卖不卖得动、景区愿付多少钱，现在还不知道。先自建平台，等于在需求没验证前就投入研发和时间；借成熟平台，几周就能做出来去试。</p>
+<p><strong>为什么最终要自建</strong>：景区越多，平台费越高，交付和定制受平台限制，数据和资产留在别人那里。规模起来后，自建更省钱、更快、更可控。</p>
+<p><strong>关键一条：借平台，不交资产</strong>。从阶段一开始就把知识、业务接口、交互数据、模板设计留在自己手里（见 2.5.4），阶段三才能低成本切过去。</p>
+<h2 id="24">2.4 验证商业模式</h2>
+<h3 id="241">2.4.1 要验证什么</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+    <div class="pf-val"><h4 style="font-size:17px">卖给谁</h4><div class="chg">哪类景区最需要、最愿付费：业态、规模、是否已用票付通票务</div><div class="msr">验证：目标客群</div></div>
+    <div class="pf-val"><h4 style="font-size:17px">卖什么</h4><div class="chg">游客服务、景区管理哪些智能体组合成包，景区最认</div><div class="msr">验证：产品包</div></div>
+    <div class="pf-val hl"><h4 style="font-size:17px">怎么收钱</h4><div class="chg">随票务打包、年费订阅、按效果分成、按用量，哪种景区接受</div><div class="msr">验证：定价方式</div></div>
+    <div class="pf-val"><h4 style="font-size:17px">花多少钱</h4><div class="chg">平台调用费 + 交付人力 + 运营支持，单景区算得清</div><div class="msr">验证：单景区成本</div></div>
+    <div class="pf-val"><h4 style="font-size:17px">值不值</h4><div class="chg">景区看得到的价值：少用人工、多卖票、游客更满意</div><div class="msr">验证：价值证明</div></div>
+  </div>
+  <div class="pf-banner"><b>单景区账</b><span>单景区年收入 − 平台调用费 − 交付成本摊销 − 运营支持 ＞ 0，才算能赚钱</span></div>
+</div>
+</figure>
+<p><strong>收费方式怎么选</strong></p>
 <table>
 <thead>
 <tr>
-<th>阶段</th>
-<th>定位</th>
-<th>依托</th>
-<th>目标</th>
+<th>收费方式</th>
+<th>怎么收</th>
+<th>适合</th>
+<th>要验证的</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>阶段一 · 快速验证</td>
-<td>快速做出来、验证、跑通商业模式</td>
-<td>Coze、火山方舟、羚羊小Q</td>
-<td>产品可卖、定价可行、交付可复制</td>
+<td>随票务打包</td>
+<td>作为票务系统增值模块，提高票务年费</td>
+<td>已用票付通票务的景区</td>
+<td>能否提升续约率和客单价</td>
 </tr>
 <tr>
-<td>阶段二 · 市场占有</td>
-<td>快速复制到各大业态景区</td>
-<td>同上</td>
-<td>最快扩大市场占有率，沉淀能力、经验、需求</td>
+<td>年费订阅</td>
+<td>按景区规模或智能体数量分档收年费</td>
+<td>新客户、单独采购</td>
+<td>景区能接受的价位</td>
 </tr>
 <tr>
-<td>阶段三 · 能力自给</td>
-<td>建设自己的智能体平台</td>
-<td>前两阶段的沉淀</td>
-<td>成本可控、交付更快、形成壁垒</td>
+<td>按效果分成</td>
+<td>按 AI 带来的购票、二消收入分成</td>
+<td>购票、营销类智能体</td>
+<td>增量能否算清楚</td>
+</tr>
+<tr>
+<td>按用量</td>
+<td>按对话量或调用量计费</td>
+<td>大客流景区</td>
+<td>景区能否接受账单波动</td>
 </tr>
 </tbody>
 </table>
-<h2 id="24">2.4 阶段一：快速验证</h2>
-<p>在成熟平台上把现有 8 个智能体和全景中价值最高的场景快速做出来，到标杆景区验证。</p>
+<p>建议验证期同时试“随票务打包”和“年费订阅”两种，看哪种成交快、续费稳。</p>
+<p><strong>景区认的价值</strong></p>
+<table>
+<thead>
+<tr>
+<th>价值</th>
+<th>怎么证明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>少用人工</td>
+<td>咨询由智能体解决的比例，节省的客服人力</td>
+</tr>
+<tr>
+<td>多卖票</td>
+<td>智能体带来的线上购票、二消订单</td>
+</tr>
+<tr>
+<td>游客更满意</td>
+<td>满意度、差评率、排队与等待减少</td>
+</tr>
+<tr>
+<td>管理更省心</td>
+<td>报表、对账、预警的人工时间减少</td>
+</tr>
+</tbody>
+</table>
+<h3 id="242">2.4.2 怎么验证</h3>
+<ul>
+<li><strong>选标杆</strong>：从已用票付通票务的景区里挑，覆盖 2–3 类主要业态，有配合意愿、客流有代表性。</li>
+<li><strong>快速搭</strong>：在成熟平台上搭现有 8 个智能体，再挑 1–2 个价值最高的新场景（如智能购票）。</li>
+<li><strong>跑一个完整旺季</strong>：节假日客流最能检验效果和成本。</li>
+<li><strong>数据从第一天回流</strong>：对话、转人工、评价、订单都进数据平台，验证结论靠数据说话。</li>
+</ul>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
     <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">选场景</h4></div><div class="pf-arrow">➜</div>
@@ -328,34 +391,48 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   <div class="pf-banner"><b>迭代</b><span>效果不好的回到平台调整；没人用的场景及时停，不追加投入</span></div>
 </div>
 </figure>
+<h3 id="243">2.4.3 关卡一：商业模式跑通的标准</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 用起来</h4><div class="sub">标杆景区持续在用，问题解决率达标</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 有价值</h4><div class="sub">景区认可的指标有提升：人工咨询减少、购票转化提高</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 愿付费</h4><div class="sub">有景区按拟定价格付费或明确续费</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 能赚钱</h4><div class="sub">单景区收入覆盖平台费、交付和运营</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 可复制</h4><div class="sub">不靠核心研发，按标准流程就能上线</div></div>
+  </div>
+  <div class="pf-banner warm"><b>没过关</b><span>调整场景组合或定价再验证一轮；仍不行的场景停掉，不带进阶段二</span></div>
+</div>
+</figure>
+<h2 id="25">2.5 快速占有市场</h2>
+<h3 id="251">2.5.1 先打哪些客户</h3>
 <table>
 <thead>
 <tr>
-<th>要跑通的</th>
-<th>验证标准</th>
+<th>客群</th>
+<th>打法</th>
+<th>为什么</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>产品</td>
-<td>游客和景区真的在用，问题解决率、满意度达到预期</td>
+<td>已用票付通票务的景区</td>
+<td>随票务续约推，开通即用</td>
+<td>系统已对接，基本零开发；信任已有，成交最快</td>
 </tr>
 <tr>
-<td>商业</td>
-<td>景区愿意付费，定价方式（随票务打包或单独收费）确定</td>
+<td>同业态景区</td>
+<td>用标杆案例按业态复制</td>
+<td>场景相同，模板直接复用</td>
 </tr>
 <tr>
-<td>交付</td>
-<td>一个景区从签约到上线的流程和周期固定下来</td>
-</tr>
-<tr>
-<td>成本</td>
-<td>单景区的调用和交付成本算得清，有利润空间</td>
+<td>新客户</td>
+<td>智能体做差异化卖点，带动票务签约</td>
+<td>用 AI 撬动新客户</td>
 </tr>
 </tbody>
 </table>
-<h2 id="25">2.5 阶段二：市场占有</h2>
-<p>把阶段一验证过的智能体，依托成熟平台快速复制到各大业态景区，最快扩大市场占有率；同时持续沉淀能力、经验和市场需求。</p>
+<p>业态上优先客流大、咨询多、线上购票比例高的：山岳、主题乐园、古镇街区，再到博物馆、温泉度假、游船演出。</p>
+<h3 id="252">2.5.2 怎么复制得快</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-label" style="width:auto">复制流程</div>
   <div class="pf-row">
@@ -376,30 +453,107 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   </div>
 </div>
 </figure>
-<p><strong>怎么快速占市场</strong></p>
 <table>
 <thead>
 <tr>
-<th>打法</th>
+<th>环节</th>
+<th>标准化做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>按业态出模板，景区差异全部做成配置</td>
+</tr>
+<tr>
+<td>知识采集</td>
+<td>统一采集表，景区填写、实施审核</td>
+</tr>
+<tr>
+<td>系统接入</td>
+<td>已用票付通票务的景区，接口现成</td>
+</tr>
+<tr>
+<td>实施</td>
+<td>实施手册 + 培训，实施人员和渠道伙伴可独立交付</td>
+</tr>
+<tr>
+<td>验收</td>
+<td>统一测试清单，跑完即上线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="253">2.5.3 销售与续费</h3>
+<table>
+<thead>
+<tr>
+<th>环节</th>
 <th>做法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>存量先行</td>
-<td>先推给已用票付通票务系统的景区，接口现成、关系现成，开通最快</td>
+<td>销售</td>
+<td>票务销售团队带单，智能体纳入销售考核；区域渠道伙伴代理</td>
 </tr>
 <tr>
-<td>标杆引路</td>
-<td>每类业态先做 1 家标杆，再复制同类</td>
+<td>案例</td>
+<td>每类业态的标杆做成案例，用数据讲效果</td>
 </tr>
 <tr>
-<td>随票务打包</td>
-<td>智能体作为票务系统的增值模块一起推，降低单独采购门槛</td>
+<td>客户成功</td>
+<td>上线后定期给景区出效果报告（解决了多少咨询、带来多少订单），促续费</td>
+</tr>
+<tr>
+<td>升级</td>
+<td>模板统一升级，所有景区同步受益，增加粘性</td>
 </tr>
 </tbody>
 </table>
-<p><strong>阶段二的弊端</strong>：依托成熟平台能快，但规模越大问题越明显。</p>
+<h3 id="254">2.5.4 边做边为自建做准备</h3>
+<p>依托外部平台的同时，以下资产必须留在自己手里：</p>
+<table>
+<thead>
+<tr>
+<th>沉淀什么</th>
+<th>现在怎么做</th>
+<th>阶段三怎么用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>景区知识</td>
+<td>按自有结构存一份，不只存在外部平台</td>
+<td>直接导入自建平台</td>
+</tr>
+<tr>
+<td>业务接口</td>
+<td>售票、订单、核销、会员接口由我们自己封装成服务，外部平台只调用</td>
+<td>平台直接复用</td>
+</tr>
+<tr>
+<td>模板设计</td>
+<td>每个模板的流程、提示词、配置项写成文档</td>
+<td>迁入模板库</td>
+</tr>
+<tr>
+<td>交互数据</td>
+<td>对话、评价、转人工记录回流数据平台</td>
+<td>做测试用例、优化效果</td>
+</tr>
+<tr>
+<td>成本数据</td>
+<td>按景区、按智能体记录每月平台费用</td>
+<td>判断何时自建</td>
+</tr>
+<tr>
+<td>需求清单</td>
+<td>记录客户要、平台做不了的功能</td>
+<td>自建平台的需求来源</td>
+</tr>
+</tbody>
+</table>
+<h3 id="255">2.5.5 规模越大，借力的弊端越明显</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
     <div class="pf-card warm top"><h4>成本越做越高</h4><div class="sub">按调用、账号、空间收费，景区越多、用得越多，平台费越高，利润被平台分走</div></div>
@@ -411,8 +565,96 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   </div>
 </div>
 </figure>
-<h2 id="26">2.6 阶段三：能力自给</h2>
-<p>用前两阶段沉淀的能力、经验和市场，建设自己的智能体平台，由数字大脑作为智能体管理台统一承载。</p>
+<h2 id="26">2.6 自建智能体平台</h2>
+<h3 id="261">2.6.1 关卡二：什么时候自建</h3>
+<figure class="diagram"><div class="pf">
+  <svg viewBox="0 0 760 300" style="width:100%;height:auto" role="img" aria-label="成本随规模变化示意">
+    <line x1="70" y1="250" x2="730" y2="250" stroke="#B9B2FA" stroke-width="1.5"></line>
+    <line x1="70" y1="250" x2="70" y2="30" stroke="#B9B2FA" stroke-width="1.5"></line>
+    <text x="730" y="275" text-anchor="end" font-size="13" fill="#5E6478">景区数 / 调用量 →</text>
+    <text x="78" y="40" font-size="13" fill="#5E6478">总成本</text>
+    <line x1="70" y1="235" x2="640" y2="63" stroke="#F08A3C" stroke-width="3"></line>
+    <text x="650" y="68" font-size="13" fill="#B5541B" font-weight="700">继续用成熟平台</text>
+    <text x="330" y="96" font-size="12" fill="#B5541B">平台费随规模线性上涨</text>
+    <line x1="70" y1="170" x2="640" y2="125" stroke="#655BE6" stroke-width="3"></line>
+    <text x="650" y="130" font-size="13" fill="#655BE6" font-weight="700">自建平台</text>
+    <text x="80" y="195" font-size="12" fill="#655BE6">一次性建设投入</text>
+    <text x="440" y="165" font-size="12" fill="#655BE6">之后主要是模型调用和运维，增长慢</text>
+    <circle cx="362" cy="147" r="7" fill="#fff" stroke="#655BE6" stroke-width="3"></circle>
+    <line x1="362" y1="154" x2="362" y2="250" stroke="#655BE6" stroke-dasharray="4 4"></line>
+    <text x="362" y="270" text-anchor="middle" font-size="13" fill="#655BE6" font-weight="700">交叉点 = 启动自建的时机</text>
+  </svg>
+</div>
+</figure>
+<p>满足以下任意两条，就启动自建：</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>怎么看</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>成本交叉</td>
+<td>按 2.5.4 记录的成本，测算继续用平台与自建的总成本，自建已更低</td>
+</tr>
+<tr>
+<td>平台费占比上升</td>
+<td>平台费占智能体收入的比例持续上升，压缩利润</td>
+</tr>
+<tr>
+<td>场景稳定</td>
+<td>主力智能体模板已稳定，不再频繁大改</td>
+</tr>
+<tr>
+<td>平台限制丢单</td>
+<td>个性需求、大客户项目因平台限制接不了</td>
+</tr>
+<tr>
+<td>合规要求</td>
+<td>景区或管理方要求数据不出域</td>
+</tr>
+</tbody>
+</table>
+<h3 id="262">2.6.2 建什么，不建什么</h3>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>策略</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大模型</td>
+<td>不自研，调用模型服务，多家可替换</td>
+<td>投入大，不是我们的优势</td>
+</tr>
+<tr>
+<td>语音、图像、数字人、手语</td>
+<td>采购或合作</td>
+<td>专业能力，自建不划算</td>
+</tr>
+<tr>
+<td>编排引擎</td>
+<td>基于开源框架二次开发</td>
+<td>不从零写，缩短周期</td>
+</tr>
+<tr>
+<td>管理台、能力与知识、业务工具</td>
+<td>自建</td>
+<td>承载我们的业务、数据和交付方式，是壁垒所在</td>
+</tr>
+<tr>
+<td>数据服务</td>
+<td>复用第一章的数据平台</td>
+<td>已有</td>
+</tr>
+</tbody>
+</table>
+<h3 id="263">2.6.3 平台架构</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-card panel" style="gap:10px">
     <div class="ttl">自建智能体平台 · 数字大脑作为智能体管理台</div>
@@ -425,36 +667,17 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   </div>
   <div class="pf-arrow down" style="font-size:22px;color:var(--p)">▲</div>
   <div class="pf-row">
-    <div class="pf-label">模型与能力</div>
-    <div class="pf-pills even"><span class="pf-pill fill">大模型（多家可替换）</span><span class="pf-pill fill">语音 · 图像等多模态</span><span class="pf-pill fill">Quick BI</span><span class="pf-pill fill">合作企业专项能力</span></div>
+    <div class="pf-label">采购 / 合作</div>
+    <div class="pf-pills even"><span class="pf-pill fill">大模型服务（多家可替换）</span><span class="pf-pill fill">语音 · 图像 · 数字人</span><span class="pf-pill fill">小Q</span><span class="pf-pill fill">合作企业专项能力</span></div>
   </div>
-  <div class="pf-hero">前两阶段沉淀的模板、知识、接口和经验，直接成为平台能力</div>
+  <div class="pf-hero">前两阶段沉淀的模板、知识、接口、数据直接迁入，平台不是从零开始</div>
 </div>
 </figure>
-<h3 id="261">2.6.1 总体架构</h3>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通</span><span class="chip have">公众号/小程序</span><span class="chip have">智慧终端</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务</span><span class="chip">景区管理</span><span class="chip">票务财务</span><span class="chip">安全调度</span><span class="chip">精准营销</span></div></div><div class="arch-row"><div class="arch-name">智能体搭建</div><div class="arch-items"><span class="chip">场景模板</span><span class="chip">配置化生成</span><span class="chip">多智能体协同</span><span class="chip">版本管理</span></div></div><div class="arch-row"><div class="arch-name">能力与知识</div><div class="arch-items"><span class="chip">业务工具</span><span class="chip">景区知识</span><span class="chip">数据服务</span><span class="chip">多模态与数字人</span></div></div><div class="arch-row"><div class="arch-name">模型与能力</div><div class="arch-items"><span class="chip src">大模型（可替换）</span><span class="chip src">多模态</span><span class="chip have">Quick BI</span><span class="chip have">合作企业</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营管理<br>贯穿各层</div><div class="arch-side-item">统一接入</div><div class="arch-side-item">权限与租户</div><div class="arch-side-item">运行监控</div><div class="arch-side-item">成本统计</div><div class="arch-side-item">效果评估</div></div></div></figure>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通</span><span class="chip have">公众号/小程序</span><span class="chip have">智慧终端</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务</span><span class="chip">景区管理</span><span class="chip">票务财务</span><span class="chip">安全调度</span><span class="chip">精准营销</span></div></div><div class="arch-row"><div class="arch-name">智能体搭建</div><div class="arch-items"><span class="chip">场景模板</span><span class="chip">配置化生成</span><span class="chip">多智能体协同</span><span class="chip">版本管理</span></div></div><div class="arch-row"><div class="arch-name">能力与知识</div><div class="arch-items"><span class="chip">业务工具</span><span class="chip">景区知识</span><span class="chip">数据服务</span><span class="chip">多模态与数字人</span></div></div><div class="arch-row"><div class="arch-name">采购与合作</div><div class="arch-items"><span class="chip src">大模型服务（可替换）</span><span class="chip src">语音图像数字人</span><span class="chip have">小Q</span><span class="chip have">合作企业</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营管理<br>贯穿各层</div><div class="arch-side-item">统一接入</div><div class="arch-side-item">权限与租户</div><div class="arch-side-item">运行监控</div><div class="arch-side-item">成本统计</div><div class="arch-side-item">效果评估</div></div></div></figure>
 <blockquote>
 <p>中间三层和右侧运营管理为自建；前两阶段沉淀的模板、知识、接口直接迁入。</p>
 </blockquote>
-<h3 id="262">2.6.2 全流程管理</h3>
-<figure class="diagram"><div class="pf">
-  <div class="pf-row">
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">能力接入</h4></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">搭建</h4></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">测试</h4></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">发布</h4></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">运行</h4></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">监管</h4></div><div class="pf-arrow">➜</div>
-    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">优化</h4></div>
-  </div>
-  <div class="pf-row">
-    <div class="pf-label">集团 / 景区</div>
-    <div class="pf-pills even"><span class="pf-pill">集团统一建设</span><span class="pf-pill">景区开通使用</span><span class="pf-pill">景区按需定制</span><span class="pf-pill">数据按景区隔离</span></div>
-  </div>
-  <div class="pf-banner"><b>闭环</b><span>运行中发现的问题回到搭建环节修正，所有景区同步受益</span></div>
-</div>
-</figure>
-<h3 id="263">2.6.3 全景智能体</h3>
+<h3 id="264">2.6.4 全景智能体</h3>
 <p>产品全景中的智能体，已有 8 个，还有 14 个待建，最终都由自建平台统一承载：</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-legend"><span class="pf-ag have"><span>已有</span></span><span class="pf-ag todo"><span>全景中待建</span></span></div>
@@ -467,7 +690,7 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   <div class="pf-banner"><b>已有 8 个 · 待建 14 个</b><span>待建的智能体都在平台上用模板和共用能力搭建，按“搭建 → 标杆验证 → 复制交付”逐个落地</span></div>
 </div>
 </figure>
-<h3 id="264">2.6.4 自建能省什么</h3>
+<h3 id="265">2.6.5 自建能省什么</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
     <div class="pf-val hl"><h4>成本</h4><div class="chg">阶段二：平台费随规模线性上涨<br>阶段三：只付模型调用，规模越大越省</div><div class="msr">省平台费 · 降单景区成本</div></div>
@@ -482,8 +705,8 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <thead>
 <tr>
 <th>对比</th>
-<th>阶段二 · 依托成熟平台</th>
-<th>阶段三 · 自建平台</th>
+<th>借成熟平台</th>
+<th>自建平台</th>
 <th>对企业的影响</th>
 </tr>
 </thead>
@@ -526,24 +749,48 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tr>
 </tbody>
 </table>
-<h3 id="265">2.6.5 怎么切过去</h3>
+<h3 id="266">2.6.6 怎么切过去</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card soft" style="flex:1"><h4>① 平台核心能力上线</h4><div class="sub">管理、搭建、能力与知识先上，模型多家接入</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>① 核心先上</h4><div class="sub">管理台、能力与知识、搭建先上线，模型多家接入</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>② 新景区先上自建</h4><div class="sub">新签景区直接在自建平台开通</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>② 对比验证</h4><div class="sub">同一套测试用例，自建效果不低于成熟平台才切</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card soft" style="flex:1"><h4>③ 存量逐步迁移</h4><div class="sub">随续约、升级迁移，双轨运行、可回退</div></div>
+    <div class="pf-card soft" style="flex:1"><h4>③ 新增先上</h4><div class="sub">新签景区直接在自建平台开通</div></div>
     <div class="pf-arrow">➜</div>
-    <div class="pf-card grad" style="flex:1"><h4>④ 成熟平台转补充</h4><div class="sub">只保留自建不划算的专项能力</div></div>
-  </div>
-  <div class="pf-row">
-    <div class="pf-label">何时启动</div>
-    <div class="pf-pills even"><span class="pf-pill">景区规模上来</span><span class="pf-pill">平台费占比明显上升</span><span class="pf-pill">标准场景已稳定</span><span class="pf-pill">个性需求平台满足不了</span></div>
+    <div class="pf-card soft" style="flex:1"><h4>④ 存量迁移</h4><div class="sub">随续约逐个迁，双轨运行、可回退</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card grad" style="flex:1"><h4>⑤ 平台转补充</h4><div class="sub">成熟平台只保留自建不划算的能力</div></div>
   </div>
 </div>
 </figure>
-<p><strong>贯穿三个阶段的底线</strong></p>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>应对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>投入超预期</td>
+<td>小团队先做核心模块，跟着迁移进度分批投入</td>
+</tr>
+<tr>
+<td>效果不如成熟平台</td>
+<td>迁移前用同一套测试用例对比，达标才切</td>
+</tr>
+<tr>
+<td>迁移影响客户</td>
+<td>双轨运行、逐个迁移、可回退</td>
+</tr>
+<tr>
+<td>团队能力不足</td>
+<td>前两阶段就培养自己的 AI 应用团队，阶段三延续</td>
+</tr>
+</tbody>
+</table>
+<p><strong>贯穿始终的底线</strong></p>
 <table>
 <thead>
 <tr>
