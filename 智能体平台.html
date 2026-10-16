@@ -124,6 +124,8 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 .own.buy { background: #E6E2FD; color: var(--ink); }
 .own.reuse { background: #FDEEE2; border: 1.5px dashed var(--org); color: #8A3F12; }
 .own.chan { background: var(--dp); color: #fff; font-weight: 600; }
+.own-wrap { flex-wrap: wrap; gap: 6px; }
+.own-wrap .own { flex: 0 0 auto; white-space: nowrap; padding: 6px 10px; }
 .own-legend { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .own-legend .own { flex: none; padding: 3px 12px; font-size: 12.5px; }
 .pf-name { display: flex; justify-content: center; align-items: flex-start; gap: 10px; }
@@ -161,19 +163,22 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <nav><div class="brand">AI＋数据平台</div>
 <a class="l2" href="#21">2.1 现状</a>
 <a class="l2" href="#22">2.2 场景沉淀</a>
-<a class="l2" href="#23">2.3 总体策略：先借力，再复制，后自建</a>
-<a class="l2" href="#24">2.4 验证商业模式</a>
+<a class="l3" href="#221">2.2.1 场景地图</a>
+<a class="l3" href="#222">2.2.2 哪些最值得先做</a>
+<a class="l3" href="#223">2.2.3 我们的优势</a>
+<a class="l2" href="#23">2.3 建设策略</a>
+<a class="l2" href="#24">2.4 借力验证</a>
 <a class="l3" href="#241">2.4.1 要验证什么</a>
 <a class="l3" href="#242">2.4.2 怎么验证</a>
 <a class="l3" href="#243">2.4.3 关卡一：商业模式跑通的标准</a>
-<a class="l2" href="#25">2.5 快速占有市场</a>
+<a class="l2" href="#25">2.5 借力复制</a>
 <a class="l3" href="#251">2.5.1 先打哪些客户</a>
 <a class="l3" href="#252">2.5.2 怎么复制得快</a>
 <a class="l3" href="#253">2.5.3 销售与续费</a>
 <a class="l3" href="#254">2.5.4 边做边为自建做准备</a>
 <a class="l3" href="#255">2.5.5 规模越大，借力的弊端越明显</a>
-<a class="l2" href="#26">2.6 自建智能体平台</a>
-<a class="l3" href="#261">2.6.1 关卡二：什么时候自建</a>
+<a class="l2" href="#26">2.6 能力自给</a>
+<a class="l3" href="#261">2.6.1 何时启动</a>
 <a class="l3" href="#262">2.6.2 建什么，不建什么</a>
 <a class="l3" href="#263">2.6.3 平台架构</a>
 <a class="l3" href="#264">2.6.4 全景智能体</a>
@@ -235,55 +240,109 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tbody>
 </table>
 <h2 id="22">2.2 场景沉淀</h2>
-<p>票付通的产品覆盖票务、业态、运营、财务、终端，并已发布覆盖游客服务、景区管理、精准营销、安全运营的 AI 产品矩阵。按这四类场景，结合产品全景，可做智能体和 AI 服务的场景分层如下：</p>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">游客服务</div><div class="arch-items"><span class="chip">AI 旅游规划</span><span class="chip have">智能客服</span><span class="chip have">智能助手</span><span class="chip">AI 智能购票</span><span class="chip have">智能导览</span><span class="chip have">AI 伴游</span><span class="chip have">手语</span><span class="chip have">AI 旅拍</span></div></div><div class="arch-row"><div class="arch-name">精准营销</div><div class="arch-items"><span class="chip">会员画像</span><span class="chip">人群圈选</span><span class="chip">年卡续费提醒</span><span class="chip">全民营销推荐</span><span class="chip">活动效果复盘</span></div></div><div class="arch-row"><div class="arch-name">景区管理</div><div class="arch-items"><span class="chip have">智能问数</span><span class="chip have">智能数据解读</span><span class="chip">移动驾驶舱</span><span class="chip">票务 AI 运营助手</span><span class="chip">AI 对账助手</span><span class="chip">消息预警</span><span class="chip">工单处置</span></div></div><div class="arch-row"><div class="arch-name">安全运营</div><div class="arch-items"><span class="chip">旅游安全</span><span class="chip">秩序治理</span><span class="chip">车辆调度</span><span class="chip">游船调度</span><span class="chip">森林防火</span><span class="chip">生态监测</span><span class="chip">气象服务</span><span class="chip">设施监测</span></div></div><div class="arch-row"><div class="arch-name">业务与数据</div><div class="arch-items"><span class="chip src">售检票与分销</span><span class="chip src">景区业态 9 类</span><span class="chip src">年卡 · 分时预约 · 人脸</span><span class="chip src">财务与电子发票</span><span class="chip src">智慧终端 · 边云网关</span></div></div></div><div class="arch-side"><div class="arch-side-title">场景沉淀</div><div class="arch-side-item">景区交易数据</div><div class="arch-side-item">票务与业态知识</div><div class="arch-side-item">业务系统接口</div><div class="arch-side-item">闸机与物联设备</div><div class="arch-side-item">景区服务经验</div></div></div></figure>
-<blockquote>
-<p>渐变色块为已有智能体，白色块为全景中可做的场景。四层分别对应畅游 AI、会员营销、AI 数字大脑（景数通 / 票付通 APP）、景区 AI 调度中枢，底层为智慧票务系统。</p>
-</blockquote>
+<p>票付通的产品覆盖票务、业态、运营、财务、终端，并已发布覆盖游客服务、景区管理、精准营销、安全运营的 AI 产品矩阵。场景沉淀回答三件事：手里有哪些场景，哪些最值得先做，为什么我们做得比别人好。</p>
+<h3 id="221">2.2.1 场景地图</h3>
+<p>按“游客旅程”和“景区经营”两条线，把产品全景中的智能体放到具体场景里：</p>
+<figure class="diagram"><div class="pf">
+  <div class="own-legend"><span class="own self">已有智能体</span><span class="own oss">全景中可做</span></div>
+  <div class="pf-row" style="align-items:stretch">
+    <div class="pf-label" style="width:84px">游客旅程</div>
+    <div class="pf-grid" style="flex:1;grid-template-columns: repeat(3, minmax(0, 1fr));">
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">游前 · 规划与购票</div><div class="pf-row own-wrap"><span class="own self">智能客服</span><span class="own oss">AI 旅游规划</span><span class="own oss">AI 智能购票</span></div></div>
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">游中 · 体验与服务</div><div class="pf-row own-wrap"><span class="own self">智能助手</span><span class="own self">智能导览</span><span class="own self">AI 伴游</span><span class="own self">手语</span></div></div>
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">游后 · 分享与复购</div><div class="pf-row own-wrap"><span class="own self">AI 旅拍</span><span class="own oss">评价分析</span><span class="own oss">年卡续费提醒</span></div></div>
+    </div>
+  </div>
+  <div class="pf-row" style="align-items:stretch">
+    <div class="pf-label" style="width:84px">景区经营</div>
+    <div class="pf-grid" style="flex:1;grid-template-columns: repeat(4, minmax(0, 1fr));">
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">经营分析</div><div class="pf-row own-wrap"><span class="own self">智能问数</span><span class="own self">数据解读</span><span class="own oss">移动驾驶舱</span></div></div>
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">票务财务</div><div class="pf-row own-wrap"><span class="own oss">票务运营助手</span><span class="own oss">AI 对账助手</span></div></div>
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">精准营销</div><div class="pf-row own-wrap"><span class="own oss">会员画像</span><span class="own oss">人群圈选</span><span class="own oss">活动复盘</span></div></div>
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">安全调度</div><div class="pf-row own-wrap"><span class="own oss">预警与工单</span><span class="own oss">秩序 · 车船调度</span><span class="own oss">防火 · 生态 · 气象 · 设施</span></div></div>
+    </div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label" style="width:84px">我们的家底</div>
+    <div class="pf-pills even"><span class="pf-pill fill">售检票与分销系统</span><span class="pf-pill fill">闸机 · 终端 · 边云网关</span><span class="pf-pill fill">交易与客流数据</span><span class="pf-pill fill">年卡 · 会员 · 预约</span><span class="pf-pill fill">存量票务景区</span></div>
+  </div>
+</div>
+</figure>
+<p>游客端已有一条完整的服务链，缺的是两头：游前的规划和购票（直接带来订单），游后的评价和复购（留住游客）。景区经营端只有问数和解读，票务财务、营销、安全调度基本空白。</p>
+<h3 id="222">2.2.2 哪些最值得先做</h3>
+<p>按“景区价值”和“落地难度”两个维度判断：</p>
+<figure class="diagram"><div class="pf">
+  <div style="color:var(--p);font-weight:700;font-size:13px">↑ 景区价值 · 付费意愿</div>
+  <div class="pf-row" style="align-items:stretch">
+    <div class="pf-grid" style="flex:1;grid-template-columns: 1fr 1fr;">
+      <div class="pf-card panel top" style="gap:8px"><div class="ttl" style="margin:0">价值高 · 易落地</div><div class="sub" style="color:var(--mut)">借平台就能做，景区一看就懂</div><div class="pf-row own-wrap"><span class="own self">智能客服</span><span class="own self">智能导览</span><span class="own self">AI 伴游</span><span class="own self">智能问数</span><span class="own self">数据解读</span><span class="own oss">AI 智能购票</span><span class="own oss">票务运营助手</span></div></div>
+      <div class="pf-card dash top" style="gap:8px"><div class="ttl" style="margin:0">价值高 · 难落地</div><div class="sub" style="color:var(--mut)">要实时数据或现场设备打通</div><div class="pf-row own-wrap"><span class="own oss">预警与工单</span><span class="own oss">秩序 · 车船调度</span><span class="own oss">AI 对账助手</span></div></div>
+      <div class="pf-card line top" style="gap:8px"><div class="ttl" style="margin:0;color:var(--mut)">价值一般 · 易落地</div><div class="sub" style="color:var(--mut)">做成配套，提升整体体验</div><div class="pf-row own-wrap"><span class="own self">智能助手</span><span class="own self">AI 旅拍</span><span class="own self">手语</span><span class="own oss">AI 旅游规划</span><span class="own oss">年卡续费提醒</span><span class="own oss">人群圈选</span></div></div>
+      <div class="pf-card line top" style="gap:8px"><div class="ttl" style="margin:0;color:var(--mut)">价值待验证 · 难落地</div><div class="sub" style="color:var(--mut)">依赖物联和合作方，按客户需求跟进</div><div class="pf-row own-wrap"><span class="own oss">森林防火</span><span class="own oss">生态监测</span><span class="own oss">气象服务</span><span class="own oss">设施监测</span></div></div>
+    </div>
+  </div>
+  <div style="text-align:right;color:var(--p);font-weight:700;font-size:13px">落地难度 →</div>
+  <div class="pf-banner"><b>怎么用</b><span>借力验证从“价值高 · 易落地”开始；“价值高 · 难落地”等数据平台的实时数据和现场接入具备后再做</span></div>
+</div>
+</figure>
 <table>
 <thead>
 <tr>
-<th>场景层</th>
-<th>服务谁</th>
-<th>解决什么</th>
-<th>依托的产品与数据</th>
+<th>判断依据</th>
+<th>看什么</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>游客服务</td>
-<td>游客</td>
-<td>游前规划咨询购票，游中导览伴游，游后旅拍分享</td>
-<td>畅游小程序、售票系统、景区知识</td>
+<td>景区价值</td>
+<td>能不能直接带来收入（购票、二消）、省人工（客服、对账），景区愿不愿意为它付费</td>
 </tr>
 <tr>
-<td>精准营销</td>
-<td>景区营销人员</td>
-<td>找对人、推对产品、看清效果</td>
-<td>会员积分、年卡、全民营销、统一标签</td>
-</tr>
-<tr>
-<td>景区管理</td>
-<td>景区管理者、我方运营</td>
-<td>看数、找问题、对账、运营提效</td>
-<td>景数通、票付通 APP、财务报表、认证指标</td>
-</tr>
-<tr>
-<td>安全运营</td>
-<td>景区安全与调度人员</td>
-<td>客流、车船、安防、生态的预警与处置</td>
-<td>调度中枢、闸机与边云网关、物联与气象数据、工单</td>
-</tr>
-<tr>
-<td>业务系统与数据</td>
-<td>——</td>
-<td>所有智能体的数据和动作来源</td>
-<td>智慧票务全系列、第一章的数据平台</td>
+<td>落地难度</td>
+<td>借平台能不能做；是否要实时数据、现场设备或合作方接入</td>
 </tr>
 </tbody>
 </table>
-<p><strong>我们的优势</strong>：智能体要“能办事”，靠的是业务系统和数据。票付通的票务、业态、终端系统在景区现场，交易数据、业务接口和景区服务经验是通用 AI 厂商没有的。</p>
-<h2 id="23">2.3 总体策略：先借力，再复制，后自建</h2>
+<h3 id="223">2.2.3 我们的优势</h3>
+<p>智能体要“能办事”，靠的是业务系统和数据，这正是通用 AI 厂商没有的：</p>
+<table>
+<thead>
+<tr>
+<th>优势</th>
+<th>体现在</th>
+<th>支撑的场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统在景区现场</td>
+<td>售检票、闸机、终端、边云网关都是我们的</td>
+<td>智能购票、核销查询、客流预警能直接“办事”，不只是聊天</td>
+</tr>
+<tr>
+<td>交易和客流数据</td>
+<td>订单、核销、客流、年卡会员数据在我们手里</td>
+<td>问数、洞察、营销圈人、复购提醒</td>
+</tr>
+<tr>
+<td>存量票务客户</td>
+<td>大量景区已在用票付通票务</td>
+<td>开通快、信任已有，是借力复制的第一批客户</td>
+</tr>
+<tr>
+<td>景区服务经验</td>
+<td>票种规则、退改政策、景区运营的行业知识</td>
+<td>客服、导览答得准，不乱承诺</td>
+</tr>
+<tr>
+<td>现成入口</td>
+<td>畅游小程序、票付通 APP、景数通、公众号 / 小程序</td>
+<td>智能体上线就有流量，不用另建入口</td>
+</tr>
+</tbody>
+</table>
+<h2 id="23">2.3 建设策略</h2>
+<p>先借力，再复制，后自建</p>
 <p>智能体这件事要回答三个问题：商业模式能不能跑通，市场能不能快速占住，平台要不要、什么时候自己建。对应三步走，每两步之间设一道关卡，过关才进下一步。</p>
 <figure class="diagram"><div class="pf">
   <div class="pf-row" style="align-items:stretch">
@@ -299,7 +358,7 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <p><strong>为什么先借力</strong>：智能体卖不卖得动、景区愿付多少钱，现在还不知道。先自建平台，等于在需求没验证前就投入研发和时间；借平台，几周就能做出来去试。</p>
 <p><strong>为什么最终要自建</strong>：景区越多，平台费越高，交付和定制受平台限制，数据和资产留在别人那里。规模起来后，自建更省钱、更快、更可控。</p>
 <p><strong>关键一条：借平台，不交资产</strong>。从阶段一开始就把知识、业务接口、交互数据、模板设计留在自己手里（见 2.5.4），阶段三才能低成本切过去。</p>
-<h2 id="24">2.4 验证商业模式</h2>
+<h2 id="24">2.4 借力验证</h2>
 <h3 id="241">2.4.1 要验证什么</h3>
 <figure class="diagram"><div class="pf">
   <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
@@ -411,7 +470,7 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   <div class="pf-banner warm"><b>没过关</b><span>调整场景组合或定价再验证一轮；仍不行的场景停掉，不带进阶段二</span></div>
 </div>
 </figure>
-<h2 id="25">2.5 快速占有市场</h2>
+<h2 id="25">2.5 借力复制</h2>
 <h3 id="251">2.5.1 先打哪些客户</h3>
 <table>
 <thead>
@@ -573,8 +632,8 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
   </div>
 </div>
 </figure>
-<h2 id="26">2.6 自建智能体平台</h2>
-<h3 id="261">2.6.1 关卡二：什么时候自建</h3>
+<h2 id="26">2.6 能力自给</h2>
+<h3 id="261">2.6.1 何时启动</h3>
 <figure class="diagram"><div class="pf">
   <svg viewBox="0 0 760 300" style="width:100%;height:auto" role="img" aria-label="成本随规模变化示意">
     <line x1="70" y1="250" x2="730" y2="250" stroke="#B9B2FA" stroke-width="1.5"></line>

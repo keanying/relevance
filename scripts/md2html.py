@@ -289,6 +289,8 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .own.buy {{ background: #E6E2FD; color: var(--ink); }}
 .own.reuse {{ background: #FDEEE2; border: 1.5px dashed var(--org); color: #8A3F12; }}
 .own.chan {{ background: var(--dp); color: #fff; font-weight: 600; }}
+.own-wrap {{ flex-wrap: wrap; gap: 6px; }}
+.own-wrap .own {{ flex: 0 0 auto; white-space: nowrap; padding: 6px 10px; }}
 .own-legend {{ display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }}
 .own-legend .own {{ flex: none; padding: 3px 12px; font-size: 12.5px; }}
 .pf-name {{ display: flex; justify-content: center; align-items: flex-start; gap: 10px; }}
