@@ -163,8 +163,6 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <nav><div class="brand">AI＋数据平台</div>
 <a class="l2" href="#21">2.1 现状</a>
 <a class="l2" href="#22">2.2 场景沉淀</a>
-<a class="l3" href="#221">2.2.1 需求与能力对照</a>
-<a class="l3" href="#222">2.2.2 积累与可扩展场景</a>
 <a class="l2" href="#23">2.3 建设策略</a>
 <a class="l2" href="#24">2.4 借力验证</a>
 <a class="l3" href="#241">2.4.1 要验证什么</a>
@@ -239,98 +237,34 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tbody>
 </table>
 <h2 id="22">2.2 场景沉淀</h2>
-<p>票付通的产品覆盖票务、业态、运营、财务、终端，并已发布覆盖游客服务、景区管理、精准营销、安全运营的 AI 产品矩阵。场景沉淀梳理两件事：景区和游客需要什么、我们有什么支撑；多年积累还能扩展出哪些智能体场景。</p>
-<h3 id="221">2.2.1 需求与能力对照</h3>
+<p>票付通多年在票务、九大业态、运营、财务、终端、会员营销上的积累，覆盖了游客从游前到游后、景区从经营到运营的大量场景，每个场景都可以做成智能体。底层是积累，中间是按游客 / 景区梳理的场景，上层是智能体全景：</p>
 <figure class="diagram"><div class="pf">
-<div class="own-legend"><span class="own self">已有智能体</span><span class="own oss">能做、待建</span></div>
-<div class="pf-grid" style="grid-template-columns: 1.1fr 26px 1.5fr 26px 1.4fr; row-gap:8px; column-gap:6px; align-items:center">
-<div class="pf-note" style="font-weight:700;color:var(--ink)">景区 / 游客需要</div><div></div><div class="pf-note" style="font-weight:700;color:var(--ink)">我们有的系统和数据</div><div></div><div class="pf-note" style="font-weight:700;color:var(--ink)">能做的智能体</div>
-<div class="pf-label" style="width:auto;grid-column:1 / -1;margin-top:4px">游客</div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">行前了解景区、规划行程</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">景区知识</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">票种与预约</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">畅游小程序</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own self">智能客服</span><span class="own oss">AI 旅游规划</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">购票方便、入园少排队</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">售票系统</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">分时预约</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">人脸闸机</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own oss">AI 智能购票</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">游玩有讲解、有陪伴</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">景区知识</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">导览内容</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">数字人</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own self">智能导览</span><span class="own self">AI 伴游</span><span class="own self">智能助手</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">特殊人群无障碍</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">合作手语能力</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">特定人群免证</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own self">手语</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">留念与分享</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">图像能力</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">畅游小程序</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own self">AI 旅拍</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">复游与优惠</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">年卡</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">会员积分</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own oss">年卡续费提醒</span></div>
-<div class="pf-label" style="width:auto;grid-column:1 / -1;margin-top:4px">景区</div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">少用人工答咨询</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">景区知识</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">售票与订单接口</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own self">智能客服</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">随时看清经营</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">交易与客流数据</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">认证指标</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">小Q</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own self">智能问数</span><span class="own self">数据解读</span><span class="own oss">移动驾驶舱</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">票务运营提效</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">售票</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">分销渠道</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">库存与价格</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own oss">票务运营助手</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">对账省时省人</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">订单与结算</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">财务报表</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">电子发票</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own oss">AI 对账助手</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">拉新与复购</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">会员</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">年卡</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">全民营销</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">统一标签</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own oss">人群圈选</span><span class="own oss">会员画像</span><span class="own oss">活动复盘</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">客流安全与秩序</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">闸机客流</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">边云网关</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">工单与 APP 推送</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own oss">预警与工单</span><span class="own oss">秩序 · 车船调度</span></div><div class="pf-card soft" style="padding:8px 12px;justify-content:center"><b style="font-size:14px">生态与设施安全</b></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row" style="flex-wrap:wrap;gap:6px;align-items:center"><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">物联设备</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">气象数据</span><span class="pf-pill fill" style="padding:4px 10px;font-size:12.5px">合作方能力</span></div><div class="pf-arrow" style="font-size:16px">➜</div><div class="pf-row own-wrap" style="align-items:center"><span class="own oss">防火 · 生态 · 气象 · 设施</span></div>
-</div>
-<div class="pf-banner"><b>结论</b><span>景区和游客的需求，我们都有对应的系统和数据支撑；已有 8 个智能体覆盖了游玩中和经营问数，其余需求可在现有系统和数据上直接做</span></div>
+  <div class="own-legend"><span class="own self">已有</span><span class="own oss">全景已规划</span><span class="own buy">基于积累可扩展</span></div>
+  <div class="pf-card panel" style="gap:10px">
+    <div class="ttl" style="margin:0">智能体全景</div>
+    <div class="pf-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">游客端</div><div class="pf-row own-wrap"><span class="own self">智能客服</span><span class="own self">智能助手</span><span class="own self">智能导览</span><span class="own self">AI 伴游</span><span class="own self">AI 旅拍</span><span class="own self">手语</span><span class="own oss">AI 旅游规划</span><span class="own oss">AI 智能购票</span><span class="own buy">乐园排队与项目推荐</span><span class="own buy">演出选座推荐</span><span class="own buy">餐饮二消推荐</span><span class="own buy">停车引导</span><span class="own buy">预约与候补提醒</span><span class="own buy">年卡服务助手</span><span class="own buy">自助机语音购票</span><span class="own buy">游记与行程总结</span><span class="own buy">点评分享助手</span></div></div>
+      <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">景区端</div><div class="pf-row own-wrap"><span class="own self">智能问数</span><span class="own self">智能洞察 · 数据解读</span><span class="own buy">经营日报周报</span><span class="own oss">票务运营助手</span><span class="own buy">分销渠道助手</span><span class="own buy">旅行社报团助手</span><span class="own buy">检票异常解释</span><span class="own buy">业态经营助手</span><span class="own oss">AI 对账助手</span><span class="own buy">发票助手</span><span class="own buy">报表解读</span><span class="own buy">会员画像</span><span class="own buy">人群圈选</span><span class="own buy">营销文案生成</span><span class="own buy">推广员助手</span><span class="own buy">活动复盘</span><span class="own oss">消息预警</span><span class="own oss">工单处置</span><span class="own oss">调度中枢 8 个智能体</span><span class="own buy">设备运维诊断</span><span class="own buy">窗口售票员助手</span></div></div>
+    </div>
+  </div>
+  <div class="pf-arrow down" style="font-size:22px;color:var(--p)">▲</div>
+  <div class="pf-card soft" style="gap:10px">
+    <div class="ttl" style="margin:0">场景 · 按游客 / 景区</div>
+    <div class="pf-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="pf-card line top" style="gap:8px"><div class="ttl" style="font-size:15px;margin:0">游客 · 游前 → 游中 → 游后</div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">游前</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">景区咨询</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">行程规划</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">购票预约</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">门票候补</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">游中</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">入园核验</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">导览讲解</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">陪伴互动</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">无障碍服务</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">乐园项目</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">演出观看</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">游船乘坐</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">餐饮购物</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">停车租赁</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">酒店温泉</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">游后</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">拍照留念</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">游记分享</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">点评反馈</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">年卡复游</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">积分权益</span></div></div></div>
+      <div class="pf-card line top" style="gap:8px"><div class="ttl" style="font-size:15px;margin:0">景区 · 经营与运营</div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">经营分析</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">经营问数</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">经营洞察</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">日报周报</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">票务运营</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">定价库存</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">分销渠道</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">团队报名</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">检票核销</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">业态运营</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">乐园</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">演出</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">游船</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">酒店</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">温泉</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">餐饮零售</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">租赁</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">停车</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">运营服务</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">年卡</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">分时预约</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">候补</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">免证</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">返利</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">一卡通</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">财务</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">对账</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">发票</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">报表</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">营销</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">会员</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">人群</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">全民营销</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">活动</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">安全调度</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">客流秩序</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">车船调度</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">防火生态</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">气象设施</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">设备终端</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">闸机</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">自助机</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">窗口</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">边云网关</span></div></div></div>
+    </div>
+  </div>
+  <div class="pf-arrow down" style="font-size:22px;color:var(--p)">▲</div>
+  <div class="pf-row">
+    <div class="pf-label">多年积累</div>
+    <div class="pf-pills"><span class="pf-pill fill">智慧票务</span><span class="pf-pill fill">九大业态系统</span><span class="pf-pill fill">景区运营管理</span><span class="pf-pill fill">景区财务</span><span class="pf-pill fill">智慧终端 · 边云网关</span><span class="pf-pill fill">AI 数字大脑</span><span class="pf-pill fill">畅游 AI</span><span class="pf-pill fill">会员营销</span><span class="pf-pill fill">交易与客流数据</span></div>
+  </div>
 </div>
 </figure>
-<table>
-<thead>
-<tr>
-<th>对照结果</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>已有</td>
-<td>智能客服、智能导览、AI 伴游、智能助手、手语、AI 旅拍、智能问数、数据解读，集中在游玩中和经营问数</td>
-</tr>
-<tr>
-<td>能做、待建</td>
-<td>游前的规划和购票、游后的复游，景区的票务运营、对账、营销、安全调度</td>
-</tr>
-<tr>
-<td>支撑都在</td>
-<td>每个需求背后都有票付通现成的系统或数据，不是从零做</td>
-</tr>
-</tbody>
-</table>
-<h3 id="222">2.2.2 积累与可扩展场景</h3>
-<p>票付通多年在票务、九大业态、运营、财务、终端、会员营销上的积累，每一块都可以长出智能体。按产品全景逐块梳理：</p>
-<figure class="diagram"><div class="pf">
-<div class="own-legend"><span class="own self">已有</span><span class="own oss">全景已规划</span><span class="own buy">基于积累可扩展</span></div>
-<div class="pf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">旅游票务管理</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：售票 · 检票 · 全渠道分销 · 旅行社报团</div><div class="pf-row own-wrap"><span class="own oss">AI 智能购票</span><span class="own oss">票务运营助手</span><span class="own buy">分销渠道助手</span><span class="own buy">旅行社报团助手</span><span class="own buy">检票异常解释</span></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">景区业态管理</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：景区 · 乐园 · 演出 · 游船 · 酒店 · 温泉 · 餐饮零售 · 共享租赁 · 智慧停车</div><div class="pf-row own-wrap"><span class="own buy">乐园排队与项目推荐</span><span class="own buy">演出选座推荐</span><span class="own buy">游船班次助手</span><span class="own buy">酒店预订入住助手</span><span class="own buy">温泉预约助手</span><span class="own buy">餐饮二消推荐</span><span class="own buy">租赁助手</span><span class="own buy">停车引导与车位预测</span></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">景区运营管理</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：年卡 · 分时预约 · 门票候补 · 人脸 · 特定人群免证 · 分销返利 · 一卡通 · 边云网关</div><div class="pf-row own-wrap"><span class="own buy">年卡服务助手</span><span class="own buy">预约与候补提醒</span><span class="own buy">免证政策问答</span><span class="own buy">返利结算问答</span><span class="own buy">一卡通消费助手</span><span class="own buy">设备运维诊断</span></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">景区财务管理</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：财务报表 · 对账 · 电子发票</div><div class="pf-row own-wrap"><span class="own oss">AI 对账助手</span><span class="own buy">发票助手</span><span class="own buy">财务报表解读</span></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">景区智慧终端</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：闸机 · 人脸一体机 · 自助售取票机 · 手持终端 · 窗口售票 · 边云网关服务器</div><div class="pf-row own-wrap"><span class="own buy">自助机语音购票</span><span class="own buy">窗口售票员助手</span><span class="own buy">终端故障诊断</span></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">AI 数字大脑</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：景数通 · 景区 AI 调度中枢 · 票付通 APP</div><div class="pf-row own-wrap"><span class="own self">智能问数</span><span class="own self">智能洞察 · 数据解读</span><span class="own buy">经营日报周报生成</span><span class="own oss">消息预警</span><span class="own oss">工单处置</span><span class="own oss">调度中枢 8 个智能体</span></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">畅游 AI</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：畅游小程序 · 游前 / 游中 / 游后 · 游客 AI 服务</div><div class="pf-row own-wrap"><span class="own self">智能客服</span><span class="own self">智能助手</span><span class="own self">智能导览</span><span class="own self">AI 伴游</span><span class="own self">AI 旅拍</span><span class="own self">手语</span><span class="own oss">AI 旅游规划</span><span class="own buy">游记与行程总结</span><span class="own buy">点评分享助手</span></div></div>
-<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px;margin:0">会员营销</div><div class="sub" style="color:var(--mut);font-size:12.5px">积累：会员积分 · 旅游年卡 · 全民营销 · 营销工具</div><div class="pf-row own-wrap"><span class="own buy">会员画像</span><span class="own buy">人群圈选</span><span class="own buy">营销文案生成</span><span class="own buy">推广员助手</span><span class="own buy">积分权益推荐</span><span class="own buy">活动复盘</span></div></div>
-</div>
-<div class="pf-hero">已有 8 个只是起点：每一块积累都能长出智能体，文旅场景远不止于此</div>
-</div>
-</figure>
-<table>
-<thead>
-<tr>
-<th>积累</th>
-<th>能做智能体的原因</th>
-<th>代表场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>票务与分销</td>
-<td>有售票、库存、价格、渠道和订单数据，智能体能直接查、直接下单</td>
-<td>AI 智能购票、票务运营助手、分销渠道助手</td>
-</tr>
-<tr>
-<td>九大业态系统</td>
-<td>乐园、演出、游船、酒店、温泉、餐饮、租赁、停车都有业务系统，能做预约、推荐、二消</td>
-<td>排队与项目推荐、演出选座、餐饮二消推荐、车位预测</td>
-</tr>
-<tr>
-<td>运营与终端</td>
-<td>年卡、预约、候补、人脸、闸机、边云网关在景区现场运行</td>
-<td>年卡服务、候补提醒、设备运维诊断、自助机语音购票</td>
-</tr>
-<tr>
-<td>财务</td>
-<td>订单、结算、报表、发票数据完整</td>
-<td>AI 对账、发票助手、报表解读</td>
-</tr>
-<tr>
-<td>数据与 AI 产品</td>
-<td>景数通、APP、调度中枢已有入口和用户</td>
-<td>问数、洞察、日报生成、预警与工单、调度</td>
-</tr>
-<tr>
-<td>游客与会员</td>
-<td>畅游小程序、会员、积分、年卡、全民营销</td>
-<td>旅游规划、游记生成、会员画像、营销文案、推广员助手</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<p>渐变为已有智能体，白框为产品全景已规划，浅紫为基于积累可扩展。</p>
+</blockquote>
 <h2 id="23">2.3 建设策略</h2>
 <p>先借力，再复制，后自建</p>
 <p>智能体这件事要回答三个问题：商业模式能不能跑通，市场能不能快速占住，平台要不要、什么时候自己建。对应三步走，每两步之间设一道关卡，过关才进下一步。</p>
