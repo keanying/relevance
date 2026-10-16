@@ -118,6 +118,14 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 .pf-ag.have { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }
 .pf-ag.todo { background: #fff; border: 1.5px dashed #B9B2FA; color: var(--ink); }
 .pf-ag.todo em { color: var(--p); }
+.own { display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; flex: 1; min-width: 0; }
+.own.self { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }
+.own.oss { background: #fff; border: 1.5px solid var(--p); color: var(--dp); }
+.own.buy { background: #E6E2FD; color: var(--ink); }
+.own.reuse { background: #FDEEE2; border: 1.5px dashed var(--org); color: #8A3F12; }
+.own.chan { background: var(--dp); color: #fff; font-weight: 600; }
+.own-legend { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.own-legend .own { flex: none; padding: 3px 12px; font-size: 12.5px; }
 .pf-name { display: flex; justify-content: center; align-items: flex-start; gap: 10px; }
 .pf-tok { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .pf-tok b { font-family: Consolas, Menlo, monospace; font-size: 26px; padding: 8px 18px; border-radius: 8px; }
@@ -655,28 +663,81 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 </tbody>
 </table>
 <h3 id="263">2.6.3 平台架构</h3>
+<p>按 2.6.2 的“建与不建”分层：数字大脑作为智能体管理台和能力层自建，引擎借开源，模型和专项能力采购，数据复用第一章的数据平台。</p>
 <figure class="diagram"><div class="pf">
-  <div class="pf-card panel" style="gap:10px">
-    <div class="ttl">自建智能体平台 · 数字大脑作为智能体管理台</div>
-    <div class="pf-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
-      <div class="pf-val hl"><h4 style="font-size:17px">智能体应用</h4><div class="chg">游客服务、景区管理、票务财务、安全调度、精准营销</div></div>
-      <div class="pf-val"><h4 style="font-size:17px">智能体搭建</h4><div class="chg">场景模板、配置化生成、多智能体协同、版本管理</div></div>
-      <div class="pf-val"><h4 style="font-size:17px">能力与知识</h4><div class="chg">业务工具、景区知识、数据服务、多模态与数字人</div></div>
-      <div class="pf-val"><h4 style="font-size:17px">运营管理</h4><div class="chg">统一接入、权限与租户、运行监控、成本统计、效果评估</div></div>
+  <div class="own-legend"><span class="own chan">已有</span><span class="own self">自建</span><span class="own oss">开源二开</span><span class="own buy">采购 / 合作</span><span class="own reuse">复用数据平台</span></div>
+  <div class="pf-row" style="align-items:stretch">
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+      <div class="pf-row"><div class="pf-label">渠道入口</div><div class="pf-row" style="flex:1"><span class="own chan">畅游小程序</span><span class="own chan">票付通 APP</span><span class="own chan">景数通</span><span class="own chan">公众号/小程序</span><span class="own chan">智慧终端</span><span class="own self">开放 API</span></div></div>
+      <div class="pf-row"><div class="pf-label">智能体应用</div><div class="pf-row" style="flex:1"><span class="own self">游客服务</span><span class="own self">景区管理</span><span class="own self">票务财务</span><span class="own self">安全调度</span><span class="own self">精准营销</span></div></div>
+      <div class="pf-card panel" style="gap:10px;padding:12px">
+        <div class="ttl" style="margin:0">数字大脑 · 智能体管理台</div>
+        <div class="pf-row"><div class="pf-label" style="width:84px">智能体搭建</div><div class="pf-row" style="flex:1"><span class="own self">模板库</span><span class="own oss">可视化编排</span><span class="own self">配置化生成</span><span class="own self">多智能体协同</span><span class="own self">测试与发布</span></div></div>
+        <div class="pf-row"><div class="pf-label" style="width:84px">运营管理</div><div class="pf-row" style="flex:1"><span class="own self">集团 / 景区多租户</span><span class="own self">权限</span><span class="own self">运行监控</span><span class="own self">计量到景区</span><span class="own self">效果评估</span></div></div>
+      </div>
+      <div class="pf-row"><div class="pf-label">能力层</div><div class="pf-row" style="flex:1"><span class="own self">业务工具中心</span><span class="own self">景区知识库</span><span class="own self">游客记忆与画像</span><span class="own self">测试用例库</span><span class="own reuse">数据服务</span></div></div>
+      <div class="pf-row"><div class="pf-label">引擎层</div><div class="pf-row" style="flex:1"><span class="own oss">编排引擎</span><span class="own oss">检索引擎</span><span class="own self">模型网关 · 路由 / 降级 / 计量</span><span class="own self">内容安全</span></div></div>
+      <div class="pf-row"><div class="pf-label">外部能力</div><div class="pf-row" style="flex:1"><span class="own buy">大模型服务（多家可替换）</span><span class="own buy">语音 · 图像 · 数字人</span><span class="own buy">手语（合作）</span><span class="own buy">小Q</span></div></div>
+      <div class="pf-row"><div class="pf-label">数据底座</div><div class="pf-row" style="flex:1"><span class="own reuse">认证指标</span><span class="own reuse">统一标签</span><span class="own reuse">湖仓与实时</span><span class="own reuse">交互数据回流入湖</span></div></div>
     </div>
   </div>
-  <div class="pf-arrow down" style="font-size:22px;color:var(--p)">▲</div>
-  <div class="pf-row">
-    <div class="pf-label">采购 / 合作</div>
-    <div class="pf-pills even"><span class="pf-pill fill">大模型服务（多家可替换）</span><span class="pf-pill fill">语音 · 图像 · 数字人</span><span class="pf-pill fill">小Q</span><span class="pf-pill fill">合作企业专项能力</span></div>
-  </div>
-  <div class="pf-hero">前两阶段沉淀的模板、知识、接口、数据直接迁入，平台不是从零开始</div>
+  <div class="pf-banner"><b>设计要点</b><span>模型经网关接入、可随时替换；集团统一建设、景区开通即用；每次调用计量到景区，成本和收费算得清</span></div>
 </div>
 </figure>
-<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">入口</div><div class="arch-items"><span class="chip have">畅游小程序</span><span class="chip have">票付通 APP</span><span class="chip have">景数通</span><span class="chip have">公众号/小程序</span><span class="chip have">智慧终端</span></div></div><div class="arch-row"><div class="arch-name">智能体应用</div><div class="arch-items"><span class="chip">游客服务</span><span class="chip">景区管理</span><span class="chip">票务财务</span><span class="chip">安全调度</span><span class="chip">精准营销</span></div></div><div class="arch-row"><div class="arch-name">智能体搭建</div><div class="arch-items"><span class="chip">场景模板</span><span class="chip">配置化生成</span><span class="chip">多智能体协同</span><span class="chip">版本管理</span></div></div><div class="arch-row"><div class="arch-name">能力与知识</div><div class="arch-items"><span class="chip">业务工具</span><span class="chip">景区知识</span><span class="chip">数据服务</span><span class="chip">多模态与数字人</span></div></div><div class="arch-row"><div class="arch-name">采购与合作</div><div class="arch-items"><span class="chip src">大模型服务（可替换）</span><span class="chip src">语音图像数字人</span><span class="chip have">小Q</span><span class="chip have">合作企业</span></div></div></div><div class="arch-side"><div class="arch-side-title">运营管理<br>贯穿各层</div><div class="arch-side-item">统一接入</div><div class="arch-side-item">权限与租户</div><div class="arch-side-item">运行监控</div><div class="arch-side-item">成本统计</div><div class="arch-side-item">效果评估</div></div></div></figure>
-<blockquote>
-<p>中间三层和右侧运营管理为自建；前两阶段沉淀的模板、知识、接口直接迁入。</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>做什么</th>
+<th>怎么来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能体应用</td>
+<td>全景中的各类智能体，按场景模板生成</td>
+<td>自建</td>
+</tr>
+<tr>
+<td>数字大脑 · 智能体管理台</td>
+<td>搭建：模板、编排、配置、协同、测试发布；运营：多租户、权限、监控、计量、评估</td>
+<td>自建，编排界面基于开源</td>
+</tr>
+<tr>
+<td>能力层</td>
+<td>业务工具、景区知识、游客记忆与画像、测试用例；数据服务接第一章</td>
+<td>自建，数据服务复用</td>
+</tr>
+<tr>
+<td>引擎层</td>
+<td>编排与检索用开源；模型网关统一接各家模型，可路由、降级、计量</td>
+<td>开源二开 + 自建网关</td>
+</tr>
+<tr>
+<td>外部能力</td>
+<td>大模型、语音图像数字人、手语、小Q</td>
+<td>采购 / 合作，可替换</td>
+</tr>
+<tr>
+<td>数据底座</td>
+<td>认证指标、标签、实时数据；交互数据回流</td>
+<td>复用第一章数据平台</td>
+</tr>
+</tbody>
+</table>
+<p><strong>前两阶段的沉淀落到哪</strong>：平台不是从零开始，2.5.4 留在手里的资产直接迁入。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: 1fr 40px 1fr; align-items:center; row-gap:8px">
+    <div class="pf-label" style="width:auto">阶段一、二沉淀</div><div></div><div class="pf-label" style="width:auto">自建平台里的位置</div>
+    <div class="pf-card dash" style="padding:9px 12px">景区知识（自有结构）</div><div class="pf-arrow">➜</div><div class="own self">景区知识库</div>
+    <div class="pf-card dash" style="padding:9px 12px">自己封装的业务接口服务</div><div class="pf-arrow">➜</div><div class="own self">业务工具中心</div>
+    <div class="pf-card dash" style="padding:9px 12px">模板设计文档</div><div class="pf-arrow">➜</div><div class="own self">模板库</div>
+    <div class="pf-card dash" style="padding:9px 12px">交互数据（对话、评价、转人工）</div><div class="pf-arrow">➜</div><div class="own self">测试用例库 · 游客记忆与画像</div>
+    <div class="pf-card dash" style="padding:9px 12px">每月成本记录</div><div class="pf-arrow">➜</div><div class="own self">计量到景区 · 定价依据</div>
+    <div class="pf-card dash" style="padding:9px 12px">平台做不了的需求清单</div><div class="pf-arrow">➜</div><div class="own self">平台首批功能清单</div>
+  </div>
+</div>
+</figure>
 <h3 id="264">2.6.4 全景智能体</h3>
 <p>产品全景中的智能体，已有 8 个，还有 14 个待建，最终都由自建平台统一承载：</p>
 <figure class="diagram"><div class="pf">

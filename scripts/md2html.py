@@ -283,6 +283,14 @@ td:first-child {{ font-weight: 600; white-space: nowrap; }}
 .pf-ag.have {{ background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }}
 .pf-ag.todo {{ background: #fff; border: 1.5px dashed #B9B2FA; color: var(--ink); }}
 .pf-ag.todo em {{ color: var(--p); }}
+.own {{ display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; flex: 1; min-width: 0; }}
+.own.self {{ background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }}
+.own.oss {{ background: #fff; border: 1.5px solid var(--p); color: var(--dp); }}
+.own.buy {{ background: #E6E2FD; color: var(--ink); }}
+.own.reuse {{ background: #FDEEE2; border: 1.5px dashed var(--org); color: #8A3F12; }}
+.own.chan {{ background: var(--dp); color: #fff; font-weight: 600; }}
+.own-legend {{ display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }}
+.own-legend .own {{ flex: none; padding: 3px 12px; font-size: 12.5px; }}
 .pf-name {{ display: flex; justify-content: center; align-items: flex-start; gap: 10px; }}
 .pf-tok {{ display: flex; flex-direction: column; align-items: center; gap: 6px; }}
 .pf-tok b {{ font-family: Consolas, Menlo, monospace; font-size: 26px; padding: 8px 18px; border-radius: 8px; }}
