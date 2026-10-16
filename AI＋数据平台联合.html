@@ -118,6 +118,16 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 .pf-ag.have { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }
 .pf-ag.todo { background: #fff; border: 1.5px dashed #B9B2FA; color: var(--ink); }
 .pf-ag.todo em { color: var(--p); }
+.own { display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; flex: 1; min-width: 0; }
+.own.self { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }
+.own.oss { background: #fff; border: 1.5px solid var(--p); color: var(--dp); }
+.own.buy { background: #E6E2FD; color: var(--ink); }
+.own.reuse { background: #FDEEE2; border: 1.5px dashed var(--org); color: #8A3F12; }
+.own.chan { background: var(--dp); color: #fff; font-weight: 600; }
+.own-wrap { flex-wrap: wrap; gap: 6px; }
+.own-wrap .own { flex: 0 0 auto; white-space: nowrap; padding: 6px 10px; }
+.own-legend { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.own-legend .own { flex: none; padding: 3px 12px; font-size: 12.5px; }
 .pf-name { display: flex; justify-content: center; align-items: flex-start; gap: 10px; }
 .pf-tok { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .pf-tok b { font-family: Consolas, Menlo, monospace; font-size: 26px; padding: 8px 18px; border-radius: 8px; }
@@ -151,140 +161,138 @@ hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
 <body>
 <div class="layout">
 <nav><div class="brand">AI＋数据平台</div>
-<a class="l2" href="#31">3.1 数据流架构</a>
-<a class="l2" href="#32">3.2 我们要做的</a>
-<a class="l2" href="#_1">参考资料</a>
+<a class="l2" href="#31">3.1 数据流转架构</a>
+<a class="l2" href="#32">3.2 数据生产 · 反哺 · 应用闭环</a>
 </nav>
 <main>
-<div class="cover"><h1>AI＋数据平台</h1><div class="sub">三、AI＋数据平台联合</div></div>
-<h1 id="ai">三、AI＋数据平台联合</h1>
-<p>数据平台让数据可信，数字大脑让数据办事；两者接上之后，业务产品产生的数据经过治理变成指标、标签和知识，再由智能体服务游客、景区、内部和伙伴，使用结果又回流补充数据，形成闭环。</p>
-<h2 id="31">3.1 数据流架构</h2>
+<div class="cover"><h1>AI＋数据平台</h1><div class="sub">三、AI＋数据平台</div></div>
+<h1 id="ai">三、AI＋数据平台</h1>
+<p>数据平台让数据可信，智能体让数据办事。两者接上后，企业内部形成一条完整的数据链：应用产生数据，数据平台治理，智能体和应用使用，结果回流，反哺业务。</p>
+<h2 id="31">3.1 数据流转架构</h2>
 <figure class="diagram"><div class="pf">
-  <div class="pf-row" style="align-items:stretch">
-    <div class="pf-col" style="flex:1.05;justify-content:flex-start">
-      <div class="pf-label" style="width:auto;font-size:14px">业务产品</div>
-      <div class="pf-card soft"><h4 style="font-size:15px">智慧票务</h4><div class="sub">售检票 · 分销 · 业态 · 年卡预约 · 财务</div></div>
-      <div class="pf-card soft"><h4 style="font-size:15px">景区智慧终端</h4><div class="sub">闸机 · 人脸 · 边云网关</div></div>
-      <div class="pf-card soft"><h4 style="font-size:15px">畅游 AI</h4><div class="sub">畅游小程序 · 会员营销</div></div>
-      <div class="pf-card soft"><h4 style="font-size:15px">AI 数字大脑</h4><div class="sub">景数通 · APP · 调度中枢</div></div>
+  <div class="pf-grid" style="grid-template-columns: 96px 1fr 120px; gap:10px; align-items:stretch">
+
+    <div class="arch-name">应用层<br>· 用数</div>
+    <div class="pf-card panel" style="gap:8px;padding:12px">
+      <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0,1fr)); gap:8px">
+        <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:15px">游客</h4><div class="sub">畅游小程序 · 公众号 · 自助终端</div></div>
+        <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:15px">景区</h4><div class="sub">景数通 · 票付通 APP · 景区 SaaS</div></div>
+        <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:15px">内部</h4><div class="sub">管理层 · 业务线 · 小Q 报表</div></div>
+      </div>
     </div>
-    <div class="pf-col" style="flex:none;width:58px;align-items:center"><div class="pf-arrow" style="flex-direction:column;font-size:22px">➜<span style="font-size:12px;font-weight:700;white-space:nowrap">① 入湖</span></div></div>
-    <div class="pf-card panel" style="flex:1.1;gap:10px">
-      <div class="ttl">数据平台 · 让数据可信</div>
-      <div class="pf-bar line">离线 + 实时接入</div>
-      <div class="pf-bar line">湖仓 · 公共模型分层</div>
-      <div class="pf-bar grad">指标 · 标签 · 知识</div>
-      <div class="pf-bar dark">数据服务 API</div>
-      <div class="pf-note" style="color:var(--p);text-align:center">治理贯穿全程</div>
+    <div class="pf-card warm c" style="grid-row: span 7; justify-content:space-between; padding:12px 8px">
+      <b style="color:#B5541B">④ 回流</b>
+      <div class="sub" style="font-size:12.5px;line-height:1.6">问答记录<br>游客评价<br>转人工<br>预警与工单结果<br>使用行为</div>
+      <div style="font-size:26px;color:var(--org)">▼</div>
+      <div class="sub" style="font-size:12.5px;line-height:1.6">回到数据平台<br>补指标、标签<br>补知识、用例</div>
+      <div style="font-size:26px;color:var(--org)">▼</div>
+      <b style="color:#B5541B">⑤ 反哺</b>
+      <div class="sub" style="font-size:12.5px;line-height:1.6">指标 · 标签 · 洞察<br>回到业务系统<br>定价 · 营销 · 调度</div>
     </div>
-    <div class="pf-col" style="flex:none;width:58px;align-items:center"><div class="pf-arrow" style="flex-direction:column;font-size:22px">➜<span style="font-size:12px;font-weight:700;white-space:nowrap">② 供给</span></div></div>
-    <div class="pf-card panel" style="flex:1.1;gap:10px">
-      <div class="ttl">数字大脑 · 让数据办事</div>
-      <div class="pf-bar line">能力与知识</div>
-      <div class="pf-bar line">智能体搭建</div>
-      <div class="pf-bar grad">智能体应用</div>
-      <div class="pf-bar dark">运营管理</div>
-      <div class="pf-note" style="text-align:center">阶段一二依托成熟平台 · 阶段三自建</div>
+
+    <div></div><div class="pf-row" style="justify-content:space-around;color:var(--p);font-weight:700;font-size:13px"><span>▲ ③ 智能体服务</span><span>▲ ②′ 报表 · API 直接用数</span></div>
+
+    <div class="arch-name">智能体层<br>· 办事</div>
+    <div class="pf-card panel" style="gap:8px;padding:12px">
+      <div class="pf-row" style="gap:8px">
+        <div class="pf-bar grad" style="flex:1">游客端智能体：客服 · 导览 · 伴游 · 旅拍 · 规划 · 购票</div>
+        <div class="pf-bar grad" style="flex:1">景区端智能体：问数 · 洞察 · 运营 · 对账 · 预警 · 调度</div>
+      </div>
+      <div class="pf-bar dark">智能体管理台：搭建 · 能力与知识 · 运营管理</div>
+      <div class="pf-row" style="gap:8px"><span class="own buy">借平台：Coze · 火山方舟 · 羚羊小Q</span><span class="own self">自建：智能体管理台</span></div>
     </div>
-    <div class="pf-col" style="flex:none;width:58px;align-items:center"><div class="pf-arrow" style="flex-direction:column;font-size:22px">➜<span style="font-size:12px;font-weight:700;white-space:nowrap">③ 服务</span></div></div>
-    <div class="pf-col" style="flex:0.9;justify-content:flex-start">
-      <div class="pf-label" style="width:auto;font-size:14px">服务对象</div>
-      <div class="pf-card dark c"><h4 style="font-size:15px">游客</h4><div class="sub">小程序 · 公众号</div></div>
-      <div class="pf-card dark c"><h4 style="font-size:15px">景区</h4><div class="sub">景数通 · APP</div></div>
-      <div class="pf-card dark c"><h4 style="font-size:15px">内部</h4><div class="sub">管理层 · 业务线</div></div>
-      <div class="pf-card dark c"><h4 style="font-size:15px">合作伙伴</h4><div class="sub">开放 API</div></div>
+
+    <div></div><div class="pf-row" style="justify-content:center;color:var(--p);font-weight:700;font-size:13px"><span>▲ ② 供给：认证指标 · 统一标签 · 景区知识 · 数据服务</span></div>
+
+    <div class="arch-name">数据平台层<br>· 治数</div>
+    <div class="pf-card panel" style="gap:8px;padding:12px">
+      <div class="pf-row" style="gap:8px;align-items:center">
+        <div class="pf-bar line" style="flex:1">统一接入<br><span style="font-size:12px;color:var(--mut)">离线 + 实时</span></div><div class="pf-arrow" style="font-size:16px">➜</div>
+        <div class="pf-bar line" style="flex:1.3">湖仓公共模型<br><span style="font-size:12px;color:var(--mut)">ODS → DWD / DIM → DWS → ADS</span></div><div class="pf-arrow" style="font-size:16px">➜</div>
+        <div class="pf-bar grad" style="flex:1.2">指标 · 标签 · 知识<br><span style="font-size:12px;opacity:.9">认证口径</span></div><div class="pf-arrow" style="font-size:16px">➜</div>
+        <div class="pf-bar dark" style="flex:1.1">数据服务<br><span style="font-size:12px;opacity:.9">动态数据开放 API · 小Q</span></div>
+      </div>
+      <div class="pf-row" style="gap:8px"><span class="own oss">DataWorks</span><span class="own oss">数据地图 · 资产治理</span><span class="own oss">治理贯穿：标准 · 质量 · 血缘 · 权限安全</span></div>
+    </div>
+
+    <div></div><div class="pf-row" style="justify-content:center;color:var(--p);font-weight:700;font-size:13px"><span>▲ ① 生产入湖：交易 · 核销 · 客流 · 设备 · 会员 · 财务</span></div>
+
+    <div class="arch-name">应用层<br>· 产数</div>
+    <div class="pf-card soft" style="gap:8px;padding:12px">
+      <div class="pf-row" style="flex-wrap:wrap;gap:8px">
+        <span class="own buy" style="background:#fff">智慧票务</span><span class="own buy" style="background:#fff">九大业态系统</span><span class="own buy" style="background:#fff">景区运营管理</span><span class="own buy" style="background:#fff">景区财务</span><span class="own buy" style="background:#fff">智慧终端 · 边云网关</span><span class="own buy" style="background:#fff">畅游 AI</span><span class="own buy" style="background:#fff">会员营销</span><span class="own buy" style="background:#fff">AI 数字大脑</span>
+      </div>
     </div>
   </div>
-  <div class="pf-banner warm"><b>④ 回流</b><span>问答记录、游客评价、预警与工单处置结果回到数据平台，补指标、标签和知识</span></div>
-  <div class="pf-banner"><b>⑤ 反哺</b><span>指标、标签和洞察回到业务产品：营销圈人、经营驾驶舱、票务运营、调度决策</span></div>
+  <div class="pf-hero">产数 → 治数 → 用数 → 回流 → 反哺，企业内部数据越用越准</div>
 </div>
 </figure>
-<p><strong>以节假日客流为例</strong>，一圈数据怎么流：</p>
+<h2 id="32">3.2 数据生产 · 反哺 · 应用闭环</h2>
 <figure class="diagram"><div class="pf">
   <div class="pf-row">
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">闸机客流</h4><div class="sub">实时入湖</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">实时客流指标</h4><div class="sub">认证口径</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">智能体预警</h4><div class="sub">逼近承载量</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">推送与工单</h4><div class="sub">APP 通知到人</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">现场处置</h4><div class="sub">分流 · 调度</div></div><div class="pf-arrow">➜</div>
-    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">结果回流</h4><div class="sub">复盘 · 调阈值</div></div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">① 生产</h4><div class="sub">业务系统产生交易、核销、客流、会员数据</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">② 治理</h4><div class="sub">入湖、建模、认证口径，变成指标、标签、知识</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">③ 应用</h4><div class="sub">智能体办事，报表与 API 看数</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">④ 回流</h4><div class="sub">问答、评价、工单结果、行为数据回到平台</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">⑤ 反哺</h4><div class="sub">指标、标签、洞察改进定价、营销、调度</div></div>
   </div>
+  <div class="pf-banner"><b>循环</b><span>反哺后的业务产生新的数据，再进入下一轮：数据越用越多，智能体越用越准</span></div>
 </div>
 </figure>
-<h2 id="32">3.2 我们要做的</h2>
 <table>
 <thead>
 <tr>
 <th>环节</th>
-<th>要做的事</th>
-<th>对应</th>
+<th>谁来做</th>
+<th>产出</th>
+<th>依托</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>① 入湖</td>
-<td>票务、终端、畅游、数字大脑的数据按统一规范进湖仓；订单、核销先上实时</td>
-<td>1.3 数据建设</td>
+<td>① 生产</td>
+<td>票务、业态、运营、财务、终端、畅游、会员营销各产品</td>
+<td>交易、核销、客流、设备、会员、财务数据</td>
+<td>产品全景各业务系统</td>
 </tr>
 <tr>
-<td>② 可信</td>
-<td>治理后产出认证指标、统一标签、景区知识，同一个数在看板、API、智能体里一致</td>
-<td>1.4 数据治理</td>
+<td>② 治理</td>
+<td>数据团队</td>
+<td>公共模型、认证指标、统一标签、景区知识</td>
+<td>第一章数据平台</td>
 </tr>
 <tr>
-<td>③ 供给</td>
-<td>指标、标签、知识通过数据服务接入数字大脑，智能体统一调用，不各自取数</td>
-<td>1.4.9 数据分发、2.6 阶段三</td>
+<td>③ 应用</td>
+<td>智能体与各应用</td>
+<td>游客服务、经营分析、运营提效、预警调度</td>
+<td>第二章智能体平台、小Q、动态数据开放 API</td>
 </tr>
 <tr>
-<td>④ 服务</td>
-<td>智能体服务游客、景区、内部和伙伴；阶段一二依托成熟平台，阶段三由数字大脑统一承载</td>
-<td>2.3–2.6</td>
+<td>④ 回流</td>
+<td>智能体与各应用自动回传</td>
+<td>问答记录、评价、转人工、工单结果、使用行为</td>
+<td>回流数据统一入湖</td>
 </tr>
 <tr>
-<td>⑤ 回流</td>
-<td>问答记录、评价、预警与工单结果回到数据平台，补指标、标签、知识和测试用例</td>
-<td>新增：回流数据入湖</td>
-</tr>
-<tr>
-<td>⑥ 反哺</td>
-<td>标签用于营销圈人，指标用于经营驾驶舱，洞察用于票务运营和调度决策</td>
-<td>1.4.6 统一标签</td>
-</tr>
-</tbody>
-</table>
-<p><strong>联合后的变化</strong></p>
-<table>
-<thead>
-<tr>
-<th>对象</th>
-<th>变化</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>公司</td>
-<td>数据和 AI 一套底座，新场景上线快；数据越用越多，智能体越用越准</td>
-</tr>
-<tr>
+<td>⑤ 反哺</td>
 <td>业务线</td>
-<td>看数、问数、办事在一处完成，同一个数各处一致</td>
-</tr>
-<tr>
-<td>景区客户</td>
-<td>开通即用，既有经营数据，又有能办事的智能体</td>
-</tr>
-<tr>
-<td>游客</td>
-<td>咨询、购票、导览、伴游体验连贯，回答准确</td>
+<td>定价调整、营销圈人、预约与调度优化</td>
+<td>指标、标签、洞察回到业务系统</td>
 </tr>
 </tbody>
 </table>
-<hr>
-<h2 id="_1">参考资料</h2>
-<p>第一章参考：<code>参考资料/数据治理/</code> 下 5 篇文章（OneData 方法论与四步建设路径、数据治理操作指南、数据治理定义、数据治理方法与流程、数据仓库 / 湖 / 湖仓区别）。</p>
-<p>第二章参考：客户提供的产品全景；票付通公开报道（2026 智慧文旅 AI 应用创新峰会发布的 AI 产品矩阵，覆盖游客服务、景区管理、精准营销、安全运营；畅游 AI 的 AI 客服、AI 伴游、智慧导览与数字人手语伴游；AI 智慧大脑）。</p>
+<p><strong>一个例子</strong>：</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">游客购票入园</h4><div class="sub">售票 · 闸机核销</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">入湖治理</h4><div class="sub">订单 · 核销 · 客流</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">指标与标签</h4><div class="sub">实时客流 · 游客偏好</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">智能体办事</h4><div class="sub">客流预警 · 二消推荐</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">结果回流</h4><div class="sub">处置结果 · 推荐转化</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:14.5px">反哺业务</h4><div class="sub">调预约 · 调营销</div></div>
+  </div>
+</div>
+</figure>
 </main>
 </div>
 
