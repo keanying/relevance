@@ -1,0 +1,2170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI＋数据平台</title>
+<style>
+:root {
+  --p: #776CFD; --b: #5D95F1; --dp: #655BE6; --org: #F08A3C;
+  --ink: #2B2F42; --mut: #5E6478; --line: #E3E1F7; --t1: #F6F5FF; --t2: #ECEAFF; --bg: #FFFFFF;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.75 -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); max-width: 1320px; margin: 0 auto; }
+nav { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 32px 18px 32px 24px; border-right: 1px solid var(--line); }
+nav .brand { font-weight: 700; color: var(--dp); margin-bottom: 14px; font-size: 15px; }
+nav a { display: block; color: var(--mut); text-decoration: none; padding: 4px 8px; border-radius: 6px; font-size: 13.5px; }
+nav a.l2 { color: var(--ink); font-weight: 600; margin-top: 8px; }
+nav a.l3 { padding-left: 20px; }
+nav a:hover { background: var(--t2); color: var(--dp); }
+main { padding: 40px 56px 96px; min-width: 0; }
+.cover { background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; border-radius: 16px; padding: 36px 40px; margin-bottom: 36px; }
+.cover h1 { margin: 0 0 6px; font-size: 32px; letter-spacing: 1px; }
+.cover .sub { opacity: .9; font-size: 15px; }
+.cover h1 { color: #fff; border: 0; padding: 0; }
+h1 { font-size: 26px; color: var(--dp); margin: 28px 0 12px; padding-bottom: 10px; border-bottom: 2px solid var(--t2); }
+h2 { font-size: 21px; margin: 40px 0 12px; padding-left: 12px; border-left: 4px solid var(--p); }
+h3 { font-size: 17px; margin: 30px 0 10px; color: var(--dp); }
+p, li { color: var(--ink); }
+strong { color: var(--dp); }
+blockquote { margin: 16px 0; padding: 10px 16px; background: var(--t1); border-left: 4px solid var(--b); border-radius: 0 8px 8px 0; color: var(--mut); }
+blockquote p { margin: 4px 0; color: var(--mut); }
+code { background: var(--t2); color: var(--dp); padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 14px 0 20px; font-size: 14px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+th { background: var(--dp); color: #fff; text-align: left; font-weight: 600; padding: 9px 12px; }
+td { padding: 9px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+tr:nth-child(even) td { background: var(--t1); }
+td:first-child { font-weight: 600; white-space: nowrap; }
+.diagram { margin: 16px 0 22px; padding: 18px; background: #FBFBFF; border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; text-align: center; }
+.diagram pre.mermaid { margin: 0; background: none; font-size: 14px; }
+.mermaid-svg svg { max-width: 100%; height: auto; }
+.arch { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 12px; text-align: left; }
+.arch-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 10px; align-items: stretch; margin-bottom: 10px; }
+.arch-name { background: var(--dp); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px 8px; }
+.arch-items { display: flex; flex-wrap: nowrap; gap: 10px; align-items: stretch; }
+.chip { flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13.5px; padding: 12px 4px; border-radius: 8px; background: #fff; border: 1.5px solid #C9C4FB; color: var(--ink); }
+.chip.have { background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; border-color: transparent; font-weight: 700; }
+.chip.src { background: #E6E2FD; border-color: transparent; }
+.arch-side { background: linear-gradient(180deg, var(--dp), var(--p)); border-radius: 10px; padding: 18px 16px; color: #fff; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+.arch-side-title { font-weight: 700; font-size: 16px; line-height: 1.35; margin-bottom: 14px; }
+.arch-side-item { font-size: 14px; opacity: .92; }
+.kpi { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 10px; margin: 14px 0 30px; }
+.kpi-head { background: var(--org); color: #fff; font-weight: 700; font-size: 15px; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 10px; }
+.kpi-grid { display: grid; gap: 10px; }
+.kpi-tile { padding: 9px 8px; text-align: center; background: #FDEEE2; border: 1px solid #F6C9A6; border-radius: 10px; }
+.kpi-name { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+.kpi-val { font-size: 13.5px; font-weight: 700; color: #B5541B; margin-top: 2px; }
+/* PPT 版式图示 */
+.pf { display: flex; flex-direction: column; gap: 14px; text-align: left; font-size: 14px; color: var(--ink); }
+.pf-row { display: flex; gap: 10px; align-items: stretch; }
+.pf-col { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.pf-label { flex: none; width: 96px; display: flex; align-items: center; color: var(--p); font-weight: 700; font-size: 15px; }
+.pf-pills { flex: 1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pf-pill { display: inline-flex; align-items: center; justify-content: center; padding: 6px 14px; border-radius: 999px; background: #fff; border: 1.5px solid #CFCAFB; font-size: 13.5px; white-space: nowrap; }
+.pf-pill.fill { background: #E6E2FD; border-color: transparent; }
+.pf-pill.sq { border-radius: 8px; color: var(--p); font-weight: 700; }
+.pf-pills.even { flex-wrap: nowrap; }
+.pf-pills.even .pf-pill { flex: 1; min-width: 0; padding-left: 4px; padding-right: 4px; }
+.pf-card .pf-pills { flex: none; }
+.pf-card.top { justify-content: flex-start; }
+.pf-card { border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+.pf-card.c { align-items: center; text-align: center; }
+.pf-card h4 { margin: 0; font-size: 16px; font-weight: 700; color: inherit; }
+.pf-card .sub { font-size: 13px; opacity: .85; line-height: 1.5; }
+.pf-card.grad { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; }
+.pf-card.dark { background: var(--dp); color: #fff; }
+.pf-card.soft { background: #E6E2FD; }
+.pf-card.line { background: #fff; border: 1.5px solid #CFCAFB; }
+.pf-card.warm { background: #FDEEE2; border: 1.5px solid var(--org); }
+.pf-card.dash { background: #FDEEE2; border: 1.5px dashed var(--org); }
+.pf-card.panel { background: #F4F3FF; border: 2px solid var(--p); }
+.pf-card .ttl { font-weight: 700; font-size: 16px; color: var(--p); margin-bottom: 6px; }
+.pf-card.dash .ttl { color: #B5541B; }
+.pf-bar { border-radius: 8px; padding: 8px 12px; text-align: center; font-weight: 700; }
+.pf-bar.grad { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; }
+.pf-bar.dark { background: var(--dp); color: #fff; }
+.pf-bar.dash { background: #FDEEE2; border: 1.5px dashed var(--org); }
+.pf-bar.line { background: #fff; border: 1.5px solid #CFCAFB; font-weight: 400; }
+.pf-arrow { flex: none; display: flex; align-items: center; justify-content: center; color: var(--p); font-size: 22px; padding: 0 2px; }
+.pf-arrow.big { font-size: 34px; }
+.pf-arrow.down { font-size: 18px; color: #B9B2FA; }
+.pf-arrow.org { color: var(--org); font-size: 16px; }
+.pf-banner { background: #E6E2FD; border-radius: 10px; padding: 12px 18px; display: flex; gap: 14px; align-items: center; }
+.pf-banner b { color: var(--p); white-space: nowrap; }
+.pf-banner.warm { background: #FDEEE2; border: 1.5px solid var(--org); }
+.pf-banner.warm b { color: #B5541B; }
+.pf-note { color: var(--mut); font-size: 13.5px; }
+.pf-note.org { color: #B5541B; font-weight: 700; }
+.pf-grid { display: grid; gap: 12px; }
+.pf-val { background: #F4F3FF; border: 1.5px solid #DCD8FB; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+.pf-val.hl { background: linear-gradient(160deg, var(--b), var(--p)); border-color: transparent; color: #fff; }
+.pf-val h4 { margin: 0; font-size: 20px; font-weight: 800; color: var(--p); }
+.pf-val.hl h4 { color: #fff; }
+.pf-val .chg { font-size: 14px; line-height: 1.55; flex: 1; }
+.pf-val .msr { border-top: 1px dashed #CFCAFB; padding-top: 6px; font-size: 12.5px; color: #B5541B; font-weight: 700; }
+.pf-val.hl .msr { color: #FFE2C8; border-top-color: rgba(255,255,255,.4); }
+.pf-role { background: #F4F3FF; border: 1.5px solid #DCD8FB; border-radius: 10px; padding: 14px; display: flex; gap: 14px; align-items: center; }
+.pf-ico { flex: none; width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--b), var(--p)); color: #fff; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+.pf-ico.org { background: var(--org); }
+.pf-role h4 { margin: 0 0 3px; font-size: 16px; font-weight: 700; }
+.pf-role .sub { font-size: 13px; color: var(--mut); line-height: 1.55; }
+.pf-hero { border-radius: 10px; padding: 14px 18px; text-align: center; font-weight: 800; font-size: 18px; letter-spacing: 1px; color: #fff; background: linear-gradient(110deg, var(--p), var(--b)); }
+.pf-legend { display: flex; gap: 10px; align-items: center; }
+.pf-ag { display: flex; justify-content: space-between; align-items: center; gap: 6px; border-radius: 8px; padding: 6px 10px; font-size: 13.5px; }
+.pf-ag em { font-style: normal; font-size: 11.5px; opacity: .85; white-space: nowrap; }
+.pf-ag.have { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }
+.pf-ag.todo { background: #fff; border: 1.5px dashed #B9B2FA; color: var(--ink); }
+.pf-ag.todo em { color: var(--p); }
+.own { display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; flex: 1; min-width: 0; }
+.own.self { background: linear-gradient(110deg, var(--p), var(--b)); color: #fff; font-weight: 600; }
+.own.oss { background: #fff; border: 1.5px solid var(--p); color: var(--dp); }
+.own.buy { background: #E6E2FD; color: var(--ink); }
+.own.reuse { background: #FDEEE2; border: 1.5px dashed var(--org); color: #8A3F12; }
+.own.chan { background: var(--dp); color: #fff; font-weight: 600; }
+.own-wrap { flex-wrap: wrap; gap: 6px; }
+.own-wrap .own { flex: 0 0 auto; white-space: nowrap; padding: 6px 10px; }
+.own-legend { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.own-legend .own { flex: none; padding: 3px 12px; font-size: 12.5px; }
+.pf-name { display: flex; justify-content: center; align-items: flex-start; gap: 10px; }
+.pf-tok { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.pf-tok b { font-family: Consolas, Menlo, monospace; font-size: 26px; padding: 8px 18px; border-radius: 8px; }
+.pf-tok em { font-style: normal; color: var(--mut); font-size: 13.5px; }
+.pf-tok .dp { background: var(--dp); color: #fff; } .pf-tok .p { background: var(--p); color: #fff; }
+.pf-tok .soft { background: #E6E2FD; color: var(--ink); } .pf-tok .warm { background: #F7C9A0; color: var(--ink); }
+.pf-us { color: #C9C4FB; font-size: 26px; padding-top: 10px; }
+.cmp-legend { display: flex; gap: 10px; justify-content: flex-start; margin-bottom: 12px; }
+.cmp-legend .cmp { padding: 3px 14px; }
+.cmp-grid { display: grid; gap: 8px; text-align: left; }
+.cmp-col { display: flex; flex-direction: column; gap: 6px; }
+.cmp-head { background: var(--dp); color: #fff; font-weight: 600; font-size: 13.5px; text-align: center; padding: 8px 4px; border-radius: 8px; }
+.cmp { font-size: 12.5px; text-align: center; padding: 7px 4px; border-radius: 6px; line-height: 1.4; }
+.cmp.have { background: linear-gradient(120deg, var(--p), var(--b)); color: #fff; font-weight: 600; }
+.cmp.up { background: var(--t2); color: var(--dp); font-weight: 600; }
+.cmp.new { background: #fff; color: var(--ink); border: 1.5px dashed var(--org); }
+@media (max-width: 900px) { .cmp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 700px) { .arch { grid-template-columns: 1fr; } .arch-row { grid-template-columns: 1fr; } .arch-items { flex-wrap: wrap; } .chip { flex: 1 1 70px; } .kpi { grid-template-columns: 1fr; } .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } .pf-row { flex-wrap: wrap; } .pf-arrow { display: none; } .pf-row > * { flex: 1 1 100% !important; } .pf-name { flex-wrap: wrap; } .pf-grid { grid-template-columns: 1fr !important; } }
+hr { border: 0; border-top: 1px dashed var(--line); margin: 36px 0; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  nav { display: none; }
+  main { padding: 24px 16px 64px; }
+}
+@media print {
+  nav { display: none; } .layout { grid-template-columns: 1fr; } main { padding: 0; }
+  h2, h3 { break-after: avoid; } .diagram, table { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav><div class="brand">AI＋数据平台</div>
+<a class="l2" href="#11">1.1 数据现状</a>
+<a class="l2" href="#12">1.2 数据沉淀</a>
+<a class="l2" href="#13">1.3 数据建设</a>
+<a class="l3" href="#131">1.3.1 总体架构</a>
+<a class="l3" href="#132">1.3.2 平台组件</a>
+<a class="l2" href="#14">1.4 数据治理</a>
+<a class="l3" href="#141">1.4.1 治理框架</a>
+<a class="l3" href="#142">1.4.2 数据标准</a>
+<a class="l3" href="#143">1.4.3 主数据</a>
+<a class="l3" href="#144">1.4.4 数据血缘</a>
+<a class="l3" href="#145">1.4.5 数据质量</a>
+<a class="l3" href="#146">1.4.6 统一标签</a>
+<a class="l3" href="#147">1.4.7 权限安全</a>
+<a class="l3" href="#148">1.4.8 资产运营</a>
+<a class="l3" href="#149">1.4.9 数据分发</a>
+<a class="l3" href="#1410">1.4.10 治理嵌入开发</a>
+<a class="l3" href="#1411">1.4.11 治理组织</a>
+<a class="l3" href="#1412">1.4.12 治理度量</a>
+<a class="l2" href="#15">1.5 建设落地</a>
+<a class="l3" href="#151">1.5.1 统一规范</a>
+<a class="l3" href="#152">1.5.2 统一底座</a>
+<a class="l3" href="#153">1.5.3 统一湖仓</a>
+<a class="l3" href="#154">1.5.4 统一标签</a>
+<a class="l3" href="#155">1.5.5 标签复用</a>
+<a class="l3" href="#156">1.5.6 自助分析</a>
+<a class="l3" href="#157">1.5.7 落地效果</a>
+<a class="l2" href="#21">2.1 现状</a>
+<a class="l2" href="#22">2.2 场景沉淀</a>
+<a class="l2" href="#23">2.3 建设策略</a>
+<a class="l2" href="#24">2.4 借力验证</a>
+<a class="l3" href="#241">2.4.1 要验证什么</a>
+<a class="l3" href="#242">2.4.2 怎么验证</a>
+<a class="l3" href="#243">2.4.3 关卡一：商业模式跑通的标准</a>
+<a class="l2" href="#25">2.5 借力复制</a>
+<a class="l3" href="#251">2.5.1 先打哪些客户</a>
+<a class="l3" href="#252">2.5.2 怎么复制得快</a>
+<a class="l3" href="#253">2.5.3 销售与续费</a>
+<a class="l3" href="#254">2.5.4 边做边为自建做准备</a>
+<a class="l3" href="#255">2.5.5 规模越大，借力的弊端越明显</a>
+<a class="l2" href="#26">2.6 能力自给</a>
+<a class="l3" href="#261">2.6.1 何时启动</a>
+<a class="l3" href="#262">2.6.2 建什么，不建什么</a>
+<a class="l3" href="#263">2.6.3 平台架构</a>
+<a class="l3" href="#264">2.6.4 全景智能体</a>
+<a class="l3" href="#265">2.6.5 自建能省什么</a>
+<a class="l3" href="#266">2.6.6 怎么切过去</a>
+<a class="l2" href="#31-ai">3.1 AI+数据全流程</a>
+<a class="l2" href="#32">3.2 应用闭环</a>
+</nav>
+<main>
+<div class="cover"><h1>AI＋数据平台</h1><div class="sub">建设汇报</div></div>
+<hr />
+<h1 id="_1">一、数据平台</h1>
+<h2 id="11">1.1 数据现状</h2>
+<p><strong>已有</strong></p>
+<ul>
+<li>DataWorks：已购 DataStudio、运维中心、数据地图、数据资产治理、数据服务。</li>
+<li>动态数据开放 API：对内对外提供指标。</li>
+<li>小Q：报表展示。</li>
+<li>湖仓：部分模型。</li>
+</ul>
+<p><strong>已建成</strong>：离线主流程已贯通。</p>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  subgraph 业务主线
+    direction LR
+    A[供应商 / 游客 / 会员] --&gt; B[订单] --&gt; C[维度]
+  end
+  subgraph 数据分层
+    direction LR
+    O[ODS] --&gt; D[DWD] --&gt; M[DIM] --&gt; S[DWS] --&gt; X[ADS]
+  end
+  业务主线 --&gt; 数据分层</pre></figure>
+<p><strong>未建设</strong>：实时链路、数据质量、统一标签、指标口径管理、数据标准落地。</p>
+<p><strong>存在的问题</strong></p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>例子</th>
+<th>根因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据孤岛</td>
+<td>做一份“售票 + 二消 + 结算”综合分析，要从 3 个以上系统导数手工拼表</td>
+<td>没有统一接入，景区、商品、渠道编码不一致</td>
+</tr>
+<tr>
+<td>口径不一</td>
+<td>同一天同一景区，看板、对账、API 三处“核销量”不同</td>
+<td>没有企业级指标定义</td>
+</tr>
+<tr>
+<td>规范缺失</td>
+<td>表名随意、字段无注释、DDL 无负责人</td>
+<td>规范只在文档里，上线无卡点</td>
+</tr>
+<tr>
+<td>模型重复</td>
+<td>订单宽表离线、湖仓各一份，结果不同</td>
+<td>没有统一公共层</td>
+</tr>
+<tr>
+<td>数字不准</td>
+<td>入园、核销与源端对不上，节假日尤甚</td>
+<td>补传、重复上报、撤销冲正、时间口径混用，缺逐层核对</td>
+</tr>
+<tr>
+<td>缺少实时</td>
+<td>高峰期订单、核销次日才能看到，预警靠人工</td>
+<td>只有离线 T+1 链路</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：前五类根因相同，都是缺少统一的标准、模型、口径和校验，必须体系化治理；实时是能力缺口，要在统一公共模型上补。</p>
+<h2 id="12">1.2 数据沉淀</h2>
+<p>湖仓按<strong>主题域</strong>划分，主题域再归并为<strong>数据域</strong>。数据域用于数据地图、标签平台的目录展示和分级查看。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  R((湖仓数据资产))
+  R --&gt; D1[交易域]
+  R --&gt; D2[商品与资源域]
+  R --&gt; D3[用户域]
+  R --&gt; D4[合作方域]
+  R --&gt; D5[流量营销域]
+  R --&gt; D6[运营域]
+  R --&gt; D7[财务域]
+  R --&gt; D8[内部管理域]
+  D1 --&gt; T1[订单 · ord_]
+  D1 --&gt; T2[票务 · tick_]
+  D2 --&gt; T3[产品 · prd_]
+  D2 --&gt; T4[库存 · inv_]
+  D3 --&gt; T5[用户 · cus_]
+  D4 --&gt; T6[供应商 · sup_]
+  D5 --&gt; T7[流量渠道 · trf_]
+  D5 --&gt; T8[营销 · mkt_]
+  D6 --&gt; T9[运营 · opr_]
+  D7 --&gt; T10[财务 · fin_]
+  D8 --&gt; T11[内部系统 · ints_]</pre></figure>
+<table>
+<thead>
+<tr>
+<th>数据域</th>
+<th>主题域（前缀）</th>
+<th>说明</th>
+<th>指标 / 标签示例</th>
+<th>默认等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交易域</td>
+<td><code>ord_</code> <code>tick_</code></td>
+<td>订单、预订；票务</td>
+<td>订单数、销售额、核销次数；近 30 天购票次数</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>商品与资源域</td>
+<td><code>prd_</code> <code>inv_</code></td>
+<td>产品（机票、酒店、度假）；库存（房量、机位）</td>
+<td>售罄率、库存余量；热销产品</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>用户域</td>
+<td><code>cus_</code></td>
+<td>用户、旅客</td>
+<td>会员等级、复购倾向、出游偏好</td>
+<td>L4（明细）/ L3（标签）</td>
+</tr>
+<tr>
+<td>合作方域</td>
+<td><code>sup_</code></td>
+<td>供应商（酒店、航司、地接）</td>
+<td>履约率、结算周期；供应商等级</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>流量营销域</td>
+<td><code>trf_</code> <code>mkt_</code></td>
+<td>流量、渠道；营销、活动</td>
+<td>渠道转化率、活动 ROI；渠道偏好</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>运营域</td>
+<td><code>opr_</code></td>
+<td>运营（航班、酒店房态）</td>
+<td>房态占用率、准点率</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>财务域</td>
+<td><code>fin_</code></td>
+<td>财务、结算</td>
+<td>应结 / 已结金额、对账差异</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>内部管理域</td>
+<td><code>ints_</code></td>
+<td>内部系统</td>
+<td>任务运行、存储计算成本</td>
+<td>L2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>表命名：<code>层级_主题域前缀_业务过程_粒度_更新方式</code>，如 <code>dwd_ord_order_item_di</code>。</li>
+<li>等级 L1–L4 定义见 1.4.7。</li>
+<li>入仓情况：订单、用户、供应商已入仓（主流程），其余主题域部分入仓。</li>
+<li>待扩展：现场设备、外部数据、知识与 AI 数据暂无主题域，建议后续新增。</li>
+<li>难点不在数据量，在于节假日高峰、订单状态多次变更、设备离线补传和多租户隔离。</li>
+</ul>
+<h2 id="13">1.3 数据建设</h2>
+<p><strong>思路</strong>：统一标准、治理嵌入研发。</p>
+<h3 id="131">1.3.1 总体架构</h3>
+<p><strong>六层分层建设，治理贯穿始终</strong></p>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">应用与服务</div><div class="arch-items"><span class="chip">内部经营</span><span class="chip">景区运营</span><span class="chip">伙伴接入</span><span class="chip">行业报告</span><span class="chip">数据产品</span></div></div><div class="arch-row"><div class="arch-name">AI 能力</div><div class="arch-items"><span class="chip">模型服务</span><span class="chip">知识服务</span><span class="chip">工具服务</span><span class="chip">评测运营</span></div></div><div class="arch-row"><div class="arch-name">数据服务</div><div class="arch-items"><span class="chip have">动态数据开放 API</span><span class="chip">指标服务</span><span class="chip">标签服务</span><span class="chip">一键接入</span></div></div><div class="arch-row"><div class="arch-name">指标与分析</div><div class="arch-items"><span class="chip">企业标准指标</span><span class="chip">景区自定义指标</span><span class="chip">统一标签</span><span class="chip have">小Q</span></div></div><div class="arch-row"><div class="arch-name">统一底座</div><div class="arch-items"><span class="chip have">DataWorks</span><span class="chip have">离线主流程</span><span class="chip">实时计算</span><span class="chip">湖仓存储</span><span class="chip">公共模型</span><span class="chip">分析查询</span></div></div><div class="arch-row"><div class="arch-name">数据来源</div><div class="arch-items"><span class="chip src">票务</span><span class="chip src">订单</span><span class="chip src">小程序</span><span class="chip src">供应商</span><span class="chip src">营销</span><span class="chip src">渠道</span><span class="chip src">设备</span><span class="chip src">外部数据</span></div></div></div><div class="arch-side"><div class="arch-side-title">治理与资产<br/>贯穿各层</div><div class="arch-side-item">数据标准</div><div class="arch-side-item">数据地图</div><div class="arch-side-item">数据血缘</div><div class="arch-side-item">数据质量</div><div class="arch-side-item">权限安全</div><div class="arch-side-item">资产目录</div></div></div></figure>
+<blockquote>
+<p>渐变色块为已有能力，白色块为新建或升级。</p>
+</blockquote>
+<h3 id="132">1.3.2 平台组件</h3>
+<figure class="diagram"><div class="cmp-legend"><span class="cmp have">已有</span><span class="cmp up">升级</span><span class="cmp new">新建</span></div><div class="cmp-grid" style="grid-template-columns: repeat(7, minmax(0, 1fr));"><div class="cmp-col"><div class="cmp-head">数据集成</div><div class="cmp have">批量同步</div><div class="cmp up">埋点采集</div><div class="cmp up">边云回传</div><div class="cmp new">实时采集</div><div class="cmp new">标准连接器</div></div><div class="cmp-col"><div class="cmp-head">存储计算</div><div class="cmp have">离线计算</div><div class="cmp new">实时计算</div><div class="cmp new">湖仓统一存储</div></div><div class="cmp-col"><div class="cmp-head">开发运维</div><div class="cmp have">DataStudio</div><div class="cmp have">运维中心</div><div class="cmp up">数据建模</div><div class="cmp new">发布卡点</div><div class="cmp new">成本治理</div></div><div class="cmp-col"><div class="cmp-head">数据治理</div><div class="cmp have">数据地图</div><div class="cmp have">数据资产治理</div><div class="cmp up">血缘</div><div class="cmp up">健康分</div><div class="cmp new">数据质量</div><div class="cmp new">数据标准</div><div class="cmp new">分级脱敏</div></div><div class="cmp-col"><div class="cmp-head">指标标签</div><div class="cmp new">指标中心</div><div class="cmp new">标签系统</div><div class="cmp new">景区 / 供应商自定义空间</div></div><div class="cmp-col"><div class="cmp-head">服务分析</div><div class="cmp have">动态数据开放 API</div><div class="cmp have">DataWorks 数据服务</div><div class="cmp have">小Q</div><div class="cmp up">统一出口</div><div class="cmp new">嵌入式分析</div></div><div class="cmp-col"><div class="cmp-head">AI 能力</div><div class="cmp up">AI 问数</div><div class="cmp new">模型网关</div><div class="cmp new">知识检索</div><div class="cmp new">评测</div></div></div></figure>
+<blockquote>
+<p>写法：<code>*</code> 已有，<code>+</code> 升级，不加标记为新建。</p>
+</blockquote>
+<p>未购模块的处理：</p>
+<ul>
+<li>数据质量：重要节点增加任务结束进行质量校验，不通过全局阻断，通知下发。</li>
+<li>数据标准：先用规范文档加发布前检查脚本。</li>
+<li>安全中心：先用计算引擎权限加脱敏视图。</li>
+<li>实时计算：新增，先做 POC。</li>
+</ul>
+<h2 id="14">1.4 数据治理</h2>
+<p><strong>思路</strong>：治理不是单独搞一次运动，而是把规则写进研发流程，每张表、每个指标从设计到下线都过治理卡点。先治核心链路“订单 → 核销 → 结算”，做通后按数据域推广。</p>
+<h3 id="141">1.4.1 治理框架</h3>
+<figure class="diagram"><div class="arch"><div class="arch-main"><div class="arch-row"><div class="arch-name">治理目标</div><div class="arch-items"><span class="chip">数字可信</span><span class="chip">口径统一</span><span class="chip">安全合规</span><span class="chip">成本可控</span></div></div><div class="arch-row"><div class="arch-name">治理领域</div><div class="arch-items"><span class="chip">数据标准</span><span class="chip">数据血缘</span><span class="chip">主数据</span><span class="chip">数据质量</span><span class="chip">指标与标签</span><span class="chip">权限安全</span><span class="chip">资产运营</span><span class="chip">数据分发</span></div></div><div class="arch-row"><div class="arch-name">嵌入开发</div><div class="arch-items"><span class="chip">事前 · 定规范</span><span class="chip">事中 · 设卡点</span><span class="chip">事后 · 做治理</span></div></div><div class="arch-row"><div class="arch-name">落地工具</div><div class="arch-items"><span class="chip have">DataStudio</span><span class="chip have">运维中心</span><span class="chip have">数据地图</span><span class="chip have">数据资产治理</span><span class="chip">发布检查脚本</span><span class="chip">质量校验节点</span></div></div></div><div class="arch-side"><div class="arch-side-title">组织与度量</div><div class="arch-side-item">治理小组 · 裁定</div><div class="arch-side-item">数据负责人 · 推动</div><div class="arch-side-item">治理专员 · 执行</div><div class="arch-side-item">健康分 · 月度公示</div><div class="arch-side-item">季度复盘</div></div></div></figure>
+<blockquote>
+<p>图例：带 * 为已购 DataWorks 模块（深色）；发布检查脚本、质量校验节点为自建，替代未购的数据标准、数据质量模块。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>管什么</th>
+<th>主要产出</th>
+<th>落地工具</th>
+<th>衡量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据标准</td>
+<td>命名、分层、字段、码值</td>
+<td>规范文档、标准码表、检查脚本</td>
+<td>DataStudio + 发布检查脚本</td>
+<td>规范符合率</td>
+</tr>
+<tr>
+<td>数据血缘</td>
+<td>表和字段的含义、负责人、上下游</td>
+<td>资产目录、血缘图</td>
+<td>数据地图</td>
+<td>注释 / 负责人覆盖率</td>
+</tr>
+<tr>
+<td>主数据</td>
+<td>景区、商品、渠道、供应商、游客编码</td>
+<td>主数据表、编码映射表</td>
+<td>湖仓 DIM 层</td>
+<td>编码重复率、映射覆盖率</td>
+</tr>
+<tr>
+<td>数据质量</td>
+<td>完整、准确、一致、及时、唯一</td>
+<td>质量规则库、问题单</td>
+<td>质量校验节点 + 运维中心告警</td>
+<td>规则覆盖率、按时产出率</td>
+</tr>
+<tr>
+<td>指标与标签</td>
+<td>口径、分类分级、认证</td>
+<td>指标字典、标签目录</td>
+<td>指标中心、标签系统（新建）</td>
+<td>认证指标覆盖率</td>
+</tr>
+<tr>
+<td>权限安全</td>
+<td>分级、权属、权限、审计</td>
+<td>分级清单、权限台账</td>
+<td>计算引擎权限 + 脱敏视图</td>
+<td>敏感字段识别覆盖率</td>
+</tr>
+<tr>
+<td>资产运营</td>
+<td>健康分、成本、下线</td>
+<td>健康分榜、下线清单</td>
+<td>数据资产治理</td>
+<td>健康分、无用资产占比</td>
+</tr>
+<tr>
+<td>数据分发</td>
+<td>对内对外统一出口</td>
+<td>API 目录、调用台账</td>
+<td>动态数据开放 API、数据服务</td>
+<td>出口收敛率</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142">1.4.2 数据标准</h3>
+<table>
+<thead>
+<tr>
+<th>标准</th>
+<th>规则</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表命名</td>
+<td><code>层级_主题域前缀_业务过程_粒度_更新方式</code>；更新方式 <code>di</code> 日增量、<code>df</code> 日全量、<code>hi</code> 小时增量、<code>rt</code> 实时</td>
+<td><code>dwd_ord_order_item_di</code>、<code>ads_tick_scenic_check_1d_df</code></td>
+</tr>
+<tr>
+<td>分层引用</td>
+<td>ODS 贴源不改；DWD 清洗明细；DIM 维度；DWS 汇总；ADS 应用。只能下层往上层引用，ADS 不直接读 ODS，禁止跨层回读</td>
+<td>ADS 报表直接查 ODS 订单表 → 发布不通过</td>
+</tr>
+<tr>
+<td>字段命名</td>
+<td>小写下划线；同一含义全仓同名同类型</td>
+<td>景区统一 <code>scenic_id</code>；金额 <code>_amt</code>；时间 <code>_time</code>；日期 <code>_date</code>；是否 <code>is_</code></td>
+</tr>
+<tr>
+<td>码值</td>
+<td>公共码值建统一码表，源系统码值做映射，不在 SQL 里写死</td>
+<td>票种、渠道类型、订单状态、核销方式、景区等级</td>
+</tr>
+<tr>
+<td>注释与归属</td>
+<td>表和字段必须有中文注释；表必须填负责人、主题域、安全等级</td>
+<td>缺负责人 → 发布不通过</td>
+</tr>
+</tbody>
+</table>
+<p>数据标准模块未购，用“规范文档 + 发布前检查脚本”落地：</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[开发提交&lt;br/&gt;DataStudio] --&gt; B{发布检查脚本&lt;br/&gt;命名 · 分层引用 · 注释&lt;br/&gt;负责人 · 安全等级 · 码值}
+  B --&gt;|通过| C[发布上线]
+  B --&gt;|不通过| D[打回修改&lt;br/&gt;列出不合规项]
+  D --&gt; A</pre></figure>
+<p>存量表不一次性改名：新表强制执行；存量表按健康分排名分批整改，改名时保留视图兼容下游。</p>
+<h3 id="143">1.4.3 主数据</h3>
+<table>
+<thead>
+<tr>
+<th>主数据</th>
+<th>统一编码</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>景区</td>
+<td><code>scenic_id</code></td>
+<td>一个景区一个编码，集团、分园区、子景点分级挂靠</td>
+</tr>
+<tr>
+<td>商品</td>
+<td><code>prd_id</code></td>
+<td>票种、套票、二消商品统一编码，挂到景区</td>
+</tr>
+<tr>
+<td>渠道</td>
+<td><code>channel_id</code></td>
+<td>OTA、自营、分销、团队等渠道统一分类</td>
+</tr>
+<tr>
+<td>供应商</td>
+<td><code>sup_id</code></td>
+<td>同一主体只建一个编码，多账号挂到同一主体</td>
+</tr>
+<tr>
+<td>游客</td>
+<td><code>one_id</code></td>
+<td>手机号、证件号、会员号按规则归并为一人（OneID）</td>
+</tr>
+<tr>
+<td>区域</td>
+<td>行政区划码</td>
+<td>采用国家标准</td>
+</tr>
+</tbody>
+</table>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[票务系统编码] --&gt; M[编码映射表&lt;br/&gt;dim_*_mapping]
+  B[分销系统编码] --&gt; M
+  C[财务系统编码] --&gt; M
+  M --&gt; G[统一主数据&lt;br/&gt;DIM 层]
+  G --&gt; U[所有模型、指标、标签&lt;br/&gt;只用统一编码]
+  N[新建对象] --&gt;|先查再建| G</pre></figure>
+<ul>
+<li>新建景区、商品、供应商时先查再建，已存在的直接复用。</li>
+<li>主数据变更走审批，保留历史（拉链表），保证历史报表可回溯。</li>
+</ul>
+<h3 id="144">1.4.4 数据血缘</h3>
+<table>
+<thead>
+<tr>
+<th>元数据</th>
+<th>内容</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>技术元数据</td>
+<td>表结构、字段类型、分区、存储量</td>
+<td>数据地图自动采集</td>
+</tr>
+<tr>
+<td>业务元数据</td>
+<td>业务含义、口径、数据域 / 主题域、负责人、安全等级</td>
+<td>开发填报，治理专员审核</td>
+</tr>
+<tr>
+<td>运行元数据</td>
+<td>调度依赖、产出时间、运行时长、访问次数</td>
+<td>运维中心、数据地图</td>
+</tr>
+</tbody>
+</table>
+<p>血缘打通到最末端，从源表一直到报表、API 和智能体：</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  S[业务库源表] --&gt; O[ODS] --&gt; D[DWD] --&gt; W[DWS] --&gt; A[ADS] --&gt; I[认证指标 / 标签]
+  I --&gt; R1[小Q 报表]
+  I --&gt; R2[动态数据开放 API]
+  I --&gt; R3[AI 智能体]</pre></figure>
+<p>血缘的三个用处：</p>
+<ul>
+<li><strong>问题定位</strong>：报表数字不对，沿血缘往上查到出错的那一层。</li>
+<li><strong>影响分析</strong>：改表、改口径前，先查下游有哪些报表、API 受影响，通知到负责人。</li>
+<li><strong>下线判断</strong>：没有下游、没有访问的表和任务，进入下线清单（见 1.4.8）。</li>
+</ul>
+<h3 id="145">1.4.5 数据质量</h3>
+<p><strong>规则按五个维度建</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>检查什么</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完整性</td>
+<td>非空、记录数波动</td>
+<td>订单号、景区 ID 不能为空；日订单量比近 7 日均值波动超过 30% 告警</td>
+</tr>
+<tr>
+<td>准确性</td>
+<td>值域、格式、业务逻辑</td>
+<td>金额不能为负；核销时间不能早于下单时间；手机号格式合法</td>
+</tr>
+<tr>
+<td>一致性</td>
+<td>跨层、跨系统对账</td>
+<td>DWD 订单金额汇总等于业务库；ADS 核销量等于 DWS</td>
+</tr>
+<tr>
+<td>及时性</td>
+<td>产出时间</td>
+<td>核心 ADS 每天 7:00 前产出，晚于基线告警</td>
+</tr>
+<tr>
+<td>唯一性</td>
+<td>主键不重复</td>
+<td>订单号 + 明细号唯一；同一张票不重复核销</td>
+</tr>
+</tbody>
+</table>
+<p><strong>规则分强弱</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>强规则</th>
+<th>弱规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用在哪</td>
+<td>核心表：订单、核销、结算、对外 API 的源表</td>
+<td>一般表</td>
+</tr>
+<tr>
+<td>失败后</td>
+<td>全局阻断下游，通知负责人</td>
+<td>只告警，不阻断</td>
+</tr>
+<tr>
+<td>处理时限</td>
+<td>当天修复</td>
+<td>一周内修复</td>
+</tr>
+</tbody>
+</table>
+<p>数据质量模块未购，在重要节点后加质量校验节点实现：任务结束即校验，不通过全局阻断，通知下发。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  T[核心任务运行结束] --&gt; Q{质量校验节点}
+  Q --&gt;|通过| N[下游任务继续]
+  Q --&gt;|强规则失败| B[全局阻断下游&lt;br/&gt;通知负责人]
+  Q --&gt;|弱规则失败| W[告警&lt;br/&gt;下游继续]
+  B --&gt; F[定位 · 修复 · 重跑]
+  W --&gt; F
+  F --&gt; L[问题单登记&lt;br/&gt;复盘后补规则]</pre></figure>
+<p><strong>问题闭环</strong>：发现问题 → 定义规则 → 质量控制（告警 / 阻断）→ 质量评估 → 持续优化。每个问题登记问题单，同类问题出现两次就补规则。</p>
+<p><strong>治理样板：核销逐层核对</strong>。先把四个容易混用的指标分开：核销次数、有效核销票数、入园人次、去重游客数，再按景区 + 日期从源端到出口逐层核对。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  S[源端记录&lt;br/&gt;闸机 · 手持 · 边云网关] --&gt; B[业务库] --&gt; D[DWD 明细] --&gt; W[DWS 汇总] --&gt; A[ADS / API / 小Q]
+  S -. 按景区 + 日期逐层核对 .- A
+  A --&gt; R[差异告警 → 定位原因 → 修复 → 重算]</pre></figure>
+<p>常见差异原因：设备离线补传、重复上报、撤销冲正、按下单时间还是核销时间统计混用。</p>
+<h3 id="146">1.4.6 统一标签</h3>
+<p><strong>两级体系</strong>：集团统一输出标准指标和标准标签，经过分类分级后下发给景区和供应商；标准不够用时，各景区、供应商在自己的空间里自定义。</p>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  G[集团标准库&lt;br/&gt;标准指标 · 标准标签&lt;br/&gt;统一口径 · 分类分级 · 版本管理]
+  G --&gt;|按分级授权下发| S1[景区 A]
+  G --&gt;|按分级授权下发| S2[景区 B]
+  G --&gt;|按分级授权下发| V1[供应商]
+  S1 --&gt; C1[景区自定义空间&lt;br/&gt;基于标准派生 · 仅本景区可见]
+  V1 --&gt; C2[供应商自定义空间&lt;br/&gt;基于标准派生 · 仅本供应商可见]
+  C1 -.好用的评审后沉淀为标准.-&gt; G
+  C2 -.好用的评审后沉淀为标准.-&gt; G</pre></figure>
+<p><strong>分类分级</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>指标</th>
+<th>标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分类</td>
+<td>交易、核销入园、渠道、结算、会员、业态</td>
+<td>对象：游客 / 会员、景区、商品、渠道、供应商；类型：基础属性、统计、规则、预测</td>
+</tr>
+<tr>
+<td>分级</td>
+<td>按开放范围分：集团内部 / 景区可用 / 供应商可用 / 可对外</td>
+<td>按 L1–L4 安全等级（见 1.4.7）；L4 标签不下发、不对外</td>
+</tr>
+</tbody>
+</table>
+<p><strong>标签平台怎么展示和查看</strong>：按“数据域 → 主题域 → 指标 / 标签”三级目录展示，按查看者的角色、租户和安全等级过滤可见内容。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[数据域&lt;br/&gt;如 用户域] --&gt; B[主题域&lt;br/&gt;如 customer · cus_] --&gt; C[指标 / 标签&lt;br/&gt;如 会员等级 · L3]
+  U[查看者&lt;br/&gt;集团 · 景区 · 供应商] --&gt;|按角色 · 租户 · 等级过滤| C</pre></figure>
+<p><strong>自定义规则</strong></p>
+<ul>
+<li>只能基于集团标准和本主体已授权的数据派生。</li>
+<li>不能与集团标准同名，不覆盖、不影响其他景区或供应商。</li>
+<li>只服务本景区或本供应商。</li>
+<li>使用效果好的自定义指标、标签，评审后升级为集团标准。</li>
+</ul>
+<p><strong>指标怎么定义</strong>：每个指标按“原子指标 + 修饰词 + 时间周期 + 统计粒度”拆开定义。</p>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  A[原子指标&lt;br/&gt;支付金额] --&gt; F[派生指标&lt;br/&gt;近 7 天线上渠道成人票支付金额 · 按景区]
+  B[修饰词&lt;br/&gt;线上渠道 · 成人票] --&gt; F
+  C[时间周期&lt;br/&gt;近 7 天] --&gt; F
+  D[统计粒度&lt;br/&gt;景区] --&gt; F</pre></figure>
+<p><strong>认证流程</strong>：数据团队起草 → 业务负责人确认 → 治理小组裁定 → 发布并版本化。只有认证过的指标和标签能进入管理层看板、API 和 AI。</p>
+<h3 id="147">1.4.7 权限安全</h3>
+<p><strong>数据分级</strong></p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>范围</th>
+<th>管控</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L4 高敏</td>
+<td>个人信息（手机号、证件号）、人脸、政务核验结果</td>
+<td>加密存储、脱敏展示、最小授权、全程审计；明文不进入大模型</td>
+</tr>
+<tr>
+<td>L3 敏感</td>
+<td>单景区经营数据、价格、结算、供应商合作数据</td>
+<td>按景区 / 供应商隔离；跨主体只看汇总</td>
+</tr>
+<tr>
+<td>L2 内部</td>
+<td>日志、设备状态、运营数据、匿名聚合</td>
+<td>内部按角色授权</td>
+</tr>
+<tr>
+<td>L1 公开</td>
+<td>已发布的报告、规范</td>
+<td>可公开</td>
+</tr>
+</tbody>
+</table>
+<p><strong>权属边界</strong></p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>景区数据</td>
+<td>只服务该景区本身</td>
+</tr>
+<tr>
+<td>供应商数据</td>
+<td>只服务该供应商</td>
+</tr>
+<tr>
+<td>渠道数据</td>
+<td>不向其他渠道披露</td>
+</tr>
+<tr>
+<td>游客信息</td>
+<td>在用户授权范围内使用</td>
+</tr>
+<tr>
+<td>政务数据</td>
+<td>只用核验结果，不留原始数据</td>
+</tr>
+<tr>
+<td>外部采购数据</td>
+<td>按合同约定范围使用</td>
+</tr>
+<tr>
+<td>对外输出</td>
+<td>仅限匿名聚合结果</td>
+</tr>
+</tbody>
+</table>
+<p><strong>权限模型：角色 × 数据范围 × 字段等级</strong></p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  U[用户] --&gt; R[角色&lt;br/&gt;集团管理 · 数据开发 · 业务分析&lt;br/&gt;景区 · 供应商 · 外部伙伴 · AI 智能体]
+  R --&gt; P1[功能权限&lt;br/&gt;能用哪些模块]
+  R --&gt; P2[行级 · 数据范围&lt;br/&gt;按租户 / 景区 / 供应商隔离]
+  R --&gt; P3[列级 · 字段等级&lt;br/&gt;按 L1–L4 控制可见与脱敏]
+  P1 --&gt; A[实际可访问的数据]
+  P2 --&gt; A
+  P3 --&gt; A</pre></figure>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>L1</th>
+<th>L2</th>
+<th>L3</th>
+<th>L4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>集团管理层</td>
+<td>可看</td>
+<td>可看</td>
+<td>可看汇总</td>
+<td>不可看明细</td>
+</tr>
+<tr>
+<td>数据团队</td>
+<td>可看</td>
+<td>可看</td>
+<td>按项目授权</td>
+<td>审批后脱敏使用</td>
+</tr>
+<tr>
+<td>业务线</td>
+<td>可看</td>
+<td>可看</td>
+<td>本业务线</td>
+<td>不可看</td>
+</tr>
+<tr>
+<td>景区</td>
+<td>可看</td>
+<td>本景区</td>
+<td>本景区</td>
+<td>本景区游客，授权后脱敏</td>
+</tr>
+<tr>
+<td>供应商</td>
+<td>可看</td>
+<td>本供应商</td>
+<td>本供应商</td>
+<td>不可看</td>
+</tr>
+<tr>
+<td>外部伙伴</td>
+<td>可看</td>
+<td>不可看</td>
+<td>仅匿名聚合</td>
+<td>不可看</td>
+</tr>
+<tr>
+<td>AI 智能体</td>
+<td>继承提问人的权限</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>权限流程：申请—审批—授权—使用—回收</strong></p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[申请&lt;br/&gt;说明用途与期限] --&gt; B[审批&lt;br/&gt;数据负责人&lt;br/&gt;L4 加安全负责人]
+  B --&gt; C[授权&lt;br/&gt;按最小范围 · 设到期时间]
+  C --&gt; D[使用&lt;br/&gt;访问全程留痕]
+  D --&gt; E[回收&lt;br/&gt;到期自动回收&lt;br/&gt;离岗 / 项目结束回收]
+  E -.每季度权限复核.-&gt; A</pre></figure>
+<p><strong>各出口统一管控</strong></p>
+<table>
+<thead>
+<tr>
+<th>出口</th>
+<th>管控方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>湖仓 / DataStudio</td>
+<td>项目、表、字段级授权；开发环境使用脱敏数据</td>
+</tr>
+<tr>
+<td>数据地图</td>
+<td>可搜索资产目录，按权限申请使用</td>
+</tr>
+<tr>
+<td>动态数据开放 API / 数据服务</td>
+<td>应用鉴权、租户隔离、字段按等级脱敏、调用审计</td>
+</tr>
+<tr>
+<td>小Q</td>
+<td>行级权限（按景区 / 供应商）、列级权限</td>
+</tr>
+<tr>
+<td>标签平台</td>
+<td>按数据域分级查看；L4 标签不下发</td>
+</tr>
+<tr>
+<td>AI 智能体</td>
+<td>继承提问人权限；只调用认证指标和授权数据；L4 明文不进入模型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>技术手段</strong></p>
+<ul>
+<li>敏感字段自动识别与打标：用 AI 加规则识别证件号、手机号、人脸等字段，由安全负责人复核。</li>
+<li>脱敏、行列权限、租户隔离、访问留痕。</li>
+<li>安全中心模块未购：先用计算引擎权限加脱敏视图实现；合规要求提高时评估增购。</li>
+</ul>
+<h3 id="148">1.4.8 资产运营</h3>
+<p><strong>资产目录</strong>：数据地图按“数据域 → 主题域 → 表 / 指标 / 标签 / API”编目，可搜索、可看口径和血缘、按权限申请使用。</p>
+<p><strong>健康分</strong>：数据资产治理模块按负责人、主题域打分，每月公示排名。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>规范</td>
+<td>命名、注释、负责人、安全等级是否齐全</td>
+</tr>
+<tr>
+<td>质量</td>
+<td>质量规则覆盖率、通过率、按时产出率</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>敏感字段是否打标、是否脱敏</td>
+</tr>
+<tr>
+<td>使用</td>
+<td>访问次数、下游引用数</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>存储量、计算耗时、重复计算</td>
+</tr>
+</tbody>
+</table>
+<p><strong>成本治理与下线</strong></p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[识别&lt;br/&gt;90 天无访问 · 无下游&lt;br/&gt;重复模型 · 临时表] --&gt; B[通知负责人确认] --&gt; C[停调度 / 改只读] --&gt; D[观察 30 天&lt;br/&gt;无人反馈] --&gt; E[下线删除]
+  C -.有人反馈.-&gt; R[恢复]</pre></figure>
+<ul>
+<li>临时表设生命周期自动清理；ODS 分区按用途设保留期。</li>
+<li>重复模型合并到公共层，先双跑对比再切换。</li>
+</ul>
+<h3 id="149">1.4.9 数据分发</h3>
+<p>所有对内对外的数据都从统一出口走，不再点对点导数、私接数据库。动态数据开放 API 作为统一出口，同时提供 ADS 指标和标签服务，两者可以联合使用。</p>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  ADS[ADS 指标&lt;br/&gt;认证指标] --&gt; API
+  TAG[标签服务&lt;br/&gt;标准标签 + 自定义标签] --&gt; API
+  API[动态数据开放 API&lt;br/&gt;统一鉴权 · 租户隔离 · 调用计量 · 监控]
+  API --&gt; U1[景区 SaaS / 经营看板]
+  API --&gt; U2[营销：人群圈选 · 精准触达]
+  API --&gt; U3[供应商 / 合作伙伴]
+  API --&gt; U4[AI 智能体]</pre></figure>
+<table>
+<thead>
+<tr>
+<th>用法</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只查指标</td>
+<td>景区经营看板：销售额、核销量、入园人次</td>
+</tr>
+<tr>
+<td>指标 + 标签联合</td>
+<td>按会员等级看复购率；按游客偏好看各票种销量</td>
+</tr>
+<tr>
+<td>标签圈人 + 指标评估</td>
+<td>圈选“近 90 天未复购的年卡用户”推送活动，活动后用指标看转化</td>
+</tr>
+<tr>
+<td>只查标签</td>
+<td>智能体按游客标签做个性化推荐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1410">1.4.10 治理嵌入开发</h3>
+<p>治理卡点放进研发的每一步，不另起流程：</p>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  subgraph P1[事前 · 定规范]
+    direction LR
+    A[需求&lt;br/&gt;确认口径 · 复用已认证指标] --&gt; B[设计&lt;br/&gt;模型评审 · 数据域 · 分层 · 等级]
+  end
+  subgraph P2[事中 · 设卡点]
+    direction LR
+    C[开发&lt;br/&gt;按规范 · 绑定质量规则] --&gt; D[发布&lt;br/&gt;检查脚本卡点] --&gt; E[运行&lt;br/&gt;质量校验 · 阻断告警 · 产出基线]
+  end
+  subgraph P3[事后 · 做治理]
+    direction LR
+    F[运营&lt;br/&gt;健康分 · 成本 · 下线] --&gt; G[复盘&lt;br/&gt;补规范 · 补规则]
+  end
+  P1 --&gt; P2 --&gt; P3</pre></figure>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>事前 · 定规范</th>
+<th>事中 · 设卡点</th>
+<th>事后 · 做治理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>做什么</td>
+<td>命名规范、指标定义、模型评审</td>
+<td>发布自动检查、质量规则绑定任务、失败阻断下游</td>
+<td>健康分公示、存量整改、问题复盘</td>
+</tr>
+<tr>
+<td>谁来做</td>
+<td>数据架构师、治理专员</td>
+<td>平台自动执行</td>
+<td>数据负责人、治理专员</td>
+</tr>
+<tr>
+<td>不做到会怎样</td>
+<td>模型不能进入开发</td>
+<td>不能发布；下游不运行</td>
+<td>健康分低的负责人排名公示，限期整改</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1411">1.4.11 治理组织</h3>
+<figure class="diagram"><pre class="mermaid">flowchart TB
+  A[决策层 · 数据治理小组&lt;br/&gt;裁定口径 · 审批规范] --&gt; B[管理层 · 数据负责人&lt;br/&gt;制定方案 · 跨部门协调]
+  B --&gt; C1[业务数据专员&lt;br/&gt;定规则 · 确认口径 · 验收]
+  B --&gt; C2[数据治理专员&lt;br/&gt;标准 · 指标 · 质量 · 资产]
+  B --&gt; C3[数据架构师 / 开发&lt;br/&gt;模型落地 · 问题修复]</pre></figure>
+<p>机制：两周一次口径评审，每月公示健康分，每季度复盘。</p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据治理小组</td>
+<td>裁定口径争议，审批规范和指标认证</td>
+</tr>
+<tr>
+<td>数据负责人</td>
+<td>制定治理方案，跨部门协调，对健康分负责</td>
+</tr>
+<tr>
+<td>业务数据专员（各业务线一名）</td>
+<td>提业务规则，确认口径，验收数据</td>
+</tr>
+<tr>
+<td>数据治理专员</td>
+<td>维护标准、指标字典、质量规则、资产目录</td>
+</tr>
+<tr>
+<td>数据架构师 / 开发</td>
+<td>模型设计评审，规范落地，问题修复</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1412">1.4.12 治理度量</h3>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>指标</th>
+<th>建议目标（试点链路）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据标准</td>
+<td>新表规范符合率</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>元数据</td>
+<td>核心表注释、负责人覆盖率</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>主数据</td>
+<td>景区、商品、渠道编码映射覆盖率</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>数据质量</td>
+<td>核心表强规则覆盖率；核心 ADS 按时产出率</td>
+<td>100%；≥ 99%</td>
+</tr>
+<tr>
+<td>指标</td>
+<td>管理层看板中认证指标占比</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>敏感字段识别打标覆盖率</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>资产</td>
+<td>无用表、无用任务下线</td>
+<td>每季度清理一轮</td>
+</tr>
+<tr>
+<td>一致性</td>
+<td>核销量各出口差异</td>
+<td>0 差异，或差异有原因说明</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15">1.5 建设落地</h2>
+<figure class="diagram"><pre class="mermaid">flowchart LR
+  A[统接入&lt;br/&gt;统一接入规范 · 主数据编码&lt;br/&gt;补齐数据源 · 订单核销实时链路] --&gt; B[统建模&lt;br/&gt;数据域划分 · 首批指标与标签认证&lt;br/&gt;重复模型合并]
+  B --&gt; C[统开发&lt;br/&gt;发布卡点 · 质量规则绑定&lt;br/&gt;核销逐层核对]
+  C --&gt; D[统服务&lt;br/&gt;API 联合指标与标签 · BI 数据集统一&lt;br/&gt;自助分析]</pre></figure>
+<ul>
+<li>先在“订单 → 核销 → 结算”试点，做通后推广到其他数据域。</li>
+<li>存量模型先双跑对比再切换，保留回滚。</li>
+</ul>
+<p>平台建成后，体现为六个看得见的变化，每个都有关键指标可考核；最后汇总为对企业和对业务线的影响。</p>
+<blockquote>
+<p>关键指标的目标值为建议值，试点链路跑通后校准。</p>
+</blockquote>
+<h3 id="151">1.5.1 统一规范</h3>
+<p>规范不再停留在文档里：新表不合规发不出去，存量核心表优先整改，健康分月度公示。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-name">
+    <div class="pf-tok"><b class="dp">dwd</b><em>分层</em></div><span class="pf-us">_</span>
+    <div class="pf-tok"><b class="p">ord</b><em>主题域</em></div><span class="pf-us">_</span>
+    <div class="pf-tok"><b class="soft">order_item</b><em>业务过程与粒度</em></div><span class="pf-us">_</span>
+    <div class="pf-tok"><b class="warm">di</b><em>更新方式</em></div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">DDL 必填</div>
+    <div class="pf-pills"><span class="pf-pill">中文名</span><span class="pf-pill">描述</span><span class="pf-pill">负责人</span><span class="pf-pill">安全等级</span><span class="pf-pill">生命周期</span><span class="pf-pill">分区字段</span><span class="pf-pill">字段注释</span><span class="pf-pill">发生时间与上报时间</span></div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-card grad c" style="flex:1"><h4>新建 · 卡点</h4><div class="sub">发布前自动检查，不合规不发布</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4>存量 · 整改</h4><div class="sub">核心表优先，AI 补描述</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card warm c" style="flex:1"><h4>持续 · 运营</h4><div class="sub">资产健康分，月度公示</div></div>
+  </div>
+</div>
+</figure>
+<h3 id="152">1.5.2 统一底座</h3>
+<p>离线与实时是两种计算方式，湖仓负责统一存储与管理；订单、核销从次日可见变为分钟级。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-col" style="flex:1.1">
+      <span class="pf-pill fill sq" style="color:var(--ink);font-weight:400">业务库</span>
+      <span class="pf-pill fill sq" style="color:var(--ink);font-weight:400">渠道接口</span>
+      <span class="pf-pill fill sq" style="color:var(--ink);font-weight:400">设备事件</span>
+      <span class="pf-pill fill sq" style="color:var(--ink);font-weight:400">行为日志</span>
+      <span class="pf-pill fill sq" style="color:var(--ink);font-weight:400">外部数据</span>
+    </div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card line c" style="flex:1.1"><h4>统一接入</h4><div class="sub">接入规范<br/>对象标识<br/>负责人</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card panel" style="flex:3.2;gap:8px">
+      <div class="ttl">数据湖仓</div>
+      <div class="pf-bar grad">离线计算 · DataWorks</div>
+      <div class="pf-bar dash">实时计算 · 订单、核销先行</div>
+      <div class="pf-pills even"><span class="pf-pill sq">ODS</span><span class="pf-pill sq">DWD</span><span class="pf-pill sq">DIM</span><span class="pf-pill sq">DWS</span><span class="pf-pill sq">ADS</span></div>
+      <div class="pf-note" style="color:var(--p)">共享业务定义与质量规则</div>
+    </div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card line c" style="flex:1.1"><h4>分析查询</h4><div class="sub">稳定查询<br/>负载隔离</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-col" style="flex:1.1">
+      <div class="pf-card dark c" style="padding:14px"><h4>小Q</h4></div>
+      <div class="pf-card dark c" style="padding:14px"><h4>API</h4></div>
+      <div class="pf-card dark c" style="padding:14px"><h4>AI</h4></div>
+    </div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">稳定与扩展</div>
+    <div class="pf-pills even"><span class="pf-pill">结构变更</span><span class="pf-pill">失败恢复</span><span class="pf-pill">补数重算</span><span class="pf-pill">租户隔离</span><span class="pf-pill">高峰压测</span></div>
+  </div>
+  <div class="pf-banner"><b>预期产出</b><span>统一接入、离线与实时处理、湖仓底座、公共模型及标准数据集</span></div>
+</div>
+</figure>
+<h3 id="153">1.5.3 统一湖仓</h3>
+<p>重复模型合并到公共层，同一个指标不再有两个结果，改口径只改一处。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card dash top" style="flex:1;gap:14px">
+      <div class="ttl">现状：两条链路</div>
+      <div class="pf-row" style="align-items:center"><b style="width:40px">离线</b><span class="pf-pill" style="flex:1;border-color:transparent">源数据</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">离线模型</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">指标 A</span></div>
+      <div class="pf-row" style="align-items:center"><b style="width:40px">湖仓</b><span class="pf-pill" style="flex:1;border-color:transparent">源数据</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">湖仓模型</span><span class="pf-arrow org">➜</span><span class="pf-pill" style="flex:1;border-color:transparent">指标 A′</span></div>
+      <div class="pf-note org">同一逻辑写两遍 · 结果对不上 · 改口径要改多处</div>
+    </div>
+    <div class="pf-arrow big">➜</div>
+    <div class="pf-card panel top" style="flex:1;gap:8px">
+      <div class="ttl">目标：一个底座</div>
+      <div class="pf-bar grad">公共层 DWD · DIM · DWS（只建一次）</div>
+      <div class="pf-row"><div class="pf-bar line" style="flex:1">离线计算</div><div class="pf-bar line" style="flex:1">实时计算</div></div>
+      <div class="pf-arrow down">▼</div>
+      <div class="pf-bar dark">统一指标 → BI · API · AI</div>
+    </div>
+  </div>
+  <div class="pf-label" style="width:auto">合并步骤</div>
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1">盘点重叠模型</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">确定保留版本</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">下游改为引用</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">双跑对比</div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1;font-weight:700">下线重复模型</div>
+  </div>
+  <div class="pf-note">存量不动、增量按新规范，双跑通过后逐域切换，保留回滚</div>
+</div>
+</figure>
+<h3 id="154">1.5.4 统一标签</h3>
+<p>同一出口，按景区隔离；同名不能覆盖企业标准。BI、API、AI 三处数字一致。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-col" style="flex:1"><div class="pf-card soft c" style="padding:20px 12px"><h4>公共模型</h4><div class="sub">明细 · 维度 · 汇总</div></div></div>
+    <div class="pf-col"><div class="pf-arrow">➜</div><div style="height:90px"></div><div class="pf-arrow">➜</div></div>
+    <div class="pf-col" style="flex:2;gap:6px">
+      <div class="pf-card grad c" style="padding:16px"><h4 style="font-size:18px">企业标准指标</h4><div class="sub">统一定义 · 版本管理 · 业务认证</div></div>
+      <div class="pf-note org" style="text-align:center">▲ 评审后沉淀为标准</div>
+      <div class="pf-card dash" style="gap:8px">
+        <h4>景区自定义指标空间</h4>
+        <div class="pf-pills"><span class="pf-pill" style="border-color:#F6C9A6">景区 A</span><span class="pf-pill" style="border-color:#F6C9A6">景区 B</span><span class="pf-pill" style="border-color:#F6C9A6">景区 C</span></div>
+        <div class="sub" style="color:var(--mut)">相互隔离，只服务本景区</div>
+      </div>
+    </div>
+    <div class="pf-col"><div class="pf-arrow">➜</div></div>
+    <div class="pf-col" style="flex:1.6">
+      <div class="pf-card dark c" style="padding:18px"><h4>小Q</h4></div>
+      <div class="pf-card dark c" style="padding:18px"><h4>动态数据开放 API</h4></div>
+      <div class="pf-card dark c" style="padding:18px"><h4>AI 问数</h4></div>
+    </div>
+  </div>
+</div>
+</figure>
+<h3 id="155">1.5.5 标签复用</h3>
+<p>OneID：订单、会员、年卡、人脸识别归并为同一游客；标签一处加工，营销、分析、AI、景区都从这里取。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card grad" style="flex:1"><h4>统一生产</h4><div class="sub">基于 DIM / DWS 公共模型加工</div></div>
+    <div class="pf-arrow" style="color:#C9C4FB">➜</div>
+    <div class="pf-card grad" style="flex:1"><h4>统一管理</h4><div class="sub">口径 · 负责人 · 生命周期</div></div>
+    <div class="pf-arrow" style="color:#C9C4FB">➜</div>
+    <div class="pf-card grad" style="flex:1"><h4>统一服务</h4><div class="sub">营销 · 分析 · AI · 景区</div></div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">标签对象</div>
+    <div class="pf-pills even"><span class="pf-pill fill">游客 / 会员</span><span class="pf-pill fill">供应商</span><span class="pf-pill fill">景区</span><span class="pf-pill fill">渠道</span><span class="pf-pill fill">商品</span></div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">标签类型</div>
+    <div class="pf-row" style="flex:1">
+      <div class="pf-card line" style="flex:1;background:#F4F3FF"><h4>基础属性</h4><div class="sub">景区类型<br/>会员等级</div></div>
+      <div class="pf-card line" style="flex:1;background:#F4F3FF"><h4>统计类</h4><div class="sub">近 30 天购票<br/>客单价</div></div>
+      <div class="pf-card line" style="flex:1;background:#F4F3FF"><h4>规则类</h4><div class="sub">高频复购<br/>夜游偏好</div></div>
+      <div class="pf-card line" style="flex:1;background:#F4F3FF"><h4>模型预测类</h4><div class="sub">流失风险<br/>复购倾向</div></div>
+    </div>
+  </div>
+  <div class="pf-banner warm"><b>边界</b><span>景区只用本景区标签 · 不做敏感个人信息标签 · 对外不提供个体标签</span></div>
+  <div class="pf-note">指标回答“有多少”，标签回答“是谁、什么样”；两者共用公共模型和治理体系</div>
+</div>
+</figure>
+<h3 id="156">1.5.6 自助分析</h3>
+<p>从统一的模型、指标、标签出发，业务自己分析；数据团队从临时取数转向建模型。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card grad c" style="flex:1.1"><div class="sub">统一出发点</div><h4 style="font-size:20px;line-height:1.7">模型<br/>指标<br/>标签</h4></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card panel" style="flex:2;gap:10px">
+      <div class="ttl" style="color:var(--ink);font-size:18px">小Q 自助分析</div>
+      <div class="pf-pills"><span class="pf-pill">指标检索</span><span class="pf-pill">明细探索</span><span class="pf-pill">可视化计算</span><span class="pf-pill">自定义看板</span><span class="pf-pill">报表订阅</span></div>
+      <div class="pf-note">景区指标与权限统一管理，集成到 BI 使用流程</div>
+    </div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-col" style="flex:1.3">
+      <div class="pf-card dark c"><h4>总部经营</h4><div class="sub">跨景区对比 · 标准口径</div></div>
+      <div class="pf-card dark c"><h4>业务线</h4><div class="sub">日常分析 · 少提需求</div></div>
+      <div class="pf-card dark c"><h4>景区</h4><div class="sub">嵌入 SaaS · 本景区数据</div></div>
+    </div>
+  </div>
+  <div class="pf-banner"><b>AI 问数与 BI 同源</b><span>共用指标定义和权限，问出来的数和看板上的数一致</span></div>
+  <div class="pf-banner"><b>预期产出</b><span>企业指标中心 · 景区专属指标空间 · 统一标签服务 · 统一语义服务 · 自助分析平台</span></div>
+</div>
+</figure>
+<h3 id="157">1.5.7 落地效果</h3>
+<p>建成后，从“找人要数”变成“数据找人”：数字可信、看数及时、用数自助。</p>
+<p><strong>对企业：五个方面都有可衡量的变化</strong></p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+    <div class="pf-val hl"><h4>可信</h4><div class="chg">一个指标一个口径<br/>数字可追溯</div><div class="msr">认证指标覆盖率 · 对账差异率</div></div>
+    <div class="pf-val"><h4>时效</h4><div class="chg">订单、核销<br/>T+1 → 分钟级</div><div class="msr">端到端延迟</div></div>
+    <div class="pf-val"><h4>效率</h4><div class="chg">公共模型复用<br/>改动影响可预判</div><div class="msr">模型复用率 · 交付周期</div></div>
+    <div class="pf-val"><h4>成本</h4><div class="chg">重复模型、无用报表<br/>和任务下线</div><div class="msr">存储计算成本</div></div>
+    <div class="pf-val"><h4>安全</h4><div class="chg">敏感数据分级<br/>脱敏、可审计</div><div class="msr">敏感字段识别覆盖率</div></div>
+  </div>
+  <div class="pf-banner"><b>原则</b><span>先建立基线再定目标；以实际使用和业务结果衡量，不以上线看板数量衡量</span></div>
+</div>
+</figure>
+<p><strong>对业务线：每类角色都用上可信数据</strong></p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+    <div class="pf-role"><div class="pf-ico">管</div><div><h4>管理层</h4><div class="sub">驾驶舱全用认证指标<br/>不再先对数</div></div></div>
+    <div class="pf-role"><div class="pf-ico">票</div><div><h4>票务</h4><div class="sub">核销口径统一，差异自动定位<br/>节假日实时看数</div></div></div>
+    <div class="pf-role"><div class="pf-ico">财</div><div><h4>财务</h4><div class="sub">业务与财务逐层对账<br/>差异自动列出原因</div></div></div>
+    <div class="pf-role"><div class="pf-ico">渠</div><div><h4>渠道</h4><div class="sub">销量、佣金、返利<br/>口径统一</div></div></div>
+    <div class="pf-role"><div class="pf-ico">营</div><div><h4>营销</h4><div class="sub">标签圈人、指标看效果<br/>活动复盘自动完成</div></div></div>
+    <div class="pf-role"><div class="pf-ico">运</div><div><h4>运营 / 客户成功</h4><div class="sub">景区经营报告<br/>自动生成</div></div></div>
+    <div class="pf-role"><div class="pf-ico">研</div><div><h4>产品研发</h4><div class="sub">上线前定好埋点和口径<br/>上线即有数据</div></div></div>
+    <div class="pf-role"><div class="pf-ico">数</div><div><h4>数据团队</h4><div class="sub">从临时取数、对数<br/>转向建模型、做分析</div></div></div>
+    <div class="pf-role"><div class="pf-ico org">景</div><div><h4>景区 / 供应商</h4><div class="sub">直接用集团标准指标和标签<br/>不够用时在自己的空间里自定义</div></div></div>
+  </div>
+  <div class="pf-hero">数据可信 · 模型可复用 · 服务稳定 · 能力易扩展</div>
+</div>
+</figure>
+<p><strong>为第二章打基础</strong>：治理后的指标、标签、知识可信、有口径、有权限，AI 接上它们才能答得准。</p>
+<hr />
+<h1 id="_2">二、智能体平台</h1>
+<h2 id="21">2.1 现状</h2>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card panel top" style="flex:2.2;gap:10px">
+      <div class="ttl">扣子（Coze）工作流 · 配置化输出</div>
+      <div class="pf-pills even"><span class="pf-pill sq">智能助手</span><span class="pf-pill sq">智能客服</span><span class="pf-pill sq">智能导览</span><span class="pf-pill sq">AI 旅拍</span><span class="pf-pill sq">AI 伴游</span></div>
+      <div class="pf-note">面向游客 · 畅游 AI · 工作流、知识库、插件都在扣子上</div>
+    </div>
+    <div class="pf-card dash top" style="flex:0.8;gap:10px">
+      <div class="ttl">企业合作</div>
+      <div class="pf-pills even"><span class="pf-pill" style="border-color:#F6C9A6">手语</span></div>
+      <div class="pf-note">面向听障游客 · 外部能力接入</div>
+    </div>
+    <div class="pf-card line top" style="flex:1.3;gap:10px">
+      <div class="ttl">小Q</div>
+      <div class="pf-pills even"><span class="pf-pill sq">智能问数</span><span class="pf-pill sq">智能数据解读</span></div>
+      <div class="pf-note">面向景区与内部管理者</div>
+    </div>
+  </div>
+</div>
+</figure>
+<table>
+<thead>
+<tr>
+<th>智能体</th>
+<th>面向</th>
+<th>来源</th>
+<th>交付方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能助手、智能客服、智能导览、AI 旅拍、AI 伴游</td>
+<td>游客</td>
+<td>Coze</td>
+<td>在扣子上配置工作流形成智能体，标准化、配置化输出</td>
+</tr>
+<tr>
+<td>手语</td>
+<td>听障游客</td>
+<td>企业合作</td>
+<td>接入合作方能力</td>
+</tr>
+<tr>
+<td>智能问数、智能数据解读</td>
+<td>景区、内部管理者</td>
+<td>小Q</td>
+<td>使用 小Q 的 AI 能力</td>
+</tr>
+</tbody>
+</table>
+<h2 id="22">2.2 场景沉淀</h2>
+<p>票付通多年在票务、九大业态、运营、财务、终端、会员营销上的积累，覆盖了游客从游前到游后、景区从经营到运营的大量场景。一张图按游客 / 景区两端看清：需要什么场景，凭什么能做，能做出哪些智能体。</p>
+<figure class="diagram"><div class="pf">
+  <div class="own-legend"><span class="own self">已有</span><span class="own oss">产品全景中的智能体</span><span class="own buy">基于积累可扩展</span></div>
+  <div class="pf-grid" style="grid-template-columns: 96px 1fr 1fr; gap:10px">
+    <div></div><div class="pf-bar dark">游客</div><div class="pf-bar dark">景区</div>
+    <div class="arch-name">智能全景</div>
+    <div class="pf-card panel top" style="gap:6px"><div class="pf-row own-wrap"><span class="own self">智能客服</span><span class="own self">智能助手</span><span class="own self">智能导览</span><span class="own self">AI 伴游</span><span class="own self">AI 旅拍</span><span class="own self">手语</span><span class="own oss">AI 旅游规划</span><span class="own oss">AI 智能购票</span><span class="own buy">乐园排队与项目推荐</span><span class="own buy">演出选座推荐</span><span class="own buy">餐饮二消推荐</span><span class="own buy">停车引导</span><span class="own buy">预约与候补提醒</span><span class="own buy">年卡服务助手</span><span class="own buy">自助机语音购票</span><span class="own buy">游记与行程总结</span><span class="own buy">点评分享助手</span></div></div>
+    <div class="pf-card panel top" style="gap:6px"><div class="pf-row own-wrap"><span class="own self">AI 智能问数</span><span class="own self">AI 智能洞察</span><span class="own oss">票务 AI 运营助手</span><span class="own oss">AI 对账助手</span><span class="own oss">消息通知预警</span><span class="own oss">工单调度处置</span><span class="own oss">旅游安全</span><span class="own oss">秩序治理</span><span class="own oss">车辆调度</span><span class="own oss">游船调度</span><span class="own oss">森林防火</span><span class="own oss">生态监测</span><span class="own oss">气象服务</span><span class="own oss">设施监测</span><span class="own buy">经营日报周报</span><span class="own buy">分销渠道助手</span><span class="own buy">旅行社报团助手</span><span class="own buy">检票异常解释</span><span class="own buy">业态经营助手</span><span class="own buy">发票助手</span><span class="own buy">报表解读</span><span class="own buy">会员画像</span><span class="own buy">人群圈选</span><span class="own buy">营销文案生成</span><span class="own buy">推广员助手</span><span class="own buy">活动复盘</span><span class="own buy">设备运维诊断</span><span class="own buy">窗口售票员助手</span></div></div>
+    <div class="arch-name">场景</div>
+    <div class="pf-card line top" style="gap:8px"><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:40px;font-size:13px;color:var(--dp);padding-top:4px">游前</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">景区咨询</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">行程规划</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">购票预约</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">门票候补</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:40px;font-size:13px;color:var(--dp);padding-top:4px">游中</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">入园核验</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">导览讲解</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">陪伴互动</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">无障碍服务</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">乐园项目</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">演出观看</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">游船乘坐</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">餐饮购物</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">停车租赁</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">酒店温泉</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:40px;font-size:13px;color:var(--dp);padding-top:4px">游后</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">拍照留念</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">游记分享</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">点评反馈</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">年卡复游</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">积分权益</span></div></div></div>
+    <div class="pf-card line top" style="gap:8px"><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">经营分析</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">经营问数</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">经营洞察</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">日报周报</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">票务运营</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">定价库存</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">分销渠道</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">团队报名</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">检票核销</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">业态运营</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">乐园</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">演出</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">游船</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">酒店</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">温泉</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">餐饮零售</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">租赁</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">停车</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">运营服务</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">年卡</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">分时预约</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">候补</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">免证</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">返利</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">一卡通</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">财务</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">对账</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">发票</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">报表</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">营销</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">会员</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">人群</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">全民营销</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">活动</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">安全调度</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">客流秩序</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">车船调度</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">防火生态</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">气象设施</span></div></div><div class="pf-row" style="align-items:flex-start;gap:8px"><b style="flex:none;width:60px;font-size:13px;color:var(--dp);padding-top:4px">设备终端</b><div class="pf-row" style="flex-wrap:wrap;gap:5px;flex:1"><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">闸机</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">自助机</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">窗口</span><span class="pf-pill" style="padding:3px 9px;font-size:12.5px">边云网关</span></div></div></div>
+    <div class="arch-name">数据</div>
+    <div class="pf-card soft top"><div class="pf-row" style="flex-wrap:wrap;gap:6px"><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">畅游小程序</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">售票与分时预约</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">人脸闸机</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">景区知识与导览内容</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">数字人 · 语音 · 图像</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">合作手语能力</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">年卡 · 会员 · 积分</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">九大业态预订</span></div></div>
+    <div class="pf-card soft top"><div class="pf-row" style="flex-wrap:wrap;gap:6px"><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">交易与客流数据</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">认证指标与标签</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">售票 · 分销 · 库存价格</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">九大业态系统</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">年卡 · 预约 · 候补 · 免证</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">订单 · 结算 · 发票</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">会员 · 全民营销</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">闸机 · 边云网关 · 物联</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">工单与 APP 推送</span><span class="pf-pill" style="padding:4px 10px;font-size:12.5px">小Q</span></div></div>
+    <div class="arch-name">积累</div>
+    <div class="pf-row" style="grid-column: span 2;flex-wrap:wrap;gap:8px"><span class="own buy" style="flex:1 1 auto">智慧票务</span><span class="own buy" style="flex:1 1 auto">景区业态管理</span><span class="own buy" style="flex:1 1 auto">景区运营管理</span><span class="own buy" style="flex:1 1 auto">景区财务管理</span><span class="own buy" style="flex:1 1 auto">景区智慧终端</span><span class="own buy" style="flex:1 1 auto">AI 数字大脑</span><span class="own buy" style="flex:1 1 auto">畅游 AI</span><span class="own buy" style="flex:1 1 auto">会员营销</span></div>
+  </div>
+  <div class="pf-hero">已有 8 个只是起点：多年积累的系统和数据，能支撑游客和景区两端几十个智能体场景</div>
+</div>
+</figure>
+<blockquote>
+<p>渐变为已有智能体，白框为产品全景中的智能体，浅紫为基于积累可扩展。</p>
+</blockquote>
+<h2 id="23">2.3 建设策略</h2>
+<p>先借力，再复制，后自建</p>
+<p>智能体这件事要回答三个问题：商业模式能不能跑通，市场能不能快速占住，平台要不要、什么时候自己建。对应三步走，每两步之间设一道关卡，过关才进下一步。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row" style="align-items:stretch">
+    <div class="pf-val" style="flex:1"><h4>① 验证商业模式</h4><div class="chg">借平台，用最小投入回答：卖给谁、卖什么、怎么收钱、能不能赚钱</div><div class="msr">依托 Coze · 火山方舟 · 羚羊小Q</div></div>
+    <div class="pf-col" style="flex:none;width:96px;align-items:center"><div class="pf-card warm c" style="padding:8px 6px"><b style="font-size:13px">关卡一</b><div class="sub" style="font-size:12px">商业模式跑通？</div></div></div>
+    <div class="pf-val" style="flex:1"><h4>② 快速占有市场</h4><div class="chg">仍借平台，把跑通的产品按业态快速复制，抢景区覆盖</div><div class="msr">依托 Coze · 火山方舟 · 羚羊小Q</div></div>
+    <div class="pf-col" style="flex:none;width:96px;align-items:center"><div class="pf-card warm c" style="padding:8px 6px"><b style="font-size:13px">关卡二</b><div class="sub" style="font-size:12px">自建更划算？</div></div></div>
+    <div class="pf-val hl" style="flex:1"><h4>③ 自建智能体平台</h4><div class="chg">用沉淀的模板、知识、接口、数据和需求，建自己的平台，成本和交付自己掌握</div><div class="msr">数字大脑作为智能体管理台</div></div>
+  </div>
+  <div class="pf-hero">贯穿始终：借平台，不交资产 —— 知识、接口、数据、模板从第一天起沉淀在自己手里</div>
+</div>
+</figure>
+<p><strong>为什么先借力</strong>：智能体卖不卖得动、景区愿付多少钱，现在还不知道。先自建平台，等于在需求没验证前就投入研发和时间；借平台，几周就能做出来去试。</p>
+<p><strong>为什么最终要自建</strong>：景区越多，平台费越高，交付和定制受平台限制，数据和资产留在别人那里。规模起来后，自建更省钱、更快、更可控。</p>
+<p><strong>关键一条：借平台，不交资产</strong>。从阶段一开始就把知识、业务接口、交互数据、模板设计留在自己手里（见 2.5.4），阶段三才能低成本切过去。</p>
+<h2 id="24">2.4 借力验证</h2>
+<h3 id="241">2.4.1 要验证什么</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+    <div class="pf-val"><h4 style="font-size:17px">卖给谁</h4><div class="chg">哪类景区最需要、最愿付费：业态、规模、是否已用票付通票务</div><div class="msr">验证：目标客群</div></div>
+    <div class="pf-val"><h4 style="font-size:17px">卖什么</h4><div class="chg">游客服务、景区管理哪些智能体组合成包，景区最认</div><div class="msr">验证：产品包</div></div>
+    <div class="pf-val hl"><h4 style="font-size:17px">怎么收钱</h4><div class="chg">随票务打包、年费订阅、按效果分成、按用量，哪种景区接受</div><div class="msr">验证：定价方式</div></div>
+    <div class="pf-val"><h4 style="font-size:17px">花多少钱</h4><div class="chg">平台调用费 + 交付人力 + 运营支持，单景区算得清</div><div class="msr">验证：单景区成本</div></div>
+    <div class="pf-val"><h4 style="font-size:17px">值不值</h4><div class="chg">景区看得到的价值：少用人工、多卖票、游客更满意</div><div class="msr">验证：价值证明</div></div>
+  </div>
+  <div class="pf-banner"><b>单景区账</b><span>单景区年收入 − 平台调用费 − 交付成本摊销 − 运营支持 ＞ 0，才算能赚钱</span></div>
+</div>
+</figure>
+<p><strong>收费方式怎么选</strong></p>
+<table>
+<thead>
+<tr>
+<th>收费方式</th>
+<th>怎么收</th>
+<th>适合</th>
+<th>要验证的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>随票务打包</td>
+<td>作为票务系统增值模块，提高票务年费</td>
+<td>已用票付通票务的景区</td>
+<td>能否提升续约率和客单价</td>
+</tr>
+<tr>
+<td>年费订阅</td>
+<td>按景区规模或智能体数量分档收年费</td>
+<td>新客户、单独采购</td>
+<td>景区能接受的价位</td>
+</tr>
+<tr>
+<td>按效果分成</td>
+<td>按 AI 带来的购票、二消收入分成</td>
+<td>购票、营销类智能体</td>
+<td>增量能否算清楚</td>
+</tr>
+<tr>
+<td>按用量</td>
+<td>按对话量或调用量计费</td>
+<td>大客流景区</td>
+<td>景区能否接受账单波动</td>
+</tr>
+</tbody>
+</table>
+<p>建议验证期同时试“随票务打包”和“年费订阅”两种，看哪种成交快、续费稳。</p>
+<p><strong>景区认的价值</strong></p>
+<table>
+<thead>
+<tr>
+<th>价值</th>
+<th>怎么证明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>少用人工</td>
+<td>咨询由智能体解决的比例，节省的客服人力</td>
+</tr>
+<tr>
+<td>多卖票</td>
+<td>智能体带来的线上购票、二消订单</td>
+</tr>
+<tr>
+<td>游客更满意</td>
+<td>满意度、差评率、排队与等待减少</td>
+</tr>
+<tr>
+<td>管理更省心</td>
+<td>报表、对账、预警的人工时间减少</td>
+</tr>
+</tbody>
+</table>
+<h3 id="242">2.4.2 怎么验证</h3>
+<ul>
+<li><strong>选标杆</strong>：从已用票付通票务的景区里挑，覆盖 2–3 类主要业态，有配合意愿、客流有代表性。</li>
+<li><strong>快速搭</strong>：在成熟平台上搭现有 8 个智能体，再挑 1–2 个价值最高的新场景（如智能购票）。</li>
+<li><strong>跑一个完整旺季</strong>：节假日客流最能检验效果和成本。</li>
+<li><strong>数据从第一天回流</strong>：对话、转人工、评价、订单都进数据平台，验证结论靠数据说话。</li>
+</ul>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">选场景</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">成熟平台上搭建</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">标杆试点</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">看效果</h4></div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">定价与交付定型</h4></div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">验证什么</div>
+    <div class="pf-pills even"><span class="pf-pill">有没有人用</span><span class="pf-pill">能不能解决问题</span><span class="pf-pill">景区愿不愿付费</span><span class="pf-pill">多久能交付</span><span class="pf-pill">单景区成本</span></div>
+  </div>
+  <div class="pf-banner"><b>迭代</b><span>效果不好的回到平台调整；没人用的场景及时停，不追加投入</span></div>
+</div>
+</figure>
+<h3 id="243">2.4.3 关卡一：商业模式跑通的标准</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 用起来</h4><div class="sub">标杆景区持续在用，问题解决率达标</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 有价值</h4><div class="sub">景区认可的指标有提升：人工咨询减少、购票转化提高</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 愿付费</h4><div class="sub">有景区按拟定价格付费或明确续费</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 能赚钱</h4><div class="sub">单景区收入覆盖平台费、交付和运营</div></div>
+    <div class="pf-card line c"><h4 style="font-size:15px">✓ 可复制</h4><div class="sub">不靠核心研发，按标准流程就能上线</div></div>
+  </div>
+  <div class="pf-banner warm"><b>没过关</b><span>调整场景组合或定价再验证一轮；仍不行的场景停掉，不带进阶段二</span></div>
+</div>
+</figure>
+<h2 id="25">2.5 借力复制</h2>
+<h3 id="251">2.5.1 先打哪些客户</h3>
+<table>
+<thead>
+<tr>
+<th>客群</th>
+<th>打法</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已用票付通票务的景区</td>
+<td>随票务续约推，开通即用</td>
+<td>系统已对接，基本零开发；信任已有，成交最快</td>
+</tr>
+<tr>
+<td>同业态景区</td>
+<td>用标杆案例按业态复制</td>
+<td>场景相同，模板直接复用</td>
+</tr>
+<tr>
+<td>新客户</td>
+<td>智能体做差异化卖点，带动票务签约</td>
+<td>用 AI 撬动新客户</td>
+</tr>
+</tbody>
+</table>
+<p>业态上优先客流大、咨询多、线上购票比例高的：山岳、主题乐园、古镇街区，再到博物馆、温泉度假、游船演出。</p>
+<h3 id="252">2.5.2 怎么复制得快</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-label" style="width:auto">复制流程</div>
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1">签约</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">选已验证模板</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">配本景区知识</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">绑定入口</div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1">测试验收</div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1;font-weight:700">上线运营</div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">覆盖业态</div>
+    <div class="pf-pills even"><span class="pf-pill fill">山岳</span><span class="pf-pill fill">乐园</span><span class="pf-pill fill">古镇街区</span><span class="pf-pill fill">博物馆</span><span class="pf-pill fill">温泉度假</span><span class="pf-pill fill">游船演出</span></div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-label">同步沉淀</div>
+    <div class="pf-pills even"><span class="pf-pill">场景模板</span><span class="pf-pill">景区知识结构</span><span class="pf-pill">业务接口</span><span class="pf-pill">交付经验</span><span class="pf-pill">需求清单</span><span class="pf-pill">交互数据</span></div>
+  </div>
+</div>
+</figure>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>标准化做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品</td>
+<td>按业态出模板，景区差异全部做成配置</td>
+</tr>
+<tr>
+<td>知识采集</td>
+<td>统一采集表，景区填写、实施审核</td>
+</tr>
+<tr>
+<td>系统接入</td>
+<td>已用票付通票务的景区，接口现成</td>
+</tr>
+<tr>
+<td>实施</td>
+<td>实施手册 + 培训，实施人员和渠道伙伴可独立交付</td>
+</tr>
+<tr>
+<td>验收</td>
+<td>统一测试清单，跑完即上线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="253">2.5.3 销售与续费</h3>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销售</td>
+<td>票务销售团队带单，智能体纳入销售考核；区域渠道伙伴代理</td>
+</tr>
+<tr>
+<td>案例</td>
+<td>每类业态的标杆做成案例，用数据讲效果</td>
+</tr>
+<tr>
+<td>客户成功</td>
+<td>上线后定期给景区出效果报告（解决了多少咨询、带来多少订单），促续费</td>
+</tr>
+<tr>
+<td>升级</td>
+<td>模板统一升级，所有景区同步受益，增加粘性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="254">2.5.4 边做边为自建做准备</h3>
+<p>依托外部平台的同时，以下资产必须留在自己手里：</p>
+<table>
+<thead>
+<tr>
+<th>沉淀什么</th>
+<th>现在怎么做</th>
+<th>阶段三怎么用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>景区知识</td>
+<td>按自有结构存一份，不只存在外部平台</td>
+<td>直接导入自建平台</td>
+</tr>
+<tr>
+<td>业务接口</td>
+<td>售票、订单、核销、会员接口由我们自己封装成服务，外部平台只调用</td>
+<td>平台直接复用</td>
+</tr>
+<tr>
+<td>模板设计</td>
+<td>每个模板的流程、提示词、配置项写成文档</td>
+<td>迁入模板库</td>
+</tr>
+<tr>
+<td>交互数据</td>
+<td>对话、评价、转人工记录回流数据平台</td>
+<td>做测试用例、优化效果</td>
+</tr>
+<tr>
+<td>成本数据</td>
+<td>按景区、按智能体记录每月平台费用</td>
+<td>判断何时自建</td>
+</tr>
+<tr>
+<td>需求清单</td>
+<td>记录客户要、平台做不了的功能</td>
+<td>自建平台的需求来源</td>
+</tr>
+</tbody>
+</table>
+<h3 id="255">2.5.5 规模越大，借力的弊端越明显</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+    <div class="pf-card warm top"><h4>成本越做越高</h4><div class="sub">按调用、账号、空间收费，景区越多、用得越多，平台费越高，利润被平台分走</div></div>
+    <div class="pf-card warm top"><h4>交付受限</h4><div class="sub">功能受平台限制，个性需求做不了；多个平台分别配置、分别维护</div></div>
+    <div class="pf-card warm top"><h4>资产在外部</h4><div class="sub">工作流、知识库、对话数据留在第三方平台，难沉淀、难迁移</div></div>
+    <div class="pf-card warm top"><h4>管理分散</h4><div class="sub">多平台多入口，权限、计量、监控各管各的，问题难追</div></div>
+    <div class="pf-card warm top"><h4>受制于人</h4><div class="sub">平台调价、改规则、下线功能，直接影响我们的交付和报价</div></div>
+    <div class="pf-card warm top"><h4>难形成壁垒</h4><div class="sub">同样的平台谁都能用，产品容易被复制；景区和游客数据出域也有合规顾虑</div></div>
+  </div>
+</div>
+</figure>
+<h2 id="26">2.6 能力自给</h2>
+<h3 id="261">2.6.1 何时启动</h3>
+<figure class="diagram"><div class="pf">
+  <svg viewBox="0 0 760 300" style="width:100%;height:auto" role="img" aria-label="成本随规模变化示意">
+    <line x1="70" y1="250" x2="730" y2="250" stroke="#B9B2FA" stroke-width="1.5"/>
+    <line x1="70" y1="250" x2="70" y2="30" stroke="#B9B2FA" stroke-width="1.5"/>
+    <text x="730" y="275" text-anchor="end" font-size="13" fill="#5E6478">景区数 / 调用量 →</text>
+    <text x="78" y="40" font-size="13" fill="#5E6478">总成本</text>
+    <line x1="70" y1="235" x2="640" y2="63" stroke="#F08A3C" stroke-width="3"/>
+    <text x="650" y="68" font-size="13" fill="#B5541B" font-weight="700">继续用成熟平台</text>
+    <text x="330" y="96" font-size="12" fill="#B5541B">平台费随规模线性上涨</text>
+    <line x1="70" y1="170" x2="640" y2="125" stroke="#655BE6" stroke-width="3"/>
+    <text x="650" y="130" font-size="13" fill="#655BE6" font-weight="700">自建平台</text>
+    <text x="80" y="195" font-size="12" fill="#655BE6">一次性建设投入</text>
+    <text x="440" y="165" font-size="12" fill="#655BE6">之后主要是模型调用和运维，增长慢</text>
+    <circle cx="362" cy="147" r="7" fill="#fff" stroke="#655BE6" stroke-width="3"/>
+    <line x1="362" y1="154" x2="362" y2="250" stroke="#655BE6" stroke-dasharray="4 4"/>
+    <text x="362" y="270" text-anchor="middle" font-size="13" fill="#655BE6" font-weight="700">交叉点 = 启动自建的时机</text>
+  </svg>
+</div>
+</figure>
+<p>满足以下任意两条，就启动自建：</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>怎么看</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>成本交叉</td>
+<td>按 2.5.4 记录的成本，测算继续用平台与自建的总成本，自建已更低</td>
+</tr>
+<tr>
+<td>平台费占比上升</td>
+<td>平台费占智能体收入的比例持续上升，压缩利润</td>
+</tr>
+<tr>
+<td>场景稳定</td>
+<td>主力智能体模板已稳定，不再频繁大改</td>
+</tr>
+<tr>
+<td>平台限制丢单</td>
+<td>个性需求、大客户项目因平台限制接不了</td>
+</tr>
+<tr>
+<td>合规要求</td>
+<td>景区或管理方要求数据不出域</td>
+</tr>
+</tbody>
+</table>
+<h3 id="262">2.6.2 建什么，不建什么</h3>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>策略</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大模型</td>
+<td>不自研，调用模型服务，多家可替换</td>
+<td>投入大，不是我们的优势</td>
+</tr>
+<tr>
+<td>语音、图像、数字人、手语</td>
+<td>采购或合作</td>
+<td>专业能力，自建不划算</td>
+</tr>
+<tr>
+<td>编排引擎</td>
+<td>基于开源框架二次开发</td>
+<td>不从零写，缩短周期</td>
+</tr>
+<tr>
+<td>管理台、能力与知识、业务工具</td>
+<td>自建</td>
+<td>承载我们的业务、数据和交付方式，是壁垒所在</td>
+</tr>
+<tr>
+<td>数据服务</td>
+<td>复用第一章的数据平台</td>
+<td>已有</td>
+</tr>
+</tbody>
+</table>
+<h3 id="263">2.6.3 平台架构</h3>
+<p>按 2.6.2 的“建与不建”分层：数字大脑作为智能体管理台和能力层自建，引擎借开源，模型和专项能力采购，数据复用第一章的数据平台。</p>
+<figure class="diagram"><div class="pf">
+  <div class="own-legend"><span class="own chan">已有</span><span class="own self">自建</span><span class="own oss">开源二开</span><span class="own buy">采购 / 合作</span><span class="own reuse">复用数据平台</span></div>
+  <div class="pf-row" style="align-items:stretch">
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+      <div class="pf-row"><div class="pf-label">渠道入口</div><div class="pf-row" style="flex:1"><span class="own chan">畅游小程序</span><span class="own chan">票付通 APP</span><span class="own chan">景数通</span><span class="own chan">公众号/小程序</span><span class="own chan">智慧终端</span><span class="own self">开放 API</span></div></div>
+      <div class="pf-row"><div class="pf-label">智能体应用</div><div class="pf-row" style="flex:1"><span class="own self">游客服务</span><span class="own self">景区管理</span><span class="own self">票务财务</span><span class="own self">安全调度</span><span class="own self">精准营销</span></div></div>
+      <div class="pf-card panel" style="gap:10px;padding:12px">
+        <div class="ttl" style="margin:0">智能体管理台</div>
+        <div class="pf-row"><div class="pf-label" style="width:84px">智能体搭建</div><div class="pf-row" style="flex:1"><span class="own self">模板库</span><span class="own oss">可视化编排</span><span class="own self">配置化生成</span><span class="own self">多智能体协同</span><span class="own self">测试与发布</span></div></div>
+        <div class="pf-row"><div class="pf-label" style="width:84px">运营管理</div><div class="pf-row" style="flex:1"><span class="own self">集团 / 景区多租户</span><span class="own self">权限</span><span class="own self">运行监控</span><span class="own self">计量到景区</span><span class="own self">效果评估</span></div></div>
+      </div>
+      <div class="pf-row"><div class="pf-label">能力层</div><div class="pf-row" style="flex:1"><span class="own self">业务工具中心</span><span class="own self">景区知识库</span><span class="own self">游客记忆与画像</span><span class="own self">测试用例库</span><span class="own reuse">数据服务</span></div></div>
+      <div class="pf-row"><div class="pf-label">引擎层</div><div class="pf-row" style="flex:1"><span class="own oss">编排引擎</span><span class="own oss">检索引擎</span><span class="own self">模型网关 · 路由 / 降级 / 计量</span><span class="own self">内容安全</span></div></div>
+      <div class="pf-row"><div class="pf-label">外部能力</div><div class="pf-row" style="flex:1"><span class="own buy">大模型服务（多家可替换）</span><span class="own buy">语音 · 图像 · 数字人</span><span class="own buy">手语（合作）</span><span class="own buy">小Q</span></div></div>
+      <div class="pf-row"><div class="pf-label">数据底座</div><div class="pf-row" style="flex:1"><span class="own reuse">认证指标</span><span class="own reuse">统一标签</span><span class="own reuse">湖仓与实时</span><span class="own reuse">交互数据回流入湖</span></div></div>
+    </div>
+  </div>
+  <div class="pf-banner"><b>设计要点</b><span>模型经网关接入、可随时替换；集团统一建设、景区开通即用；每次调用计量到景区，成本和收费算得清</span></div>
+</div>
+</figure>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>做什么</th>
+<th>怎么来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能体应用</td>
+<td>全景中的各类智能体，按场景模板生成</td>
+<td>自建</td>
+</tr>
+<tr>
+<td>智能体管理台</td>
+<td>搭建：模板、编排、配置、协同、测试发布；运营：多租户、权限、监控、计量、评估</td>
+<td>自建，编排界面基于开源</td>
+</tr>
+<tr>
+<td>能力层</td>
+<td>业务工具、景区知识、游客记忆与画像、测试用例；数据服务接第一章</td>
+<td>自建，数据服务复用</td>
+</tr>
+<tr>
+<td>引擎层</td>
+<td>编排与检索用开源；模型网关统一接各家模型，可路由、降级、计量</td>
+<td>开源二开 + 自建网关</td>
+</tr>
+<tr>
+<td>外部能力</td>
+<td>大模型、语音图像数字人、手语、小Q</td>
+<td>采购 / 合作，可替换</td>
+</tr>
+<tr>
+<td>数据底座</td>
+<td>认证指标、标签、实时数据；交互数据回流</td>
+<td>复用第一章数据平台</td>
+</tr>
+</tbody>
+</table>
+<p><strong>前两阶段的沉淀落到哪</strong>：平台不是从零开始，2.5.4 留在手里的资产直接迁入。</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: 1fr 40px 1fr; align-items:center; row-gap:8px">
+    <div class="pf-label" style="width:auto">阶段一、二沉淀</div><div></div><div class="pf-label" style="width:auto">自建平台里的位置</div>
+    <div class="pf-card dash" style="padding:9px 12px">景区知识（自有结构）</div><div class="pf-arrow">➜</div><div class="own self">景区知识库</div>
+    <div class="pf-card dash" style="padding:9px 12px">自己封装的业务接口服务</div><div class="pf-arrow">➜</div><div class="own self">业务工具中心</div>
+    <div class="pf-card dash" style="padding:9px 12px">模板设计文档</div><div class="pf-arrow">➜</div><div class="own self">模板库</div>
+    <div class="pf-card dash" style="padding:9px 12px">交互数据（对话、评价、转人工）</div><div class="pf-arrow">➜</div><div class="own self">测试用例库 · 游客记忆与画像</div>
+    <div class="pf-card dash" style="padding:9px 12px">每月成本记录</div><div class="pf-arrow">➜</div><div class="own self">计量到景区 · 定价依据</div>
+    <div class="pf-card dash" style="padding:9px 12px">平台做不了的需求清单</div><div class="pf-arrow">➜</div><div class="own self">平台首批功能清单</div>
+  </div>
+</div>
+</figure>
+<h3 id="264">2.6.4 全景智能体</h3>
+<p>产品全景中的智能体，已有 8 个，还有 14 个待建，最终都由自建平台统一承载：</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-legend"><span class="pf-ag have"><span>已有</span></span><span class="pf-ag todo"><span>全景中待建</span></span></div>
+  <div class="pf-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">畅游 AI · 游客</div><div class="pf-ag have"><span>智能助手</span></div><div class="pf-ag have"><span>智能客服</span></div><div class="pf-ag have"><span>智能导览</span></div><div class="pf-ag have"><span>AI 伴游</span></div><div class="pf-ag have"><span>AI 旅拍</span></div><div class="pf-ag have"><span>手语</span></div><div class="pf-ag todo"><span>AI 旅游规划</span></div><div class="pf-ag todo"><span>AI 智能购票</span></div></div>
+    <div class="pf-col" style="justify-content:flex-start"><div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">AI 数字大脑 · 景数通 / APP</div><div class="pf-ag have"><span>AI 智能问数</span></div><div class="pf-ag have"><span>AI 智能洞察（数据解读）</span></div><div class="pf-ag todo"><span>消息通知预警</span></div><div class="pf-ag todo"><span>工单调度处置</span></div></div>
+<div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">智慧票务</div><div class="pf-ag todo"><span>票务 AI 运营助手</span></div><div class="pf-ag todo"><span>AI 对账助手</span></div></div></div>
+    <div class="pf-card line top" style="gap:6px"><div class="ttl" style="font-size:15px">景区 AI 调度中枢</div><div class="pf-ag todo"><span>旅游安全</span></div><div class="pf-ag todo"><span>秩序治理</span></div><div class="pf-ag todo"><span>车辆调度</span></div><div class="pf-ag todo"><span>游船调度</span></div><div class="pf-ag todo"><span>森林防火</span></div><div class="pf-ag todo"><span>生态监测</span></div><div class="pf-ag todo"><span>气象服务</span></div><div class="pf-ag todo"><span>设施监测</span></div></div>
+  </div>
+  <div class="pf-banner"><b>已有 8 个 · 待建 14 个</b><span>待建的智能体都在平台上用模板和共用能力搭建，按“搭建 → 标杆验证 → 复制交付”逐个落地</span></div>
+</div>
+</figure>
+<h3 id="265">2.6.5 自建能省什么</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+    <div class="pf-val hl"><h4>成本</h4><div class="chg">阶段二：平台费随规模线性上涨<br/>阶段三：只付模型调用，规模越大越省</div><div class="msr">省平台费 · 降单景区成本</div></div>
+    <div class="pf-val"><h4>交付周期</h4><div class="chg">阶段二：多平台分别配置<br/>阶段三：集团建一次，景区开通即用</div><div class="msr">省人天 · 上线更快</div></div>
+    <div class="pf-val"><h4>定制能力</h4><div class="chg">阶段二：受平台功能限制<br/>阶段三：按景区需求自主扩展</div><div class="msr">个性需求能接</div></div>
+    <div class="pf-val"><h4>数据资产</h4><div class="chg">阶段二：留在外部平台<br/>阶段三：沉淀在自己手里，回流数据平台</div><div class="msr">越用越准</div></div>
+    <div class="pf-val"><h4>竞争力</h4><div class="chg">阶段二：同平台谁都能做<br/>阶段三：业务 + 数据 + 平台一体</div><div class="msr">形成壁垒</div></div>
+  </div>
+</div>
+</figure>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>借平台</th>
+<th>自建平台</th>
+<th>对企业的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>成本</td>
+<td>平台费按调用、账号计，随景区数增长</td>
+<td>只付模型调用和自身运维</td>
+<td>单景区成本下降，规模越大利润越高</td>
+</tr>
+<tr>
+<td>交付周期</td>
+<td>每个景区在外部平台单独配置、调试</td>
+<td>集团建一次，景区开通即用</td>
+<td>省交付人天，上线更快，可承接更多景区</td>
+</tr>
+<tr>
+<td>定制能力</td>
+<td>个性需求受平台限制</td>
+<td>自主扩展</td>
+<td>能接大客户和个性项目</td>
+</tr>
+<tr>
+<td>数据资产</td>
+<td>工作流、知识、对话数据在外部</td>
+<td>全部在自己手里，回流数据平台</td>
+<td>越用越准，数据成为资产</td>
+</tr>
+<tr>
+<td>风险</td>
+<td>平台调价、改规则直接影响报价</td>
+<td>自主可控，模型可替换</td>
+<td>经营稳定，报价有底</td>
+</tr>
+<tr>
+<td>竞争力</td>
+<td>同平台谁都能做</td>
+<td>业务系统 + 数据 + 平台一体</td>
+<td>形成壁垒，提高续约和客单价</td>
+</tr>
+</tbody>
+</table>
+<h3 id="266">2.6.6 怎么切过去</h3>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card soft" style="flex:1"><h4>① 核心先上</h4><div class="sub">管理台、能力与知识、搭建先上线，模型多家接入</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card soft" style="flex:1"><h4>② 对比验证</h4><div class="sub">同一套测试用例，自建效果不低于成熟平台才切</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card soft" style="flex:1"><h4>③ 新增先上</h4><div class="sub">新签景区直接在自建平台开通</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card soft" style="flex:1"><h4>④ 存量迁移</h4><div class="sub">随续约逐个迁，双轨运行、可回退</div></div>
+    <div class="pf-arrow">➜</div>
+    <div class="pf-card grad" style="flex:1"><h4>⑤ 平台转补充</h4><div class="sub">成熟平台只保留自建不划算的能力</div></div>
+  </div>
+</div>
+</figure>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>应对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>投入超预期</td>
+<td>小团队先做核心模块，跟着迁移进度分批投入</td>
+</tr>
+<tr>
+<td>效果不如成熟平台</td>
+<td>迁移前用同一套测试用例对比，达标才切</td>
+</tr>
+<tr>
+<td>迁移影响客户</td>
+<td>双轨运行、逐个迁移、可回退</td>
+</tr>
+<tr>
+<td>团队能力不足</td>
+<td>前两阶段就培养自己的 AI 应用团队，阶段三延续</td>
+</tr>
+</tbody>
+</table>
+<p><strong>贯穿始终的底线</strong></p>
+<table>
+<thead>
+<tr>
+<th>底线</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只用授权数据</td>
+<td>数据按景区隔离，景区只能看到本景区数据</td>
+</tr>
+<tr>
+<td>关键动作人工确认</td>
+<td>退款、调度等处置动作需人工确认</td>
+</tr>
+<tr>
+<td>不碰敏感信息</td>
+<td>手机号、证件号不进入对话和知识库，展示时脱敏</td>
+</tr>
+<tr>
+<td>不乱承诺</td>
+<td>价格、退改规则以系统返回为准，答不了就转人工</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="ai">三、AI＋数据平台</h1>
+<p>数据平台让数据可信，智能体让数据办事。两者接上后，企业内部形成一条完整的数据链：应用产生数据，数据平台治理，智能体和应用使用，结果回流，反哺业务。</p>
+<h2 id="31-ai">3.1 AI+数据全流程</h2>
+<figure class="diagram"><div class="pf">
+  <div class="pf-grid" style="grid-template-columns: 96px 1fr 120px; gap:10px; align-items:stretch">
+
+    <div class="arch-name">应用层<br/>· 用数</div>
+    <div class="pf-card panel" style="gap:8px;padding:12px">
+      <div class="pf-grid" style="grid-template-columns: repeat(3, minmax(0,1fr)); gap:8px">
+        <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:15px">游客</h4><div class="sub">畅游小程序 · 公众号 · 自助终端</div></div>
+        <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:15px">景区</h4><div class="sub">景数通 · 票付通 APP · 景区 SaaS</div></div>
+        <div class="pf-card dark c" style="padding:10px"><h4 style="font-size:15px">内部</h4><div class="sub">管理层 · 业务线 · 小Q 报表</div></div>
+      </div>
+    </div>
+    <div class="pf-card warm c" style="grid-row: span 7; justify-content:space-between; padding:12px 8px">
+      <b style="color:#B5541B">④ 回流</b>
+      <div class="sub" style="font-size:12.5px;line-height:1.6">问答记录<br/>游客评价<br/>转人工<br/>预警与工单结果<br/>使用行为</div>
+      <div style="font-size:26px;color:var(--org)">▼</div>
+      <div class="sub" style="font-size:12.5px;line-height:1.6">回到数据平台<br/>补指标、标签<br/>补知识、用例</div>
+      <div style="font-size:26px;color:var(--org)">▼</div>
+      <b style="color:#B5541B">⑤ 反哺</b>
+      <div class="sub" style="font-size:12.5px;line-height:1.6">指标 · 标签 · 洞察<br/>回到业务系统<br/>定价 · 营销 · 调度</div>
+    </div>
+
+    <div></div><div class="pf-row" style="justify-content:space-around;color:var(--p);font-weight:700;font-size:13px"><span>▲ ③ 智能体服务</span><span>▲ ②′ 报表 · API 直接用数</span></div>
+
+    <div class="arch-name">智能体层<br/>· 办事</div>
+    <div class="pf-card panel" style="gap:8px;padding:12px">
+      <div class="pf-row" style="gap:8px">
+        <div class="pf-bar grad" style="flex:1">游客端智能体：客服 · 导览 · 伴游 · 旅拍 · 规划 · 购票</div>
+        <div class="pf-bar grad" style="flex:1">景区端智能体：问数 · 洞察 · 运营 · 对账 · 预警 · 调度</div>
+      </div>
+      <div class="pf-bar dark">智能体管理台：搭建 · 能力与知识 · 运营管理</div>
+      <div class="pf-row" style="gap:8px"><span class="own buy">借平台：Coze · 火山方舟 · 羚羊小Q</span><span class="own self">自建：智能体管理台</span></div>
+    </div>
+
+    <div></div><div class="pf-row" style="justify-content:center;color:var(--p);font-weight:700;font-size:13px"><span>▲ ② 供给：认证指标 · 统一标签 · 景区知识 · 数据服务</span></div>
+
+    <div class="arch-name">数据平台层<br/>· 治数</div>
+    <div class="pf-card panel" style="gap:8px;padding:12px">
+      <div class="pf-row" style="gap:8px;align-items:center">
+        <div class="pf-bar line" style="flex:1">统一接入<br/><span style="font-size:12px;color:var(--mut)">离线 + 实时</span></div><div class="pf-arrow" style="font-size:16px">➜</div>
+        <div class="pf-bar line" style="flex:1.3">湖仓公共模型<br/><span style="font-size:12px;color:var(--mut)">ODS → DWD / DIM → DWS → ADS</span></div><div class="pf-arrow" style="font-size:16px">➜</div>
+        <div class="pf-bar grad" style="flex:1.2">指标 · 标签 · 知识<br/><span style="font-size:12px;opacity:.9">认证口径</span></div><div class="pf-arrow" style="font-size:16px">➜</div>
+        <div class="pf-bar dark" style="flex:1.1">数据服务<br/><span style="font-size:12px;opacity:.9">动态数据开放 API · 小Q</span></div>
+      </div>
+      <div class="pf-row" style="gap:8px"><span class="own oss">DataWorks</span><span class="own oss">数据地图 · 资产治理</span><span class="own oss">治理贯穿：标准 · 质量 · 血缘 · 权限安全</span></div>
+    </div>
+
+    <div></div><div class="pf-row" style="justify-content:center;color:var(--p);font-weight:700;font-size:13px"><span>▲ ① 生产入湖：交易 · 核销 · 客流 · 设备 · 会员 · 财务</span></div>
+
+    <div class="arch-name">应用层<br/>· 产数</div>
+    <div class="pf-card soft" style="gap:8px;padding:12px">
+      <div class="pf-row" style="flex-wrap:wrap;gap:8px">
+        <span class="own buy" style="background:#fff">智慧票务</span><span class="own buy" style="background:#fff">九大业态系统</span><span class="own buy" style="background:#fff">景区运营管理</span><span class="own buy" style="background:#fff">景区财务</span><span class="own buy" style="background:#fff">智慧终端 · 边云网关</span><span class="own buy" style="background:#fff">畅游 AI</span><span class="own buy" style="background:#fff">会员营销</span><span class="own buy" style="background:#fff">AI 数字大脑</span>
+      </div>
+    </div>
+  </div>
+  <div class="pf-hero">产数 → 治数 → 用数 → 回流 → 反哺，企业内部数据越用越准</div>
+</div>
+</figure>
+<h2 id="32">3.2 应用闭环</h2>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">① 生产</h4><div class="sub">业务系统产生交易、核销、客流、会员数据</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">② 治理</h4><div class="sub">入湖、建模、认证口径，变成指标、标签、知识</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">③ 应用</h4><div class="sub">智能体办事，报表与 API 看数</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:15px">④ 回流</h4><div class="sub">问答、评价、工单结果、行为数据回到平台</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:15px">⑤ 反哺</h4><div class="sub">指标、标签、洞察改进定价、营销、调度</div></div>
+  </div>
+  <div class="pf-banner"><b>循环</b><span>反哺后的业务产生新的数据，再进入下一轮：数据越用越多，智能体越用越准</span></div>
+</div>
+</figure>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>谁来做</th>
+<th>产出</th>
+<th>依托</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 生产</td>
+<td>票务、业态、运营、财务、终端、畅游、会员营销各产品</td>
+<td>交易、核销、客流、设备、会员、财务数据</td>
+<td>产品全景各业务系统</td>
+</tr>
+<tr>
+<td>② 治理</td>
+<td>数据团队</td>
+<td>公共模型、认证指标、统一标签、景区知识</td>
+<td>第一章数据平台</td>
+</tr>
+<tr>
+<td>③ 应用</td>
+<td>智能体与各应用</td>
+<td>游客服务、经营分析、运营提效、预警调度</td>
+<td>第二章智能体平台、小Q、动态数据开放 API</td>
+</tr>
+<tr>
+<td>④ 回流</td>
+<td>智能体与各应用自动回传</td>
+<td>问答记录、评价、转人工、工单结果、使用行为</td>
+<td>回流数据统一入湖</td>
+</tr>
+<tr>
+<td>⑤ 反哺</td>
+<td>业务线</td>
+<td>定价调整、营销圈人、预约与调度优化</td>
+<td>指标、标签、洞察回到业务系统</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一个例子</strong>：</p>
+<figure class="diagram"><div class="pf">
+  <div class="pf-row">
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">游客购票入园</h4><div class="sub">售票 · 闸机核销</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">入湖治理</h4><div class="sub">订单 · 核销 · 客流</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">指标与标签</h4><div class="sub">实时客流 · 游客偏好</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">智能体办事</h4><div class="sub">客流预警 · 二消推荐</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card soft c" style="flex:1"><h4 style="font-size:14.5px">结果回流</h4><div class="sub">处置结果 · 推荐转化</div></div><div class="pf-arrow">➜</div>
+    <div class="pf-card grad c" style="flex:1"><h4 style="font-size:14.5px">反哺业务</h4><div class="sub">调预约 · 调营销</div></div>
+  </div>
+</div>
+</figure>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true, securityLevel: 'loose', theme: 'base',
+  flowchart: { htmlLabels: true, curve: 'basis', padding: 12 },
+  themeVariables: {
+    fontFamily: '"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif', fontSize: '14px',
+    primaryColor: '#ECEAFF', primaryBorderColor: '#776CFD', primaryTextColor: '#2B2F42',
+    lineColor: '#8C84F0', secondaryColor: '#E6EEFD', tertiaryColor: '#F6F5FF',
+    clusterBkg: '#F6F5FF', clusterBorder: '#C9C4FB', edgeLabelBackground: '#FFFFFF'
+  }
+});
+</script>
+</body>
+</html>
