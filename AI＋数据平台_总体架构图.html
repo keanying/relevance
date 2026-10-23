@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
-/* 版式：左侧上行主线 + 七层架构 + 权限闸门，右侧下行回流，构成闭环；图下附系统一览 */
+/* 纯架构图：左侧上行主线，上中下游三段分层；右侧下行回流，构成闭环 */
 :root {
   --bg: #F4F9F8; --surface: #FFFFFF; --ink: #1D3833; --muted: #5B746F; --line: #CFE6E0;
   --teal: #2CAB93; --teal-ink: #1C7564; --tint: #E3F3EF; --sys: #23917C; --on-sys: #FFFFFF;
@@ -36,53 +36,48 @@
 }
 * { box-sizing: border-box; }
 body {
-  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.6;
-  padding-block: 32px 56px;
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-block: 28px 40px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.page { max-width: 1240px; margin: 0 auto; display: grid; gap: 28px; }
+.page { max-width: 1240px; margin: 0 auto; display: grid; gap: 16px; }
 .page > * { min-width: 0; }
-header { display: grid; gap: 10px; }
-h1 { margin: 0; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: .5px; text-wrap: balance; }
-.lede { margin: 0; color: var(--muted); max-width: 68ch; }
-.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; color: var(--muted); }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.sw { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
-.sw-src { background: var(--tint); }
-.sw-sys { background: var(--sys); }
-.sw-ai { background: var(--orange-tint); border: 1.5px solid var(--orange); }
-.sw-gate { background: var(--gate); }
-.sw-loop { background: var(--orange); }
-
-/* 架构图 */
+h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-spacing: .5px; }
 .wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
 .diagram {
-  min-width: 1040px; padding: 20px;
-  display: grid; grid-template-columns: 20px 96px 164px minmax(0, 1fr) 24px 196px; gap: 8px 10px;
+  min-width: 1000px; padding: 20px;
+  display: grid; grid-template-columns: 20px 72px 100px minmax(0, 1fr) 24px 150px; gap: 8px 10px;
 }
+.code { font-family: var(--font-code); font-weight: 700; letter-spacing: .5px; }
+
+/* 上行主线 */
 .rail { grid-column: 1; grid-row: 1 / 11; position: relative; }
 .rail::before { content: ""; position: absolute; left: 8px; top: 10px; bottom: 4px; width: 4px; border-radius: 2px; background: var(--teal); }
 .rail::after { content: ""; position: absolute; left: 2px; top: 0; border: 8px solid transparent; border-bottom: 12px solid var(--teal); border-top: 0; }
-.lab { grid-column: 3; display: grid; align-content: center; gap: 0; padding: 8px 12px; border-radius: 10px; background: var(--tint); min-height: 58px; }
-.lab b { font-size: 14.5px; color: var(--teal-ink); }
-.lab small { font-size: 12px; color: var(--muted); }
-.lab .n { font-family: var(--font-code); font-size: 12px; color: var(--teal); margin-right: 4px; }
+
+/* 分段与分层 */
+.stage {
+  grid-column: 2; display: grid; place-content: center; text-align: center; gap: 2px;
+  border-radius: 10px; border: 1.5px dashed var(--teal); color: var(--teal-ink);
+}
+.stage b { font-size: 16px; letter-spacing: 2px; }
+.stage span { font-size: 12.5px; color: var(--muted); }
+.stage.down { border-color: var(--orange); color: var(--orange-ink); }
+.lab { grid-column: 3; display: grid; place-content: center start; padding: 8px 12px; border-radius: 10px; background: var(--tint); min-height: 56px; font-weight: 700; font-size: 14px; color: var(--teal-ink); }
 .main { grid-column: 4; display: flex; gap: 8px; min-width: 0; }
 .cell {
-  flex: 1 1 0; min-width: 0; display: grid; align-content: center; justify-items: center; text-align: center;
-  padding: 8px 6px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); font-size: 13.5px;
+  flex: 1 1 0; min-width: 0; display: grid; place-items: center; text-align: center;
+  padding: 8px 4px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); font-size: 13px; white-space: nowrap;
 }
 .cell.app { background: var(--tint); border-color: transparent; color: var(--teal-ink); font-weight: 500; }
-.cell.src { background: var(--tint); border-color: transparent; justify-items: start; text-align: left; padding: 8px 14px; }
+.cell.src { background: var(--tint); border-color: transparent; place-items: center start; text-align: left; padding: 8px 14px; gap: 2px; white-space: normal; }
 .cell.src b { color: var(--teal-ink); font-size: 14px; }
-.cell.src span { font-size: 12.5px; color: var(--ink); }
+.cell.src span { font-size: 12.5px; }
 .sys {
-  flex: 0 0 168px; display: flex; align-items: center; justify-content: center; gap: 8px;
+  flex: 0 0 140px; display: flex; align-items: center; justify-content: center; gap: 8px;
   border-radius: 9px; background: var(--sys); color: var(--on-sys); padding: 8px 10px; font-weight: 700; font-size: 14px;
 }
-.code { font-family: var(--font-code); font-weight: 700; letter-spacing: .5px; }
-.sys .code { font-size: 15px; }
-.use { flex: 1 1 0; min-width: 0; display: grid; gap: 2px; padding: 10px 14px; border-radius: 9px; border: 1.5px solid var(--teal); background: var(--surface); text-align: left; }
+.use { flex: 1 1 0; min-width: 0; display: grid; gap: 2px; padding: 10px 14px; border-radius: 9px; border: 1.5px solid var(--teal); background: var(--surface); }
 .use .t { font-weight: 700; font-size: 14px; }
 .use .t .code { color: var(--teal-ink); margin-right: 6px; }
 .use .d { font-size: 12.5px; color: var(--muted); }
@@ -92,31 +87,23 @@ h1 { margin: 0; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spac
 .flow .step .t { font-weight: 700; font-size: 14px; }
 .flow .step .d { font-size: 12.5px; opacity: .88; }
 .flow .to { flex: 0 0 auto; align-self: center; color: var(--teal); font-size: 18px; font-weight: 700; }
-.stage {
-  grid-column: 2; display: flex; flex-direction: column; justify-content: center; gap: 4px;
-  border-radius: 10px; padding: 10px 10px; border: 1.5px dashed var(--teal); color: var(--teal-ink);
-}
-.stage b { font-size: 16px; letter-spacing: 2px; }
-.stage span { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.stage.down { border-color: var(--orange); color: var(--orange-ink); }
-.hand {
-  grid-column: 2 / 5; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--teal-ink);
-  padding: 2px 4px;
-}
-.hand::before, .hand::after { content: ""; flex: 1; border-top: 1.5px dashed var(--teal); }
-.hand b { white-space: nowrap; }
-.hand span { color: var(--ink); }
-.tagline { font-size: 11.5px; font-weight: 700; color: var(--orange-ink); align-self: center; white-space: nowrap; }
 .gate {
   grid-column: 3 / 5; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px;
   border-radius: 10px; background: var(--gate); color: var(--on-gate); padding: 10px 16px; font-size: 13.5px;
 }
 .gate .k { color: var(--gate-key); font-weight: 700; font-size: 14.5px; display: inline-flex; gap: 8px; align-items: center; }
 .gate svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* 段间交接 */
+.hand { grid-column: 2 / 5; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--teal-ink); }
+.hand::before, .hand::after { content: ""; flex: 1; border-top: 1.5px dashed var(--teal); }
+.hand span { white-space: nowrap; }
+
+/* 回流闭环 */
 .conn { grid-column: 5; display: grid; place-items: center; color: var(--orange); font-weight: 700; font-size: 18px; }
 .loop {
   grid-column: 6; grid-row: 1 / 11; position: relative; border-radius: 12px; border: 1.5px solid var(--orange);
-  background: var(--orange-tint); padding: 14px 34px 14px 16px; display: flex; flex-direction: column; gap: 14px;
+  background: var(--orange-tint); padding: 14px 32px 14px 16px; display: flex; flex-direction: column; justify-content: space-around; gap: 14px;
 }
 .loop::before { content: ""; position: absolute; right: 13px; top: 16px; bottom: 18px; width: 4px; border-radius: 2px; background: var(--orange); }
 .loop::after { content: ""; position: absolute; right: 7px; bottom: 6px; border: 8px solid transparent; border-top: 12px solid var(--orange); border-bottom: 0; }
@@ -124,150 +111,89 @@ h1 { margin: 0; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spac
 .loop h4 { margin: 0 0 2px; font-size: 13.5px; color: var(--orange-ink); }
 .loop ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 13px; }
 .loop ul li::before { content: "· "; color: var(--orange); }
-.loop .down { color: var(--orange); font-size: 20px; line-height: 1; }
-.loop .grow { flex: 1; }
-.loop .end { font-size: 12.5px; color: var(--muted); }
-
-/* 系统一览 */
-section h2 { margin: 0 0 4px; font-size: 18px; }
-section > p { margin: 0 0 12px; color: var(--muted); font-size: 13.5px; }
-.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
-table { border-collapse: collapse; width: 100%; min-width: 820px; font-size: 13.5px; }
-th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-th { font-size: 12.5px; color: var(--muted); font-weight: 500; letter-spacing: .5px; }
-tr:last-child td { border-bottom: 0; }
-td .code { color: var(--teal-ink); }
-td.ai .code { color: var(--orange-ink); }
-.note { font-size: 13px; color: var(--muted); }
 </style>
 </head>
 <body>
-
-
 <div class="page">
-  <header>
-    <h1>AI＋数据平台总体架构</h1>
-    <p class="lede">左边从下往上，是数据的路线，分三段串起来：上游产数，业务系统和企业知识从一个入口进来；中游理数，洗净、标好、管起来，再从一个出口统一给出去；下游用数，查数、看板、AI 办事，落到各个应用。右边从上往下，是闭环：用的结果回流到平台，再反哺上游业务，数据越用越准。</p>
-    <div class="legend" aria-label="图例">
-      <span><i class="sw sw-src"></i>数据来源 / 应用</span>
-      <span><i class="sw sw-sys"></i>数据平台系统</span>
-      <span><i class="sw sw-ai"></i>AI（智能体平台）</span>
-      <span><i class="sw sw-gate"></i>统一权限闸门</span>
-      <span><i class="sw sw-loop"></i>闭环回流</span>
-    </div>
-  </header>
+  <h1>AI＋数据平台总体架构</h1>
 
-  <div class="wrap" role="img" aria-label="AI＋数据平台总体架构图：七层架构加右侧回流闭环">
+  <div class="wrap" role="img" aria-label="AI＋数据平台总体架构图：上游产数、中游理数、下游用数，右侧回流闭环">
     <div class="diagram">
       <div class="rail" aria-hidden="true"></div>
-      <div class="stage down" style="grid-row:1 / 4"><b>下游</b><span>用数<br>工具和应用<br>把数据用起来</span></div>
-      <div class="stage" style="grid-row:5 / 8"><b>中游</b><span>理数<br>洗净、管好<br>统一给出去</span></div>
-      <div class="stage" style="grid-row:9 / 11"><b>上游</b><span>产数<br>业务系统和<br>企业知识</span></div>
-      <div class="hand" style="grid-row:4"><b>↑ 中游交给下游</b><span>认证过的指标 · 标签 · 知识 · 数据集 · API（只从 PDD 一个出口）</span></div>
-      <div class="hand" style="grid-row:8"><b>↑ 上游交给中游</b><span>原始数据（离线 + 实时）和原始文件（只从 PDC 一个入口）</span></div>
+      <div class="stage down" style="grid-row:1 / 4"><b>下游</b><span>用数</span></div>
+      <div class="stage" style="grid-row:5 / 8"><b>中游</b><span>理数</span></div>
+      <div class="stage" style="grid-row:9 / 11"><b>上游</b><span>产数</span></div>
 
-      <!-- ⑦ 谁在用 -->
-      <div class="lab" style="grid-row:1"><b><span class="n">⑦</span>谁在用</b><small>游客 · 景区 · 公司内部 · 行业</small></div>
+      <div class="lab" style="grid-row:1">应用</div>
       <div class="main" style="grid-row:1">
         <div class="cell app">票付通 3.0</div><div class="cell app">景数通</div><div class="cell app">数字大脑</div><div class="cell app">畅游</div><div class="cell app">各类 APP</div>
       </div>
       <div class="conn" style="grid-row:1" aria-hidden="true">→</div>
 
-      <!-- ⑥ 怎么用 -->
-      <div class="lab" style="grid-row:2"><b><span class="n">⑥</span>怎么用</b><small>查数 · 看板 · AI 办事</small></div>
+      <div class="lab" style="grid-row:2">用数工具</div>
       <div class="main" style="grid-row:2">
-        <div class="use"><div class="t"><span class="code">PDQ</span>即席自助</div><div class="d">自己查数 · 智能问数</div></div>
+        <div class="use"><div class="t"><span class="code">PDQ</span>即席自助</div><div class="d">自助查询 · 智能问数</div></div>
         <div class="use"><div class="t"><span class="code">PBI</span>数易BI</div><div class="d">看板 · 大屏 · 门户 · 驾驶舱</div></div>
-        <div class="use ai"><div class="t"><span class="code">PAP</span>智能体平台</div><div class="d">听懂问题 · 把流量分给各智能体</div></div>
+        <div class="use ai"><div class="t"><span class="code">PAP</span>智能体平台</div><div class="d">意图识别 · 流量分发 · 智能体管理</div></div>
       </div>
 
-      <!-- 闸门 -->
       <div class="gate" style="grid-row:3">
         <span class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span class="code">PDS</span>统一权限</span>
-        <span>所有取数都过这道关：统一登录 · 角色授权 · 景区隔离 · 字段脱敏 · 访问审计</span>
+        <span>统一登录 · 角色授权 · 景区隔离 · 字段脱敏 · 访问审计</span>
       </div>
 
-      <!-- ⑤ 统一给出去 -->
-      <div class="lab" style="grid-row:5"><b><span class="n">⑤</span>统一给出去</b><small>唯一出口 · 统一标签</small></div>
+      <div class="hand" style="grid-row:4"><span>↑ 指标 · 标签 · 知识 · 数据集 · API</span></div>
+
+      <div class="lab" style="grid-row:5">数据分发</div>
       <div class="main" style="grid-row:5">
         <div class="sys"><span class="code">PDD</span>数据分发</div>
-        <div class="cell">指标</div><div class="cell">标签</div><div class="cell">知识</div><div class="cell">数据集</div><div class="cell">API</div>
+        <div class="cell">指标中心</div><div class="cell">标签中心</div><div class="cell">知识服务</div><div class="cell">数据集</div><div class="cell">数据服务 API</div>
       </div>
 
-      <!-- ④ 管起来 -->
-      <div class="lab" style="grid-row:6"><b><span class="n">④</span>管起来</b><small>有规矩 · 可追溯</small></div>
+      <div class="lab" style="grid-row:6">数据治理</div>
       <div class="main" style="grid-row:6">
         <div class="sys"><span class="code">PDG</span>数据治理</div>
         <div class="cell">开发建模</div><div class="cell">调度</div><div class="cell">标准与主数据</div><div class="cell">血缘</div><div class="cell">数据地图</div><div class="cell">质量</div>
       </div>
       <div class="conn" style="grid-row:6" aria-hidden="true">←</div>
 
-      <!-- ③ 洗净、标好 -->
-      <div class="lab" style="grid-row:7"><b><span class="n">③</span>洗净、标好</b><small>知识类：AI 先标、人再审</small></div>
+      <div class="lab" style="grid-row:7">清洗与标注</div>
       <div class="main flow" style="grid-row:7">
         <div class="step"><div class="t"><span class="code">PDP</span> 数据清洗</div><div class="d">去重 · 解析 · 识别 · 转写</div></div>
         <div class="to" aria-hidden="true">→</div>
         <div class="step"><div class="t"><span class="code">PDL</span> 智能标注</div><div class="d">AI 粗标 · 抽取 · 分类</div></div>
         <div class="to" aria-hidden="true">→</div>
-        <div class="step"><div class="t"><span class="code">PDR</span> 审核质检</div><div class="d">人工把关 · 抽检 · 修正回流</div></div>
+        <div class="step"><div class="t"><span class="code">PDR</span> 审核质检</div><div class="d">人工审核 · 抽检 · 修正回流</div></div>
       </div>
 
-      <!-- ② 收进来 -->
-      <div class="lab" style="grid-row:9"><b><span class="n">②</span>收进来</b><small>所有数据一个入口</small></div>
+      <div class="hand" style="grid-row:8"><span>↑ 原始数据 · 原始文件</span></div>
+
+      <div class="lab" style="grid-row:9">数据集成</div>
       <div class="main" style="grid-row:9">
         <div class="sys"><span class="code">PDC</span>数据集成</div>
         <div class="cell">离线同步</div><div class="cell">实时采集</div><div class="cell">文件采集</div><div class="cell">API 接入</div>
       </div>
 
-      <!-- ① 数据从哪来 -->
-      <div class="lab" style="grid-row:10"><b><span class="n">①</span>数据从哪来</b><small>业务数据 + 企业知识</small></div>
+      <div class="lab" style="grid-row:10">数据来源</div>
       <div class="main" style="grid-row:10">
-        <div class="cell src" style="flex-grow:1.3"><b>业务数据</b><span>票务 · 订单 · 经营 · 营销 · OTA · 财务 · ERP · 终端</span></div>
-        <div class="cell src"><b>企业知识</b><span>Word · PDF · Excel · Markdown · 图片 · 视频 · 音频</span></div>
+        <div class="cell src" style="flex-grow:1.05"><b>业务数据</b><span>票务 · 订单 · 经营 · 营销 · OTA · 财务 · ERP · 终端</span></div>
+        <div class="cell src"><b>企业知识</b><span>Word · PDF · Excel · Markdown · 图片 · 音视频</span></div>
       </div>
       <div class="conn" style="grid-row:10" aria-hidden="true">←</div>
 
-      <!-- 闭环 -->
       <aside class="loop">
-        <h3>闭环 · 越用越准</h3>
+        <h3>回流闭环</h3>
         <div>
-          <h4>回流到平台</h4>
-          <ul><li>问答与评价</li><li>审核修正样本</li><li>工单处置结果</li><li>使用热度（谁在用）</li></ul>
+          <h4>回流平台</h4>
+          <ul><li>问答与评价</li><li>审核修正</li><li>工单结果</li><li>使用热度</li></ul>
         </div>
-        <div class="down" aria-hidden="true">↓</div>
         <div>
           <h4>反哺业务</h4>
-          <ul><li>调定价</li><li>做营销</li><li>优化调度</li><li>补指标和知识</li></ul>
+          <ul><li>定价</li><li>营销</li><li>调度</li><li>指标与知识</li></ul>
         </div>
-        <div class="grow"></div>
-        <div class="end">没人用的数据定期下线，常用的查询沉淀成指标</div>
       </aside>
     </div>
   </div>
-
-  <section>
-    <h2>系统一览</h2>
-    <p>简称规则：P 代表票付通，D 代表数据，最后一个字母代表功能；数易BI 保留产品名。</p>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>所在段</th><th>简称</th><th>系统</th><th>定位</th><th>核心功能</th><th>输出给谁</th></tr></thead>
-        <tbody>
-          <tr><td>上游</td><td><span class="code">PDC</span></td><td>数据集成</td><td>所有数据的唯一入口</td><td>离线同步、实时采集、文件采集、API 接入、接入监控</td><td>原始数据和文件 → PDP</td></tr>
-          <tr><td>中游</td><td><span class="code">PDP</span></td><td>数据清洗</td><td>把原料变干净、变成机器能读的格式</td><td>去重补缺、编号映射、脱敏；文档解析、图片识别、语音转写、切片</td><td>干净数据 → PDG；知识类 → PDL</td></tr>
-          <tr><td>中游</td><td><span class="code">PDL</span></td><td>智能标注</td><td>AI 先干粗活</td><td>分类、打标签、信息抽取、摘要，给每条结果打置信度</td><td>待审核数据 → PDR</td></tr>
-          <tr><td>中游</td><td><span class="code">PDR</span></td><td>审核质检</td><td>人工把关，让 AI 越标越准</td><td>审核工作台、低置信度优先、抽检、驳回返工、质检报告</td><td>合格数据 → PDG；修正样本 → PDL</td></tr>
-          <tr><td>中游</td><td><span class="code">PDG</span></td><td>数据治理</td><td>大数据平台的中枢，管开发、管规矩</td><td>开发建模、调度、标准与主数据、血缘、数据地图、质量、资产运营</td><td>认证好的模型、指标、标签、知识 → PDD</td></tr>
-          <tr><td>中游</td><td><span class="code">PDD</span></td><td>数据分发</td><td>唯一出口（统一标签）</td><td>指标中心、标签中心、知识服务、数据集、数据服务 API</td><td>PDQ、PBI、PAP、各类应用</td></tr>
-          <tr><td>下游</td><td><span class="code">PDS</span></td><td>统一权限</td><td>一套规则管住所有出口</td><td>统一登录、角色授权、景区隔离、字段脱敏、申请审批、访问审计</td><td>所有取数前先校验</td></tr>
-          <tr><td>下游</td><td><span class="code">PDQ</span></td><td>即席自助</td><td>业务自己查数</td><td>拖拽、SQL、自然语言问数，常用查询保存和分享</td><td>业务、运营、管理者</td></tr>
-          <tr><td>下游</td><td><span class="code">PBI</span></td><td>数易BI</td><td>可视化</td><td>看板、报表、大屏、门户、驾驶舱、订阅；数据只从 PDD 来</td><td>管理层、业务线、景区</td></tr>
-          <tr><td>下游</td><td class="ai"><span class="code">PAP</span></td><td>智能体平台</td><td>AI 的统一入口</td><td>认人、听懂意图、把流量分给数字大脑、畅游 AI 等智能体，计量和评估</td><td>游客、景区、公司内部</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note" style="margin-top:10px">已有资产复用：PDG 基于 DataWorks，PDD 基于数据开放平台，智能问数基于小Q，PDL 在社媒采集平台的 AI 识别能力上扩展。</p>
-  </section>
 </div>
-
 </body>
 </html>
