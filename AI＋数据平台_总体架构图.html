@@ -51,7 +51,7 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
 .code { font-family: var(--font-code); font-weight: 700; letter-spacing: .5px; }
 
 /* 上行主线 */
-.rail { grid-column: 1; grid-row: 1 / 11; position: relative; }
+.rail { grid-column: 1; grid-row: 1 / 12; position: relative; }
 .rail::before { content: ""; position: absolute; left: 8px; top: 10px; bottom: 4px; width: 4px; border-radius: 2px; background: var(--teal); }
 .rail::after { content: ""; position: absolute; left: 2px; top: 0; border: 8px solid transparent; border-bottom: 12px solid var(--teal); border-top: 0; }
 
@@ -95,7 +95,7 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
 /* 回流闭环 */
 .conn { grid-column: 4; display: grid; place-items: center; color: var(--orange); font-weight: 700; font-size: 18px; }
 .loop {
-  grid-column: 5; grid-row: 1 / 11; position: relative; border-radius: 12px; border: 1.5px solid var(--orange);
+  grid-column: 5; grid-row: 1 / 12; position: relative; border-radius: 12px; border: 1.5px solid var(--orange);
   background: var(--orange-tint); padding: 14px 32px 14px 16px; display: flex; flex-direction: column; justify-content: space-around; gap: 14px;
 }
 .loop::before { content: ""; position: absolute; right: 13px; top: 16px; bottom: 18px; width: 4px; border-radius: 2px; background: var(--orange); }
@@ -105,17 +105,42 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
 .loop ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 13px; }
 .loop ul li::before { content: "· "; color: var(--orange); }
 
-/* 服务说明 */
+/* 三年规划 */
 .notes { display: grid; gap: 12px; }
+.notes-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 20px; }
 .notes h2 { margin: 8px 0 0; font-size: 18px; }
-.svc-list { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
-.svc { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; display: grid; gap: 2px; }
-.svc dt { font-weight: 700; font-size: 14.5px; display: flex; gap: 8px; align-items: baseline; }
-.svc dt .code { color: var(--teal-ink); }
-.svc dd { margin: 0; font-size: 13.5px; color: var(--muted); }
-.svc.ai { border-color: var(--orange); background: var(--orange-tint); }
-.svc.ai dt .code { color: var(--orange-ink); }
-.svc.base { grid-column: 1 / -1; border-style: dashed; border-color: var(--teal); }
+.g-legend { display: flex; gap: 14px; font-size: 13px; color: var(--muted); }
+.g-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.lg { width: 22px; height: 12px; border-radius: 4px; display: inline-block; }
+.lg.b { background: var(--sys); }
+.lg.p { background: var(--tint); border: 1px solid var(--teal); }
+.lg.o { border: 1.5px dashed var(--teal); }
+.gantt-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.gantt { min-width: 1060px; padding: 8px 16px 16px; display: grid; gap: 6px; }
+.g-head, .g-row { display: grid; grid-template-columns: 230px repeat(6, minmax(0, 1fr)); column-gap: 6px; align-items: stretch; }
+.g-head > div { font-size: 13px; font-weight: 700; color: var(--teal-ink); padding: 6px 0; text-align: center; }
+.g-head .g-name { text-align: left; }
+.g-year { border-bottom: 2px solid var(--teal); }
+.g-sub > div { font-weight: 500; color: var(--muted); font-size: 12px; padding: 2px 0; }
+.g-name { grid-column: 1; grid-row: 1; display: grid; gap: 1px; padding: 6px 0; min-width: 0; }
+.g-name b { font-size: 14px; display: flex; gap: 6px; align-items: baseline; }
+.g-name b .code { color: var(--teal-ink); }
+.g-name > span { font-size: 12px; color: var(--muted); }
+.g-row { border-top: 1px solid var(--line); padding-top: 6px; }
+.g-bg { grid-row: 1; background: var(--bg); border-radius: 6px; }
+.bar { grid-row: 1; z-index: 1; border-radius: 8px; padding: 6px 10px; font-size: 12.5px; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.bar em { font-style: normal; font-size: 11px; font-weight: 700; opacity: .85; }
+.bar.b { background: var(--sys); color: var(--on-sys); }
+.bar.p { background: var(--tint); color: var(--ink); border: 1px solid var(--teal); }
+.bar.p em { color: var(--teal-ink); }
+.bar.o { background: var(--surface); color: var(--ink); border: 1.5px dashed var(--teal); }
+.bar.o em { color: var(--teal-ink); }
+.g-row.ai .g-name b .code { color: var(--orange-ink); }
+.g-row.ai .bar.b { background: var(--orange); color: #FFFFFF; }
+.g-row.ai .bar.p { background: var(--orange-tint); border-color: var(--orange); }
+.g-row.ai .bar.p em, .g-row.ai .bar.o em { color: var(--orange-ink); }
+.g-row.ai .bar.o { border-color: var(--orange); }
+.g-goal .goal { grid-row: 1; background: var(--gate); color: var(--on-gate); border-radius: 8px; padding: 8px 12px; font-size: 12.5px; line-height: 1.45; }
 .base-band { grid-column: 2 / 6; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; border-radius: 10px; border: 1.5px dashed var(--teal); padding: 10px 16px; font-size: 13.5px; color: var(--ink); }
 .base-band .k { color: var(--teal-ink); font-weight: 700; font-size: 14.5px; }
 </style>
@@ -160,8 +185,14 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
       </div>
       <div class="conn" style="grid-row:6" aria-hidden="true">←</div>
 
-      <div class="lab" style="grid-row:7">数据清洗</div>
-      <div class="main flow" style="grid-row:7">
+      <div class="lab" style="grid-row:7">实时计算</div>
+      <div class="main" style="grid-row:7">
+        <div class="sys"><span class="code">PDE</span>实时计算</div>
+        <div class="cell">流式清洗</div><div class="cell">实时指标</div><div class="cell">实时标签</div><div class="cell">实时预警</div><div class="cell">分钟级可见</div>
+      </div>
+
+      <div class="lab" style="grid-row:8">数据清洗</div>
+      <div class="main flow" style="grid-row:8">
         <div class="step"><div class="t"><span class="code">PDP</span> 数据清洗</div><div class="d">去重 · 解析 · 识别 · 转写</div></div>
         <div class="to" aria-hidden="true">→</div>
         <div class="step"><div class="t"><span class="code">PDL</span> 智能标注</div><div class="d">AI 粗标 · 抽取 · 分类</div></div>
@@ -169,22 +200,22 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
         <div class="step"><div class="t"><span class="code">PDR</span> 审核质检</div><div class="d">人工审核 · 抽检 · 修正回流</div></div>
       </div>
 
-      <div class="hand" style="grid-row:8"><span>↑ 原始数据 · 原始文件</span></div>
+      <div class="hand" style="grid-row:9"><span>↑ 原始数据（离线 + 实时）· 原始文件</span></div>
 
-      <div class="lab" style="grid-row:9">数据集成</div>
-      <div class="main" style="grid-row:9">
+      <div class="lab" style="grid-row:10">数据集成</div>
+      <div class="main" style="grid-row:10">
         <div class="sys"><span class="code">PDC</span>数据集成</div>
         <div class="cell">离线同步</div><div class="cell">实时采集</div><div class="cell">文件采集</div><div class="cell">API 接入</div>
       </div>
 
-      <div class="lab" style="grid-row:10">数据来源</div>
-      <div class="main" style="grid-row:10">
+      <div class="lab" style="grid-row:11">数据来源</div>
+      <div class="main" style="grid-row:11">
         <div class="cell src" style="flex-grow:1.05"><b>业务数据</b><span>票务 · 订单 · 经营 · 营销 · OTA · 财务 · ERP · 终端</span></div>
         <div class="cell src"><b>企业知识</b><span>Word · PDF · Excel · Markdown · 图片 · 音视频</span></div>
       </div>
-      <div class="conn" style="grid-row:10" aria-hidden="true">←</div>
+      <div class="conn" style="grid-row:11" aria-hidden="true">←</div>
 
-      <div class="base-band" style="grid-row:11"><span class="k"><span class="code">PBS</span> 公共底座</span><span>API 网关 · 注册与配置 · 消息总线 · 任务编排 · 存储 · 监控告警 · 通知</span></div>
+      <div class="base-band" style="grid-row:12"><span class="k"><span class="code">PBS</span> 公共底座</span><span>API 网关 · 注册与配置 · 消息总线 · 任务编排 · 存储 · 监控告警 · 通知</span></div>
       <aside class="loop">
         <h3>回流闭环</h3>
         <div>
@@ -199,22 +230,26 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
     </div>
   </div>
   <section class="notes" aria-labelledby="notes-h">
-    <h2 id="notes-h">服务说明</h2>
-    <dl class="svc-list">
-      <div class="svc"><dt><span class="code">PDQ</span>即席自助</dt><dd>问数、自助查询，业务自己查数</dd></div>
-      <div class="svc"><dt><span class="code">PBI</span>数易BI</dt><dd>看板、大屏、门户、驾驶舱</dd></div>
-      <div class="svc ai"><dt><span class="code">PAP</span>智能体平台</dt><dd>AI 统一入口，听懂问题、把流量分给各个智能体</dd></div>
-      <div class="svc"><dt><span class="code">PDS</span>统一权限</dt><dd>统一登录和授权，所有取数都过这一关</dd></div>
-      <div class="svc"><dt><span class="code">PDT</span>标签中心</dt><dd>指标和标签统一口径，一处定义、处处一致</dd></div>
-      <div class="svc"><dt><span class="code">PDK</span>知识服务</dt><dd>企业知识库，给智能体检索用</dd></div>
-      <div class="svc"><dt><span class="code">PDD</span>数据服务</dt><dd>数据集和数据 API，系统取数的统一接口</dd></div>
-      <div class="svc"><dt><span class="code">PDG</span>数据治理</dt><dd>开发、调度、标准、血缘、质量，把数据管起来</dd></div>
-      <div class="svc"><dt><span class="code">PDP</span>数据清洗</dt><dd>去重、解析、识别、转写，把原料洗干净</dd></div>
-      <div class="svc"><dt><span class="code">PDL</span>智能标注</dt><dd>AI 自动分类、抽取、打标</dd></div>
-      <div class="svc"><dt><span class="code">PDR</span>审核质检</dt><dd>人工审核 AI 的结果，修正后回流</dd></div>
-      <div class="svc"><dt><span class="code">PDC</span>数据集成</dt><dd>所有数据的统一入口：离线、实时、文件、API</dd></div>
-      <div class="svc base"><dt><span class="code">PBS</span>公共底座</dt><dd>网关、配置、消息、编排、存储、监控等公共能力</dd></div>
-    </dl>
+    <div class="notes-h"><h2 id="notes-h">三年规划</h2><div class="g-legend"><span><i class="lg b"></i>建设</span><span><i class="lg p"></i>推广</span><span><i class="lg o"></i>优化</span></div></div>
+    <div class="gantt-wrap"><div class="gantt">
+    <div class="g-head"><div class="g-name">服务</div><div class="g-year" style="grid-column:2 / span 2">第一年</div><div class="g-year" style="grid-column:4 / span 2">第二年</div><div class="g-year" style="grid-column:6 / span 2">第三年</div></div>
+    <div class="g-head g-sub"><div class="g-name"></div><div style="grid-column:2">上半年</div><div style="grid-column:3">下半年</div><div style="grid-column:4">上半年</div><div style="grid-column:5">下半年</div><div style="grid-column:6">上半年</div><div style="grid-column:7">下半年</div></div>
+    <div class="g-row g-goal"><div class="g-name"><b>阶段目标</b></div><div class="goal" style="grid-column:2 / span 2">主线跑通：订单 → 核销 → 结算可信、分钟级；数字大脑跑通一个场景</div><div class="goal" style="grid-column:4 / span 2">全面推广：多种数据进来，标签中心、知识服务上线，智能体平台自建</div><div class="goal" style="grid-column:6 / span 2">越用越准：闭环常态运转，智能体切换自建，能力对外输出</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDC</span>数据集成</b><span>所有数据的统一入口：离线、实时、文件、API</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>主流程业务库接入；订单、核销实时采集</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>全部业务源、文件、埋点、OTA 接入</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>接入监控，新数据源自助接入</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDE</span>实时计算</b><span>订单、核销等数据分钟级算出来</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>订单、核销分钟级可见；节假日实时大屏</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>实时指标、实时标签、实时预警</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>实时与离线同一套口径</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDP</span>数据清洗</b><span>去重、解析、识别、转写，把原料洗干净</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>业务数据清洗、编号映射、脱敏</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>文档解析、图片识别、音视频转写</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>清洗规则沉淀，全流程自动化</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDL</span>智能标注</b><span>AI 自动分类、抽取、打标</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:3 / 4"><em>建设</em>标注体系；物业拍照等试点</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>分类、抽取、打标全面上线</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>用审核样本持续迭代</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDR</span>审核质检</b><span>人工审核 AI 的结果，修正后回流</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:3 / 4"><em>建设</em>审核工作台上线</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>抽检、质检报告、修正回流</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>AI 准确率提升，人工比例下降</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDG</span>数据治理</b><span>开发、调度、标准、血缘、质量，把数据管起来</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>主线治理：标准、主数据、质量、数据地图</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>按数据域推广；血缘、资产运营</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>健康分常态化，无用资产下线</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDT</span>标签中心</b><span>指标和标签统一口径，一处定义、处处一致</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>核心指标认证，统一口径</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>游客身份归并、标签体系、人群圈选</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>景区自定义指标，标签复用</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDK</span>知识服务</b><span>企业知识库，给智能体检索用</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:3 / 4"><em>建设</em>景区知识库试点</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>知识库、检索全面上线</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>知识自动更新，评测常态化</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDD</span>数据服务</b><span>数据集和数据 API，系统取数的统一接口</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>数据集统一；数据开放平台升级</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>对内对外统一出口、调用计量</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>合作方标准接入，按调用计费</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDS</span>统一权限</b><span>统一登录和授权，所有取数都过这一关</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>统一登录、角色授权、景区隔离</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>字段脱敏、申请审批、访问审计</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>覆盖全部出口和智能体</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PDQ</span>即席自助</b><span>问数、自助查询，业务自己查数</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>自助查询；小Q 问数体验优化</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>智能问数接入标签中心</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>业务自助比例持续提升</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PBI</span>数易BI</b><span>看板、大屏、门户、驾驶舱</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>核心看板、节假日大屏</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>门户、驾驶舱、订阅、嵌入</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>景区自助搭建看板</div></div>
+    <div class="g-row ai"><div class="g-name"><b><span class="code">PAP</span>智能体平台</b><span>AI 统一入口，听懂问题、把流量分给各个智能体</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>借成熟平台交付；数字大脑跑通一个场景</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>自建统一入口、意图识别、流量分发</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>智能体全部接入，逐步切换自建</div></div>
+    <div class="g-row"><div class="g-name"><b><span class="code">PBS</span>公共底座</b><span>网关、配置、消息、编排、存储、监控等公共能力</span></div><i class="g-bg" style="grid-column:2"></i><i class="g-bg" style="grid-column:3"></i><i class="g-bg" style="grid-column:4"></i><i class="g-bg" style="grid-column:5"></i><i class="g-bg" style="grid-column:6"></i><i class="g-bg" style="grid-column:7"></i><div class="bar b" style="grid-column:2 / 4"><em>建设</em>网关、注册配置、消息总线、监控</div><div class="bar p" style="grid-column:4 / 6"><em>推广</em>任务编排、统一存储</div><div class="bar o" style="grid-column:6 / 8"><em>优化</em>容量与成本优化</div></div>
+    </div></div>
   </section>
 </div>
 </body>
