@@ -125,6 +125,30 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
 .card.loop { border-color: var(--orange); background: var(--orange-tint); }
 .card.loop dt { color: var(--orange-ink); }
 @media (max-width: 560px) { .layer { grid-template-columns: 1fr; } .layer h3 { justify-self: start; } }
+
+/* 微服务拆分 */
+.notes h2 small { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+.card h4 em { margin-left: auto; font-style: normal; font-size: 12px; font-weight: 500; color: var(--muted); }
+.svcs { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; }
+.svcs li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 0 8px; font-size: 13px; align-items: baseline; }
+.svcs li > b, .svcs li > span { grid-column: 2; }
+.svcs li > code { grid-row: 1 / 3; }
+.svcs li > span { color: var(--muted); }
+.svcs code { font-family: var(--font-code); font-size: 12px; color: var(--teal-ink); }
+.svcs b { font-weight: 700; }
+.card.ai .svcs code { color: var(--orange-ink); }
+.card.base { border-style: dashed; }
+.chains { display: grid; gap: 10px; }
+.chain { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; display: grid; gap: 8px; }
+.chain b { font-size: 14px; color: var(--teal-ink); }
+.chain ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 4px; }
+.chain li { display: inline-flex; align-items: center; gap: 4px; }
+.chain li + li::before { content: "→"; color: var(--teal); font-weight: 700; margin-right: 4px; }
+.chain code { font-family: var(--font-code); font-size: 12px; padding: 3px 8px; border-radius: 6px; background: var(--tint); color: var(--teal-ink); }
+@media (max-width: 560px) { .svcs li { grid-template-columns: 1fr; } .svcs li > code { grid-row: auto; } .svcs li > b, .svcs li > span { grid-column: 1; } }
+
+.base-band { grid-column: 2 / 6; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; border-radius: 10px; border: 1.5px dashed var(--teal); padding: 10px 16px; font-size: 13.5px; color: var(--ink); }
+.base-band .k { color: var(--teal-ink); font-weight: 700; font-size: 14.5px; }
 </style>
 </head>
 <body>
@@ -193,6 +217,7 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
       </div>
       <div class="conn" style="grid-row:10" aria-hidden="true">←</div>
 
+      <div class="base-band" style="grid-row:11"><span class="k"><span class="code">PBS</span> 公共底座</span><span>API 网关 · 注册与配置 · 消息总线 · 任务编排 · 存储 · 监控告警 · 通知</span></div>
       <aside class="loop">
         <h3>回流闭环</h3>
         <div>
@@ -207,106 +232,138 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
     </div>
   </div>
   <section class="notes" aria-labelledby="notes-h">
-    <h2 id="notes-h">模块说明</h2>
-    <div class="layer"><h3>应用</h3><div class="cards">
-      <article class="card"><h4>业务应用</h4><p class="pos">数据和 AI 最终落到的产品</p><dl>
-        <div><dt>票付通 3.0</dt><dd>票务 SaaS 新一代系统，既产生数据，也直接用数据</dd></div>
-        <div><dt>景数通</dt><dd>景区经营数据产品，景区看自己的经营数据</dd></div>
-        <div><dt>数字大脑</dt><dd>面向景区管理者的智能体：问数、洞察、调度</dd></div>
-        <div><dt>畅游</dt><dd>面向游客的小程序和 AI 服务</dd></div>
-        <div><dt>各类 APP</dt><dd>票付通 APP、飞书等其他使用端</dd></div>
-      </dl></article>
-    </div></div>
+    <h2 id="notes-h">微服务拆分 <small>共 13 个系统 · 87 个服务 · 服务名 = 系统简称-功能</small></h2>
     <div class="layer"><h3>查数</h3><div class="cards">
-      <article class="card"><h4><span class="code">PDQ</span>即席自助</h4><p class="pos">业务自己查数，不用排队找数据团队</p><dl>
-        <div><dt>自助查询</dt><dd>拖拽或写 SQL 选指标和维度，马上出结果，可保存、可分享</dd></div>
-        <div><dt>智能问数</dt><dd>用大白话提问，系统找到对应指标直接给答案</dd></div>
-      </dl></article>
-      <article class="card"><h4><span class="code">PBI</span>数易BI</h4><p class="pos">可视化，数据只从数据出口来</p><dl>
-        <div><dt>看板</dt><dd>业务日常盯的指标面板</dd></div>
-        <div><dt>大屏</dt><dd>节假日、指挥中心用的实时大屏</dd></div>
-        <div><dt>门户</dt><dd>按角色把常用报表集中到一个入口</dd></div>
-        <div><dt>驾驶舱</dt><dd>给管理层的核心经营指标总览</dd></div>
-      </dl></article>
-      <article class="card ai"><h4><span class="code">PAP</span>智能体平台</h4><p class="pos">AI 的统一入口</p><dl>
-        <div><dt>意图识别</dt><dd>听懂用户这句话要做什么，一句话里有几件事</dd></div>
-        <div><dt>流量分发</dt><dd>把请求交给最合适的智能体，答不了的转人工</dd></div>
-        <div><dt>智能体管理</dt><dd>智能体的上架、配置、按景区计量和效果评估</dd></div>
-      </dl></article>
+      <article class="card"><h4><span class="code">PDQ</span>即席自助<em>4 个服务</em></h4><p class="pos">业务自己查数</p><ul class="svcs">
+        <li><code>pdq-query</code><b>自助查询</b><span>拖拽生成查询或写 SQL，按权限执行</span></li>
+        <li><code>pdq-nl2sql</code><b>智能问数</b><span>大白话转成指标查询，口径取自 PDT</span></li>
+        <li><code>pdq-save</code><b>查询保存</b><span>常用查询保存、分享，可升级为看板或指标</span></li>
+        <li><code>pdq-export</code><b>结果导出</b><span>下载结果，导出前过 PDS 校验并留痕</span></li>
+      </ul></article>
+      <article class="card"><h4><span class="code">PBI</span>数易BI<em>7 个服务</em></h4><p class="pos">可视化，数据只从数据出口来</p><ul class="svcs">
+        <li><code>pbi-dataset</code><b>数据接入</b><span>只接 PDD 数据集和 PDT 指标，不直连数仓</span></li>
+        <li><code>pbi-chart</code><b>图表看板</b><span>图表组件、看板编排、筛选联动</span></li>
+        <li><code>pbi-screen</code><b>大屏</b><span>实时大屏、节假日作战屏</span></li>
+        <li><code>pbi-portal</code><b>门户</b><span>按角色聚合报表的统一入口</span></li>
+        <li><code>pbi-cockpit</code><b>驾驶舱</b><span>管理层核心经营指标总览</span></li>
+        <li><code>pbi-subscribe</code><b>订阅推送</b><span>定时把报表推到飞书、邮件</span></li>
+        <li><code>pbi-embed</code><b>嵌入</b><span>看板嵌入景数通、票付通 3.0、飞书</span></li>
+      </ul></article>
+      <article class="card ai"><h4><span class="code">PAP</span>智能体平台<em>9 个服务</em></h4><p class="pos">AI 的统一入口</p><ul class="svcs">
+        <li><code>pap-entry</code><b>统一入口</b><span>各端接入、会话管理、上下文保存</span></li>
+        <li><code>pap-intent</code><b>意图识别</b><span>判断一句话要做哪几件事</span></li>
+        <li><code>pap-router</code><b>流量分发</b><span>按意图路由到智能体，多智能体接力，转人工兜底</span></li>
+        <li><code>pap-registry</code><b>智能体注册</b><span>智能体上架、配置、版本、灰度</span></li>
+        <li><code>pap-tool</code><b>工具接入</b><span>把业务接口和 PDT、PDK、PDD 封装成智能体工具</span></li>
+        <li><code>pap-model</code><b>模型网关</b><span>对接扣子、火山方舟、腾讯、阿里、自研模型，可替换</span></li>
+        <li><code>pap-guard</code><b>安全护栏</b><span>内容安全、敏感信息拦截、调用前权限校验</span></li>
+        <li><code>pap-meter</code><b>计量</b><span>按景区、按智能体统计调用量和成本</span></li>
+        <li><code>pap-eval</code><b>效果评估</b><span>评测题库、满意度、失败案例复盘</span></li>
+      </ul></article>
     </div></div>
     <div class="layer"><h3>统一权限</h3><div class="cards">
-      <article class="card perm"><h4><span class="code">PDS</span>统一权限</h4><p class="pos">所有取数都要过这道关</p><dl>
-        <div><dt>统一登录</dt><dd>一个账号进所有系统</dd></div>
-        <div><dt>角色授权</dt><dd>按岗位决定能用哪些功能、能看哪些数据</dd></div>
-        <div><dt>景区隔离</dt><dd>每个客户只能看到自己的数据</dd></div>
-        <div><dt>字段脱敏</dt><dd>手机号、证件号等敏感字段自动打码</dd></div>
-        <div><dt>访问审计</dt><dd>谁在什么时候取了什么数，全程留痕</dd></div>
-      </dl></article>
+      <article class="card perm"><h4><span class="code">PDS</span>统一权限<em>6 个服务</em></h4><p class="pos">所有取数都要过这道关</p><ul class="svcs">
+        <li><code>pds-iam</code><b>统一登录</b><span>账号、单点登录、组织架构同步（飞书）</span></li>
+        <li><code>pds-rbac</code><b>角色授权</b><span>角色、菜单、功能权限</span></li>
+        <li><code>pds-scope</code><b>数据范围</b><span>租户和景区隔离、行级权限</span></li>
+        <li><code>pds-mask</code><b>字段脱敏</b><span>字段敏感等级和脱敏策略</span></li>
+        <li><code>pds-apply</code><b>权限申请</b><span>申请、审批、到期自动回收</span></li>
+        <li><code>pds-audit</code><b>访问审计</b><span>取数日志、异常访问告警</span></li>
+      </ul></article>
     </div></div>
     <div class="layer"><h3>数据出口</h3><div class="cards">
-      <article class="card"><h4><span class="code">PDT</span>标签中心</h4><p class="pos">指标和标签统一管理，一个口径（统一标签）</p><dl>
-        <div><dt>指标</dt><dd>每个指标只有一个口径，认证过才能用</dd></div>
-        <div><dt>标签</dt><dd>同一个游客归成一个身份，给游客、景区、商品打标签</dd></div>
-        <div><dt>统一口径</dt><dd>定义、版本、负责人都记清楚，改口径只改一处</dd></div>
-      </dl></article>
-      <article class="card"><h4><span class="code">PDK</span>知识服务</h4><p class="pos">给智能体用的企业知识</p><dl>
-        <div><dt>知识库</dt><dd>审核合格的文档、图片、音视频内容按主题入库</dd></div>
-        <div><dt>检索</dt><dd>按问题找到最相关的知识片段，答案能查到出处</dd></div>
-        <div><dt>知识更新</dt><dd>资料变了自动更新，旧版本可追溯</dd></div>
-      </dl></article>
-      <article class="card"><h4><span class="code">PDD</span>数据服务</h4><p class="pos">系统和工具取数的统一接口</p><dl>
-        <div><dt>数据集</dt><dd>整理好的数据表，供 BI 和即席查询使用</dd></div>
-        <div><dt>数据 API</dt><dd>给系统和合作方调用的接口，即数据开放平台</dd></div>
-        <div><dt>调用管理</dt><dd>申请、限流、计量，谁调了什么都有记录</dd></div>
-      </dl></article>
+      <article class="card"><h4><span class="code">PDT</span>标签中心<em>7 个服务</em></h4><p class="pos">指标和标签统一管理，一个口径</p><ul class="svcs">
+        <li><code>pdt-metric</code><b>指标管理</b><span>指标定义、口径、版本、认证</span></li>
+        <li><code>pdt-dim</code><b>维度管理</b><span>景区、日期、渠道、商品等统一维度</span></li>
+        <li><code>pdt-oneid</code><b>身份归并</b><span>订单、会员、年卡、人脸归并为同一游客</span></li>
+        <li><code>pdt-tag</code><b>标签管理</b><span>标签定义、规则、审批、下线</span></li>
+        <li><code>pdt-compute</code><b>指标标签计算</b><span>离线 + 实时计算指标和标签</span></li>
+        <li><code>pdt-query</code><b>指标查询</b><span>按统一口径查指标和标签，供 PDQ、PBI、PAP 调用</span></li>
+        <li><code>pdt-segment</code><b>人群圈选</b><span>按标签圈人群，交给营销使用</span></li>
+      </ul></article>
+      <article class="card"><h4><span class="code">PDK</span>知识服务<em>5 个服务</em></h4><p class="pos">给智能体用的企业知识</p><ul class="svcs">
+        <li><code>pdk-base</code><b>知识库管理</b><span>按主题、按景区组织知识，管理版本</span></li>
+        <li><code>pdk-index</code><b>向量索引</b><span>知识切片向量化、建索引</span></li>
+        <li><code>pdk-search</code><b>知识检索</b><span>语义 + 关键词检索，返回出处</span></li>
+        <li><code>pdk-sync</code><b>知识更新</b><span>资料变更增量更新，过期内容下线</span></li>
+        <li><code>pdk-eval</code><b>知识评测</b><span>测试题库、检索命中率评估</span></li>
+      </ul></article>
+      <article class="card"><h4><span class="code">PDD</span>数据服务<em>5 个服务</em></h4><p class="pos">系统和工具取数的统一接口</p><ul class="svcs">
+        <li><code>pdd-dataset</code><b>数据集</b><span>数据集定义、发布，供 BI 和即席查询</span></li>
+        <li><code>pdd-api</code><b>数据 API</b><span>API 生成、发布、文档，即数据开放平台</span></li>
+        <li><code>pdd-gateway</code><b>服务网关</b><span>调用鉴权（调 PDS）、限流、熔断</span></li>
+        <li><code>pdd-meter</code><b>调用计量</b><span>按景区、按调用方统计调用量</span></li>
+        <li><code>pdd-push</code><b>订阅推送</b><span>数据变更通知、定时推送给业务系统</span></li>
+      </ul></article>
     </div></div>
     <div class="layer"><h3>数据治理</h3><div class="cards">
-      <article class="card"><h4><span class="code">PDG</span>数据治理</h4><p class="pos">大数据平台的中枢：管开发、管规矩</p><dl>
-        <div><dt>开发建模</dt><dd>把原始数据加工成分层的公共模型，同一逻辑只建一次</dd></div>
-        <div><dt>调度</dt><dd>按时间和依赖关系自动跑任务，失败自动告警</dd></div>
-        <div><dt>标准与主数据</dt><dd>表名字段统一规范；景区、商品、渠道、游客统一编号</dd></div>
-        <div><dt>血缘</dt><dd>记录每个数从哪来、到哪去，出错能顺着查</dd></div>
-        <div><dt>数据地图</dt><dd>中文一搜：有什么数据、什么意思、谁负责</dd></div>
-        <div><dt>质量</dt><dd>每天自动检查，不合格的数据拦在下游之外</dd></div>
-      </dl></article>
+      <article class="card"><h4><span class="code">PDG</span>数据治理<em>9 个服务</em></h4><p class="pos">大数据平台的中枢：管开发、管规矩</p><ul class="svcs">
+        <li><code>pdg-ide</code><b>开发建模</b><span>SQL 和模型开发、分层建模、代码评审</span></li>
+        <li><code>pdg-scheduler</code><b>调度</b><span>任务编排、依赖、重跑补数、失败告警</span></li>
+        <li><code>pdg-standard</code><b>数据标准</b><span>命名、字段、码值规范，发布前自动卡点</span></li>
+        <li><code>pdg-master</code><b>主数据</b><span>景区、商品、渠道、供应商、游客统一编号</span></li>
+        <li><code>pdg-meta</code><b>元数据</b><span>表、字段、文件、指标的技术和业务信息</span></li>
+        <li><code>pdg-lineage</code><b>血缘</b><span>表和字段级血缘采集、改动影响分析</span></li>
+        <li><code>pdg-catalog</code><b>数据地图</b><span>中文搜索、资产目录、负责人</span></li>
+        <li><code>pdg-quality</code><b>数据质量</b><span>规则配置、自动检查、拦截下游、问题单</span></li>
+        <li><code>pdg-asset</code><b>资产运营</b><span>健康分、热度、成本统计，无用资产下线</span></li>
+      </ul></article>
     </div></div>
     <div class="layer"><h3>数据清洗</h3><div class="cards">
-      <article class="card"><h4><span class="code">PDP</span>数据清洗</h4><p class="pos">把原料变干净、变成机器能读的格式</p><dl>
-        <div><dt>去重</dt><dd>去掉重复记录，补缺失，统一格式和编码</dd></div>
-        <div><dt>解析</dt><dd>把 Word、PDF、Excel 拆成文字和表格</dd></div>
-        <div><dt>识别</dt><dd>识别图片里的文字和内容</dd></div>
-        <div><dt>转写</dt><dd>把音频、视频转成文字</dd></div>
-      </dl></article>
-      <article class="card"><h4><span class="code">PDL</span>智能标注</h4><p class="pos">AI 先干粗活</p><dl>
-        <div><dt>AI 粗标</dt><dd>自动打上分类和标签</dd></div>
-        <div><dt>抽取</dt><dd>从文档、图片里抽出关键字段，比如物业拍照转成标准表格</dd></div>
-        <div><dt>分类</dt><dd>按业务主题归类，并给每条结果打置信度</dd></div>
-      </dl></article>
-      <article class="card"><h4><span class="code">PDR</span>审核质检</h4><p class="pos">人工把关，让 AI 越标越准</p><dl>
-        <div><dt>人工审核</dt><dd>置信度低的优先审</dd></div>
-        <div><dt>抽检</dt><dd>置信度高的按比例抽查</dd></div>
-        <div><dt>修正回流</dt><dd>改过的结果反馈给智能标注，下次标得更准</dd></div>
-      </dl></article>
+      <article class="card"><h4><span class="code">PDP</span>数据清洗<em>8 个服务</em></h4><p class="pos">把原料变干净、变成机器能读的格式</p><ul class="svcs">
+        <li><code>pdp-rule</code><b>清洗规则</b><span>去重、补缺、格式、码值映射规则配置</span></li>
+        <li><code>pdp-struct</code><b>结构化清洗</b><span>按规则批量或流式清洗业务数据</span></li>
+        <li><code>pdp-idmap</code><b>编号映射</b><span>按 pdg-master 把各系统编号换成统一编号</span></li>
+        <li><code>pdp-mask</code><b>敏感识别</b><span>识别敏感字段并按等级脱敏</span></li>
+        <li><code>pdp-doc</code><b>文档解析</b><span>Word、PDF、Excel、Markdown 拆成文字和表格</span></li>
+        <li><code>pdp-ocr</code><b>图片识别</b><span>图片文字识别、图片内容识别</span></li>
+        <li><code>pdp-asr</code><b>音视频转写</b><span>语音转文字、视频抽帧</span></li>
+        <li><code>pdp-chunk</code><b>切片</b><span>按语义切段、去重，生成待标注片段</span></li>
+      </ul></article>
+      <article class="card"><h4><span class="code">PDL</span>智能标注<em>7 个服务</em></h4><p class="pos">AI 先干粗活</p><ul class="svcs">
+        <li><code>pdl-schema</code><b>标注体系</b><span>分类体系、标签体系、抽取字段模板</span></li>
+        <li><code>pdl-task</code><b>标注任务</b><span>批次创建、派发、进度跟踪</span></li>
+        <li><code>pdl-classify</code><b>自动分类</b><span>按业务主题自动归类</span></li>
+        <li><code>pdl-extract</code><b>信息抽取</b><span>抽关键字段，如物业拍照转标准表格</span></li>
+        <li><code>pdl-tag</code><b>自动打标</b><span>打标签、生成摘要</span></li>
+        <li><code>pdl-score</code><b>置信度评分</b><span>给每条结果打分，决定送审方式</span></li>
+        <li><code>pdl-model</code><b>标注模型</b><span>模型和提示词版本管理，用审核样本迭代</span></li>
+      </ul></article>
+      <article class="card"><h4><span class="code">PDR</span>审核质检<em>6 个服务</em></h4><p class="pos">人工把关，让 AI 越标越准</p><ul class="svcs">
+        <li><code>pdr-queue</code><b>审核队列</b><span>按置信度排序，分配给审核员</span></li>
+        <li><code>pdr-workbench</code><b>审核工作台</b><span>查看、修改、通过、驳回</span></li>
+        <li><code>pdr-sample</code><b>抽检</b><span>高置信度结果按比例抽查复核</span></li>
+        <li><code>pdr-feedback</code><b>修正回流</b><span>修正结果写回 pdl-model 的样本库</span></li>
+        <li><code>pdr-report</code><b>质检报告</b><span>准确率、效率、审核员绩效</span></li>
+        <li><code>pdr-publish</code><b>入库发布</b><span>合格数据登记到 pdg-meta，并送入 PDK</span></li>
+      </ul></article>
     </div></div>
     <div class="layer"><h3>数据集成</h3><div class="cards">
-      <article class="card"><h4><span class="code">PDC</span>数据集成</h4><p class="pos">所有数据的唯一入口</p><dl>
-        <div><dt>离线同步</dt><dd>每天定时把业务库数据同步进来</dd></div>
-        <div><dt>实时采集</dt><dd>订单、核销等变化分钟级进来</dd></div>
-        <div><dt>文件采集</dt><dd>上传，或从飞书、网盘同步文档和音视频</dd></div>
-        <div><dt>API 接入</dt><dd>对接外部系统和合作方的数据接口</dd></div>
-      </dl></article>
+      <article class="card"><h4><span class="code">PDC</span>数据集成<em>7 个服务</em></h4><p class="pos">所有数据的唯一入口</p><ul class="svcs">
+        <li><code>pdc-source</code><b>数据源管理</b><span>登记业务库、文件源、外部接口，测连接、定负责人</span></li>
+        <li><code>pdc-batch</code><b>离线同步</b><span>按天或按小时全量、增量同步业务库</span></li>
+        <li><code>pdc-cdc</code><b>实时采集</b><span>读业务库变更日志，订单、核销分钟级入湖</span></li>
+        <li><code>pdc-file</code><b>文件采集</b><span>上传，或从飞书、网盘同步文档和音视频</span></li>
+        <li><code>pdc-api</code><b>API 接入</b><span>对接 OTA、合作方、外部数据接口，统一重试</span></li>
+        <li><code>pdc-track</code><b>埋点采集</b><span>接收小程序、APP 的行为数据</span></li>
+        <li><code>pdc-monitor</code><b>接入监控</b><span>延迟、丢数、失败告警，行数对账</span></li>
+      </ul></article>
     </div></div>
-    <div class="layer"><h3>数据来源</h3><div class="cards">
-      <article class="card"><h4>数据来源</h4><p class="pos">平台的原料</p><dl>
-        <div><dt>业务数据</dt><dd>票务、订单、经营、营销、OTA、财务、ERP、终端产生的结构化数据</dd></div>
-        <div><dt>企业知识</dt><dd>Word、PDF、Excel、Markdown、图片、音视频等资料</dd></div>
-      </dl></article>
+    <div class="layer"><h3>公共底座</h3><div class="cards">
+      <article class="card base"><h4><span class="code">PBS</span>公共底座<em>7 个服务</em></h4><p class="pos">所有微服务共用的基础能力</p><ul class="svcs">
+        <li><code>pbs-gateway</code><b>API 网关</b><span>对外统一入口、路由、鉴权转发</span></li>
+        <li><code>pbs-registry</code><b>注册与配置</b><span>服务注册发现、统一配置</span></li>
+        <li><code>pbs-mq</code><b>消息总线</b><span>服务间事件，如“标注完成”触发审核任务</span></li>
+        <li><code>pbs-workflow</code><b>任务编排</b><span>跨服务流程编排、状态跟踪、失败重试</span></li>
+        <li><code>pbs-storage</code><b>存储</b><span>数据湖、对象存储、向量库</span></li>
+        <li><code>pbs-observe</code><b>监控告警</b><span>日志、链路追踪、服务指标</span></li>
+        <li><code>pbs-notify</code><b>通知</b><span>飞书、短信、站内信</span></li>
+      </ul></article>
     </div></div>
-    <div class="layer"><h3>回流闭环</h3><div class="cards">
-      <article class="card loop"><h4>回流闭环</h4><p class="pos">用的结果再回来，数据越用越准</p><dl>
-        <div><dt>回流平台</dt><dd>问答与评价、审核修正、工单结果、使用热度回到平台：补指标、改规则、让 AI 更准、下线没人用的数据</dd></div>
-        <div><dt>反哺业务</dt><dd>整理好的结果回到业务：调定价、做营销、优化调度，补充指标和知识</dd></div>
-      </dl></article>
+    <div class="layer"><h3>关键调用链</h3><div class="chains">
+      <div class="chain"><b>业务数据链路</b><ol><li><code>pdc-cdc</code></li><li><code>pdp-struct</code></li><li><code>pdp-idmap</code></li><li><code>pdg-scheduler</code></li><li><code>pdg-quality</code></li><li><code>pdt-compute</code></li><li><code>pdd-dataset</code></li><li><code>pbi-chart</code></li></ol></div>
+      <div class="chain"><b>企业知识链路</b><ol><li><code>pdc-file</code></li><li><code>pdp-doc</code></li><li><code>pdp-chunk</code></li><li><code>pdl-task</code></li><li><code>pdl-score</code></li><li><code>pdr-queue</code></li><li><code>pdr-publish</code></li><li><code>pdk-index</code></li></ol></div>
+      <div class="chain"><b>智能体取数链路</b><ol><li><code>pap-entry</code></li><li><code>pap-intent</code></li><li><code>pap-router</code></li><li><code>pds-scope</code></li><li><code>pdt-query</code></li><li><code>pdk-search</code></li><li><code>pap-eval</code></li></ol></div>
     </div></div>
   </section>
 </div>
