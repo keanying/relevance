@@ -104,6 +104,27 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
 .loop h4 { margin: 0 0 2px; font-size: 13.5px; color: var(--orange-ink); }
 .loop ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 13px; }
 .loop ul li::before { content: "· "; color: var(--orange); }
+
+/* 模块说明 */
+.notes { display: grid; gap: 18px; }
+.notes h2 { margin: 8px 0 0; font-size: 18px; }
+.layer { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 12px; align-items: start; }
+.layer h3 { margin: 0; padding: 8px 12px; border-radius: 10px; background: var(--tint); color: var(--teal-ink); font-size: 14px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.card { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.card h4 { margin: 0; font-size: 15px; display: flex; gap: 8px; align-items: baseline; }
+.card h4 .code { color: var(--teal-ink); }
+.card .pos { margin: 0; font-size: 13px; color: var(--muted); }
+.card dl { margin: 4px 0 0; display: grid; gap: 6px; }
+.card dl div { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 8px; font-size: 13.5px; }
+.card dt { font-weight: 700; color: var(--teal-ink); }
+.card dd { margin: 0; }
+.card.ai { border-color: var(--orange); background: var(--orange-tint); }
+.card.ai h4 .code, .card.ai dt { color: var(--orange-ink); }
+.card.perm { border-color: var(--gate); }
+.card.loop { border-color: var(--orange); background: var(--orange-tint); }
+.card.loop dt { color: var(--orange-ink); }
+@media (max-width: 560px) { .layer { grid-template-columns: 1fr; } .layer h3 { justify-self: start; } }
 </style>
 </head>
 <body>
@@ -184,6 +205,101 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
       </aside>
     </div>
   </div>
+  <section class="notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">模块说明</h2>
+    <div class="layer"><h3>应用</h3><div class="cards">
+      <article class="card"><h4>业务应用</h4><p class="pos">数据和 AI 最终落到的产品</p><dl>
+        <div><dt>票付通 3.0</dt><dd>票务 SaaS 新一代系统，既产生数据，也直接用数据</dd></div>
+        <div><dt>景数通</dt><dd>景区经营数据产品，景区看自己的经营数据</dd></div>
+        <div><dt>数字大脑</dt><dd>面向景区管理者的智能体：问数、洞察、调度</dd></div>
+        <div><dt>畅游</dt><dd>面向游客的小程序和 AI 服务</dd></div>
+        <div><dt>各类 APP</dt><dd>票付通 APP、飞书等其他使用端</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>查数</h3><div class="cards">
+      <article class="card"><h4><span class="code">PDQ</span>即席自助</h4><p class="pos">业务自己查数，不用排队找数据团队</p><dl>
+        <div><dt>自助查询</dt><dd>拖拽或写 SQL 选指标和维度，马上出结果，可保存、可分享</dd></div>
+        <div><dt>智能问数</dt><dd>用大白话提问，系统找到对应指标直接给答案</dd></div>
+      </dl></article>
+      <article class="card"><h4><span class="code">PBI</span>数易BI</h4><p class="pos">可视化，数据只从数据出口来</p><dl>
+        <div><dt>看板</dt><dd>业务日常盯的指标面板</dd></div>
+        <div><dt>大屏</dt><dd>节假日、指挥中心用的实时大屏</dd></div>
+        <div><dt>门户</dt><dd>按角色把常用报表集中到一个入口</dd></div>
+        <div><dt>驾驶舱</dt><dd>给管理层的核心经营指标总览</dd></div>
+      </dl></article>
+      <article class="card ai"><h4><span class="code">PAP</span>智能体平台</h4><p class="pos">AI 的统一入口</p><dl>
+        <div><dt>意图识别</dt><dd>听懂用户这句话要做什么，一句话里有几件事</dd></div>
+        <div><dt>流量分发</dt><dd>把请求交给最合适的智能体，答不了的转人工</dd></div>
+        <div><dt>智能体管理</dt><dd>智能体的上架、配置、按景区计量和效果评估</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>统一权限</h3><div class="cards">
+      <article class="card perm"><h4><span class="code">PDS</span>统一权限</h4><p class="pos">所有取数都要过这道关</p><dl>
+        <div><dt>统一登录</dt><dd>一个账号进所有系统</dd></div>
+        <div><dt>角色授权</dt><dd>按岗位决定能用哪些功能、能看哪些数据</dd></div>
+        <div><dt>景区隔离</dt><dd>每个客户只能看到自己的数据</dd></div>
+        <div><dt>字段脱敏</dt><dd>手机号、证件号等敏感字段自动打码</dd></div>
+        <div><dt>访问审计</dt><dd>谁在什么时候取了什么数，全程留痕</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>数据出口</h3><div class="cards">
+      <article class="card"><h4><span class="code">PDD</span>数据分发</h4><p class="pos">唯一出口（统一标签），下游只从这里拿数</p><dl>
+        <div><dt>指标中心</dt><dd>每个指标只有一个口径，认证过才能用</dd></div>
+        <div><dt>标签中心</dt><dd>同一个游客归成一个身份，给游客、景区、商品打标签</dd></div>
+        <div><dt>知识服务</dt><dd>给智能体查文档、查知识的接口</dd></div>
+        <div><dt>数据集</dt><dd>整理好的数据表，供 BI 和即席查询使用</dd></div>
+        <div><dt>数据服务 API</dt><dd>给系统和合作方调用的接口，即数据开放平台</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>数据治理</h3><div class="cards">
+      <article class="card"><h4><span class="code">PDG</span>数据治理</h4><p class="pos">大数据平台的中枢：管开发、管规矩</p><dl>
+        <div><dt>开发建模</dt><dd>把原始数据加工成分层的公共模型，同一逻辑只建一次</dd></div>
+        <div><dt>调度</dt><dd>按时间和依赖关系自动跑任务，失败自动告警</dd></div>
+        <div><dt>标准与主数据</dt><dd>表名字段统一规范；景区、商品、渠道、游客统一编号</dd></div>
+        <div><dt>血缘</dt><dd>记录每个数从哪来、到哪去，出错能顺着查</dd></div>
+        <div><dt>数据地图</dt><dd>中文一搜：有什么数据、什么意思、谁负责</dd></div>
+        <div><dt>质量</dt><dd>每天自动检查，不合格的数据拦在下游之外</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>数据清洗</h3><div class="cards">
+      <article class="card"><h4><span class="code">PDP</span>数据清洗</h4><p class="pos">把原料变干净、变成机器能读的格式</p><dl>
+        <div><dt>去重</dt><dd>去掉重复记录，补缺失，统一格式和编码</dd></div>
+        <div><dt>解析</dt><dd>把 Word、PDF、Excel 拆成文字和表格</dd></div>
+        <div><dt>识别</dt><dd>识别图片里的文字和内容</dd></div>
+        <div><dt>转写</dt><dd>把音频、视频转成文字</dd></div>
+      </dl></article>
+      <article class="card"><h4><span class="code">PDL</span>智能标注</h4><p class="pos">AI 先干粗活</p><dl>
+        <div><dt>AI 粗标</dt><dd>自动打上分类和标签</dd></div>
+        <div><dt>抽取</dt><dd>从文档、图片里抽出关键字段，比如物业拍照转成标准表格</dd></div>
+        <div><dt>分类</dt><dd>按业务主题归类，并给每条结果打置信度</dd></div>
+      </dl></article>
+      <article class="card"><h4><span class="code">PDR</span>审核质检</h4><p class="pos">人工把关，让 AI 越标越准</p><dl>
+        <div><dt>人工审核</dt><dd>置信度低的优先审</dd></div>
+        <div><dt>抽检</dt><dd>置信度高的按比例抽查</dd></div>
+        <div><dt>修正回流</dt><dd>改过的结果反馈给智能标注，下次标得更准</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>数据集成</h3><div class="cards">
+      <article class="card"><h4><span class="code">PDC</span>数据集成</h4><p class="pos">所有数据的唯一入口</p><dl>
+        <div><dt>离线同步</dt><dd>每天定时把业务库数据同步进来</dd></div>
+        <div><dt>实时采集</dt><dd>订单、核销等变化分钟级进来</dd></div>
+        <div><dt>文件采集</dt><dd>上传，或从飞书、网盘同步文档和音视频</dd></div>
+        <div><dt>API 接入</dt><dd>对接外部系统和合作方的数据接口</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>数据来源</h3><div class="cards">
+      <article class="card"><h4>数据来源</h4><p class="pos">平台的原料</p><dl>
+        <div><dt>业务数据</dt><dd>票务、订单、经营、营销、OTA、财务、ERP、终端产生的结构化数据</dd></div>
+        <div><dt>企业知识</dt><dd>Word、PDF、Excel、Markdown、图片、音视频等资料</dd></div>
+      </dl></article>
+    </div></div>
+    <div class="layer"><h3>回流闭环</h3><div class="cards">
+      <article class="card loop"><h4>回流闭环</h4><p class="pos">用的结果再回来，数据越用越准</p><dl>
+        <div><dt>回流平台</dt><dd>问答与评价、审核修正、工单结果、使用热度回到平台：补指标、改规则、让 AI 更准、下线没人用的数据</dd></div>
+        <div><dt>反哺业务</dt><dd>整理好的结果回到业务：调定价、做营销、优化调度，补充指标和知识</dd></div>
+      </dl></article>
+    </div></div>
+  </section>
 </div>
 </body>
 </html>
