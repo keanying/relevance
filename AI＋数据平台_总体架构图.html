@@ -156,9 +156,10 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
       <div class="hand" style="grid-row:4"><span>↑ 指标 · 标签 · 知识 · 数据集 · API</span></div>
 
       <div class="lab" style="grid-row:5">数据出口</div>
-      <div class="main" style="grid-row:5">
-        <div class="sys"><span class="code">PDD</span>数据分发</div>
-        <div class="cell">指标中心</div><div class="cell">标签中心</div><div class="cell">知识服务</div><div class="cell">数据集</div><div class="cell">数据服务 API</div>
+      <div class="main flow" style="grid-row:5">
+        <div class="step"><div class="t"><span class="code">PDT</span> 标签中心</div><div class="d">指标 · 标签 · 统一口径</div></div>
+        <div class="step"><div class="t"><span class="code">PDK</span> 知识服务</div><div class="d">知识库 · 检索 · 知识更新</div></div>
+        <div class="step"><div class="t"><span class="code">PDD</span> 数据服务</div><div class="d">数据集 · 数据 API · 调用管理</div></div>
       </div>
 
       <div class="lab" style="grid-row:6">数据治理</div>
@@ -243,12 +244,20 @@ h1 { margin: 0; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; letter-sp
       </dl></article>
     </div></div>
     <div class="layer"><h3>数据出口</h3><div class="cards">
-      <article class="card"><h4><span class="code">PDD</span>数据分发</h4><p class="pos">唯一出口（统一标签），下游只从这里拿数</p><dl>
-        <div><dt>指标中心</dt><dd>每个指标只有一个口径，认证过才能用</dd></div>
-        <div><dt>标签中心</dt><dd>同一个游客归成一个身份，给游客、景区、商品打标签</dd></div>
-        <div><dt>知识服务</dt><dd>给智能体查文档、查知识的接口</dd></div>
+      <article class="card"><h4><span class="code">PDT</span>标签中心</h4><p class="pos">指标和标签统一管理，一个口径（统一标签）</p><dl>
+        <div><dt>指标</dt><dd>每个指标只有一个口径，认证过才能用</dd></div>
+        <div><dt>标签</dt><dd>同一个游客归成一个身份，给游客、景区、商品打标签</dd></div>
+        <div><dt>统一口径</dt><dd>定义、版本、负责人都记清楚，改口径只改一处</dd></div>
+      </dl></article>
+      <article class="card"><h4><span class="code">PDK</span>知识服务</h4><p class="pos">给智能体用的企业知识</p><dl>
+        <div><dt>知识库</dt><dd>审核合格的文档、图片、音视频内容按主题入库</dd></div>
+        <div><dt>检索</dt><dd>按问题找到最相关的知识片段，答案能查到出处</dd></div>
+        <div><dt>知识更新</dt><dd>资料变了自动更新，旧版本可追溯</dd></div>
+      </dl></article>
+      <article class="card"><h4><span class="code">PDD</span>数据服务</h4><p class="pos">系统和工具取数的统一接口</p><dl>
         <div><dt>数据集</dt><dd>整理好的数据表，供 BI 和即席查询使用</dd></div>
-        <div><dt>数据服务 API</dt><dd>给系统和合作方调用的接口，即数据开放平台</dd></div>
+        <div><dt>数据 API</dt><dd>给系统和合作方调用的接口，即数据开放平台</dd></div>
+        <div><dt>调用管理</dt><dd>申请、限流、计量，谁调了什么都有记录</dd></div>
       </dl></article>
     </div></div>
     <div class="layer"><h3>数据治理</h3><div class="cards">
